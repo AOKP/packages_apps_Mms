@@ -85,10 +85,12 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String DISPLAY_QR_MARK_READ     = "pref_key_display_quickreply_mark_read";
 
     public static final String RESUME_SLEEP_FROM_QR     = "pref_key_resume_sleep_from_qr";
-    public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
+    public static final String ENABLE_EMOJIS            = "pref_key_enable_emojis";
     public static final String ENABLE_QUICK_EMOJIS      = "pref_key_emojis_quick";
     public static final String STRIP_UNICODE            = "pref_key_strip_unicode";
     public static final String INPUT_TYPE               = "pref_key_mms_input_type";
+    public static final String USER_AGENT               = "pref_key_mms_user_agent";
+    public static final String USER_AGENT_CUSTOM        = "pref_key_mms_user_agent_custom";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
