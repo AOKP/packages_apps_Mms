@@ -429,4 +429,10 @@
    <string name="sms_breath">通知アニメーション</string>
    <string name="sms_breath_summary">ステータスバーの通知アイコンを明滅させる</string>
 
+    <!-- Custom user-agent -->
+    <string name="pref_mms_custom_option">カスタム..</string>
+    <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
+    <string name="pref_summary_mms_user_agent">MMSクライアントのUser-Agent文字列を変更する</string>
+    <string name="pref_mms_user_agent_custom_set">設定されているUser-Agent:\n</string>
+
 </resources>

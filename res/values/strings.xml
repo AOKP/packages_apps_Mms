@@ -926,4 +926,10 @@
    <string name="sms_breath">Breathing SMS</string>
    <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
 
+    <!-- Custom user-agent -->
+    <string name="pref_mms_custom_option">Custom..</string>
+    <string name="pref_title_mms_user_agent">Custom User-Agent</string>
+    <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
+    <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
+
 </resources>
