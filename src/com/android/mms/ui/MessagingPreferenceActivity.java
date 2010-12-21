@@ -86,6 +86,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     public static final String ENABLE_QUICK_EMOJIS      = "pref_key_emojis_quick";
     public static final String SEND_ON_ENTER            = "pref_key_mms_send_on_enter";
+    public static final String USER_AGENT               = "pref_key_mms_user_agent";
+    public static final String USER_AGENT_CUSTOM        = "pref_key_mms_user_agent_custom";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;

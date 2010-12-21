@@ -17,6 +17,9 @@
 
 package com.android.mms.transaction;
 
+import com.android.mms.R;
+import com.android.mms.ui.MessagingPreferenceActivity;
+
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.SocketException;
@@ -36,8 +39,10 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 
+import android.content.SharedPreferences;
 import android.content.Context;
 import android.net.http.AndroidHttpClient;
+import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Config;
@@ -66,6 +71,8 @@ public class HttpUtils {
     static {
         HDR_VALUE_ACCEPT_LANGUAGE = getCurrentAcceptLanguage(Locale.getDefault());
     }
+
+    private static String mUserAgent;
 
     // Definition for necessary HTTP headers.
     private static final String HDR_KEY_ACCEPT = "Accept";
@@ -102,6 +109,7 @@ public class HttpUtils {
             Log.v(TAG, "httpConnection: params list");
             Log.v(TAG, "\ttoken\t\t= " + token);
             Log.v(TAG, "\turl\t\t= " + url);
+            Log.v(TAG, "\tUser-Agent\t\t=" + mUserAgent);
             Log.v(TAG, "\tmethod\t\t= "
                     + ((method == HTTP_POST_METHOD) ? "POST"
                             : ((method == HTTP_GET_METHOD) ? "GET" : "UNKNOWN")));
@@ -299,8 +307,15 @@ public class HttpUtils {
     }
 
     private static AndroidHttpClient createHttpClient(Context context) {
-        String userAgent = MmsConfig.getUserAgent();
-        AndroidHttpClient client = AndroidHttpClient.newInstance(userAgent, context);
+        // Get Shared Preferences and User Defined User Agent for MMS
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        mUserAgent = prefs.getString(MessagingPreferenceActivity.USER_AGENT, MmsConfig.getUserAgent());
+        if (mUserAgent == null || mUserAgent.equals("") || mUserAgent.equals("default")) {
+            mUserAgent = MmsConfig.getUserAgent();
+        } else if (mUserAgent.equals("custom")) {
+            mUserAgent = prefs.getString(MessagingPreferenceActivity.USER_AGENT_CUSTOM, MmsConfig.getUserAgent());
+        }
+        AndroidHttpClient client = AndroidHttpClient.newInstance(mUserAgent, context);
         HttpParams params = client.getParams();
         HttpProtocolParams.setContentCharset(params, "UTF-8");
 
@@ -309,7 +324,7 @@ public class HttpUtils {
 
         if (Log.isLoggable(LogTag.TRANSACTION, Log.DEBUG)) {
             Log.d(TAG, "[HttpUtils] createHttpClient w/ socket timeout " + soTimeout + " ms, "
-                    + ", UA=" + userAgent);
+                    + ", UA=" + mUserAgent);
         }
         HttpConnectionParams.setSoTimeout(params, soTimeout);
         return client;

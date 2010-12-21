@@ -421,4 +421,10 @@
     <string name="pref_title_mms_send_on_enter">Enterキーで送信</string>
     <string name="pref_summary_mms_send_on_enter">Enterキーの押下でメッセージを送信するかどうか切り替える</string>
 
+    <!-- Custom user-agent -->
+    <string name="pref_mms_custom_option">カスタム..</string>
+    <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
+    <string name="pref_summary_mms_user_agent">MMSクライアントのUser-Agent文字列を変更する</string>
+    <string name="pref_mms_user_agent_custom_set">設定されているUser-Agent:\n</string>
+
 </resources>

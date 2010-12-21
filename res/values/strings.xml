@@ -917,4 +917,10 @@
     <string name="pref_title_mms_send_on_enter">Send on Enter</string>
     <string name="pref_summary_mms_send_on_enter">Enable/disable send message when Enter key pressed</string>
 
+    <!-- Custom user-agent -->
+    <string name="pref_mms_custom_option">Custom..</string>
+    <string name="pref_title_mms_user_agent">Custom User-Agent</string>
+    <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
+    <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
+
 </resources>

@@ -70,6 +70,27 @@
         <item>Poker face</item>              <!-- 20: :-I -->
     </string-array>
 
+    <string-array name="pref_mms_user_agent_entries">
+        <item>Default Android</item>
+        <item>Nokia N95</item>
+        <item>iPhone (3.0)</item>
+        <item>BlackBerry 8800</item>
+        <item>Sony Ericsson W800i</item>
+        <item>SoftBank X01T</item>
+        <item>SoftBank MyrMMS</item>
+        <item>@string/pref_mms_custom_option</item>
+    </string-array>
+    <string-array name="pref_mms_user_agent_values">
+        <item>default</item>
+        <item>NokiaN95/11.0.026; Series60/3.1 Profile/MIDP-2.0 Configuration/CLDC-1.1</item>
+        <item>iPhoneOS/3.0 (7A341)</item>
+        <item>BlackBerry8800/4.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/100</item>
+        <item>SonyEricssonW800i/R1L</item>
+        <item>SoftBank/1.0/X01T/TJ001</item>
+        <item>SoftBank/1.0/Smart/MyrMMS</item>
+        <item>custom</item>
+    </string-array>
+
     <!-- String to match as no subject and filter out as a subject. For example, if the
          subject string is "no subject", we won't display that. We'll pretend
          no subject string was delivered. -->
