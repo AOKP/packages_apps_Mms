@@ -277,6 +277,7 @@ public class ComposeMessageActivity extends Activity
 
     private boolean mExitOnSent;            // Should we finish() after sending a message?
                                             // TODO: mExitOnSent is obsolete -- remove
+    private boolean mSendOnEnter;           // Send on Enter
 
     private View mTopPanel;                 // View containing the recipient and subject editors
     private View mBottomPanel;              // View containing the text editor, send button, ec.
@@ -1875,6 +1876,9 @@ public class ComposeMessageActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences((Context)ComposeMessageActivity.this);
+        mSendOnEnter = prefs.getBoolean(MessagingPreferenceActivity.SEND_ON_ENTER, true);
+
         resetConfiguration(getResources().getConfiguration());
 
         setContentView(R.layout.compose_message_activity);
@@ -3435,6 +3439,10 @@ public class ComposeMessageActivity extends Activity
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (event != null) {
+            // Send on Enter
+            if (((event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) || (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) && !mSendOnEnter) {
+                return false;
+            }
             // if shift key is down, then we want to insert the '\n' char in the TextView;
             // otherwise, the default action is to send the message.
             if (!event.isShiftPressed() && event.getAction() == KeyEvent.ACTION_DOWN) {

@@ -159,8 +159,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/pref_display_title"
-        android:key="pref_key_display_settings">
+        android:title="@string/pref_extra_settings"
+        android:key="pref_key_extra_settings">
 
         <CheckBoxPreference
             android:defaultValue="false"
@@ -180,5 +180,10 @@
             android:summary="@string/pref_summary_pref_key_emojis_quick"
             android:dependency="pref_key_enable_emojis"
             android:defaultValue="false" />
+
+        <CheckBoxPreference android:key="pref_key_mms_send_on_enter"
+            android:title="@string/pref_title_mms_send_on_enter"
+            android:summary="@string/pref_summary_mms_send_on_enter"
+            android:defaultValue="true" />
     </PreferenceCategory>
 </PreferenceScreen>
