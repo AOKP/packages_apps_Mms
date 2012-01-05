@@ -350,6 +350,15 @@
     <!-- Settings item for setting the number of message to save for each conversation -->
     <string name="pref_messages_to_save">Set number of messages to save</string>
 
+    <!-- Settings item for SMS Split 160 characters setting -->
+    <string name="pref_title_sms_split_160">SMS split</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_160">Split messages every 160 characters</string>
+    <!-- Settings item for boolean option for SMS Split Counter -->
+    <string name="pref_title_sms_split_counter">Split counter</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
         <!-- Always -->
