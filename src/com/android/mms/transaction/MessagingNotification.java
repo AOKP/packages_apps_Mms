@@ -20,6 +20,7 @@ package com.android.mms.transaction;
 import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
 import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
 
+import com.android.mms.MmsApp;
 import com.android.mms.R;
 import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
@@ -45,11 +46,15 @@ import android.content.SharedPreferences;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
@@ -58,6 +63,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import java.util.Comparator;
@@ -134,6 +140,10 @@ public class MessagingNotification {
 
     private MessagingNotification() {
     }
+
+    // this is the phone number of the last contact to message us and is
+    // used to find the avatar for the sender.
+    private static String lastSender = "";
 
     public static void init(Context context) {
         // set up the intent filter for notification deleted action
@@ -429,6 +439,8 @@ public class MessagingNotification {
         CharSequence ticker = buildTickerMessage(
                 context, address, subject, body);
 
+        lastSender = address;
+
         return new MmsSmsNotificationInfo(
                 clickIntent, body, iconResourceId, ticker, timeMillis,
                 senderInfoName, count);
@@ -476,7 +488,12 @@ public class MessagingNotification {
             return;
         }
 
-        Notification notification = new Notification(iconRes, ticker, timeMillis);
+        Notification.Builder notificationbuilder = new Notification.Builder(context);
+        notificationbuilder
+            .setTicker(ticker)
+            .setWhen(timeMillis);
+
+        int notificationdefaults = Notification.DEFAULT_LIGHTS;
 
         // If we have more than one unique thread, change the title (which would
         // normally be the contact who sent the message) to a generic one that
@@ -491,6 +508,38 @@ public class MessagingNotification {
                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             clickIntent.setType("vnd.android-dir/mms-sms");
+        } else
+        {
+            // If we're in here, we only have one unique thread so we should show
+            // the picture of the sender if it exists.
+            Drawable avatarDraw = Contact.get(lastSender, true).getAvatar(context, null);
+
+            try {
+                if (avatarDraw != null) {
+                   // Create the large notification icon
+                   Bitmap avatarBit = ((BitmapDrawable)avatarDraw).getBitmap();
+                   int iconSize = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
+
+                   // Resize it if it's a weird size
+                   int imageWidth = avatarBit.getWidth();
+                   int imageHeight = avatarBit.getHeight();
+                   int iconWidth = iconSize;
+                   int iconHeight = iconSize;
+                   if (imageWidth > imageHeight) {
+                       iconWidth = (int) (((float) iconHeight / imageHeight) * imageWidth);
+                   } else {
+                       iconHeight = (int) (((float) iconWidth / imageWidth) * imageHeight);
+                   }
+
+                   Bitmap croppedAvatar = Bitmap.createBitmap(avatarBit, (iconWidth - iconSize) / 2,
+                       (iconHeight - iconSize) / 2, iconSize, iconSize);
+
+                   notificationbuilder.setLargeIcon(croppedAvatar);
+                   }
+            } catch (Exception e) {
+                    // Something happened, but we'll just use the original icon
+                    Log.v(TAG, "Failed to set bitmap for contact");
+            }
         }
 
         // If there is more than one message, change the description (which
@@ -506,7 +555,10 @@ public class MessagingNotification {
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Update the notification.
-        notification.setLatestEventInfo(context, title, description, pendingIntent);
+        notificationbuilder.setContentIntent(pendingIntent);
+        notificationbuilder.setContentTitle(title);
+        notificationbuilder.setContentText(description);
+        notificationbuilder.setSmallIcon(iconRes);
 
         if (isNew) {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
@@ -530,23 +582,25 @@ public class MessagingNotification {
                 audioManager.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE;
 
             if (vibrateAlways || vibrateSilent && nowSilent) {
-                notification.defaults |= Notification.DEFAULT_VIBRATE;
+                notificationdefaults |= Notification.DEFAULT_VIBRATE;
             }
 
             String ringtoneStr = sp.getString(MessagingPreferenceActivity.NOTIFICATION_RINGTONE,
                     null);
-            notification.sound = TextUtils.isEmpty(ringtoneStr) ? null : Uri.parse(ringtoneStr);
+            notificationbuilder.setSound(TextUtils.isEmpty(ringtoneStr) ? null : Uri.parse(ringtoneStr));
         }
 
-        notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-        notification.defaults |= Notification.DEFAULT_LIGHTS;
+        notificationbuilder.setDefaults(notificationdefaults);
 
         // set up delete intent
-        notification.deleteIntent = PendingIntent.getBroadcast(context, 0,
-                sNotificationOnDeleteIntent, 0);
+        notificationbuilder.setDeleteIntent(PendingIntent.getBroadcast(context, 0,
+                sNotificationOnDeleteIntent, 0));
 
         NotificationManager nm = (NotificationManager)
             context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Notification notification = notificationbuilder.getNotification();
+        notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 
         nm.notify(NOTIFICATION_ID, notification);
     }
