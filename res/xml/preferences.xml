@@ -96,7 +96,12 @@
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
   </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_extra_settings">
+  <PreferenceCategory android:title="@string/pref_display_title"
+                      android:key="pref_key_display_settings">
+    <CheckBoxPreference android:defaultValue="false"
+                        android:key="pref_key_display_fulldate"
+                        android:summary="@string/pref_summary_fulldate"
+                        android:title="@string/pref_title_fulldate" />
     <CheckBoxPreference android:key="pref_key_enable_emojis"
                         android:title="@string/pref_title_enable_emojis"
                         android:summary="@string/pref_summary_enable_emojis"
