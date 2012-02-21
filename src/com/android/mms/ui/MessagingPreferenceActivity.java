@@ -64,7 +64,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String AUTO_RETRIEVAL           = "pref_key_mms_auto_retrieval";
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
+
     public static final String GROUP_MMS_MODE           = "pref_key_mms_group_mms";
+
+    public static final String DISPLAY_FULLDATE         = "pref_key_display_fulldate";
 
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     // Menu entries
@@ -391,4 +394,12 @@ public class MessagingPreferenceActivity extends PreferenceActivity
                 groupMmsPrefOn &&
                 !TextUtils.isEmpty(MessageUtils.getLocalNumber());
     }
+
+    public static boolean getFullDateEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean fullDateEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_FULLDATE, false);
+        return fullDateEnabled;
+    }
+
 }

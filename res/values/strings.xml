@@ -316,6 +316,8 @@
     <string name="pref_sms_settings_title">"Text (SMS) messages"</string>
     <!-- Settings screen, section heading for storage-specific settings -->
     <string name="pref_sms_storage_title">Storage</string>
+    <!-- Settings screen, section heading for display-specific settings -->
+    <string name="pref_display_title">Display</string>
 
     <!-- Settings item description for entering SIM card message screen -->
     <string name="pref_summary_manage_sim_messages">Manage messages stored on your SIM card</string>
@@ -359,6 +361,10 @@
     <string name="pref_title_notification_ringtone">Choose ringtone</string>
     <!-- Settings item for setting the number of message to save for each conversation -->
     <string name="pref_messages_to_save">Set number of messages to save</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_fulldate">Show full date</string>
+    <!-- Settings item description for boolean full datetime setting -->
+    <string name="pref_summary_fulldate">Show the full date for messages</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
