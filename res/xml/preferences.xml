@@ -18,6 +18,13 @@
  */
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="@string/pref_display_title"
+                      android:key="pref_key_display_settings">
+  	<CheckBoxPreference android:defaultValue="false"
+                      android:key="pref_key_display_fulldate"
+                      android:summary="@string/pref_summary_fulldate"
+                      android:title="@string/pref_title_fulldate" />              
+  </PreferenceCategory>
   <PreferenceCategory android:title="@string/pref_sms_storage_title"
                       android:key="pref_key_storage_settings">
 <!--
