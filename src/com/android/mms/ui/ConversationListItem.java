@@ -199,7 +199,8 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         mAttachmentView.setVisibility(hasAttachment ? VISIBLE : GONE);
 
         // Date
-        mDateView.setText(MessageUtils.formatTimeStampString(context, conversation.getDate()));
+      	mDateView.setText(MessageUtils.formatTimeStampString(context, conversation.getDate(),
+      	    MessagingPreferenceActivity.getFullDateEnabled(context)));
 
         // From.
         mFromView.setText(formatMessage());
