@@ -328,4 +328,15 @@
     <item quantity="other" msgid="7338580381574463136">"Počet lidí: <xliff:g id="NUMBER">%1$s</xliff:g>"</item>
   </plurals>
     <string name="disable_notifications_dialog_message" msgid="7644011234972074096">"Zastavit duplicitní oznámení o textových zprávách z výchozí aplikace SMS a MMS?"</string>
+    
+  <!-- AOKP specific Settings -->
+    <string name="pref_display_title">Zobrazení</string>
+    <string name="pref_title_sms_split_160">Rozdělit SMS</string>
+    <string name="pref_summary_sms_split_160">Rozdělit zprávy po 160 znacích</string>
+    <string name="pref_title_sms_split_counter">Počítadlo rozdělení</string>
+    <string name="pref_summary_sms_split_counter">Přidat počítadlo do zprávy např. (1/2)</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_fulldate">Zobrazit celé datum</string>
+    <!-- Settings item description for boolean full datetime setting -->
+    <string name="pref_summary_fulldate">Zobrazit celé datum u zpráv</string>
 </resources>
