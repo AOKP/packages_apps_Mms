@@ -756,6 +756,9 @@
          changed -->
     <string name="error_state_text">The state of threads and recipients is inconsistent. Please capture a bug report and report it via http://go/droidanizer </string>
 
+    <string name="label_mms_push">MMS Push</string>
+    <string name="desc_mms_push">Pushes MMS from outbox to the network</string>
+
     <!-- In the title of the compose message activity, when there are multiple recipients, we show
          the number of recipients in the subtitle of the action bar. There's never a case of one. [CHAR LIMIT=50] -->
     <plurals name="recipient_count">
