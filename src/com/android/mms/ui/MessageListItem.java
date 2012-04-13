@@ -69,6 +69,7 @@ import com.android.mms.transaction.Transaction;
 import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.DownloadManager;
+import com.android.mms.util.EmojiParser;
 import com.android.mms.util.SmileyParser;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.pdu.PduHeaders;
@@ -385,13 +386,15 @@ public class MessageListItem extends LinearLayout implements
 
         boolean hasSubject = !TextUtils.isEmpty(subject);
         SmileyParser parser = SmileyParser.getInstance();
+        EmojiParser emojiParser = EmojiParser.getInstance();
         if (hasSubject) {
             CharSequence smilizedSubject = parser.addSmileySpans(subject);
+            CharSequence emojizedSubject = emojiParser.addSmileySpans(smilizedSubject);
             // Can't use the normal getString() with extra arguments for string replacement
             // because it doesn't preserve the SpannableText returned by addSmileySpans.
             // We have to manually replace the %s with our text.
             buf.append(TextUtils.replace(mContext.getResources().getString(R.string.inline_subject),
-                    new String[] { "%s" }, new CharSequence[] { smilizedSubject }));
+                    new String[] { "%s" }, new CharSequence[] { emojizedSubject }));
         }
 
         if (!TextUtils.isEmpty(body)) {
@@ -403,7 +406,8 @@ public class MessageListItem extends LinearLayout implements
                 if (hasSubject) {
                     buf.append(" - ");
                 }
-                buf.append(parser.addSmileySpans(body));
+                CharSequence smileyBody = parser.addSmileySpans(body);
+                buf.append(emojiParser.addSmileySpans(smileyBody));
             }
         }
 

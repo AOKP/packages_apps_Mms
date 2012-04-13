@@ -21,6 +21,7 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+import com.android.mms.util.EmojiParser;
 import com.android.mms.util.SmileyParser;
 
 import android.content.Context;
@@ -218,7 +219,9 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
 
         // Subject
         SmileyParser parser = SmileyParser.getInstance();
-        mSubjectView.setText(parser.addSmileySpans(conversation.getSnippet()));
+        EmojiParser emojiParser = EmojiParser.getInstance();
+        CharSequence smileySubject = parser.addSmileySpans(conversation.getSnippet());
+        mSubjectView.setText(emojiParser.addSmileySpans(smileySubject));
         LayoutParams subjectLayout = (LayoutParams)mSubjectView.getLayoutParams();
         // We have to make the subject left of whatever optional items are shown on the right.
         subjectLayout.addRule(RelativeLayout.LEFT_OF, hasAttachment ? R.id.attachment :
