@@ -650,7 +650,7 @@
     <string name="saved_ringtone_fail">Couldn\'t save ringtone.</string>
     <!-- Menu item -->
     <string name="menu_insert_smiley">Insert smiley</string>
-    <string name="menu_insert_emoji">Insert emoji</string>
+    <string name="menu_insert_emoji">Insert emojis</string>
 
     <!-- This is the dialog title for the "Select link" dialog, shown when the user clicks on a
     chat in the chat history view if there are links in the chat message. The dialog displays the
