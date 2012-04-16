@@ -25,10 +25,12 @@ import com.android.mms.util.EmojiParser;
 import com.android.mms.util.SmileyParser;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -219,9 +221,15 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
 
         // Subject
         SmileyParser parser = SmileyParser.getInstance();
-        EmojiParser emojiParser = EmojiParser.getInstance();
         CharSequence smileySubject = parser.addSmileySpans(conversation.getSnippet());
-        mSubjectView.setText(emojiParser.addSmileySpans(smileySubject));
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+        if(enableEmojis) {
+            EmojiParser emojiParser = EmojiParser.getInstance();
+            smileySubject = emojiParser.addEmojiSpans(smileySubject);
+        }
+        mSubjectView.setText(smileySubject);
         LayoutParams subjectLayout = (LayoutParams)mSubjectView.getLayoutParams();
         // We have to make the subject left of whatever optional items are shown on the right.
         subjectLayout.addRule(RelativeLayout.LEFT_OF, hasAttachment ? R.id.attachment :
