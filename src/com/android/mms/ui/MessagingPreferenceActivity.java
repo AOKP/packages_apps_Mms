@@ -68,6 +68,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     public static final String FULL_TIMESTAMP           = "pref_key_mms_full_timestamp";
     public static final String ENABLE_QUICK_EMOJIS      = "pref_key_emojis_quick";
+    public static final String DISPLAY_HIDESENDERNAME   = "pref_key_notification_hidesendername";
+    public static final String DISPLAY_HIDEMESSAGE      = "pref_key_notification_hidemessage";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
@@ -315,6 +317,20 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
         boolean fullDateEnabled =
             prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_FULLDATE, false);
         return fullDateEnabled;
+    }
+    
+    public static boolean getHideSenderNameEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean hideSenderName =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_HIDESENDERNAME, false);
+        return hideSenderName;
+    }
+    
+    public static boolean getHideMessageEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean hideMessageEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_HIDEMESSAGE, false);
+        return hideMessageEnabled;
     }
     
 }

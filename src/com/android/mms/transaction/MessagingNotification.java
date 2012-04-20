@@ -432,10 +432,18 @@ public class MessagingNotification {
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        if (MessagingPreferenceActivity.getHideSenderNameEnabled(context)) {
+            address = "Someone";
+        }
         String senderInfo = buildTickerMessage(
                 context, address, null, null).toString();
         String senderInfoName = senderInfo.substring(
                 0, senderInfo.length() - 2);
+        
+        if (MessagingPreferenceActivity.getHideMessageEnabled(context)) {
+            body = "New Message";
+        }
+        
         CharSequence ticker = buildTickerMessage(
                 context, address, subject, body);
 

@@ -365,6 +365,15 @@
     <string name="pref_title_fulldate">Show full date</string>
     <!-- Settings item description for boolean full datetime setting -->
     <string name="pref_summary_fulldate">Show the full date for messages</string>
+    
+    <!-- Settings item for boolean option to show the sender's name -->
+    <string name="pref_title_hidesendername">Hide sender\'s name</string>
+    <!-- Settings item description for boolean full message setting -->
+    <string name="pref_summary_hidesendername">Hide the sender\'s name in notification. Will display as \"Someone\" instead.</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_hidemessage">Hide full message</string>
+    <!-- Settings item description for boolean full message setting -->
+    <string name="pref_summary_hidemessage">Hide the full message body in notification. Will display as \"New Message\" instead.</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
