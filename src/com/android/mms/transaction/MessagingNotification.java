@@ -432,10 +432,18 @@ public class MessagingNotification {
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        if (MessagingPreferenceActivity.getHideSenderNameEnabled(context)) {
+            address = context.getString(R.string.hidden_sender);
+        }
         String senderInfo = buildTickerMessage(
                 context, address, null, null).toString();
         String senderInfoName = senderInfo.substring(
                 0, senderInfo.length() - 2);
+        
+        if (MessagingPreferenceActivity.getHideMessageEnabled(context)) {
+            body = context.getString(R.string.hidden_message_body);
+        }
+        
         CharSequence ticker = buildTickerMessage(
                 context, address, subject, body);
 

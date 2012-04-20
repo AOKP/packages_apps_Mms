@@ -108,6 +108,14 @@
                         android:entries="@array/prefEntries_vibrateWhen"
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
+    <CheckBoxPreference android:defaultValue="false"
+                        android:key="pref_key_notification_hidesendername"
+                        android:summary="@string/pref_summary_hidesendername"
+                        android:title="@string/pref_title_hidesendername" />                   
+    <CheckBoxPreference android:defaultValue="false"
+                        android:key="pref_key_notification_hidemessage"
+                        android:summary="@string/pref_summary_hidemessage"
+                        android:title="@string/pref_title_hidemessage" /> 
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/pref_extra_settings">
     <CheckBoxPreference android:key="pref_key_strip_unicode"
