@@ -516,31 +516,28 @@ public class MessagingNotification {
 
             try {
                 if (avatarDraw != null) {
-                   // Create the large notification icon
-                   Bitmap avatarBit = ((BitmapDrawable)avatarDraw).getBitmap();
-                   int iconSize = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
+                    // Create the large notification icon
+                    Bitmap avatarBit = ((BitmapDrawable)avatarDraw).getBitmap();
+                    int iconSize = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
 
-                   // Dirty nasty. For some reason getAvatar() is returning a drawable that's not the full 64dp
-                   // that the iconSize expects it to be. So when we do createBitmap below, it errors out, becuase
-                   // of improper dimension sizes. This also makes it not a full picture
-                   if(avatarBit.getWidth() < iconSize)
-                       iconSize = avatarBit.getWidth();
-
-                   // Resize it if it's a weird size
-                   int imageWidth = avatarBit.getWidth();
-                   int imageHeight = avatarBit.getHeight();
-                   int iconWidth = iconSize;
-                   int iconHeight = iconSize;
-                   if (imageWidth > imageHeight) {
+                    // Resize it if it's a weird size
+                    int imageWidth = avatarBit.getWidth();
+                    int imageHeight = avatarBit.getHeight();
+                    int iconWidth = iconSize;
+                    int iconHeight = iconSize;
+                    if (imageWidth < imageHeight) {
                        iconWidth = (int) (((float) iconHeight / imageHeight) * imageWidth);
-                   } else {
+                    } else {
                        iconHeight = (int) (((float) iconWidth / imageWidth) * imageHeight);
-                   }
+                    }
 
-                   Bitmap croppedAvatar = Bitmap.createBitmap(avatarBit, (iconWidth - iconSize) / 2,
-                       (iconHeight - iconSize) / 2, iconSize, iconSize);
+                    // Resize bitmap to fit the desired size
+                    Bitmap resizedAvatar = Bitmap.createScaledBitmap(avatarBit, iconWidth, iconHeight, true);
 
-                   notificationbuilder.setLargeIcon(croppedAvatar);
+                    Bitmap croppedAvatar = Bitmap.createBitmap(resizedAvatar, (iconSize - iconWidth) / 2,
+                       (iconSize - iconHeight) / 2, iconSize, iconSize);
+
+                    notificationbuilder.setLargeIcon(croppedAvatar);
                    }
             } catch (Exception e) {
                     // Something happened, but we'll just use the original icon

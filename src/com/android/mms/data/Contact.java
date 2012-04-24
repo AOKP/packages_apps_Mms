@@ -943,7 +943,7 @@ public class Contact {
 
             InputStream avatarDataStream = Contacts.openContactPhotoInputStream(
                         mContext.getContentResolver(),
-                        contactUri);
+                        contactUri, true);
             try {
                 if (avatarDataStream != null) {
                     data = new byte[avatarDataStream.available()];
