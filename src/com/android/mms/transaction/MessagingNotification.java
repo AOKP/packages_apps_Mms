@@ -520,6 +520,12 @@ public class MessagingNotification {
                    Bitmap avatarBit = ((BitmapDrawable)avatarDraw).getBitmap();
                    int iconSize = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
 
+                   // Dirty nasty. For some reason getAvatar() is returning a drawable that's not the full 64dp
+                   // that the iconSize expects it to be. So when we do createBitmap below, it errors out, becuase
+                   // of improper dimension sizes. This also makes it not a full picture
+                   if(avatarBit.getWidth() < iconSize)
+                       iconSize = avatarBit.getWidth();
+
                    // Resize it if it's a weird size
                    int imageWidth = avatarBit.getWidth();
                    int imageHeight = avatarBit.getHeight();
