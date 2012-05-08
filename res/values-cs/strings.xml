@@ -339,4 +339,15 @@
     <string name="pref_title_fulldate">Zobrazit celé datum</string>
     <!-- Settings item description for boolean full datetime setting -->
     <string name="pref_summary_fulldate">Zobrazit celé datum u zpráv</string>
+
+  <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Speciální nastavení</string>
+  <!-- Strip unicode -->
+    <string name="pref_title_strip_unicode">Odstranit speciální znaky</string>
+    <string name="pref_summary_strip_unicode">Nahradí speciální znaky klasickými písmeny pro zachování 160 znaků dlouhých zpráv</string>
+  <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Zapnout smajlíky</string>
+    <string name="pref_summary_enable_emojis">Zapnout podporu speciálních 471 unikodových smajlíků</string>
+    <string name="pref_title_pref_key_emojis_quick">Tlačítko smajlíků</string>
+    <string name="pref_summary_pref_key_emojis_quick">Zobrazit tlačítko smajlíků vlevo od textového pole</string>
 </resources>
