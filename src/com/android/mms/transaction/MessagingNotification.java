@@ -516,10 +516,11 @@ public class MessagingNotification {
                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             clickIntent.setType("vnd.android-dir/mms-sms");
-        } else
+        } else if (!MessagingPreferenceActivity.getHideSenderNameEnabled(context))
         {
             // If we're in here, we only have one unique thread so we should show
-            // the picture of the sender if it exists.
+            // the picture of the sender if it exists and if the user has NOT
+            // hidden the sender's name in Mms preferences.
             Drawable avatarDraw = Contact.get(lastSender, true).getAvatar(context, null);
 
             try {
