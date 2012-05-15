@@ -328,4 +328,11 @@
     <item quantity="other" msgid="7338580381574463136">"<xliff:g id="NUMBER">%1$s</xliff:g> 人"</item>
   </plurals>
     <string name="disable_notifications_dialog_message" msgid="7644011234972074096">"要停止預設「簡訊」應用程式發出重複的簡訊通知嗎？"</string>
+    <string name="pref_extra_settings">其他設定</string>
+    <string name="pref_title_strip_unicode">過濾 unicode</string>
+    <string name="pref_summary_strip_unicode">於 160 字元簡訊中過濾不支援之 unicode 字元。</string>
+    <string name="pref_title_enable_emojis">啟用表情符號</string>
+    <string name="pref_summary_enable_emojis">啟用支援軟體銀行 unicode 表情符號，共 471 個。</string>
+    <string name="pref_title_pref_key_emojis_quick">表情符號快速鍵</string>
+    <string name="pref_summary_pref_key_emojis_quick">於輸入文字區左側顯示表情符號快速鍵。</string>
 </resources>
