@@ -173,6 +173,18 @@
     <string name="pref_summary_notification_vibrateWhen" msgid="669655090822561447">"收到通知時震動提醒"</string>
     <string name="pref_title_notification_ringtone" msgid="5467265237106229952">"選擇鈴聲"</string>
     <string name="pref_messages_to_save" msgid="3202539743892934926">"設定儲存的訊息數量"</string>
+    <string name="pref_title_sms_split_160">簡訊分割</string>
+    <string name="pref_summary_sms_split_160">每 160 字元分割為一件簡訊。</string>
+    <string name="pref_title_sms_split_counter">分割計數</string>
+    <string name="pref_summary_sms_split_counter">顯示簡訊計數(1/2)。</string>
+    <string name="pref_title_fulldate">顯示完整日期</string>
+    <string name="pref_summary_fulldate">為每件簡訊顯示完整日期。</string>
+    <string name="pref_title_hidesendername">隱藏寄件者姓名</string>            
+    <string name="pref_summary_hidesendername">於通知欄隱藏寄件者姓名，並改以「收到」顯示。</string>
+    <string name="pref_title_hidemessage">隱藏完整訊息</string>
+    <string name="pref_summary_hidemessage">於通知欄隱藏完整的簡訊內容，並改以「新簡訊」顯示。</string>
+    <string name="hidden_sender">收到</string>
+    <string name="hidden_message_body">新簡訊</string>
   <string-array name="prefEntries_vibrateWhen">
     <item msgid="2520871831815631409">"一律"</item>
     <item msgid="6069709696037750627">"靜音時才啟用"</item>
