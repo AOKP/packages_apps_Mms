@@ -173,6 +173,18 @@
     <string name="pref_summary_notification_vibrateWhen" msgid="669655090822561447">"收到通知时还振动提醒"</string>
     <string name="pref_title_notification_ringtone" msgid="5467265237106229952">"选择铃声"</string>
     <string name="pref_messages_to_save" msgid="3202539743892934926">"设置要保存的信息数量"</string>
+    <string name="pref_title_sms_split_160">短信分割</string>
+    <string name="pref_summary_sms_split_160">每 160 字元分割为一条短信。</string>
+    <string name="pref_title_sms_split_counter">分割序号</string>
+    <string name="pref_summary_sms_split_counter">显示分割后的短信序号，如：(1/2)。</string>
+    <string name="pref_title_fulldate">显示完整日期</string>
+    <string name="pref_summary_fulldate">显示短信的完整日期，包括时分。</string>
+    <string name="pref_title_hidesendername">隐藏发件人姓名</string>
+    <string name="pref_summary_hidesendername">在通知栏隐藏发件人姓名，仅显示“某某某”。</string>
+    <string name="pref_title_hidemessage">隐藏完整信息</string>
+    <string name="pref_summary_hidemessage">在通知栏隐藏完整的信息内容，仅显示“新信息”。</string>
+    <string name="hidden_sender">某某某</string>
+    <string name="hidden_message_body">新信息</string>
   <string-array name="prefEntries_vibrateWhen">
     <item msgid="2520871831815631409">"始终"</item>
     <item msgid="6069709696037750627">"仅在静音时"</item>
@@ -328,4 +340,11 @@
     <item quantity="other" msgid="7338580381574463136">"<xliff:g id="NUMBER">%1$s</xliff:g> 个人"</item>
   </plurals>
     <string name="disable_notifications_dialog_message" msgid="7644011234972074096">"要停止从默认“短信”应用程序接收重复的短信通知吗？"</string>
+    <string name="pref_extra_settings">其它设置</string>
+    <string name="pref_title_strip_unicode">过滤 unicode</string>
+    <string name="pref_summary_strip_unicode">在 160 字符的短信息中不支持过滤 unicode 字符。</string>
+    <string name="pref_title_enable_emojis">启用表情</string>
+    <string name="pref_summary_enable_emojis">启动 unicode 表情库，共 471 个。</string>
+    <string name="pref_title_pref_key_emojis_quick">表情快捷按钮</string>
+    <string name="pref_summary_pref_key_emojis_quick">在文本输入区左侧显示表情快捷按钮。</string>
 </resources>
