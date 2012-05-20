@@ -350,4 +350,5 @@
     <string name="pref_summary_enable_emojis">Zapnout podporu speciálních 471 unikodových smajlíků</string>
     <string name="pref_title_pref_key_emojis_quick">Tlačítko smajlíků</string>
     <string name="pref_summary_pref_key_emojis_quick">Zobrazit tlačítko smajlíků vlevo od textového pole</string>
+    <string name="menu_insert_emoji">Vložit smajlíky</string>
 </resources>
