@@ -175,7 +175,7 @@
     <string name="pref_title_notification_ringtone" msgid="5467265237106229952">"选择铃声"</string>
     <string name="pref_messages_to_save" msgid="3202539743892934926">"设置要保存的信息数量"</string>
     <string name="pref_title_sms_split_160">短信分割</string>
-    <string name="pref_summary_sms_split_160">将超过60个汉字或160个字母的短信分多条信息发送</string>
+    <string name="pref_summary_sms_split_160">将超过70个汉字或160个字母的短信分多条信息发送</string>
     <string name="pref_title_sms_split_counter">分割序号</string>
     <string name="pref_summary_sms_split_counter">显示分割后的短信序号，例： (1/2)</string>
     <string name="pref_title_fulldate">显示完整日期</string>
