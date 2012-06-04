@@ -181,9 +181,9 @@
     <string name="pref_title_fulldate">显示完整日期</string>
     <string name="pref_summary_fulldate">显示包括日期和时间的完整日期</string>
     <string name="pref_title_hidesendername">隐藏发送者姓名</string>
-    <string name="pref_summary_hidesendername">收到短信时通知栏不显示发送者姓名，仅显示“收到信息”。</string>
+    <string name="pref_summary_hidesendername">收到信息时通知栏不显示发送者姓名，仅显示“收到信息”。</string>
     <string name="pref_title_hidemessage">隐藏信息内容</string>
-    <string name="pref_summary_hidemessage">收到短信时通知栏不显示发送者姓名，仅显示“新信息”。</string>
+    <string name="pref_summary_hidemessage">收到信息时不显示信息内容，仅显示“新信息”。</string>
     <string name="hidden_sender">收到信息</string>
     <string name="hidden_message_body">新信息</string>
   <string-array name="prefEntries_vibrateWhen">
