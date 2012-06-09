@@ -351,4 +351,10 @@
     <string name="pref_title_pref_key_emojis_quick">Tlačítko smajlíků</string>
     <string name="pref_summary_pref_key_emojis_quick">Zobrazit tlačítko smajlíků vlevo od textového pole</string>
     <string name="menu_insert_emoji">Vložit smajlíky</string>
+  <string name="pref_title_hidesendername">Skrýt jméno odesilatele</string>
+  <string name="pref_summary_hidesendername">Skryje jméno odesilatele v notifikacích, místo jeho jména bude zobrazeno \"Někdo\".</string>
+  <string name="pref_title_hidemessage">Skrýt zprávu</string>
+  <string name="pref_summary_hidemessage">Skryje tělo zprávy v notifikacích. Místo těla zprávy bude zobrazeno \"Nová zpráva\".</string>
+  <string name="hidden_sender">Někdo</string>
+  <string name="hidden_message_body">Nová zpráva</string>
 </resources>
