@@ -328,4 +328,25 @@
     <item quantity="other" msgid="7338580381574463136">"Osoby: <xliff:g id="NUMBER">%1$s</xliff:g>"</item>
   </plurals>
     <string name="disable_notifications_dialog_message" msgid="7644011234972074096">"Czy zatrzymać podwójne powiadomienia SMS z domyślnej aplikacji SMS?"</string>
+    <string name="pref_display_title">Wyświetlanie</string>
+    <string name="pref_title_sms_split_160">Dzielenie SMS</string>
+    <string name="pref_summary_sms_split_160">Dziel wiadomości co 160 znaków</string>
+    <string name="pref_title_sms_split_counter">Licznik podziału</string>
+    <string name="pref_summary_sms_split_counter">Dodaj licznik do wiadomości, np. (1/2)</string>
+    <string name="pref_title_fulldate">Pokaż pełną datę</string>
+    <string name="pref_summary_fulldate">Pokazuj pełną datę przy wiadomościach</string>
+    <string name="pref_extra_settings">Ustawienia dodatkowe</string>
+    <string name="pref_title_strip_unicode">Usuń znaki specjalne</string>
+    <string name="pref_summary_strip_unicode">Zastępuje znaki specjalne, które nie są obsługiwane w 160-znakowych wiadomościach SMS.</string>
+    <string name="pref_title_enable_emojis">Włącz emoji</string>
+    <string name="pref_summary_enable_emojis">Dodaje obsługę dodatkowych 471 unikodowych emotikon.</string>
+    <string name="pref_title_pref_key_emojis_quick">Przycisk emoji</string>
+    <string name="pref_summary_pref_key_emojis_quick">Pokazuj przycisk emoji po lewej stronie pola tekstowego.</string>
+    <string name="menu_insert_emoji">Wstaw emoji</string>
+    <string name="pref_title_hidesendername">Ukrywanie nadawcy</string>
+    <string name="pref_summary_hidesendername">Ukryj nazwę nadawcy w powiadomieniu. Zamiast tego pokaże się \"Ktoś\".</string>
+    <string name="pref_title_hidemessage">Ukrywanie wiadomości</string>
+    <string name="pref_summary_hidemessage">Ukryj treść wiadomości w powiadomieniu. Zamiast tego pokaże się \"Nowa wiadomość\".</string>
+    <string name="hidden_sender">Ktoś</string>
+    <string name="hidden_message_body">Nowa wiadomość</string>
 </resources>
