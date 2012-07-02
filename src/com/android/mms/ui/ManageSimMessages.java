@@ -280,7 +280,7 @@ public class ManageSimMessages extends Activity
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
 
-        if (mState == SHOW_LIST && (null != mCursor) && (mCursor.getCount() > 0)) {
+        if ((null != mCursor) && (mCursor.getCount() > 0) && mState == SHOW_LIST) {
             menu.add(0, OPTION_MENU_DELETE_ALL, 0, R.string.menu_delete_messages).setIcon(
                     android.R.drawable.ic_menu_delete);
         }
