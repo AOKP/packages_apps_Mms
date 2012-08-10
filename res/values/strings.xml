@@ -799,6 +799,10 @@
 
     <!-- In message list items, this string builds the timestamp line when the message is in a group [CHAR LIMIT=NONE] -->
     <string name="message_timestamp_format"><xliff:g id="string" example="Fred Flinstone">%1$s</xliff:g>\u0020-\u0020<xliff:g id="string" example="9:39AM">%2$s</xliff:g></string>
+   <!-- Settings item for boolean option for SMS Split Counter -->
+   <string name="pref_title_sms_split_counter">Split counter</string>
+   <!-- Settings item description for boolean SMS Split 160 characters setting -->
+   <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
 
 </resources>
 
