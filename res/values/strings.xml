@@ -785,5 +785,10 @@
     <!-- An enumeration comma for separating multiple names in notifications. [CHAR LIMIT=2] -->
     <string name="enumeration_comma">,\u0020</string>
 
+   <!-- Settings item for boolean option for SMS Split Counter -->
+   <string name="pref_title_sms_split_counter">Split counter</string>
+   <!-- Settings item description for boolean SMS Split 160 characters setting -->
+   <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+
 </resources>
 

@@ -548,7 +548,7 @@ public class ComposeMessageActivity extends Activity
         int msgCount = params[0];
         int remainingInCurrentMessage = params[2];
 
-        if (!MmsConfig.getMultipartSmsEnabled()) {
+        if (!MmsConfig.getSplitSmsEnabled() && !MmsConfig.getMultipartSmsEnabled()) {
             // The provider doesn't support multi-part sms's so as soon as the user types
             // an sms longer than one segment, we have to turn the message into an mms.
             mWorkingMessage.setLengthRequiresMms(msgCount > 1, true);
