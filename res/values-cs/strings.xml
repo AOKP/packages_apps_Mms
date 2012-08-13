@@ -343,4 +343,7 @@
     <string name="attachment_picture" msgid="3709286281567284296">"Obrázek"</string>
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
+
+    <string name="pref_title_sms_split_counter">Počítadlo rozdělení</string>
+    <string name="pref_summary_sms_split_counter">Přidat počítadlo do zprávy. Např. (1/2)</string>
 </resources>
