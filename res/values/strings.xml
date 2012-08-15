@@ -791,52 +791,11 @@
     <!-- Settings item description for boolean SMS Split 160 characters setting -->
     <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
 
-    <!-- Sms templates -->
-    <string name="prefs_templates_settings">Sms templates</string>
-    <string name="pref_title_templates_manage">Templates</string>
-    <string name="pref_summary_templates_manage">Manage your sms templates</string>
-    <string name="pref_title_templates_show_gesture">Gesture</string>
-    <string name="pref_summary_templates_show_gesture">Show gesture trace</string>
-    <string name="pref_title_template_gestures_sensitivity">Gesture sensitivity</string>
-    <string name="template_save">Save</string>
-    <string name="template_insert_hint">Insert here the template text</string>
-    <string name="template_empty_text">Text field cannot be empty</string>
-    <string name="template_explanation">Insert or modify the template text and optionally draw a gesture to associate it</string>
-    <string name="template_edit">Edit</string>
-    <string name="template_delete">Delete</string>
-    <string name="template_ctx_menu_title">Actions</string>
-    <string name="template_list_title">Templates</string>
-    <string name="template_new_title">New template</string>
-    <string name="template_insert">Insert template</string>
-    <string name="template_gesture_draw">Draw the gesture in the space below</string>
-    <string name="template_not_present_error">You have not defined any template</string>
-    <string name="template_not_present_error_title">Error</string>
-    <string name="template_select">Select a template</string>
-    <string name="template_cancel_confirm_title">Warning</string>
-    <string name="template_cancel_confirm_text">Would you like to cancel?</string>
-    <string name="gestures_already_present">Warning: A similar gesture is associated to another template!</string>
-
-    <!-- Change Vibrate pattern/method for message notification -->
-    <string name="pref_title_mms_notification_vibrate_settings">Vibrate settings</string>
-    <string name="pref_title_mms_notification_vibrate_pattern">Vibrate pattern</string>
-    <string name="pref_summary_mms_notification_vibrate_pattern">Change vibrate pattern</string>
-    <string name="pref_title_mms_notification_vibrate_call">Vibrate on Call</string>
-    <string name="pref_summary_mms_notification_vibrate_call">Allow vibrate while on a call</string>
-    <string name="pref_title_mms_notification_vibrate_custom">Custom vibrate pattern</string>
-    <string name="pref_text_mms_notification_vibrate_custom">Format off/on in milliseconds: off, on, off, on, ...</string>
-
     <!-- Extra Settings: -->
     <string name="pref_extra_settings">Extra settings</string>
     
     <!-- Enable emojis -->
     <string name="pref_title_enable_emojis">Emoji support</string>
     <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
-    <!-- Full timestamps -->
-    <string name="pref_title_mms_full_timestamp">Full timestamps</string>
-    <string name="pref_summary_mms_full_timestamp">Display both date and time in timestamps</string>
-    <!-- Which timestamps -->
-    <string name="pref_title_mms_use_sent_timestamp">Original timestamps</string>
-    <string name="pref_summary_mms_use_sent_timestamp">Display sent date instead of received date in timestamps</string>
-
 </resources>
 

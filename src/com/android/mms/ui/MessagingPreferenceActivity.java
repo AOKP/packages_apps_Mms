@@ -64,15 +64,6 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
 
-    public static final String MANAGE_TEMPLATES = "pref_key_templates_manage";
-    public static final String SHOW_GESTURE = "pref_key_templates_show_gesture";
-    public static final String GESTURE_SENSITIVITY = "pref_key_templates_gestures_sensitivity";
-    public static final String GESTURE_SENSITIVITY_VALUE = "pref_key_templates_gestures_sensitivity_value";
-    public static final String FULL_TIMESTAMP           = "pref_key_mms_full_timestamp";
-    public static final String SENT_TIMESTAMP           = "pref_key_mms_use_sent_timestamp";
-    public static final String NOTIFICATION_VIBRATE_PATTERN = "pref_key_mms_notification_vibrate_pattern";
-    public static final String NOTIFICATION_VIBRATE_PATTERN_CUSTOM = "pref_key_mms_notification_vibrate_pattern_custom";
-    public static final String NOTIFICATION_VIBRATE_CALL ="pre_key_mms_notification_vibrate_call";
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
