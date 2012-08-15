@@ -629,6 +629,7 @@
     <string name="saved_ringtone_fail">Couldn\'t save ringtone.</string>
     <!-- Menu item -->
     <string name="menu_insert_smiley">Insert smiley</string>
+    <string name="menu_insert_emoji">Insert emojis</string>
 
     <!-- This is the dialog title for the "Select link" dialog, shown when the user clicks on a
     chat in the chat history view if there are links in the chat message. The dialog displays the
@@ -785,10 +786,17 @@
     <!-- An enumeration comma for separating multiple names in notifications. [CHAR LIMIT=2] -->
     <string name="enumeration_comma">,\u0020</string>
 
-   <!-- Settings item for boolean option for SMS Split Counter -->
-   <string name="pref_title_sms_split_counter">Split counter</string>
-   <!-- Settings item description for boolean SMS Split 160 characters setting -->
-   <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+    <!-- Settings item for boolean option for SMS Split Counter -->
+    <string name="pref_title_sms_split_counter">Split counter</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Extra settings</string>
+    
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji support</string>
+    <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
 
 </resources>
 

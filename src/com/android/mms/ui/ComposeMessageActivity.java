@@ -55,6 +55,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -71,6 +72,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
 import android.os.SystemProperties;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.Contacts;
@@ -95,10 +97,13 @@ import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.view.WindowManager;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -107,10 +112,16 @@ import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -144,6 +155,7 @@ import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
 import com.android.mms.ui.RecipientsEditor.RecipientContextMenuInfo;
 import com.android.mms.util.AddressUtils;
 import com.android.mms.util.PhoneNumberFormatter;
+import com.android.mms.util.EmojiParser;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.util.SmileyParser;
 
@@ -213,6 +225,7 @@ public class ComposeMessageActivity extends Activity
     private static final int MENU_UNLOCK_MESSAGE        = 29;
     private static final int MENU_SAVE_RINGTONE         = 30;
     private static final int MENU_PREFERENCES           = 31;
+    private static final int MENU_INSERT_EMOJI          = 32;
 
     private static final int RECIPIENTS_MAX_LENGTH = 312;
 
@@ -282,6 +295,8 @@ public class ComposeMessageActivity extends Activity
     private WorkingMessage mWorkingMessage;         // The message currently being composed.
 
     private AlertDialog mSmileyDialog;
+    private AlertDialog mEmojiDialog;
+    private View mEmojiView;
 
     private boolean mWaitingForSubActivity;
     private int mLastRecipientCount;            // Used for warning the user on too many recipients.
@@ -2527,6 +2542,12 @@ public class ComposeMessageActivity extends Activity
         if (!mWorkingMessage.hasSlideshow()) {
             menu.add(0, MENU_INSERT_SMILEY, 0, R.string.menu_insert_smiley).setIcon(
                     R.drawable.ic_menu_emoticons);
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences((Context) ComposeMessageActivity.this);
+            boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+            if (enableEmojis) {
+                menu.add(0, MENU_INSERT_EMOJI, 0, R.string.menu_insert_emoji);
+            }
         }
 
         if (mMsgListAdapter.getCount() > 0) {
@@ -2611,6 +2632,9 @@ public class ComposeMessageActivity extends Activity
                 break;
             case MENU_INSERT_SMILEY:
                 showSmileyDialog();
+                break;
+            case MENU_INSERT_EMOJI:
+                showEmojiDialog();
                 break;
             case MENU_VIEW_CONTACT: {
                 // View the contact for the first (and only) recipient.
@@ -3185,7 +3209,15 @@ public class ComposeMessageActivity extends Activity
 
         // TextView.setTextKeepState() doesn't like null input.
         if (text != null) {
-            mTextEditor.setTextKeepState(text);
+            // Restore the emojis if necessary
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences((Context) ComposeMessageActivity.this);
+            boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+            if (enableEmojis) {
+                mTextEditor.setTextKeepState(EmojiParser.getInstance().addEmojiSpans(text));
+            } else {
+                mTextEditor.setTextKeepState(text);
+            }
         } else {
             mTextEditor.setText("");
         }
@@ -4076,6 +4108,70 @@ public class ComposeMessageActivity extends Activity
         }
 
         mSmileyDialog.show();
+    }
+
+    private void showEmojiDialog() {
+        if (mEmojiDialog == null) {
+            int[] icons = EmojiParser.DEFAULT_EMOJI_RES_IDS;
+
+            int layout = R.layout.emoji_insert_view;
+            mEmojiView = getLayoutInflater().inflate(layout, null);
+
+            final GridView gridView = (GridView) mEmojiView.findViewById(R.id.emoji_grid_view);
+            gridView.setAdapter(new ImageAdapter(this, icons));
+            final EditText editText = (EditText) mEmojiView.findViewById(R.id.emoji_edit_text);
+            final Button button = (Button) mEmojiView.findViewById(R.id.emoji_button);
+
+            gridView.setOnItemClickListener(new OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    // We use the new unified Unicode 6.1 emoji code points
+                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mEmojiTexts[position]);
+                    editText.append(emoji);
+                }
+            });
+
+            gridView.setOnItemLongClickListener(new OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
+                        long id) {
+                    // We use the new unified Unicode 6.1 emoji code points
+                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mEmojiTexts[position]);
+                    if (mSubjectTextEditor != null && mSubjectTextEditor.hasFocus()) {
+                        mSubjectTextEditor.append(emoji);
+                    } else {
+                        mTextEditor.append(emoji);
+                    }
+                    mEmojiDialog.dismiss();
+                    return true;
+                }
+            });
+
+            button.setOnClickListener(new android.view.View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mSubjectTextEditor != null && mSubjectTextEditor.hasFocus()) {
+                        mSubjectTextEditor.append(editText.getText());
+                    } else {
+                        mTextEditor.append(editText.getText());
+                    }
+                    mEmojiDialog.dismiss();
+                }
+            });
+
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+
+            b.setTitle(getString(R.string.menu_insert_emoji));
+
+            b.setCancelable(true);
+            b.setView(mEmojiView);
+
+            mEmojiDialog = b.create();
+        }
+
+        final EditText editText = (EditText) mEmojiView.findViewById(R.id.emoji_edit_text);
+        editText.setText("");
+
+        mEmojiDialog.show();
     }
 
     @Override
