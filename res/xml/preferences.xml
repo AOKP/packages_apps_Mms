@@ -96,4 +96,10 @@
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
   </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_extra_settings">
+    <CheckBoxPreference android:key="pref_key_enable_emojis"
+                        android:title="@string/pref_title_enable_emojis"
+                        android:summary="@string/pref_summary_enable_emojis"
+                        android:defaultValue="false" />
+  </PreferenceCategory>
 </PreferenceScreen>
