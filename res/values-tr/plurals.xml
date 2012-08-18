@@ -10,8 +10,8 @@
         <item quantity="few">%s saniye</item>
     </plurals>
     <plurals name="search_results_title">
-        <item quantity="other">\"%2$s\" için %1$s sonuç</item>
-        <item quantity="one">\"%2$s\" için %1$s sonuç</item>
+        <item quantity="other">\"%1$2$s\" için %2$1$s sonuç</item>
+        <item quantity="one">\"%1$2$s\" için %2$1$s sonuç</item>
     </plurals>
     <plurals name="message_count_notification_overflow">
         <item quantity="other">+%1$s diğer mesaj</item>

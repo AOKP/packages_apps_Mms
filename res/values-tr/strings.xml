@@ -142,6 +142,9 @@ Son deneme zamanı: %s."</string>
     <string name="pref_summary_notification_vibrateWhen">Bildirildiğinde aynı zamanda titret</string>
     <string name="pref_title_notification_ringtone">Zil sesi seç</string>
     <string name="pref_messages_to_save">Kaydedilecek iletilerin sayısını ayarla</string>
+    <string name="prefDefault_vibrateWhen">Asla</string>
+    <string name="prefDefault_vibrate_true">Herzaman</string>
+    <string name="prefDefault_vibrate_false">Asla</string>
     <string name="prefDialogTitle_vibrateWhen">Titreşim</string>
     <string name="pref_title_mms_auto_retrieval">Otomatik al</string>
     <string name="pref_summary_mms_auto_retrieval">İletileri otomatik olarak al</string>
@@ -244,6 +247,7 @@ Son deneme zamanı: %s."</string>
     <string name="saved_ringtone">Zil sesi kaydedildi.</string>
     <string name="saved_ringtone_fail">Zil sesi kaydedilemedi.</string>
     <string name="menu_insert_smiley">İfade ekle</string>
+    <string name="menu_insert_emoji">Emoji ekle</string>
     <string name="select_link_title">İşlem seçin</string>
     <string name="slide_number">Slayt %s</string>
     <string name="delivery_report_activity">İletim raporu</string>
@@ -285,6 +289,11 @@ Son deneme zamanı: %s."</string>
     <string name="attachment_picture">Resim</string>
     <string name="notification_separator">"  "</string>
     <string name="enumeration_comma">", "</string>
+    <string name="pref_title_sms_split_counter">Bölme Sayacı</string>
+    <string name="pref_summary_sms_split_counter">Sayacı mesaja ekler örn. (1/2)</string>
+    <string name="pref_extra_settings">Ekstra Ayarlar</string>
+    <string name="pref_title_enable_emojis">Emoji desteği</string>
+    <string name="pref_summary_enable_emojis">471 adet güzel ifadeler kümesi için emoji desteğini etkinleştir</string>
     <string name="more_string">%1$s tane daha...</string>
     <string name="copy_email">E-posta adresini kopyala</string>
     <string name="copy_number">Telefon numarasını kopyala</string>
