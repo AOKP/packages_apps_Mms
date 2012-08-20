@@ -41,6 +41,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INSTALL_DRM" />
 
+    <!-- Needed for QuickMessage -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
     <application android:name="MmsApp"
             android:label="@string/app_label"
             android:icon="@mipmap/ic_launcher_smsmms"
@@ -321,6 +324,13 @@
                  android:permission="android.permission.BIND_REMOTEVIEWS"
                  android:exported="false" />
 
+        <!-- QuickMessage support -->
+        <activity android:name=".quickmessage.QuickMessage"
+          android:theme="@android:style/Theme.Holo.Dialog"
+          android:configChanges="orientation|screenSize"
+          android:launchMode="singleTop" />
 
-    </application>
+        <receiver android:name=".quickmessage.ClearAllReceiver" />
+
+        </application>
 </manifest>

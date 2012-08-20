@@ -96,10 +96,44 @@
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
   </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/pref_quickmessage">
+
+    <CheckBoxPreference
+        android:key="pref_key_quickmessage"
+        android:title="@string/pref_quickmessage_title"
+        android:dependency="pref_key_enable_notifications"
+        android:summary="@string/pref_quickmessage_summary"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
+        android:key="pref_key_qm_lockscreen"
+        android:title="@string/pref_wake_unlock_title"
+        android:summary="@string/pref_wake_unlock_summary"
+        android:dependency="pref_key_quickmessage"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
+        android:key="pref_key_close_all"
+        android:title="@string/pref_close_all_title"
+        android:summary="@string/pref_close_all_summary"
+        android:dependency="pref_key_quickmessage"
+        android:defaultValue="false" />
+
+  </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_extra_settings">
     <CheckBoxPreference android:key="pref_key_enable_emojis"
                         android:title="@string/pref_title_enable_emojis"
                         android:summary="@string/pref_summary_enable_emojis"
                         android:defaultValue="false" />
-    </PreferenceCategory>
+    <CheckBoxPreference android:key="pref_key_mms_full_timestamp"
+        android:title="@string/pref_title_mms_full_timestamp"
+        android:summary="@string/pref_summary_mms_full_timestamp"
+        android:defaultValue="false" />
+    <CheckBoxPreference android:key="pref_key_mms_use_sent_timestamp"
+        android:title="@string/pref_title_mms_use_sent_timestamp"
+        android:summary="@string/pref_summary_mms_use_sent_timestamp"
+        android:defaultValue="false" />
+  </PreferenceCategory>
 </PreferenceScreen>
