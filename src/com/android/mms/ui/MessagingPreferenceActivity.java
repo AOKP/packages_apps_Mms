@@ -65,6 +65,12 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
 
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
+
+    // QuickMessage
+    public static final String QUICKMESSAGE_ENABLED      = "pref_key_quickmessage";
+    public static final String QM_LOCKSCREEN_ENABLED     = "pref_key_qm_lockscreen";
+    public static final String QM_CLOSE_ALL_ENABLED      = "pref_key_close_all";
+
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
 
@@ -83,6 +89,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private static final int CONFIRM_CLEAR_SEARCH_HISTORY_DIALOG = 3;
     private CharSequence[] mVibrateEntries;
     private CharSequence[] mVibrateValues;
+
+    // QuickMessage
+    private CheckBoxPreference mEnableQuickMessagePref;
+    private CheckBoxPreference mEnableQmLockscreenPref;
+    private CheckBoxPreference mEnableQmCloseAllPref;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -117,6 +128,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mClearHistoryPref = findPreference("pref_key_mms_clear_history");
         mEnableNotificationsPref = (CheckBoxPreference) findPreference(NOTIFICATION_ENABLED);
         mVibrateWhenPref = (ListPreference) findPreference(NOTIFICATION_VIBRATE_WHEN);
+
+        // QuickMessage
+        mEnableQuickMessagePref = (CheckBoxPreference) findPreference(QUICKMESSAGE_ENABLED);
+        mEnableQmLockscreenPref = (CheckBoxPreference) findPreference(QM_LOCKSCREEN_ENABLED);
+        mEnableQmCloseAllPref = (CheckBoxPreference) findPreference(QM_CLOSE_ALL_ENABLED);
 
         mVibrateEntries = getResources().getTextArray(R.array.prefEntries_vibrateWhen);
         mVibrateValues = getResources().getTextArray(R.array.prefValues_vibrateWhen);
@@ -186,6 +202,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
         setEnabledNotificationsPref();
 
+        // QuickMessage
+        setEnabledQuickMessagePref();
+        setEnabledQmLockscreenPref();
+        setEnabledQmCloseAllPref();
+
         // If needed, migrate vibration setting from a previous version
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (!sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN) &&
@@ -210,6 +231,24 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         // The "enable notifications" setting is really stored in our own prefs. Read the
         // current value and set the checkbox to match.
         mEnableNotificationsPref.setChecked(getNotificationEnabled(this));
+    }
+
+    private void setEnabledQuickMessagePref() {
+        // The "enable quickmessage" setting is really stored in our own prefs. Read the
+        // current value and set the checkbox to match.
+        mEnableQuickMessagePref.setChecked(getQuickMessageEnabled(this));
+    }
+
+    private void setEnabledQmLockscreenPref() {
+        // The "enable quickmessage on lock screen " setting is really stored in our own prefs. Read the
+        // current value and set the checkbox to match.
+        mEnableQmLockscreenPref.setChecked(getQmLockscreenEnabled(this));
+    }
+
+    private void setEnabledQmCloseAllPref() {
+        // The "enable close all" setting is really stored in our own prefs. Read the
+        // current value and set the checkbox to match.
+        mEnableQmCloseAllPref.setChecked(getQmCloseAllEnabled(this));
     }
 
     private void setSmsDisplayLimit() {
@@ -257,6 +296,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
                     mSmsRecycler.getMessageMinLimit(),
                     mSmsRecycler.getMessageMaxLimit(),
                     R.string.pref_title_sms_delete).show();
+
         } else if (preference == mMmsLimitPref) {
             new NumberPickerDialog(this,
                     mMmsLimitListener,
@@ -264,14 +304,29 @@ public class MessagingPreferenceActivity extends PreferenceActivity
                     mMmsRecycler.getMessageMinLimit(),
                     mMmsRecycler.getMessageMaxLimit(),
                     R.string.pref_title_mms_delete).show();
+
         } else if (preference == mManageSimPref) {
             startActivity(new Intent(this, ManageSimMessages.class));
+
         } else if (preference == mClearHistoryPref) {
             showDialog(CONFIRM_CLEAR_SEARCH_HISTORY_DIALOG);
             return true;
+
         } else if (preference == mEnableNotificationsPref) {
             // Update the actual "enable notifications" value that is stored in secure settings.
             enableNotifications(mEnableNotificationsPref.isChecked(), this);
+
+        } else if (preference == mEnableQuickMessagePref) {
+            // Update the actual "enable quickmessage" value that is stored in secure settings.
+            enableQuickMessage(mEnableQuickMessagePref.isChecked(), this);
+
+        } else if (preference == mEnableQmLockscreenPref) {
+            // Update the actual "enable quickmessage on lockscreen" value that is stored in secure settings.
+            enableQmLockscreen(mEnableQmLockscreenPref.isChecked(), this);
+
+        } else if (preference == mEnableQmCloseAllPref) {
+            // Update the actual "enable close all" value that is stored in secure settings.
+            enableQmCloseAll(mEnableQmCloseAllPref.isChecked(), this);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -332,6 +387,49 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
         editor.putBoolean(MessagingPreferenceActivity.NOTIFICATION_ENABLED, enabled);
 
+        editor.apply();
+    }
+
+    public static boolean getQuickMessageEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean quickMessageEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.QUICKMESSAGE_ENABLED, false);
+        return quickMessageEnabled;
+    }
+
+    public static void enableQuickMessage(boolean enabled, Context context) {
+        // Store the value of notifications in SharedPreferences
+        SharedPreferences.Editor editor =
+            PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putBoolean(MessagingPreferenceActivity.QUICKMESSAGE_ENABLED, enabled);
+        editor.apply();
+    }
+
+    public static boolean getQmLockscreenEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qmLockscreenEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.QM_LOCKSCREEN_ENABLED, false);
+        return qmLockscreenEnabled;
+    }
+
+    public static void enableQmLockscreen(boolean enabled, Context context) {
+        SharedPreferences.Editor editor =
+            PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putBoolean(MessagingPreferenceActivity.QM_LOCKSCREEN_ENABLED, enabled);
+        editor.apply();
+    }
+
+    public static boolean getQmCloseAllEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qmCloseAllEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.QM_CLOSE_ALL_ENABLED, false);
+        return qmCloseAllEnabled;
+    }
+
+    public static void enableQmCloseAll(boolean enabled, Context context) {
+        SharedPreferences.Editor editor =
+            PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putBoolean(MessagingPreferenceActivity.QM_CLOSE_ALL_ENABLED, enabled);
         editor.apply();
     }
 

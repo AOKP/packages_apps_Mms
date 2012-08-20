@@ -27,6 +27,7 @@ import com.android.mms.data.Conversation;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.quickmessage.QuickMessage;
 import com.android.mms.ui.ComposeMessageActivity;
 import com.android.mms.ui.ConversationList;
 import com.android.mms.ui.MessagingPreferenceActivity;
@@ -60,8 +61,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.telephony.TelephonyManager;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
 import android.text.Spannable;
@@ -325,7 +330,7 @@ public class MessagingNotification {
         }
     }
 
-    private static final class NotificationInfo {
+    public static final class NotificationInfo implements Parcelable {
         public final Intent mClickIntent;
         public final String mMessage;
         public final CharSequence mTicker;
@@ -472,6 +477,50 @@ public class MessagingNotification {
             }
             return spannableStringBuilder;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel arg0, int arg1) {
+            arg0.writeByte((byte) (mIsSms ? 1 : 0));
+            arg0.writeParcelable(mClickIntent, 0);
+            arg0.writeString(mMessage);
+            arg0.writeString(mSubject);
+            arg0.writeCharSequence(mTicker);
+            arg0.writeLong(mTimeMillis);
+            arg0.writeString(mTitle);
+            arg0.writeParcelable(mAttachmentBitmap, 0);
+            arg0.writeInt(mAttachmentType);
+            arg0.writeLong(mThreadId);
+        }
+
+        public NotificationInfo(Parcel in) {
+            mIsSms = in.readByte() == 1;
+            mClickIntent = in.readParcelable(Intent.class.getClassLoader());
+            mMessage = in.readString();
+            mSubject = in.readString();
+            mTicker = in.readCharSequence();
+            mTimeMillis = in.readLong();
+            mTitle = in.readString();
+            mAttachmentBitmap = in.readParcelable(Bitmap.class.getClassLoader());
+            mSender = null;
+            mAttachmentType = in.readInt();
+            mThreadId = in.readLong();
+        }
+
+        public static final Parcelable.Creator<NotificationInfo> CREATOR = new Parcelable.Creator<NotificationInfo>() {
+            public NotificationInfo createFromParcel(Parcel in) {
+                return new NotificationInfo(in);
+            }
+
+            public NotificationInfo[] newArray(int size) {
+                return new NotificationInfo[size];
+            }
+        };
+
     }
 
     // Return a formatted string with all the sender names separated by commas.
@@ -1002,7 +1051,29 @@ public class MessagingNotification {
             }
         }
 
+        // Display QuickMessage if enabled in preferences and this is an Sms message
+        if (MessagingPreferenceActivity.getQuickMessageEnabled(context)
+                && mostRecentNotification.mIsSms) {
+
+            // Don't show the QuickMessage if the user is in a call or the phone is ringing
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) {
+                // Trigger the main activity to fire up a dialog that shows the received messages
+                Intent qmIntent = new Intent();
+                qmIntent.setClass(context, QuickMessage.class);
+                qmIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                qmIntent.putExtra(QuickMessage.SMS_FROM_NAME_EXTRA, mostRecentNotification.mSender.getName());
+                qmIntent.putExtra(QuickMessage.SMS_FROM_NUMBER_EXTRA, mostRecentNotification.mSender.getNumber());
+                qmIntent.putExtra(QuickMessage.SMS_NOTIFICATION_OBJECT_EXTRA, mostRecentNotification);
+                qmIntent.putExtra(QuickMessage.SMS_NOTIFICATION_ID_EXTRA, NOTIFICATION_ID);
+                context.startActivity(qmIntent);
+            }
+        }
+
+        // Post the notification
         nm.notify(NOTIFICATION_ID, notification);
+
     }
 
     protected static CharSequence buildTickerMessage(
