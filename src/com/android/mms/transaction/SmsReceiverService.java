@@ -213,9 +213,14 @@ public class SmsReceiverService extends Service {
                     handleSendMessage();
                 }
             }
-            // NOTE: We MUST not call stopSelf() directly, since we need to
-            // make sure the wake lock acquired by AlertReceiver is released.
-            SmsReceiver.finishStartingService(SmsReceiverService.this, serviceId);
+
+            // Stop service only if there's no outstanding messages being sent, otherwise
+            // mSending state is lost and multiple messages may be dispatched at once.
+            if (!mSending) {
+                // NOTE: We MUST not call stopSelf() directly, since we need to
+                // make sure the wake lock acquired by AlertReceiver is released.
+                SmsReceiver.finishStartingService(SmsReceiverService.this, serviceId);
+            }
         }
     }
 
