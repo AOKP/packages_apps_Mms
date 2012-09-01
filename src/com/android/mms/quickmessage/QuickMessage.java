@@ -509,7 +509,7 @@ public class QuickMessage extends Activity {
 
                 // We are using a holo.light background with a holo.dark activity theme
                 // Override the EditText background to use the holo.light theme
-                qmReplyText.setBackgroundResource(android.R.drawable.edit_text_holo_light);
+                qmReplyText.setBackgroundResource(R.drawable.edit_text_holo_light);
 
                 // Set the remaining values
                 qmReplyText.setText(qm.getReplyText());
