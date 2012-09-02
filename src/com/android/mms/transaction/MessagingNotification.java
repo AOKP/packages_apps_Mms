@@ -959,7 +959,43 @@ public class MessagingNotification {
         noti.setDeleteIntent(PendingIntent.getBroadcast(context, 0,
                 sNotificationOnDeleteIntent, 0));
 
+        // See if QuickMessage pop-up support is enabled in preferences
+        boolean qmPopupEnabled = MessagingPreferenceActivity.getQuickMessageEnabled(context);
+
+        // Set up the QuickMessage intent
+        Intent qmIntent = null;
+        if (mostRecentNotification.mIsSms) {
+            // QuickMessage support is only for SMS
+            qmIntent = new Intent();
+            qmIntent.setClass(context, QuickMessage.class);
+            qmIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            qmIntent.putExtra(QuickMessage.SMS_FROM_NAME_EXTRA, mostRecentNotification.mSender.getName());
+            qmIntent.putExtra(QuickMessage.SMS_FROM_NUMBER_EXTRA, mostRecentNotification.mSender.getNumber());
+            qmIntent.putExtra(QuickMessage.SMS_NOTIFICATION_OBJECT_EXTRA, mostRecentNotification);
+            qmIntent.putExtra(QuickMessage.SMS_NOTIFICATION_ID_EXTRA, NOTIFICATION_ID);
+        }
+
+        // Start getting the notification ready
         final Notification notification;
+
+        if (messageCount == 1 || uniqueThreadCount == 1) {
+            // Add the Call action
+            CharSequence callText = context.getText(R.string.menu_call);
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(mostRecentNotification.mSender.getPhoneUri());
+            PendingIntent mCallPendingIntent = PendingIntent.getActivity(context, 0, callIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            noti.addAction(R.drawable.ic_menu_call, callText, mCallPendingIntent);
+
+            // Add the QuickMessage action only if the pop-up won't be shown already
+            if (!qmPopupEnabled && qmIntent != null) {
+                CharSequence qmText = context.getText(R.string.qm_quick_reply);
+                PendingIntent qmPendingIntent = PendingIntent.getActivity(context, 0, qmIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                noti.addAction(R.drawable.ic_reply, qmText, qmPendingIntent);
+            }
+        }
 
         if (messageCount == 1) {
             // We've got a single message
@@ -1051,22 +1087,11 @@ public class MessagingNotification {
             }
         }
 
-        // Display QuickMessage if enabled in preferences and this is an Sms message
-        if (MessagingPreferenceActivity.getQuickMessageEnabled(context)
-                && mostRecentNotification.mIsSms) {
-
-            // Don't show the QuickMessage if the user is in a call or the phone is ringing
+        // Trigger the QuickMessage pop-up activity if enabled
+        // But don't show the QuickMessage if the user is in a call or the phone is ringing
+        if (qmPopupEnabled) {
             TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) {
-                // Trigger the main activity to fire up a dialog that shows the received messages
-                Intent qmIntent = new Intent();
-                qmIntent.setClass(context, QuickMessage.class);
-                qmIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP |
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                qmIntent.putExtra(QuickMessage.SMS_FROM_NAME_EXTRA, mostRecentNotification.mSender.getName());
-                qmIntent.putExtra(QuickMessage.SMS_FROM_NUMBER_EXTRA, mostRecentNotification.mSender.getNumber());
-                qmIntent.putExtra(QuickMessage.SMS_NOTIFICATION_OBJECT_EXTRA, mostRecentNotification);
-                qmIntent.putExtra(QuickMessage.SMS_NOTIFICATION_ID_EXTRA, NOTIFICATION_ID);
                 context.startActivity(qmIntent);
             }
         }
