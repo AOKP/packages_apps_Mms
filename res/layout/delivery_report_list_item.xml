@@ -21,7 +21,7 @@
 <com.android.mms.ui.DeliveryReportListItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:background="#ffffffff"
+    android:background="@color/background"
     android:layout_height="96dip">
 
     <LinearLayout
@@ -35,21 +35,21 @@
         <TextView android:id="@+id/recipient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ff000000"
+            android:textColor="@color/delivery_report_recipient"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:singleLine="true" />
 
         <TextView android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ff000000"
+            android:textColor="@color/delivery_report_status"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:singleLine="true" />
 
         <TextView android:id="@+id/delivery_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ff000000"
+            android:textColor="@color/delivery_report_date"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:singleLine="true" />
     </LinearLayout>
@@ -57,7 +57,7 @@
     <ImageView android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="#ffffffff"
+        android:background="@color/background"
         android:layout_weight="0"
         android:layout_marginRight="5dip"
         android:layout_gravity="right"/>
