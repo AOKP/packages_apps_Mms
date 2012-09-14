@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/message_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/contact_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dip"
+            android:layout_marginTop="3dip" />
+
+        <TextView
+            android:id="@+id/contact_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dip"
+            android:layout_marginTop="3dip"
+            android:layout_toRightOf="@id/contact_avatar"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/prev_text_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contact_name"
+            android:layout_marginLeft="3dip"
+            android:layout_toRightOf="@id/contact_avatar"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message_frame"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_box"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dip"
+            android:layout_marginLeft="3dip"
+            android:layout_marginTop="3dip"
+            android:layout_weight="1.0"
+            android:autoText="true"
+            android:capitalize="sentences"
+            android:hint="Type message"
+            android:inputType="textShortMessage|textAutoCorrect|textCapSentences|textMultiLine"
+            android:maxLength="160"
+            android:maxLines="3"
+            android:minHeight="@dimen/input_text_height"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <ImageButton
+            android:id="@+id/reply_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dip"
+            android:layout_marginTop="3dip"
+            android:src="@drawable/ic_send_holo_light_quick_reply" />
+
+        <ImageButton
+            android:id="@+id/menu_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dip"
+            android:layout_marginTop="3dip"
+            android:src="@drawable/ic_menu_moreoverflow_holo_dark" >
+        </ImageButton>
+    </LinearLayout>
+
+</RelativeLayout>
