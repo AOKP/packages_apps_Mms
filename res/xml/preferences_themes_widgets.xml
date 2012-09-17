@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:key="pref_widget_layout"
+        android:title="@string/widget_layout"
+        android:entries="@array/widget_layout_styles"
+        android:entryValues="@array/widget_layout_values"
+        android:defaultValue="**dark**" />
+
+    <PreferenceCategory
+        android:key="pref_widget_read"
+        android:title="@string/widget_read">
+
+        <!-- <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_widget_bg_read"
+            android:title="@string/widget_bg_read"
+            android:defaultValue="#900f0f0f"
+            alphaSlider="true" /> -->
+
+        <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_senders_textcolor_read"
+            android:title="@string/widget_senders_textcolor_read"
+            android:defaultValue="#ffefefef"
+            alphaSlider="true" />
+
+        <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_subject_textcolor_read"
+            android:title="@string/widget_subject_textcolor_read"
+            android:defaultValue="#ffcfcfcf"
+            alphaSlider="true" />
+
+        <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_date_textcolor_read"
+            android:title="@string/widget_date_textcolor_read"
+            android:defaultValue="#ffbfbfbf"
+            alphaSlider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_widget_unread"
+        android:title="@string/widget_unread">
+
+        <!-- <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_widget_bg_unread"
+            android:title="@string/widget_bg_unread"
+            android:defaultValue="#90404040"
+            alphaSlider="true" /> -->
+
+        <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_senders_textcolor_unread"
+            android:title="@string/widget_senders_textcolor_unread"
+            android:defaultValue="#ffefefef"
+            alphaSlider="true" />
+
+        <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_subject_textcolor_unread"
+            android:title="@string/widget_subject_textcolor_unread"
+            android:defaultValue="#ffcfcfcf"
+            alphaSlider="true" />
+
+        <com.android.mms.ui.ColorPickerPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:key="pref_date_textcolor_unread"
+            android:title="@string/widget_date_textcolor_unread"
+            android:defaultValue="#ffbfbfbf"
+            alphaSlider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

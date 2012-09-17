@@ -898,4 +898,96 @@
     <string name="qr_close_popup">Close</string>
     <string name="qr_multi_ask">Who do you want to reply to?</string>
 
+    <!-- Start of adding custom theme'n aspects to Mms
+         Much thanks to @DroidJunk (jimmy miller) for the guide -->
+    <!-- MMS THEME SETTINGS -->
+    <string name="themes">Mms theme Settings</string>
+    <string name="themes_summary">Change the way mms looks</string>
+    <string name="themes_conv_list_title">Conversations list</string>
+    <string name="themes_conv_list_summary">Convs list screen colors</string>
+    <string name="themes_msg_list_title">Messaging style</string>
+    <string name="themes_msg_list_summary">Messaging view color and style</string>
+    <string name="themes_widget_title">Widgets colors</string>
+    <string name="themes_widget_summary">Text colors on the messaging widget</string>
+    <string name="background_colors">Background</string>
+    <string name="restore_defaults">Restore default settings</string>
+    <string name="delete_custom_image">Delete background image</string>
+    <string name="custom_image_title">Custom image</string>
+    <string name="custom_image_summary">Set an image for the background</string>
+    <string name="restart_mms_title">Restart Mms</string>
+    <string name="restart_mms_summary">Some settings like custom image require mms to be restarted to take effect therefore we have this nice restart right here **setting widget from dark to light or the other way around you should remove and put the widget back on</string>
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#FF000000</string>
+    <string name="ics_color">Holo</string>
+    <!-- Themes preference categorys -->
+    <string name="main_bg">Main background</string>
+    <string name="recv_text_header">Recieved texts</string>
+    <string name="sent_text_header">Sent texts</string>
+    <string name="show_contact_avatar">Show contact avatar</string>
+    <string name="text_conv_layout">Message conversation layout style</string>
+    <string name="conversation_list_unread">Conversations list unread</string>
+    <string name="conversation_list_read">Conversations list read</string>
+    <!-- conv list read/unread -->
+    <string name="unread_bg">Unread background</string>
+    <string name="unread_contact">Unread contact</string>
+    <string name="unread_subject">Unread subject</string>
+    <string name="unread_date">Unread date</string>
+    <string name="unread_count">Unread msg count</string>
+    <string name="unread_smiley">Unread smiley</string>
+    <string name="read_bg">Read background</string>
+    <string name="read_contact">Read contact</string>
+    <string name="read_subject">Read subject</string>
+    <string name="read_date">Read date</string>
+    <string name="read_count">Read msg count</string>
+    <string name="read_smiley">Read smiley</string>
+    <!-- bubbles -->
+    <string name="text_bubble_title">Set bubble style</string>
+    <string name="bubble_fill_parent_title">Bubble fill parent view</string>
+    <string name="bubble">Bubble</string>
+    <string name="bubble_none">No bubble</string>
+    <string name="hc_bubble">Bubble arrow down</string>
+    <string name="circle_bubble">Bubble arrow side</string>
+    <string name="frame_arrow">Frame with arrow</string>
+    <string name="frame_outer_only">Outer Frame</string>
+    <string name="frame">Frame</string>
+    <!-- Contact use -->
+    <string name="show_contact_name">Show contact names</string>
+    <!-- Sent colors -->
+    <string name="sent_textcolor">Sent text</string>
+    <string name="sent_smiley">Sent smiley</string>
+    <string name="sent_datecolor">Sent date</string>
+    <string name="sent_contact_color">Sent contact</string>
+    <string name="sent_text_bg">Sent background</string>
+    <!-- Recv colors -->
+    <string name="recv_textcolor">Received text</string>
+    <string name="recv_smiley">Received smiley</string>
+    <string name="recv_datecolor">Received date</string>
+    <string name="recv_contact_color">Received contact</string>
+    <string name="recv_text_bg">Received background</string>
+    <!-- Conversation layout styles -->
+    <string name="layout_default">Default layout</string>
+    <string name="layout_from_left">Layout from left</string>
+    <string name="layout_from_right">Layout from right</string>
+    <!-- add signature -->
+    <string name="add_signature_title">Text message signature</string>
+    <string name="add_signature_summary">Set a custom signature for your texts</string>
+    <string name="enter_text">enter text</string>
+    <!-- widgets -->
+    <string name="widget_layout_dark">Dark</string>
+    <string name="widget_layout_light">Light</string>
+    <string name="widget_layout">Widget style</string>
+    <string name="widget_read">Read colors</string>
+    <string name="widget_unread">Unread colors</string>
+    <string name="widget_senders_textcolor_read">Read senders text</string>
+    <string name="widget_senders_textcolor_unread">Unread senders text</string>
+    <string name="widget_subject_textcolor_read">Read subject text</string>
+    <string name="widget_subject_textcolor_unread">Unread subject text</string>
+    <string name="widget_date_textcolor_read">Read date text</string>
+    <string name="widget_date_textcolor_unread">Unread date text</string>
+
 </resources>
