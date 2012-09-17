@@ -21,6 +21,7 @@
 <com.android.mms.ui.MessageListItem
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/msg_list_item_recv"
+    android:background="@color/transparent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -32,25 +33,31 @@
         android:orientation="vertical" >
 
         <RelativeLayout
+            android:id="@+id/message_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <view xmlns:android="http://schemas.android.com/apk/res/android"
-                class="com.android.mms.ui.QuickContactDivot"
+            <android.widget.QuickContactBadge
                 android:id="@+id/avatar"
-                position="right_upper"
-                android:layout_alignParentLeft="true"
                 android:layout_width="@dimen/avatar_width_height"
-                android:layout_height="@dimen/avatar_width_height" />
+                android:layout_height="@dimen/avatar_width_height"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/avatar_margin_left_right"
+                android:layout_marginRight="@dimen/avatar_margin_left_right"
+                android:layout_marginTop="@dimen/avatar_margin_top_bottom"
+                android:layout_marginBottom="@dimen/avatar_margin_top_bottom"
+                position="left_middle"
+                style="?android:attr/quickContactBadgeStyleWindowSmall" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/message_block"
                 android:minHeight="@dimen/avatar_width_height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/avatar"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/hairline_left"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/message_block_margin_left_right"
+                android:layout_marginRight="@dimen/message_block_margin_left_right_noavatar"
                 android:orientation="vertical" >
 
                 <TextView android:id="@+id/text_view"
@@ -65,10 +72,25 @@
                     android:textColor="@color/message_recieved"
                     android:textSize="16sp" />
 
-                <LinearLayout
+                <TextView android:id="@+id/sender_view"
+                    android:autoLink="all"
+                    android:paddingLeft="@dimen/message_item_text_padding_left_right"
+                    android:paddingRight="@dimen/message_item_text_padding_left_right"
+                    android:paddingTop="@dimen/message_item_text_padding_top"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dip"
+                    android:layout_below="@id/text_view"
+                    android:linksClickable="false"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/message_recieved"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/status_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_view"
                     android:paddingLeft="@dimen/message_item_text_padding_left_right"
                     android:orientation="horizontal" >
 
@@ -102,13 +124,22 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_sms_mms_details"
                         android:visibility="gone" />
+
+                    <TextView android:id="@+id/date_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="3dip"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/text_hairline" />
+
                 </LinearLayout>
 
                 <ViewStub android:id="@+id/mms_layout_view_stub"
                     android:layout="@layout/mms_layout_view"
+                    android:layout_below="@id/status_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-            </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 

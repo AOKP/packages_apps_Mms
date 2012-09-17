@@ -374,6 +374,27 @@
             android:name=".widget.MmsWidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity
+            android:name=".themes.Themes"
+            android:theme="@style/MmsHoloTheme"
+            android:label="@string/themes" >
+        </activity>
+        <activity
+            android:name=".themes.ThemesConversationList"
+            android:theme="@style/MmsHoloTheme"
+            android:label="@string/themes_conv_list_title" >
+        </activity>
+        <activity
+            android:name=".themes.ThemesMessageList"
+            android:theme="@style/MmsHoloTheme"
+            android:label="@string/themes_msg_list_title" >
+        </activity>
+        <activity
+            android:name=".themes.ThemesWidgets"
+            android:theme="@style/MmsHoloTheme"
+            android:label="@string/themes_widget_title" >
+        </activity>
     </application>
 
 </manifest>
