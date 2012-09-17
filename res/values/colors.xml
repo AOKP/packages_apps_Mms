@@ -54,6 +54,7 @@
 	<color name="message_recieved">#111111</color>
 	<color name="message_sent">#222222</color>
 	<color name="widget_unread_text">#222222</color>
+        <color name="widget_unread_text_light">#ff202020</color>
 	<color name="widget_loading">#000000</color>
 
 	<!-- New Background colors from layouts to make theme chooser apk easier to theme -->
@@ -61,5 +62,11 @@
 	<color name="darkgray_backgrounds">#666666</color>
 	<color name="dividers">#202020</color>
 	<color name="transparent">#00000000</color>
+
+    <!-- widget background colors for unread/read -->
+    <color name="widget_unread_bgcolor">#8f2f2f2f</color>
+    <color name="widget_read_bgcolor">#7f000000</color>
+    <color name="widget_unread_bgcolor_light">#8fbfbfbf</color>
+    <color name="widget_read_bgcolor_light">#7fffffff</color>
 
 </resources>
