@@ -377,3 +377,4 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         return qrCallButtonEnabled;
     }
 }
+
