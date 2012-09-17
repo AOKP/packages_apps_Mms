@@ -16,14 +16,38 @@
 
 package com.android.mms.ui;
 
+import java.io.File;
+
+import android.app.ListActivity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.preference.PreferenceManager;
 import android.text.ClipboardManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.widget.ListView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewParent;
+import android.widget.*;
+import android.widget.ImageView.ScaleType;
+
+import com.android.mms.R;
+import com.android.mms.themes.ThemesMessageList;
 
 public final class MessageListView extends ListView {
+
     private OnSizeChangedListener mOnSizeChangedListener;
+
+    private SharedPreferences sp;
 
     public MessageListView(Context context) {
         super(context);
@@ -31,6 +55,7 @@ public final class MessageListView extends ListView {
 
     public MessageListView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        sp = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override

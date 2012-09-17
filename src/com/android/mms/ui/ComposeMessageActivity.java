@@ -53,7 +53,6 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
@@ -101,7 +100,6 @@ import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -114,8 +112,6 @@ import android.view.WindowManager;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
-import android.view.ViewStub;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -149,7 +145,9 @@ import com.android.mms.data.WorkingMessage.MessageStatusListener;
 import com.android.mms.drm.DrmUtils;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.themes.Themes;
 import com.android.mms.transaction.MessagingNotification;
+import com.android.mms.ui.ColorFilterMaker;
 import com.android.mms.ui.MessageListView.OnSizeChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
 import com.android.mms.ui.RecipientsEditor.RecipientContextMenuInfo;
@@ -343,6 +341,10 @@ public class ComposeMessageActivity extends Activity
      * Whether this activity is currently running (i.e. not paused)
      */
     private boolean mIsRunning;
+
+    // signature
+    private String mSignature;
+    private SharedPreferences sp;
 
     // we may call loadMessageAndDraft() from a few different places. This is used to make
     // sure we only load message+draft once.
@@ -3773,6 +3775,14 @@ public class ComposeMessageActivity extends Activity
             // send can change the recipients. Make sure we remove the listeners first and then add
             // them back once the recipient list has settled.
             removeRecipientsListeners();
+
+            // add signature if set.
+            sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+            mSignature = sp.getString(Themes.PREF_SIGNATURE, "");
+            if (!mSignature.isEmpty()) {
+                mSignature = "\n" + mSignature;
+                mWorkingMessage.setText(mWorkingMessage.getText() + mSignature);
+            }
 
             mWorkingMessage.send(mDebugRecipients);
 

@@ -70,6 +70,52 @@
         <item>Poker face</item>              <!-- 20: :-I -->
     </string-array>
 
+    <!-- Themes Arrays -->
+    <!-- Layout styles values -->
+    <string-array name="text_conv_layout_styles">
+        <item>@string/layout_default</item>
+        <item>@string/layout_from_left</item>
+        <item>@string/layout_from_right</item>
+    </string-array>
+
+    <string-array name="text_conv_layout_values" translatable="false">
+        <item>**DEFAULT**</item>
+        <item>**LAYOUTFROMLEFT**</item>
+        <item>**LAYOUTFROMRIGHT**</item>
+    </string-array>
+
+    <!-- Bubble styles -->
+    <string-array name="text_bubble_styles">
+        <item>@string/bubble_none</item>
+        <item>@string/bubble</item>
+        <item>@string/hc_bubble</item>
+        <item>@string/circle_bubble</item>
+        <item>@string/frame_arrow</item>
+        <item>@string/frame</item>
+        <item>@string/frame_outer_only</item>
+    </string-array>
+
+    <string-array name="text_bubble_values" translatable="false">
+        <item>**BUBBLENONE**</item>
+        <item>**BUBBLE**</item>
+        <item>**HCBUBBLE**</item>
+        <item>**CIRCLE**</item>
+        <item>**FRAME**</item>
+        <item>**FRAMENOARROW**</item>
+        <item>**FRAMEOUTER**</item>
+    </string-array>
+
+    <!-- widget styles -->
+    <string-array name="widget_layout_styles">
+        <item>@string/widget_layout_dark</item>
+        <item>@string/widget_layout_light</item>
+    </string-array>
+
+    <string-array name="widget_layout_values" translatable="false">
+        <item>**dark**</item>
+        <item>**light**</item>
+    </string-array>
+
     <!-- String to match as no subject and filter out as a subject. For example, if the
          subject string is "no subject", we won't display that. We'll pretend
          no subject string was delivered. -->
