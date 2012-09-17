@@ -3,10 +3,12 @@
 All Rights Reserved. -->
 <resources>
     <dimen name="message_item_avatar_on_right_text_indent">50dip</dimen>
-    <dimen name="message_item_text_padding_left_right">12dip</dimen>
-    <dimen name="message_item_text_padding_top">5dip</dimen>
+    <dimen name="message_item_text_padding_left_right">6dip</dimen>
+    <dimen name="message_item_text_padding_top">4dip</dimen>
 
     <dimen name="avatar_width_height">64dip</dimen>
+    <dimen name="avatar_margin_left_right">4dip</dimen>
+    <dimen name="avatar_margin_top_bottom">10dip</dimen>
 
     <dimen name="input_text_height">48dip</dimen>
     <dimen name="input_text_height_adjusted">8dip</dimen>
@@ -17,4 +19,10 @@ All Rights Reserved. -->
     <dimen name="widget_margin_left">0dip</dimen>
     <dimen name="widget_margin_right">0dip</dimen>
     <dimen name="widget_margin_bottom">0dip</dimen>
+
+    <!-- Message block layout -->
+    <dimen name="message_block_margin_left_right">74dip</dimen>
+    <!-- Message block layout no avatar -->
+    <dimen name="message_block_margin_left_right_noavatar">14dip</dimen>
+
 </resources>

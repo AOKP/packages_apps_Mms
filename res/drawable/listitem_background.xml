@@ -16,9 +16,9 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true"
-        android:drawable="@android:color/transparent" />
+        android:drawable="@color/transparent" />
     <item android:state_pressed="true" android:state_selected="false"
         android:drawable="@android:color/transparent" />
     <item android:state_selected="false"
-          android:drawable="@android:color/white" />
+          android:drawable="@color/transparent" />
 </selector>
