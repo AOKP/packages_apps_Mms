@@ -39,6 +39,7 @@ import android.provider.Telephony.Sms;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.text.Html;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -52,22 +53,28 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.QuickContactBadge;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
 import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.themes.ThemesMessageList;
 import com.android.mms.transaction.Transaction;
 import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
+import com.android.mms.ui.ColorFilterMaker;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.EmojiParser;
@@ -101,16 +108,21 @@ public class MessageListItem extends LinearLayout implements
     private Button mDownloadButton;
     private TextView mDownloadingLabel;
     private Handler mHandler;
-    private MessageItem mMessageItem;
+    public MessageItem mMessageItem;
     private String mDefaultCountryIso;
     private TextView mDateView;
     public View mMessageBlock;
-    private QuickContactDivot mAvatar;
+    private QuickContactBadge mAvatar;
     static private Drawable sDefaultContactImage;
     private Presenter mPresenter;
     private int mPosition;      // for debugging
     private ImageLoadedCallback mImageLoadedCallback;
     private boolean mMultiRecipients;
+
+    // Theme settings
+    private boolean mBubbleFillParent, mUseContact = false;
+    private int mSentTextBgColor, mRecvTextBgColor;
+    SharedPreferences sp;
 
     public MessageListItem(Context context) {
         super(context);
@@ -131,6 +143,7 @@ public class MessageListItem extends LinearLayout implements
         if (sDefaultContactImage == null) {
             sDefaultContactImage = context.getResources().getDrawable(R.drawable.ic_contact_picture);
         }
+        sp = PreferenceManager.getDefaultSharedPreferences(mContext);
     }
 
     @Override
@@ -142,8 +155,124 @@ public class MessageListItem extends LinearLayout implements
         mLockedIndicator = (ImageView) findViewById(R.id.locked_indicator);
         mDeliveredIndicator = (ImageView) findViewById(R.id.delivered_indicator);
         mDetailsIndicator = (ImageView) findViewById(R.id.details_indicator);
-        mAvatar = (QuickContactDivot) findViewById(R.id.avatar);
+        mAvatar = (QuickContactBadge) findViewById(R.id.avatar);
         mMessageBlock = findViewById(R.id.message_block);
+    }
+
+    // Message block background
+    private void getMessageBlockBackground() {
+        String bubbleType = sp.getString(ThemesMessageList.PREF_BUBBLE_TYPE, "**NONE**");
+        String layoutType = sp.getString(ThemesMessageList.PREF_TEXT_CONV_LAYOUT, "**DEFAULT**");
+        mBubbleFillParent = sp.getBoolean(ThemesMessageList.PREF_BUBBLE_FILL_PARENT, false);
+        if (mBubbleFillParent) {
+                mMessageBlock.getLayoutParams().width = LayoutParams.MATCH_PARENT; // Stretch Bubble
+        } else {
+                mMessageBlock.getLayoutParams().width = LayoutParams.WRAP_CONTENT; // Do Not Stretch Bubble
+        }
+        if (mMessageItem.getBoxId() == 1) {
+            if (bubbleType.equals("**BUBBLE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_bubble_no_arrow_recv);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+
+            } else if (bubbleType.equals("**BUBBLENONE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_bubble_transparent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+
+            } else if (bubbleType.equals("**HCBUBBLE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_hcbubble_recv);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+                if (layoutType.equals("**LAYOUTFROMRIGHT**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_hcbubble_recv_right);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+                }
+
+            } else if (bubbleType.equals("**CIRCLE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_circle_bubble_recv);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+                if (layoutType.equals("**LAYOUTFROMRIGHT**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_circle_bubble_recv_right);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+                }
+
+            } else if (bubbleType.equals("**FRAME**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_recv);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+                if (layoutType.equals("**LAYOUTFROMRIGHT**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_recv_right);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+                }
+
+            } else if (bubbleType.equals("**FRAMENOARROW**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_no_arrow_recv);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+
+            } else if (bubbleType.equals("**FRAMEOUTER**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_outer_only_recv);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mRecvTextBgColor, .32f,0f));
+            }
+
+        } else {
+            if (bubbleType.equals("**BUBBLE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_bubble_no_arrow_sent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+
+            } else if (bubbleType.equals("**BUBBLENONE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_bubble_transparent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+
+            } else if (bubbleType.equals("**HCBUBBLE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_hcbubble_sent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+                if (layoutType.equals("**LAYOUTFROMLEFT**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_hcbubble_sent_left);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+                }
+
+            } else if (bubbleType.equals("**CIRCLE**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_circle_bubble_sent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+                if (layoutType.equals("**LAYOUTFROMLEFT**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_circle_bubble_sent_left);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+                }
+
+            } else if (bubbleType.equals("**FRAME**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_sent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+                if (layoutType.equals("**LAYOUTFROMLEFT**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_sent_left);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+                }
+
+            } else if (bubbleType.equals("**FRAMENOARROW**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_no_arrow_sent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+
+            } else if (bubbleType.equals("**FRAMEOUTER**")) {
+                mMessageBlock.setBackgroundResource(R.drawable.text_frame_outer_only_sent);
+                mMessageBlock.getBackground().setColorFilter(ColorFilterMaker.
+                        changeColorAlpha(mSentTextBgColor, .32f,0f));
+            }
+        }
     }
 
     public void bind(MessageItem msgItem, boolean convHasMultiRecipients, int position) {
@@ -157,6 +286,13 @@ public class MessageListItem extends LinearLayout implements
 
         mPosition = position;
         mMultiRecipients = convHasMultiRecipients;
+
+        // Theme settings
+        mSentTextBgColor = sp.getInt(ThemesMessageList.PREF_SENT_TEXT_BG, 0xffffffff);
+        mRecvTextBgColor = sp.getInt(ThemesMessageList.PREF_RECV_TEXT_BG, 0xffffffff);
+        getMessageBlockBackground();
+        mUseContact = sp.getBoolean(ThemesMessageList.PREF_USE_CONTACT, false);
+        mBubbleFillParent = sp.getBoolean(ThemesMessageList.PREF_BUBBLE_FILL_PARENT, false);
 
         setLongClickable(false);
         setClickable(false);    // let the list view handle clicks on the item normally. When
@@ -213,6 +349,17 @@ public class MessageListItem extends LinearLayout implements
                                             mMessageItem.mTextContentType));
 
         mDateView.setText(buildTimestampLine(msgSizeText + " " + mMessageItem.mTimestamp));
+
+        // Set date and background colors
+        int mColor = 0;
+        if (mMessageItem.getBoxId() == 1) {
+            mColor = sp.getInt(ThemesMessageList.PREF_RECV_DATE_COLOR, 0xff111111);
+         } else {
+            mColor = sp.getInt(ThemesMessageList.PREF_SENT_DATE_COLOR, 0xff222222);
+        }
+        mDateView.setBackgroundColor(0x00000000);
+        mDateView.setTextColor(mColor);
+        setBackgroundColor(sp.getInt(ThemesMessageList.PREF_MESSAGE_BG, 0X00000000));
 
         switch (mMessageItem.getMmsDownloadStatus()) {
             case DownloadManager.STATE_DOWNLOADING:
@@ -296,6 +443,13 @@ public class MessageListItem extends LinearLayout implements
             avatarDrawable = sDefaultContactImage;
         }
         mAvatar.setImageDrawable(avatarDrawable);
+
+        // Show/Hide the avatar
+        if (sp.getBoolean(ThemesMessageList.PREF_SHOW_AVATAR, true)) {
+            mAvatar.setVisibility(View.VISIBLE);
+        } else {
+            mAvatar.setVisibility(View.GONE);
+        }
     }
 
     private void bindCommonMessage(final boolean sameItem) {
@@ -365,6 +519,18 @@ public class MessageListItem extends LinearLayout implements
                     mContext.getResources().getString(R.string.sending_message) :
                         mMessageItem.mTimestamp));
         }
+
+        // Set date and background colors
+        int mColor = 0;
+        if (mMessageItem.getBoxId() == 1) {
+            mColor = sp.getInt(ThemesMessageList.PREF_RECV_DATE_COLOR, 0xff111111);
+         } else {
+            mColor = sp.getInt(ThemesMessageList.PREF_SENT_DATE_COLOR, 0xff222222);
+        }
+        mDateView.setBackgroundColor(0x00000000);
+        mDateView.setTextColor(mColor);
+        setBackgroundColor(sp.getInt(ThemesMessageList.PREF_MESSAGE_BG, 0X00000000));
+
         if (mMessageItem.isSms()) {
             showMmsView(false);
             mMessageItem.setOnPduLoaded(null);
@@ -531,17 +697,43 @@ public class MessageListItem extends LinearLayout implements
                                        String contentType) {
         SpannableStringBuilder buf = new SpannableStringBuilder();
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
-        boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+
+        boolean enableEmojis = sp.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+
+        // Show the contact if set and apply colors
+        int mColor = 0;
+        int contactLength = 0;
+        if (mUseContact) {
+            try {
+                contactLength = msgItem.mContact.length() + 1;
+            } catch (NullPointerException e) {
+            }
+            if (mMessageItem.getBoxId() == 1) {
+                mColor = sp.getInt(ThemesMessageList.PREF_RECV_CONTACT_COLOR, 0xff111111);
+            } else {
+                mColor = sp.getInt(ThemesMessageList.PREF_SENT_CONTACT_COLOR, 0xff222222);
+            }
+
+            buf.append(msgItem.mContact + ": ");
+            buf.setSpan(new StyleSpan(Typeface.BOLD), 0, contactLength, 0);
+            buf.setSpan(new ForegroundColorSpan(mColor), 0, contactLength, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
         boolean hasSubject = !TextUtils.isEmpty(subject);
         SmileyParser parser = SmileyParser.getInstance();
+        EmojiParser emojiParser = EmojiParser.getInstance();
         if (hasSubject) {
-            CharSequence smilizedSubject = parser.addSmileySpans(subject);
-            if (enableEmojis) {
-                EmojiParser emojiParser = EmojiParser.getInstance();
-                smilizedSubject = emojiParser.addEmojiSpans(smilizedSubject);
+            CharSequence smilizedSubject;
+            if (mMessageItem.getBoxId() == 1) {
+                smilizedSubject = parser.addSmileySpansRecv(subject);
+                if (enableEmojis) {
+                    smilizedSubject = emojiParser.addEmojiSpans(smilizedSubject);
+                }
+            } else {
+                smilizedSubject = parser.addSmileySpansSent(subject);
+                if (enableEmojis) {
+                    smilizedSubject = emojiParser.addEmojiSpans(smilizedSubject);
+                }
             }
             // Can't use the normal getString() with extra arguments for string replacement
             // because it doesn't preserve the SpannableText returned by addSmileySpans.
@@ -550,6 +742,7 @@ public class MessageListItem extends LinearLayout implements
                     new String[] { "%s" }, new CharSequence[] { smilizedSubject }));
         }
 
+        CharSequence smileyBody;
         if (!TextUtils.isEmpty(body)) {
             // Converts html to spannable if ContentType is "text/html".
             if (contentType != null && ContentType.TEXT_HTML.equals(contentType)) {
@@ -559,14 +752,30 @@ public class MessageListItem extends LinearLayout implements
                 if (hasSubject) {
                     buf.append(" - ");
                 }
-                CharSequence smileyBody = parser.addSmileySpans(body);
-                if (enableEmojis) {
-                    EmojiParser emojiParser = EmojiParser.getInstance();
-                    smileyBody = emojiParser.addEmojiSpans(smileyBody);
+                if (mMessageItem.getBoxId() == 1) {
+                    smileyBody = parser.addSmileySpansRecv(body);
+                    if (enableEmojis) {
+                        smileyBody = emojiParser.addEmojiSpans(smileyBody);
+                    }
+                } else {
+                    smileyBody = parser.addSmileySpansSent(body);
+                    if (enableEmojis) {
+                        smileyBody = emojiParser.addEmojiSpans(smileyBody);
+                    }
                 }
                 buf.append(smileyBody);
             }
         }
+
+        // Set the color of the text for messages
+        mColor = 0;
+        if (mMessageItem.getBoxId() == 1) {
+            mColor = sp.getInt(ThemesMessageList.PREF_RECV_TEXTCOLOR, 0xff111111);
+        } else {
+            mColor = sp.getInt(ThemesMessageList.PREF_SENT_TEXTCOLOR, 0xff222222);
+        }
+
+        buf.setSpan(new ForegroundColorSpan(mColor), contactLength, buf.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if (highlight != null) {
             Matcher m = highlight.matcher(buf.toString());
