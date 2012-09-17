@@ -22,6 +22,8 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+import com.android.mms.themes.ThemesConversationList;
+import com.android.mms.ui.ColorFilterMaker;
 import com.android.mms.util.EmojiParser;
 import com.android.mms.util.SmileyParser;
 
@@ -44,13 +46,6 @@ import android.widget.QuickContactBadge;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.mms.LogTag;
-import com.android.mms.R;
-import com.android.mms.data.Contact;
-import com.android.mms.data.ContactList;
-import com.android.mms.data.Conversation;
-import com.android.mms.util.SmileyParser;
-
 /**
  * This class manages the view for given conversation.
  */
@@ -67,6 +62,8 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
     private QuickContactBadge mAvatarView;
 
     static private Drawable sDefaultContactImage;
+
+    private SharedPreferences sp;
 
     // For posting UI update Runnables from other threads:
     private Handler mHandler = new Handler();
@@ -85,6 +82,8 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         if (sDefaultContactImage == null) {
             sDefaultContactImage = context.getResources().getDrawable(R.drawable.ic_contact_picture);
         }
+
+        sp = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override
@@ -122,9 +121,13 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
             int before = buf.length();
             buf.append(mContext.getResources().getString(R.string.message_count_format,
                     mConversation.getMessageCount()));
-            buf.setSpan(new ForegroundColorSpan(
-                    mContext.getResources().getColor(R.color.message_count_color)),
-                    before, buf.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            if (mConversation.hasUnreadMessages()) {
+                buf.setSpan(new ForegroundColorSpan(sp.getInt(ThemesConversationList.PREF_UNREAD_COUNT, 0xffafafaf)),
+                        before, buf.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            } else {
+                buf.setSpan(new ForegroundColorSpan(sp.getInt(ThemesConversationList.PREF_READ_COUNT, 0xffafafaf)),
+                        before, buf.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            }
         }
         if (mConversation.hasDraft()) {
             buf.append(mContext.getResources().getString(R.string.draft_separator));
@@ -219,9 +222,14 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         }
         Contact.addListener(this);
 
-        // Subject
         SmileyParser parser = SmileyParser.getInstance();
-        CharSequence smileySubject = parser.addSmileySpans(conversation.getSnippet());
+        // Subject
+        CharSequence smileySubject;
+        if (mConversation.hasUnreadMessages()) {
+            smileySubject = parser.addSmileySpansUnread(conversation.getSnippet());
+        } else {
+            smileySubject = parser.addSmileySpansRead(conversation.getSnippet());
+        }
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
         boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
@@ -242,16 +250,21 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
     }
 
     private void updateBackground() {
-        int backgroundId;
         if (mConversation.isChecked()) {
-            backgroundId = R.drawable.list_selected_holo_light;
+            int backgroundId = R.drawable.list_selected_holo_light;
+            Drawable background = mContext.getResources().getDrawable(backgroundId);
+            setBackground(background);
         } else if (mConversation.hasUnreadMessages()) {
-            backgroundId = R.drawable.conversation_item_background_unread;
+            setBackgroundColor(sp.getInt(ThemesConversationList.PREF_UNREAD_BG, 0x00000000));
+            mFromView.setTextColor(sp.getInt(ThemesConversationList.PREF_UNREAD_CONTACT, 0xff222222));
+            mSubjectView.setTextColor(sp.getInt(ThemesConversationList.PREF_UNREAD_SUBJECT, 0xff222222));
+            mDateView.setTextColor(sp.getInt(ThemesConversationList.PREF_UNREAD_DATE, 0xff222222));
         } else {
-            backgroundId = R.drawable.conversation_item_background_read;
+            setBackgroundColor(sp.getInt(ThemesConversationList.PREF_READ_BG, 0x00000000));
+            mFromView.setTextColor(sp.getInt(ThemesConversationList.PREF_READ_CONTACT, 0xff222222));
+            mSubjectView.setTextColor(sp.getInt(ThemesConversationList.PREF_READ_SUBJECT, 0xff222222));
+            mDateView.setTextColor(sp.getInt(ThemesConversationList.PREF_READ_DATE, 0xff222222));
         }
-        Drawable background = mContext.getResources().getDrawable(backgroundId);
-        setBackground(background);
     }
 
     public final void unbind() {
