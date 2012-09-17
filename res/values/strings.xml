@@ -864,6 +864,8 @@
     <string name="quick_call_back">Call Back</string>
     <string name="quick_reply_sms">Quick Reply</string>
     <string name="quick_reply_sending">Quick reply sent to</string>
+    <string name="pref_quickreply_title">Enable Quick Reply Popup</string>
+    <string name="pref_quickreply_summary">Display Quick Reply Dialog</string>
     <string name="qr_alert_title">Nothing Has Been Sent</string>
     <string name="qr_alert_message">Did you want to cancel this message?</string>
     <string name="qr_alert_yes">Yes</string>

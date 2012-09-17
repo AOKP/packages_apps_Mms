@@ -96,6 +96,17 @@
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
   </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/quick_reply_sms">
+
+    <CheckBoxPreference
+        android:key="pref_key_quickreply"
+        android:title="@string/pref_quickreply_title"
+        android:dependency="pref_key_enable_notifications"
+        android:summary="@string/pref_quickreply_summary"
+        android:defaultValue="false" />
+  </PreferenceCategory>
+
   <PreferenceCategory android:title="@string/pref_display_title"
                       android:key="pref_key_display_settings">
     <CheckBoxPreference android:defaultValue="false"
