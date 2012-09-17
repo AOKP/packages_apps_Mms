@@ -67,6 +67,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String DISPLAY_QR_CALLBUTTON    = "pref_key_display_quickreply_callbutton";
 
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
+
+    public static final String QUICKREPLY_ENABLED      = "pref_key_quickreply";
+
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
 
@@ -85,6 +88,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private static final int CONFIRM_CLEAR_SEARCH_HISTORY_DIALOG = 3;
     private CharSequence[] mVibrateEntries;
     private CharSequence[] mVibrateValues;
+    private CheckBoxPreference mEnableQuickReplyPref;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -120,6 +124,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mEnableNotificationsPref = (CheckBoxPreference) findPreference(NOTIFICATION_ENABLED);
         mVibrateWhenPref = (ListPreference) findPreference(NOTIFICATION_VIBRATE_WHEN);
 
+	mEnableQuickReplyPref = (CheckBoxPreference) findPreference(QUICKREPLY_ENABLED);
         mVibrateEntries = getResources().getTextArray(R.array.prefEntries_vibrateWhen);
         mVibrateValues = getResources().getTextArray(R.array.prefValues_vibrateWhen);
 
@@ -188,6 +193,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
         setEnabledNotificationsPref();
 
+	setEnabledQuickReplyPref();
+
         // If needed, migrate vibration setting from a previous version
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (!sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN) &&
@@ -212,6 +219,12 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         // The "enable notifications" setting is really stored in our own prefs. Read the
         // current value and set the checkbox to match.
         mEnableNotificationsPref.setChecked(getNotificationEnabled(this));
+    }
+
+    private void setEnabledQuickReplyPref() {
+        // The "enable quickmessage" setting is really stored in our own prefs. Read the
+        // current value and set the checkbox to match.
+        mEnableQuickReplyPref.setChecked(getQuickReplyEnabled(this));
     }
 
     private void setSmsDisplayLimit() {
@@ -274,6 +287,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         } else if (preference == mEnableNotificationsPref) {
             // Update the actual "enable notifications" value that is stored in secure settings.
             enableNotifications(mEnableNotificationsPref.isChecked(), this);
+        } else if (preference == mEnableQuickReplyPref) {
+            // Update the actual "enable quickmessage" value that is stored in secure settings.
+            enableQuickReply(mEnableQuickReplyPref.isChecked(), this);
+
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -334,6 +351,21 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
         editor.putBoolean(MessagingPreferenceActivity.NOTIFICATION_ENABLED, enabled);
 
+        editor.apply();
+    }
+
+    public static boolean getQuickReplyEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean quickReplyEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.QUICKREPLY_ENABLED, false);
+        return quickReplyEnabled;
+    }
+
+    public static void enableQuickReply(boolean enabled, Context context) {
+        // Store the value of notifications in SharedPreferences
+        SharedPreferences.Editor editor =
+            PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putBoolean(MessagingPreferenceActivity.QUICKREPLY_ENABLED, enabled);
         editor.apply();
     }
 
