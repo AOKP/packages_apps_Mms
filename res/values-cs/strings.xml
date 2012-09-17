@@ -353,4 +353,20 @@
     <string name="pref_display_title">Zobrazení</string>
     <string name="pref_title_fulldate">Zobrazit celé datum</string>
     <string name="pref_summary_fulldate">Zobrazit u zpráv celé datum</string>
+
+    <string name="quick_call_back">Zavolat zpět</string>
+    <string name="quick_reply_sms">Rychlá odpověď</string>
+    <string name="quick_reply_sending">Rychlá odpověď odeslána</string>
+    <string name="qr_alert_title">Nic nebylo odesláno</string>
+    <string name="qr_alert_message">Opravdu zrušit tuto zprávu?</string>
+    <string name="qr_alert_yes">Ano</string>
+    <string name="qr_alert_no">Ne</string>
+    <string name="qr_alert_read">Označit jako přečtené</string>
+    <string name="qr_mark_read">Označit jako přečetené a zavřít</string>
+    <string name="qr_pick_smiley">Vložit smajlík</string>
+    <string name="qr_pick_emoji">Vložit Emoji</string>
+    <string name="qr_close_popup">Zavřít</string>
+    <string name="pref_title_quickreply_callbutton">Zobrazit tlačítko Zavolat zpět</string>
+    <string name="pref_summary_quickreply_callbutton">Zobrazit tlačítko Zavolat zpět v notifikaci zprávy</string>
+    <string name="qr_multi_ask">Na čí zprávu odpovědět?</string>
 </resources>
