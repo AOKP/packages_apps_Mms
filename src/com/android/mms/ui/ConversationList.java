@@ -146,7 +146,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
         // Tell the list view which view to display when the list is empty
         listView.setEmptyView(findViewById(R.id.empty));
-        listView.setBackgroundColor(mPrefs.getInt(ThemesConversationList.PREF_CONV_LIST_BG, 0X00000000)); //list background
+        listView.setBackgroundColor(mPrefs.getInt(ThemesConversationList.PREF_CONV_LIST_BG, 0X00ffffff)); //list background
         setBackground(this, (ViewGroup) findViewById(R.id.conv_list_screen)); // custom background
         initListAdapter();
 
@@ -328,7 +328,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     }
 
     private void startAsyncQuery() {
-        listView.setBackgroundColor(mPrefs.getInt(ThemesConversationList.PREF_CONV_LIST_BG, 0X00000000)); //list background
+        listView.setBackgroundColor(mPrefs.getInt(ThemesConversationList.PREF_CONV_LIST_BG, 0X00ffffff)); //list background
         try {
             ((TextView)(getListView().getEmptyView())).setText(R.string.loading_conversations);
 

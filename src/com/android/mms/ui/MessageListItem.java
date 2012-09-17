@@ -353,13 +353,13 @@ public class MessageListItem extends LinearLayout implements
         // Set date and background colors
         int mColor = 0;
         if (mMessageItem.getBoxId() == 1) {
-            mColor = sp.getInt(ThemesMessageList.PREF_RECV_DATE_COLOR, 0xff111111);
+            mColor = sp.getInt(ThemesMessageList.PREF_RECV_DATE_COLOR, 0xffafafaf);
          } else {
-            mColor = sp.getInt(ThemesMessageList.PREF_SENT_DATE_COLOR, 0xff222222);
+            mColor = sp.getInt(ThemesMessageList.PREF_SENT_DATE_COLOR, 0xffafafaf);
         }
-        mDateView.setBackgroundColor(0x00000000);
+        mDateView.setBackgroundColor(0x00ffffff);
         mDateView.setTextColor(mColor);
-        setBackgroundColor(sp.getInt(ThemesMessageList.PREF_MESSAGE_BG, 0X00000000));
+        setBackgroundColor(sp.getInt(ThemesMessageList.PREF_MESSAGE_BG, 0X00ffffff));
 
         switch (mMessageItem.getMmsDownloadStatus()) {
             case DownloadManager.STATE_DOWNLOADING:
@@ -523,13 +523,13 @@ public class MessageListItem extends LinearLayout implements
         // Set date and background colors
         int mColor = 0;
         if (mMessageItem.getBoxId() == 1) {
-            mColor = sp.getInt(ThemesMessageList.PREF_RECV_DATE_COLOR, 0xff111111);
+            mColor = sp.getInt(ThemesMessageList.PREF_RECV_DATE_COLOR, 0xffafafaf);
          } else {
-            mColor = sp.getInt(ThemesMessageList.PREF_SENT_DATE_COLOR, 0xff222222);
+            mColor = sp.getInt(ThemesMessageList.PREF_SENT_DATE_COLOR, 0xffafafaf);
         }
-        mDateView.setBackgroundColor(0x00000000);
+        mDateView.setBackgroundColor(0x00ffffff);
         mDateView.setTextColor(mColor);
-        setBackgroundColor(sp.getInt(ThemesMessageList.PREF_MESSAGE_BG, 0X00000000));
+        setBackgroundColor(sp.getInt(ThemesMessageList.PREF_MESSAGE_BG, 0X00ffffff));
 
         if (mMessageItem.isSms()) {
             showMmsView(false);
