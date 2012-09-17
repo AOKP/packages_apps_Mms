@@ -62,6 +62,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.telephony.TelephonyManager;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
 import android.text.Spannable;
@@ -1129,6 +1130,13 @@ public class MessagingNotification {
             }
         }
 
+	if (MessagingPreferenceActivity.getQuickReplyEnabled(context)
+		&& mostRecentNotification.mIsSms) {
+		TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		if (tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) {
+		     context.startActivity(quickReply);
+		}
+	}
         nm.notify(NOTIFICATION_ID, notification);
     }
 
