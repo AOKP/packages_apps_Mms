@@ -18,6 +18,17 @@
  */
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:title="@string/themes"
+        android:summary="@string/themes_summary"
+        android:key="pref_themes">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.android.mms.themes.Themes"
+            android:targetPackage="com.android.mms" />
+    </Preference>
+
   <PreferenceCategory android:title="@string/pref_sms_storage_title"
                       android:key="pref_key_storage_settings">
 <!--
