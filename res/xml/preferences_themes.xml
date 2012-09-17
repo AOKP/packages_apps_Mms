@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="pref_restart_mms"
+        android:title="@string/restart_mms_title"
+        android:summary="@string/restart_mms_summary" />
+
+    <Preference
+        android:title="@string/themes_conv_list_title"
+        android:summary="@string/themes_conv_list_summary"
+        android:key="pref_themes_conversation_list">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.android.mms.themes.ThemesConversationList"
+            android:targetPackage="com.android.mms" />
+    </Preference>
+
+    <Preference
+        android:title="@string/themes_msg_list_title"
+        android:summary="@string/themes_msg_list_summary"
+        android:key="pref_themes_message_list">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.android.mms.themes.ThemesMessageList"
+            android:targetPackage="com.android.mms" />
+    </Preference>
+
+    <Preference
+        android:title="@string/themes_widget_title"
+        android:summary="@string/themes_widget_summary"
+        android:key="pref_themes_widgets_list">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.android.mms.themes.ThemesWidgets"
+            android:targetPackage="com.android.mms" />
+    </Preference>
+
+    <EditTextPreference
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:key="pref_signature"
+        android:dialogTitle="@string/add_signature_title"
+        android:hint="@string/enter_text"
+        android:title="@string/add_signature_title"
+        android:summary="@string/add_signature_summary"
+        android:defaultValue="" />
+
+</PreferenceScreen>

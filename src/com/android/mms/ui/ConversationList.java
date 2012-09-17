@@ -17,6 +17,7 @@
 
 package com.android.mms.ui;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -37,6 +38,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SqliteWrapper;
@@ -58,6 +68,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewParent;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
@@ -66,6 +78,8 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.*;
+import android.widget.ImageView.ScaleType;
 
 import com.android.mms.LogTag;
 import com.android.mms.R;
@@ -73,6 +87,7 @@ import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
 import com.android.mms.data.Conversation.ConversationQueryHandler;
+import com.android.mms.themes.ThemesConversationList;
 import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.transaction.SmsRejectedReceiver;
 import com.android.mms.util.DraftCache;
@@ -109,6 +124,8 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     private TextView mUnreadConvCount;
     private MenuItem mSearchItem;
     private SearchView mSearchView;
+    private ListView listView;
+    private static Bitmap mCustomImageBackground;
 
     static private final String CHECKED_MESSAGE_LIMITS = "checked_message_limits";
 
@@ -119,8 +136,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         setContentView(R.layout.conversation_list_screen);
 
         mQueryHandler = new ThreadListQueryHandler(getContentResolver());
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        ListView listView = getListView();
+        listView = getListView();
         listView.setOnCreateContextMenuListener(mConvListOnCreateContextMenuListener);
         listView.setOnKeyListener(mThreadListKeyListener);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -128,7 +146,8 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
         // Tell the list view which view to display when the list is empty
         listView.setEmptyView(findViewById(R.id.empty));
-
+        listView.setBackgroundColor(mPrefs.getInt(ThemesConversationList.PREF_CONV_LIST_BG, 0X00000000)); //list background
+        setBackground(this, (ViewGroup) findViewById(R.id.conv_list_screen)); // custom background
         initListAdapter();
 
         setupActionBar();
@@ -136,7 +155,6 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         setTitle(R.string.app_label);
 
         mHandler = new Handler();
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean checkedMessageLimits = mPrefs.getBoolean(CHECKED_MESSAGE_LIMITS, false);
         if (DEBUG) Log.v(TAG, "checkedMessageLimits: " + checkedMessageLimits);
         if (!checkedMessageLimits || DEBUG) {
@@ -310,6 +328,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     }
 
     private void startAsyncQuery() {
+        listView.setBackgroundColor(mPrefs.getInt(ThemesConversationList.PREF_CONV_LIST_BG, 0X00000000)); //list background
         try {
             ((TextView)(getListView().getEmptyView())).setText(R.string.loading_conversations);
 
@@ -632,6 +651,34 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
             .setNegativeButton(R.string.no, null)
             .setView(contents)
             .show();
+    }
+
+    public static void setBackground(Context context, ViewGroup layout) {
+        final String CUSTOM_IMAGE_PATH = "/data/data/com.android.mms/files/conversation_list_image.jpg";
+        File file = new File(CUSTOM_IMAGE_PATH);
+
+        if (file.exists()) {
+            ViewParent parent =  layout.getParent();
+            if (parent != null) {
+                //change parent to show background correctly on scale
+                RelativeLayout rlout = new RelativeLayout(context);
+                ((ViewGroup) parent).removeView(layout);
+                layout.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                ((ViewGroup) parent).addView(rlout); // change parent to new layout
+                rlout.addView(layout);
+                // create framelayout and add imageview to set background
+                FrameLayout flayout = new FrameLayout(context);
+                flayout.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                ImageView mCustomImage = new ImageView(flayout.getContext());
+                mCustomImage.setScaleType(ScaleType.CENTER_CROP);
+                flayout.addView(mCustomImage, -1, -1);
+                mCustomImageBackground = BitmapFactory.decodeFile(CUSTOM_IMAGE_PATH);
+                Drawable d = new BitmapDrawable(context.getResources(), mCustomImageBackground);
+                mCustomImage.setImageDrawable(d);
+                // add background to lock screen.
+                rlout.addView(flayout,0);
+            }
+        }
     }
 
     private final OnKeyListener mThreadListKeyListener = new OnKeyListener() {
