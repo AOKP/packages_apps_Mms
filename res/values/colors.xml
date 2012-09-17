@@ -34,32 +34,39 @@
     <color name="unread_bgcolor">#ffffffff</color>
     <color name="read_bgcolor">#ffeeeeee</color>
 
-    <color name="widget_sender_text_color_read">#555555</color>
-    <color name="widget_sender_text_color_unread">#333333</color>
-    <color name="widget_subject_text_color_read">#777777</color>
-    <color name="widget_subject_text_color_unread">#555555</color>
+    <color name="widget_sender_text_color_read">#ff555555</color>
+    <color name="widget_sender_text_color_unread">#ff333333</color>
+    <color name="widget_subject_text_color_read">#ff777777</color>
+    <color name="widget_subject_text_color_unread">#ff555555</color>
 
     <!-- Color of the text for buttons in the action bar  -->
-    <color name="action_bar_button_text_color">#FFFFFF</color>
+    <color name="action_bar_button_text_color">#ffffffff</color>
 
     <!-- New text colors from layouts to make theme chooser apk easier to theme -->
-    <color name="compose_message_edit_text">#000000</color>
-    <color name="actionbar_text">#333333</color>
-    <color name="delete_thread_dialog">#000000</color>
-    <color name="delivery_report_header">#222222</color>
-    <color name="delivery_report_recipient">#222222</color>
-    <color name="delivery_report_status">#111111</color>
-    <color name="delivery_report_date">#111111</color>
-    <color name="button_text">#000000</color>
-    <color name="message_recieved">#111111</color>
-    <color name="message_sent">#222222</color>
-    <color name="widget_unread_text">#222222</color>
-    <color name="widget_loading">#000000</color>
+    <color name="compose_message_edit_text">#ff000000</color>
+    <color name="actionbar_text">#ff333333</color>
+    <color name="delete_thread_dialog">#ff000000</color>
+    <color name="delivery_report_header">#ff222222</color>
+    <color name="delivery_report_recipient">#ff222222</color>
+    <color name="delivery_report_status">#ff111111</color>
+    <color name="delivery_report_date">#ff111111</color>
+    <color name="button_text">#ff000000</color>
+    <color name="message_recieved">#ff111111</color>
+    <color name="message_sent">#ff222222</color>
+    <color name="widget_unread_text">#ff222222</color>
+    <color name="widget_unread_text_light">#ff202020</color>
+    <color name="widget_loading">#ff000000</color>
 
     <!-- New Background colors from layouts to make theme chooser apk easier to theme -->
-    <color name="background">#ffffff</color>
-    <color name="darkgray_backgrounds">#666666</color>
-    <color name="dividers">#202020</color>
+    <color name="background">#ffffffff</color>
+    <color name="darkgray_backgrounds">#ff666666</color>
+    <color name="dividers">#ff202020</color>
     <color name="transparent">#00000000</color>
+
+    <!-- widget background colors for unread/read -->
+    <color name="widget_unread_bgcolor">#8f2f2f2f</color>
+    <color name="widget_read_bgcolor">#7f000000</color>
+    <color name="widget_unread_bgcolor_light">#8fbfbfbf</color>
+    <color name="widget_read_bgcolor_light">#7fffffff</color>
 
 </resources>
