@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/custom_image_delete"
+        android:title="@string/delete_custom_image" />
+
+</menu>
