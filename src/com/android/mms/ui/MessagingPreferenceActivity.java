@@ -68,6 +68,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String GROUP_MMS_MODE           = "pref_key_mms_group_mms";
 
     public static final String DISPLAY_FULLDATE         = "pref_key_display_fulldate";
+    public static final String DISPLAY_QR_CALLBUTTON    = "pref_key_display_quickreply_callbutton";
 
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     // Menu entries
@@ -402,4 +403,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         return fullDateEnabled;
     }
 
+    public static boolean getQRCallButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qrCallButtonEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_CALLBUTTON, true);
+        return qrCallButtonEnabled;
+    }
 }
