@@ -25,6 +25,7 @@ import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
 import com.android.mms.data.Conversation;
 import com.android.mms.data.WorkingMessage;
+import com.android.mms.model.MediaModel;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.ui.ComposeMessageActivity;
@@ -61,6 +62,7 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
@@ -73,10 +75,16 @@ import android.text.style.TextAppearanceSpan;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -957,7 +965,7 @@ public class MessagingNotification {
         // do not pull the extras if this is not an SMS
         // TODO: add MMS support later
         Intent quickReply = null;
-        if (mostRecentNotification.mIsSms) {
+        if ((messageCount == 1 || uniqueThreadCount == 1) && mostRecentNotification.mIsSms) {
             quickReply = new Intent();
             quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -968,6 +976,7 @@ public class MessagingNotification {
             quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
             quickReply.putExtra("threadId", mostRecentNotification.mThreadId);
             quickReply.putExtra("count", uniqueThreadCount);
+            quickReply.putExtra("from", false);
 
             // get the messageId so we can mark as read
             Long messageId = null;
@@ -1004,9 +1013,15 @@ public class MessagingNotification {
                 }
                 quickReply.putExtra("bodies", buf);
             }
+        } else if (messageCount != 1 && uniqueThreadCount != 1 && mostRecentNotification.mIsSms) {
+            quickReply = new Intent();
+            quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            quickReply.setClass(context, com.android.mms.ui.QuickReplyMulti.class);
         }
 
-        if ((messageCount == 1 || uniqueThreadCount == 1) && mostRecentNotification.mIsSms) {
+        if (mostRecentNotification.mIsSms) {
             // first add the call back option
             CharSequence callBack = context.getText(R.string.quick_call_back);
             Intent call = new Intent(Intent.ACTION_CALL);

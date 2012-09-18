@@ -34,6 +34,7 @@ import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.DialogInterface.OnDismissListener;
@@ -90,6 +91,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     private KeyguardManager.KeyguardLock kl;
     private boolean typing;
     private boolean wasLocked = false;
+    private boolean fromMulti = false;
 
     private AlertDialog mSmileyDialog;
     private AlertDialog mEmojiDialog;
@@ -121,6 +123,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         messageId = extras.getLong("msgId");
         threadId = extras.getLong("threadId");
         messageType = extras.getInt("count");
+        fromMulti = extras.getBoolean("from");
         nameContact = (TextView) mView.findViewById(R.id.contact_name);
         nameContact.setText(contactName);
         prevText = (TextView) mView.findViewById(R.id.prev_text_body);
@@ -245,7 +248,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
      * is multi threaded from a single person
      */
     private void setRead() {
-        if (messageType == 1) {
+        if (messageType == 1 || fromMulti) {
             Conversation cnv = Conversation.get(mContext, threadId, true);
             cnv.markAsRead();
         } else {
@@ -294,6 +297,14 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     public void onDestroy() {
         if (wasLocked) {
             kl.reenableKeyguard();
+        }
+        if (fromMulti) {
+            Intent i = new Intent();
+            i.setClass(mContext, com.android.mms.ui.QuickReplyMulti.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
         }
         finish();
         super.onDestroy();
