@@ -53,10 +53,17 @@
             android:capitalize="sentences"
             android:hint="Type message"
             android:inputType="textShortMessage|textAutoCorrect|textCapSentences|textMultiLine"
-            android:maxLength="160"
-            android:maxLines="3"
             android:minHeight="@dimen/input_text_height"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/text_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dip"
+            android:gravity="bottom"
+            android:singleLine="true"
+            android:textSize="12sp" />
 
         <ImageButton
             android:id="@+id/reply_button"
