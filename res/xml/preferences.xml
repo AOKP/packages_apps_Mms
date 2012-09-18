@@ -106,5 +106,9 @@
                         android:title="@string/pref_title_enable_emojis"
                         android:summary="@string/pref_summary_enable_emojis"
                         android:defaultValue="false" />
+    <CheckBoxPreference android:defaultValue="true"
+                        android:key="pref_key_display_quickreply_callbutton"
+                        android:summary="@string/pref_summary_quickreply_callbutton"
+                        android:title="@string/pref_title_quickreply_callbutton" />
     </PreferenceCategory>
 </PreferenceScreen>
