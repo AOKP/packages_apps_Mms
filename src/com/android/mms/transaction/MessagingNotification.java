@@ -1008,12 +1008,14 @@ public class MessagingNotification {
 
         if ((messageCount == 1 || uniqueThreadCount == 1) && mostRecentNotification.mIsSms) {
             // first add the call back option
-            CharSequence callBack = context.getText(R.string.quick_call_back);
-            Intent call = new Intent(Intent.ACTION_CALL);
-            call.setData(mostRecentNotification.mSender.getPhoneUri());
-            PendingIntent piCall = PendingIntent.getActivity(context, 0, call,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
-            noti.addAction(R.drawable.ic_menu_call, callBack, piCall);
+            if (MessagingPreferenceActivity.getQRCallButtonEnabled(context)) {
+                CharSequence callBack = context.getText(R.string.quick_call_back);
+                Intent call = new Intent(Intent.ACTION_CALL);
+                call.setData(mostRecentNotification.mSender.getPhoneUri());
+                PendingIntent piCall = PendingIntent.getActivity(context, 0, call,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                noti.addAction(R.drawable.ic_menu_call, callBack, piCall);
+            }
             // second add the quick reply action
             if (quickReply != null) {
                 CharSequence quickText = context.getText(R.string.quick_reply_sms);

@@ -95,6 +95,11 @@
                         android:entries="@array/prefEntries_vibrateWhen"
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
+    <CheckBoxPreference android:defaultValue="true"
+                        android:key="pref_key_display_quickreply_callbutton"
+                        android:summary="@string/pref_summary_quickreply_callbutton"
+                        android:title="@string/pref_title_quickreply_callbutton"
+                        android:dependency="pref_key_enable_notifications" />
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/pref_display_title"
                       android:key="pref_key_display_settings">
