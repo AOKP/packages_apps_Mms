@@ -957,7 +957,7 @@ public class MessagingNotification {
         // do not pull the extras if this is not an SMS
         // TODO: add MMS support later
         Intent quickReply = null;
-        if (mostRecentNotification.mIsSms) {
+        if ((messageCount == 1 || uniqueThreadCount == 1) && mostRecentNotification.mIsSms) {
             quickReply = new Intent();
             quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -968,6 +968,7 @@ public class MessagingNotification {
             quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
             quickReply.putExtra("threadId", mostRecentNotification.mThreadId);
             quickReply.putExtra("count", uniqueThreadCount);
+            quickReply.putExtra("from", false);
 
             // get the messageId so we can mark as read
             Long messageId = null;
@@ -1004,16 +1005,24 @@ public class MessagingNotification {
                 }
                 quickReply.putExtra("bodies", buf);
             }
+        } else if (messageCount != 1 && uniqueThreadCount != 1 && mostRecentNotification.mIsSms) {
+            quickReply = new Intent();
+            quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            quickReply.setClass(context, com.android.mms.ui.QuickReplyMulti.class);
         }
 
-        if ((messageCount == 1 || uniqueThreadCount == 1) && mostRecentNotification.mIsSms) {
+        if (mostRecentNotification.mIsSms) {
             // first add the call back option
-            CharSequence callBack = context.getText(R.string.quick_call_back);
-            Intent call = new Intent(Intent.ACTION_CALL);
-            call.setData(mostRecentNotification.mSender.getPhoneUri());
-            PendingIntent piCall = PendingIntent.getActivity(context, 0, call,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
-            noti.addAction(R.drawable.ic_menu_call, callBack, piCall);
+            if (messageCount == 1 || uniqueThreadCount == 1) {
+                CharSequence callBack = context.getText(R.string.quick_call_back);
+                Intent call = new Intent(Intent.ACTION_CALL);
+                call.setData(mostRecentNotification.mSender.getPhoneUri());
+                PendingIntent piCall = PendingIntent.getActivity(context, 0, call,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                noti.addAction(R.drawable.ic_menu_call, callBack, piCall);
+            }
             // second add the quick reply action
             if (quickReply != null) {
                 CharSequence quickText = context.getText(R.string.quick_reply_sms);
