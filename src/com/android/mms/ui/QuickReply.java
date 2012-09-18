@@ -34,10 +34,13 @@ import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.DialogInterface.OnDismissListener;
+import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -45,8 +48,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
+import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -86,10 +92,12 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     private ImageButton qrMenu;
     private TextView nameContact;
     private TextView prevText;
+    private TextView textBoxCounter;
     private EditText textBox;
     private KeyguardManager.KeyguardLock kl;
     private boolean typing;
     private boolean wasLocked = false;
+    private boolean fromMulti = false;
 
     private AlertDialog mSmileyDialog;
     private AlertDialog mEmojiDialog;
@@ -121,13 +129,14 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         messageId = extras.getLong("msgId");
         threadId = extras.getLong("threadId");
         messageType = extras.getInt("count");
+        fromMulti = extras.getBoolean("from");
         nameContact = (TextView) mView.findViewById(R.id.contact_name);
         nameContact.setText(contactName);
         prevText = (TextView) mView.findViewById(R.id.prev_text_body);
         if (messageType == 1) {
             prevText.setText(replaceWithEmotes(textBodies));
         } else {
-            prevText.setText(replaceWithEmotes(textBody));   
+            prevText.setText(replaceWithEmotes(textBody));
         }
         contactIcon = (ImageView) mView.findViewById(R.id.contact_avatar);
         icon = null;
@@ -143,6 +152,8 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         qrMenu.setOnClickListener(this);
         textBox = (EditText) mView.findViewById(R.id.edit_box);
         textBox.setOnClickListener(this);
+        textBox.addTextChangedListener(mTextEditorWatcher);
+        textBoxCounter = (TextView) mView.findViewById(R.id.text_counter);
         alert.setOnDismissListener(this);
         // set alert system to make sure it is always on top, permission
         // required.
@@ -174,6 +185,25 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         return icon;
     }
 
+    private final TextWatcher mTextEditorWatcher = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            textBoxCounter.setText(String.valueOf(s.length()));
+            if (s.length() > 160) {
+                textBoxCounter.setTextColor(Color.RED);
+            } else if (s.length() > 100) {
+                textBoxCounter.setTextColor(Color.YELLOW);
+            } else {
+                textBoxCounter.setTextColor(Color.WHITE);
+            }
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
     /**
      * Use smiley parser and emoji parser to show emotes in text body this
      * method is modified from the MessageListItem.java
@@ -199,7 +229,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         }
         return buf;
     }
-    
+
     /**
      * Use smiley parser and emoji parser to show emotes in text body this
      * method is modified from the MessageListItem.java
@@ -230,12 +260,38 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         String message = null;
         message = textBox.getText().toString();
         SmsManager sms = SmsManager.getDefault();
-        try {
-            sms.sendTextMessage(phoneNumber, null, message, null, null);
-        } catch (IllegalArgumentException e) {
+
+        // lets split the string to send more than 1 message!
+        // ported CM code from SmsMessageSender.java that splits this already in
+        // main app
+        int[] params = SmsMessage.calculateLength(message, false);
+        /*
+         * SmsMessage.calculateLength returns an int[4] with: int[0] being the
+         * number of SMS's required, int[1] the number of code units used,
+         * int[2] is the number of code units remaining until the next message.
+         * int[3] is the encoding type that should be used for the message.
+         */
+
+        // just grab the params for the # of messages to be sent for a for loop
+        int numberOfSMS = params[0];
+
+        if (numberOfSMS > 1) {
+            ArrayList<String> body = SmsMessage.fragmentText(message);
+            for (int page = 0; page < numberOfSMS; page++) {
+                try {
+                    sms.sendTextMessage(phoneNumber, null, body.get(page), null, null);
+                } catch (IllegalArgumentException e) {
+                }
+                addMessageToSent(body.get(page));
+            }
+        } else {
+            try {
+                sms.sendTextMessage(phoneNumber, null, message, null, null);
+            } catch (IllegalArgumentException e) {
+            }
+            addMessageToSent(message);
         }
         setRead();
-        addMessageToSent(message);
         finish();
     }
 
@@ -245,7 +301,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
      * is multi threaded from a single person
      */
     private void setRead() {
-        if (messageType == 1) {
+        if (messageType == 1 || fromMulti) {
             Conversation cnv = Conversation.get(mContext, threadId, true);
             cnv.markAsRead();
         } else {
@@ -295,6 +351,14 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         if (wasLocked) {
             kl.reenableKeyguard();
         }
+        if (fromMulti) {
+            Intent i = new Intent();
+            i.setClass(mContext, com.android.mms.ui.QuickReplyMulti.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        }
         finish();
         super.onDestroy();
     }
@@ -325,7 +389,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 if (messageType == 1) {
                     prevText.setText(replaceWithEmotes(textBodies));
                 } else {
-                    prevText.setText(replaceWithEmotes(textBody));   
+                    prevText.setText(replaceWithEmotes(textBody));
                 }
                 contactIcon = (ImageView) mView.findViewById(R.id.contact_avatar);
                 icon = null;

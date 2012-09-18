@@ -877,5 +877,6 @@
     <string name="qr_pick_smiley">Insert Smiley</string>
     <string name="qr_pick_emoji">Insert Emoji</string>
     <string name="qr_close_popup">Close</string>
+    <string name="qr_multi_ask">Who do you want to reply to?</string>
 
 </resources>
