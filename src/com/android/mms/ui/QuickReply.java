@@ -103,6 +103,8 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     private AlertDialog mEmojiDialog;
     private View mEmojiView;
 
+    private AlertDialog alert;
+
     private static final int NOTIFICATION_ID = 123;
 
     @Override
@@ -118,7 +120,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
         LayoutInflater inflater = LayoutInflater.from(this);
         final View mView = inflater.inflate(R.layout.quick_reply_sms, null);
-        AlertDialog alert = new AlertDialog.Builder(this).setView(mView).create();
+        alert = new AlertDialog.Builder(this).setView(mView).create();
 
         Bundle extras = getIntent().getExtras();
         avatar = (Bitmap) extras.get("avatar");
@@ -361,6 +363,17 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         }
         finish();
         super.onDestroy();
+    }
+
+    // fix home button issue by pausing the activity dismissing the alert
+    @Override
+    protected void onPause() {
+        if (alert != null) {
+            alert.dismiss();
+        } else {
+            finish();
+        }
+        super.onPause();
     }
 
     @Override
