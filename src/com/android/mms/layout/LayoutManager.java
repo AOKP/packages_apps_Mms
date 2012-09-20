@@ -59,6 +59,10 @@ public class LayoutManager {
                 return new HVGALayoutParameters(mContext, LayoutParameters.HVGA_LANDSCAPE);
             case LayoutParameters.HVGA_PORTRAIT:
                 return new HVGALayoutParameters(mContext, LayoutParameters.HVGA_PORTRAIT);
+            case LayoutParameters.WXGA_LANDSCAPE:
+                return new WXGALayoutParameters(mContext, LayoutParameters.WXGA_LANDSCAPE);
+            case LayoutParameters.WXGA_PORTRAIT:
+                return new HVGALayoutParameters(mContext, LayoutParameters.WXGA_PORTRAIT);
         }
 
         throw new IllegalArgumentException(

@@ -20,6 +20,8 @@ package com.android.mms.layout;
 public interface LayoutParameters {
     /* Layouts type definition */
     public static final int UNKNOWN        = -1;
+    public static final int WXGA_LANDSCAPE = 20;
+    public static final int WXGA_PORTRAIT  = 21;
     public static final int HVGA_LANDSCAPE = 10;
     public static final int HVGA_PORTRAIT  = 11;
 
@@ -28,7 +30,10 @@ public interface LayoutParameters {
     public static final int HVGA_LANDSCAPE_HEIGHT = 320;
     public static final int HVGA_PORTRAIT_WIDTH   = 320;
     public static final int HVGA_PORTRAIT_HEIGHT  = 480;
-
+    public static final int WXGA_LANDSCAPE_WIDTH  = 1280;
+    public static final int WXGA_LANDSCAPE_HEIGHT = 720;
+    public static final int WXGA_PORTRAIT_WIDTH   = 720;
+    public static final int WXGA_PORTRAIT_HEIGHT  = 1280;
     /**
      * Get the width of current layout.
      */
