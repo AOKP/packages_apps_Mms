@@ -64,8 +64,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
     public static final String DISPLAY_FULLDATE         = "pref_key_display_fulldate";
+    public static final String QR_AUTO_OPEN             = "pref_key_display_quickreply_autoopen";
     public static final String DISPLAY_QR_CALLBUTTON    = "pref_key_display_quickreply_callbutton";
-
+    public static final String LOCK_SMS			= "pref_key_lock_sms";
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
@@ -366,6 +367,20 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         boolean fullDateEnabled =
             prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_FULLDATE, false);
         return fullDateEnabled;
+    }
+
+    public static boolean getQRAutoOpenEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qrAutoOpenEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.QR_AUTO_OPEN, false);
+        return qrAutoOpenEnabled;
+    }
+
+    public static boolean getLockSmsEnabled(Context context) {
+	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+	boolean smsLockEnabled =
+	    prefs.getBoolean(MessagingPreferenceActivity.LOCK_SMS, false);
+	return smsLockEnabled;
     }
 
     public static boolean getQRCallButtonEnabled(Context context) {
