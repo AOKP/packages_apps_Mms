@@ -215,7 +215,7 @@ public class MessagingNotification {
      * play the notification sound at a lower volume. Make sure you set this to
      * THREAD_NONE when the UI component that shows the thread is no longer
      * visible to the user (e.g. Activity.onPause(), etc.)
-     * 
+     *
      * @param threadId The ID of the thread that the user is currently viewing.
      *            Pass THREAD_NONE if the user is not viewing a thread, or
      *            THREAD_ALL if the user is viewing the conversation list (note:
@@ -231,7 +231,7 @@ public class MessagingNotification {
      * Checks to see if there are any "unseen" messages or delivery reports.
      * Shows the most recent notification if there is one. Does its work and
      * query in a worker thread.
-     * 
+     *
      * @param context the context to use
      */
     public static void nonBlockingUpdateNewMessageIndicator(final Context context,
@@ -248,7 +248,7 @@ public class MessagingNotification {
     /**
      * Checks to see if there are any "unseen" messages or delivery reports and
      * builds a sorted (by delivery date) list of unread notifications.
-     * 
+     *
      * @param context the context to use
      * @param newMsgThreadId The thread ID of a new message that we're to notify
      *            about; if there's no new message, use THREAD_NONE. If we
@@ -806,7 +806,7 @@ public class MessagingNotification {
     /**
      * updateNotification is *the* main function for building the actual
      * notification handed to the NotificationManager
-     * 
+     *
      * @param context
      * @param isNew if we've got a new message, show the ticker
      * @param uniqueThreadCount
@@ -1030,6 +1030,10 @@ public class MessagingNotification {
                 PendingIntent piText = PendingIntent.getActivity(context, 0, quickReply,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 noti.addAction(R.drawable.ic_menu_msg_compose_holo_dark, quickText, piText);
+
+                if(MessagingPreferenceActivity.getQRAutoOpenEnabled(context)){
+                    context.startActivity(quickReply);
+                }
             }
         }
 
@@ -1279,7 +1283,7 @@ public class MessagingNotification {
     /**
      * Query the DB and return the number of undelivered messages (total for
      * both SMS and MMS)
-     * 
+     *
      * @param context The context
      * @param threadIdResult A container to put the result in, according to the
      *            following rules: threadIdResult[0] contains the thread id of
@@ -1387,7 +1391,7 @@ public class MessagingNotification {
 
     /**
      * Get the message ID of the SMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The message id
@@ -1411,7 +1415,7 @@ public class MessagingNotification {
 
     /**
      * Get the thread ID of the SMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The thread ID, or THREAD_NONE if the URI contains no entries
@@ -1443,7 +1447,7 @@ public class MessagingNotification {
 
     /**
      * Get the thread ID of the MMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The thread ID, or THREAD_NONE if the URI contains no entries
