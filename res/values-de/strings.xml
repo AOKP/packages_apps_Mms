@@ -343,4 +343,20 @@
     <string name="attachment_picture" msgid="3709286281567284296">"Bild"</string>
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
+    
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Rückruf</string>
+    <string name="quick_reply_sms">Antwort</string>
+    <string name="quick_reply_sending">Antwort gesendet an</string>
+    <string name="qr_alert_title">Keine Antwort gesendet</string>
+    <string name="qr_alert_message">Nachricht wirklich abbrechen?</string>
+    <string name="qr_alert_yes">Ja</string>
+    <string name="qr_alert_no">Nein</string>
+    <string name="qr_alert_read">Als gelesen markieren</string>
+    <string name="qr_mark_read">Als gelesen schließen</string>
+    <string name="qr_pick_smiley">Smiley einfügen</string>
+    <string name="qr_pick_emoji">Emoji einfügen</string>
+    <string name="qr_close_popup">Schließen</string>
+    <string name="qr_multi_ask">Antwort an wenn?</string>
+    
 </resources>
