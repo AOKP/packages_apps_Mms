@@ -127,6 +127,15 @@
                 android:layout_height="wrap_content"
                 android:background="#fff" >
 
+               <ImageButton
+                   android:id="@+id/add_emoji"
+                   style="?android:attr/borderlessButtonStyle"
+                   android:src="@drawable/emoji_e057"
+                   android:layout_width="30dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="8dip"
+                   android:visibility="gone" />
+
                 <EditText
                     android:textColor="@android:color/black"
                     android:id="@+id/embedded_text_editor"

@@ -3351,6 +3351,9 @@ public class ComposeMessageActivity extends Activity
 
         CharSequence text = mWorkingMessage.getText();
 
+	SharedPreferences prefs = PreferenceManager
+		    .getDefaultSharedPreferences((Context) ComposeMessageActivity.this);
+
         // TextView.setTextKeepState() doesn't like null input.
         if (text != null) {
             mTextEditor.setTextKeepState(text);
@@ -3358,8 +3361,6 @@ public class ComposeMessageActivity extends Activity
             // Set the edit caret to the end of the text.
             mTextEditor.setSelection(mTextEditor.length());
             // Restore the emojis if necessary
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences((Context) ComposeMessageActivity.this);
             boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
             if (enableEmojis) {
                 mTextEditor.setTextKeepState(EmojiParser.getInstance().addEmojiSpans(text));
@@ -3368,6 +3369,18 @@ public class ComposeMessageActivity extends Activity
             }
         } else {
             mTextEditor.setText("");
+        }
+
+	boolean enableQuickEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_QUICK_EMOJIS, false);
+	if (enableQuickEmojis) {
+            ImageButton quickEmojis = (ImageButton) mBottomPanel.findViewById(R.id.add_emoji);
+            quickEmojis.setVisibility(View.VISIBLE);
+            quickEmojis.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEmojiDialog();
+                }
+            });
         }
     }
 
