@@ -102,6 +102,7 @@ public class MessageListItem extends LinearLayout implements
     private ImageView mDeliveredIndicator;
     private ImageView mDetailsIndicator;
     private ImageButton mSlideShowButton;
+    private TextView mBodySenderView;
     private TextView mBodyTextView;
     private Button mDownloadButton;
     private TextView mDownloadingLabel;
@@ -146,6 +147,7 @@ public class MessageListItem extends LinearLayout implements
         super.onFinishInflate();
 
         mBodyTextView = (TextView) findViewById(R.id.text_view);
+        mBodySenderView = (TextView) findViewById(R.id.sender_view);
         mDateView = (TextView) findViewById(R.id.date_view);
         mLockedIndicator = (ImageView) findViewById(R.id.locked_indicator);
         mDeliveredIndicator = (ImageView) findViewById(R.id.delivered_indicator);
@@ -198,6 +200,15 @@ public class MessageListItem extends LinearLayout implements
         return mMessageItem;
     }
 
+    public void setSenderViewVisibility(String msgItem) {
+      if (msgItem.equals("mms")) {
+        mBodySenderView.setText(mMessageItem.mContact + ":");
+        mBodySenderView.setVisibility(View.VISIBLE);
+      } else {
+        mBodySenderView.setVisibility(View.GONE);
+      }
+    }
+
     public void setMsgListItemHandler(Handler handler) {
         mHandler = handler;
     }
@@ -208,6 +219,8 @@ public class MessageListItem extends LinearLayout implements
         String msgSizeText = mContext.getString(R.string.message_size_label)
                                 + String.valueOf((mMessageItem.mMessageSize + 1023) / 1024)
                                 + mContext.getString(R.string.kilobyte);
+
+        setSenderViewVisibility(mMessageItem.mType);
 
         mBodyTextView.setText(formatMessage(mMessageItem, mMessageItem.mContact, null,
                                             mMessageItem.mSubject,
@@ -318,6 +331,8 @@ public class MessageListItem extends LinearLayout implements
             mMessageItem.setCachedFormattedMessage(formattedMessage);
         }
         mBodyTextView.setText(formattedMessage);
+
+        setSenderViewVisibility(mMessageItem.mType);
 
         // Debugging code to put the URI of the image attachment in the body of the list item.
         if (DEBUG) {

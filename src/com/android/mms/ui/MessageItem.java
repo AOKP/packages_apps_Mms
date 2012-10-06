@@ -23,7 +23,9 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.provider.Telephony.Mms;
+import static android.provider.Telephony.Mms.Addr.*;
 import android.provider.Telephony.MmsSms;
 import android.provider.Telephony.Sms;
 import android.text.TextUtils;
@@ -68,6 +70,15 @@ public class MessageItem {
     final String mType;
     final long mMsgId;
     final int mBoxId;
+
+    final String[] MMS_SENDER_PROJECTION =  new String[] {
+        ADDRESS,
+	CONTACT_ID,
+        CHARSET,
+        TYPE
+    };
+
+    final String MMS_SENDER_SELECTION = TYPE + "=" + com.google.android.mms.pdu.PduHeaders.FROM;
 
     DeliveryStatus mDeliveryStatus;
     boolean mReadReport;
@@ -156,7 +167,7 @@ public class MessageItem {
                 mTimestamp = MessageUtils.formatTimeStampString(context, date,
                     MessagingPreferenceActivity.getFullDateEnabled(context));
             }
-
+            new MmsSenderQueryTask(mMsgId, mContext).execute();
             mLocked = cursor.getInt(columnsMap.mColumnSmsLocked) != 0;
             mErrorCode = cursor.getInt(columnsMap.mColumnSmsErrorCode);
         } else if ("mms".equals(type)) {
@@ -192,6 +203,40 @@ public class MessageItem {
 
         } else {
             throw new MmsException("Unknown type of the message: " + type);
+        }
+    }
+
+    // Function to query the sender's address from db
+    private class MmsSenderQueryTask extends AsyncTask<Void, Void, String> {
+        private long mMsgId;
+        private Context mContext;
+
+        public MmsSenderQueryTask(long mMsgId, Context mContext) {
+            this.mMsgId = mMsgId;
+            this.mContext = mContext;
+	}
+
+        protected String doInBackground(Void... params) {
+            String sender="";
+
+            Uri.Builder builder = android.provider.Telephony.Mms.CONTENT_URI.buildUpon();
+            builder.appendPath(String.valueOf(mMsgId)).appendPath("addr");
+
+            Cursor cursor = mContext.getContentResolver().query(
+                builder.build(),
+                MMS_SENDER_PROJECTION,
+                MMS_SENDER_SELECTION,
+	                null, null);
+
+            if (cursor.moveToFirst()) {
+                sender =  cursor.getString(0);
+            }
+            cursor.close();
+            return Contact.get(sender, false).getName();
+	}
+
+        protected void onPostExecute(String contact) {
+            mContact = contact;
         }
     }
 

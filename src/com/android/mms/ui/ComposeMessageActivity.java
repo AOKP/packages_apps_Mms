@@ -737,7 +737,12 @@ public class ComposeMessageActivity extends Activity
             }
 
             mWorkingMessage.setWorkingRecipients(mRecipientsEditor.getNumbers());
-            mWorkingMessage.setHasEmail(mRecipientsEditor.containsEmail(), true);
+
+            if (recipientCount() > 1 && MessagingPreferenceActivity.getGroupMMSEnabled(ComposeMessageActivity.this)) {
+                mWorkingMessage.setGroupTextMms(recipientCount() > 1, true);
+            } else {
+                mWorkingMessage.setHasEmail(mRecipientsEditor.containsEmail(), true);
+            }
 
             checkForTooManyRecipients();
 
@@ -2214,6 +2219,9 @@ public class ComposeMessageActivity extends Activity
     @Override
     protected void onStop() {
         super.onStop();
+
+        // No need to do the querying when finished this activity
+        mBackgroundQueryHandler.cancelOperation(MESSAGE_LIST_QUERY_TOKEN);
 
         // Allow any blocked calls to update the thread's read status.
         mConversation.blockMarkAsRead(false);
