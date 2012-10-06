@@ -109,6 +109,8 @@
     <string name="copy_message_text">Copy text</string>
     <!-- Header for context menu on an individual message -->
     <string name="message_options">Message options</string>
+    <!-- Header for context menu on an individual slideshow -->
+    <string name="slideshow_options">Slideshow options</string>
 
     <!-- Button text on edit slide screen indicating the user wants to finish editing that slide -->
     <string name="done">Done</string>
@@ -374,6 +376,10 @@
     <string name="pref_title_quickreply_callbutton">Show call back button</string>
     <!-- Settings item description for boolean full datetime setting -->
     <string name="pref_summary_quickreply_callbutton">Show the call back button in the quick reply notification</string>
+    <!-- Settings item for boolean option for group MMS sending/receiving -->
+    <string name="pref_title_mms_group_mms">Group messaging</string>
+    <!-- Settings item description for boolean group MMS sending/receiving -->
+    <string name="pref_summary_mms_group_mms">Enable group MMS sending and receiving</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
