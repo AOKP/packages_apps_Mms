@@ -56,10 +56,12 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -405,6 +407,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
     @Override
     public void onDismiss(DialogInterface dialog) {
+        final Editable text = textBox.getText();
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(R.string.qr_alert_title);
         alert.setMessage(R.string.qr_alert_message);
@@ -445,6 +448,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 qrMenu.setOnClickListener(QuickReply.this);
                 textBox = (EditText) mView.findViewById(R.id.edit_box);
                 textBox.setOnClickListener(QuickReply.this);
+                textBox.setText(text, TextView.BufferType.EDITABLE);
                 alert.setOnDismissListener(QuickReply.this);
                 alert.show();
             }
@@ -474,6 +478,34 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.qr_menu_close:
+                finish();
+                return true;
+            case R.id.qr_menu_read:
+                setRead();
+                finish();
+                return true;
+            case R.id.qr_menu_smiley:
+                showSmileyDialog();
+                return true;
+            case R.id.qr_menu_emoji:
+                showEmojiDialog();
+                return true;
+            default:
+                return false;
+        }
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.qr_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.qr_menu_close:
                 finish();
