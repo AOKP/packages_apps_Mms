@@ -76,6 +76,12 @@ public class MmsConfig {
     // converting to mms if we reach the required number of segments.
     private static boolean mEnableSplitSMS = false;
 
+    // If mEnableMultipartSMS is true and mSmsToMmsTextThreshold > 1, then multi-part SMS messages
+    // will be converted into a single mms message. For example, if the mms_config.xml file
+    // specifies <int name="smsToMmsTextThreshold">4</int>, then on the 5th sms segment, the
+    // message will be converted to an mms.
+    private static int mSmsToMmsTextThreshold = -1;
+
     private static boolean mEnableSlideDuration = true;
     private static boolean mEnableMMSReadReports = true;        // key: "enableMMSReadReports"
     private static boolean mEnableSMSDeliveryReports = true;    // key: "enableSMSDeliveryReports"
@@ -104,6 +110,10 @@ public class MmsConfig {
                 android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC));
 
         loadMmsSettings(context);
+    }
+
+    public static int getSmsToMmsTextThreshold() {
+        return mSmsToMmsTextThreshold;
     }
 
     public static boolean getMmsEnabled() {
@@ -349,6 +359,8 @@ public class MmsConfig {
                             mAliasRuleMinChars = Integer.parseInt(text);
                         } else if ("aliasMaxChars".equalsIgnoreCase(value)) {
                             mAliasRuleMaxChars = Integer.parseInt(text);
+                        } else if ("smsToMmsTextThreshold".equalsIgnoreCase(value)) {
+                            mSmsToMmsTextThreshold = Integer.parseInt(text);
                         } else if ("maxMessageTextSize".equalsIgnoreCase(value)) {
                             mMaxTextLength = Integer.parseInt(text);
                         } else if ("maxSubjectLength".equalsIgnoreCase(value)) {

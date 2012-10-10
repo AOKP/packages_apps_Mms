@@ -155,6 +155,7 @@
     <string name="pref_mms_settings_title" msgid="55618772118264355">"彩信 (MMS)"</string>
     <string name="pref_sms_settings_title" msgid="5173078369851066881">"短信 (SMS)"</string>
     <string name="pref_sms_storage_title" msgid="9001233319190616445">"存储"</string>
+    <string name="pref_display_title">显示</string>
     <string name="pref_summary_manage_sim_messages" msgid="4141349892597640864">"管理 SIM 卡中存储的信息"</string>
     <string name="pref_summary_mms_delivery_reports" msgid="4874657984217756112">"要求每次发送信息后都返回发送报告"</string>
     <string name="pref_summary_mms_read_reports" msgid="2748323864008907440">"要求每次发送信息后都返回已读回执"</string>
@@ -174,6 +175,11 @@
     <string name="pref_summary_notification_vibrateWhen" msgid="669655090822561447">"收到通知时还振动提醒"</string>
     <string name="pref_title_notification_ringtone" msgid="5467265237106229952">"选择铃声"</string>
     <string name="pref_messages_to_save" msgid="3202539743892934926">"设置要保存的信息数量"</string>
+    <string name="pref_title_fulldate">显示完整日期</string>
+    <string name="pref_summary_fulldate">在信息后显示完整的日期</string>
+    <string name="pref_title_quickreply_callbutton">显示回拨按钮</string>
+    <string name="pref_summary_quickreply_callbutton">在快捷回复通知显示回拨按钮</string>
+
   <string-array name="prefEntries_vibrateWhen">
     <item msgid="2520871831815631409">"始终"</item>
     <item msgid="6069709696037750627">"仅在静音时"</item>
@@ -355,4 +361,19 @@
     <!-- Enable emojis -->
     <string name="pref_title_enable_emojis">启用 emoji 表情</string>
     <string name="pref_summary_enable_emojis">启用支持日本软银的emoji表情(unicode)，共 471 个</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">回拨</string>
+    <string name="quick_reply_sms">快捷回复</string>
+    <string name="quick_reply_sending">发送快捷回复到</string>
+    <string name="qr_alert_title">未发送任何内容</string>
+    <string name="qr_alert_message">你确定要取消这条信息？</string>
+    <string name="qr_alert_yes">是</string>
+    <string name="qr_alert_no">否</string>
+    <string name="qr_alert_read">标记已读</string>
+    <string name="qr_mark_read">标记已读 &amp; 关闭</string>
+    <string name="qr_pick_smiley">插入表情</string>
+    <string name="qr_pick_emoji">插入 emoji 表情</string>
+    <string name="qr_close_popup">关闭</string>
+    <string name="qr_multi_ask">你想回复给谁？</string>
 </resources>

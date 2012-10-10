@@ -343,4 +343,18 @@
     <string name="attachment_picture" msgid="3709286281567284296">"Kép"</string>
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
+    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
+    <string name="pref_title_quickreply_callbutton">Mutassa a visszahívás gombot</string>
+    <!-- Settings item description for boolean full datetime setting -->
+    <string name="pref_summary_quickreply_callbutton">Mutassa a visszahívás gombot a gyors válasz értesítésnél</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_fulldate">Teljes dátum mutatása</string>
+    <!-- Settings item description for boolean full datetime setting -->
+    <string name="pref_summary_fulldate">Teljes dátum mutatása az üzeneteknél</string>
+    <!-- Settings screen, section heading for display-specific settings -->
+    <string name="pref_display_title">Kijelző</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji támogatás</string>
+    <string name="pref_summary_enable_emojis">Unicode emoji támogatás, 471 szép emociós készletből.</string>
 </resources>
