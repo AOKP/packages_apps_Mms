@@ -361,6 +361,8 @@
     <!-- Enable emojis -->
     <string name="pref_title_enable_emojis">启用 emoji 表情</string>
     <string name="pref_summary_enable_emojis">启用支持日本软银的emoji表情(unicode)，共 471 个</string>
+    <string name="pref_title_pref_key_emojis_quick">快捷 emoji 表情按钮</string>
+    <string name="pref_summary_pref_key_emojis_quick">在信息文本输入框左边显示快捷按钮</string>
 
     <!-- Quick Reply -->
     <string name="quick_call_back">回拨</string>
