@@ -348,8 +348,10 @@
     <string name="pref_summary_sms_split_counter">Přidat počítadlo do zprávy. Např. (1/2)</string>
     <string name="menu_insert_emoji">Vložit smajlíky</string>
     <string name="pref_extra_settings">Speciální nastavení</string>
-    <string name="pref_title_enable_emojis">Zapnout smajlíky</string>
-    <string name="pref_summary_enable_emojis">Zapnout podporu speciálních 471 unikodových smajlíků</string>
+    <string name="pref_title_enable_emojis">Zapnout emojis</string>
+    <string name="pref_summary_enable_emojis">Zapnout podporu speciálních 471 unikodových emojis smajlíků</string>
+    <string name="pref_title_pref_key_emojis_quick">Tlačítko emojis</string>
+    <string name="pref_summary_pref_key_emojis_quick">Zobrazit tlačítko vlevo od vstupního pole pro rychlý přístup</string>
     <string name="pref_display_title">Zobrazení</string>
     <string name="pref_title_fulldate">Zobrazit celé datum</string>
     <string name="pref_summary_fulldate">Zobrazit u zpráv celé datum</string>
