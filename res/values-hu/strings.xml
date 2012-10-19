@@ -356,5 +356,23 @@
 
     <!-- Enable emojis -->
     <string name="pref_title_enable_emojis">Emoji támogatás</string>
-    <string name="pref_summary_enable_emojis">Unicode emoji támogatás, 471 szép emociós készletből.</string>
+    <string name="pref_summary_enable_emojis">Unicode emóciós támogatás, 471 szép emociós készletből.</string>
+    <string name="pref_title_pref_key_emojis_quick">Gyors emociós gomb</string>
+    <string name="pref_summary_pref_key_emojis_quick">A szöveg bal oldalán mutatja a gyors elérésű gombot</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Visszahívás</string>
+    <string name="quick_reply_sms">Gyors válasz</string>
+    <string name="quick_reply_sending">Gyors választ küldött</string>
+    <string name="qr_alert_title">Semmi sem lett elküldve</string>
+    <string name="qr_alert_message">Valóban törölni szeretné az üzenetet?</string>
+    <string name="qr_alert_yes">Igen</string>
+    <string name="qr_alert_no">Nem</string>
+    <string name="qr_alert_read">Olvasotnak jelölve</string>
+    <string name="qr_mark_read">Olvasotnak jelölve &amp; Bezár</string>
+    <string name="qr_pick_smiley">Szmájli beszúrás</string>
+    <string name="qr_pick_emoji">Emoji beszúrás</string>
+    <string name="qr_close_popup">Bezár</string>
+    <string name="qr_multi_ask">Kinek akarsz válaszolni?</string>
+
 </resources>
