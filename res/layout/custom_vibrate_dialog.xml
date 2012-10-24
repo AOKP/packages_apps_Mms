@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5sp"
+    android:paddingRight="5sp"
+    android:id="@+id/CustomVibrateLinearLayout">
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:id="@+id/CustomVibrateScrollView">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:id="@+id/ScrollViewLinearLayout"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:paddingBottom="2sp"
+            android:paddingTop="2sp">
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_text_mms_notification_vibrate_custom"
+                android:textSize="12sp"
+                android:padding="1dip" />
+
+            <EditText
+                android:id="@+id/CustomVibrateEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:maxLength="100"
+                android:padding="5sp"
+                android:defaultValue="0,1200" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
