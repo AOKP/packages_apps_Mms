@@ -116,6 +116,22 @@
                         android:summary="@string/pref_summary_quickreply_callbutton"
                         android:title="@string/pref_title_quickreply_callbutton"
                         android:dependency="pref_key_enable_notifications" />
+    <com.android.mms.preferences.CustomVibrateListPreference
+                        android:layout="?android:attr/preferenceLayoutChild"
+                        android:key="pref_key_mms_notification_vibrate_pattern"
+                        android:dependency="pref_key_vibrateWhen"
+                        android:defaultValue=""
+                        android:title="@string/pref_title_mms_notification_vibrate_pattern"
+                        android:summary="@string/pref_summary_mms_notification_vibrate_pattern"
+                        android:entries="@array/pref_mms_notification_vibrate_pattern_entries"
+                        android:entryValues="@array/pref_mms_notification_vibrate_pattern_values"
+                        android:dialogTitle="@string/pref_title_mms_notification_vibrate_pattern" />
+    <CheckBoxPreference android:key="pref_key_mms_notification_vibrate_call"
+                        android:layout="?android:attr/preferenceLayoutChild"
+                        android:dependency="pref_key_enable_notifications"
+                        android:defaultValue="true"
+                        android:title="@string/pref_title_mms_notification_vibrate_call"
+                        android:summary="@string/pref_summary_mms_notification_vibrate_call" />
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/pref_display_title"
                       android:key="pref_key_display_settings">

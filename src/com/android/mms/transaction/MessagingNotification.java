@@ -64,6 +64,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
+import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -924,6 +925,10 @@ public class MessagingNotification {
                 vibrateWhen = context.getString(R.string.prefDefault_vibrateWhen);
             }
 
+            TelephonyManager mTM = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            boolean callStateIdle = mTM.getCallState() == TelephonyManager.CALL_STATE_IDLE;
+            boolean vibrateOnCall = sp.getBoolean(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_CALL, true);
+
             boolean vibrateAlways = vibrateWhen.equals("always");
             boolean vibrateSilent = vibrateWhen.equals("silent");
             AudioManager audioManager =
@@ -931,8 +936,16 @@ public class MessagingNotification {
             boolean nowSilent =
                     audioManager.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE;
 
-            if (vibrateAlways || vibrateSilent && nowSilent) {
-                defaults |= Notification.DEFAULT_VIBRATE;
+           if ((vibrateAlways || vibrateSilent && nowSilent) && (vibrateOnCall || (!vibrateOnCall && callStateIdle))) {
+                /* WAS: notificationdefaults |= Notification.DEFAULT_VIBRATE;*/
+                String mVibratePattern = "custom".equals(sp.getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_PATTERN, null))
+                        ? sp.getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_PATTERN_CUSTOM, "0,1200")
+                                : sp.getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_PATTERN, "0,1200");
+                        if(!mVibratePattern.equals("")) {
+                            noti.setVibrate(parseVibratePattern(mVibratePattern));
+                        } else {
+                            defaults |= Notification.DEFAULT_VIBRATE;
+                        }
             }
 
             String ringtoneStr = sp.getString(MessagingPreferenceActivity.NOTIFICATION_RINGTONE,
@@ -1471,5 +1484,37 @@ public class MessagingNotification {
         } finally {
             cursor.close();
         }
+    }
+
+    // Parse the user provided custom vibrate pattern into a long[]
+    public static long[] parseVibratePattern(String stringPattern) {
+        ArrayList<Long> arrayListPattern = new ArrayList<Long>();
+        Long l;
+        String[] splitPattern = stringPattern.split(",");
+        int VIBRATE_PATTERN_MAX_SECONDS = 60000;
+        int VIBRATE_PATTERN_MAX_PATTERN = 100;
+
+        for (int i = 0; i < splitPattern.length; i++) {
+            try {
+                l = Long.parseLong(splitPattern[i].trim());
+            } catch (NumberFormatException e) {
+                return null;
+            }
+            if (l > VIBRATE_PATTERN_MAX_SECONDS) {
+                return null;
+            }
+            arrayListPattern.add(l);
+        }
+
+        int size = arrayListPattern.size();
+        if (size > 0 && size < VIBRATE_PATTERN_MAX_PATTERN) {
+            long[] pattern = new long[size];
+            for (int i = 0; i < pattern.length; i++) {
+                pattern[i] = arrayListPattern.get(i);
+            }
+            return pattern;
+        }
+
+        return null;
     }
 }
