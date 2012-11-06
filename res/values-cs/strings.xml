@@ -375,6 +375,9 @@
     <string name="pref_title_mms_group_mms">Skupinové zprávy</string>
     <string name="pref_summary_mms_group_mms">Zapnout skupinové odesílání a přijímání MMS zpráv</string>
 
+    <string name="pref_title_strip_unicode">Oříznout unicode</string>
+    <string name="pref_summary_strip_unicode">Nahradit speciální znaky normálními pro zachování délky 160 znaků na SMS</string>
+
     <string name="themes">Nastavení tématu SMS a MMS</string>
     <string name="themes_summary">Změnit vzhled SMS a MMS</string>
     <string name="themes_conv_list_title">Seznam konverzací</string>
