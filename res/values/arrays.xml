@@ -76,4 +76,16 @@
     <string-array name="empty_subject_strings">
         <item>no subject</item>
     </string-array>
+
+    <string-array name="pref_entries_input_type" translatable="false">
+        <item>@string/pref_keyboard_emoji</item>
+        <item>@string/pref_keyboard_send</item>
+        <item>@string/pref_keyboard_new_line</item>
+    </string-array>
+
+    <string-array name="pref_values_input_type" translatable="false">
+        <item>64</item> <!-- InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE constant  -->
+        <item>0</item>  <!-- Default Input -->
+        <item>80</item> <!-- InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE constant  -->
+    </string-array>
 </resources>
