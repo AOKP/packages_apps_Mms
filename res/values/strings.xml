@@ -976,5 +976,12 @@
     <string name="widget_subject_textcolor_unread">Unread subject text</string>
     <string name="widget_date_textcolor_read">Read date text</string>
     <string name="widget_date_textcolor_unread">Unread date text</string>
+    <!-- Soft Keyboard Type -->
+    <string name="pref_soft_keyboard_title">Keyboard</string>
+    <string name="pref_title_input_type">Soft keyboard type</string>
+    <string name="pref_summary_input_type">Select the soft keyboard to use when composing messages</string>
+    <string name="pref_keyboard_emoji">Emoji</string>
+    <string name="pref_keyboard_send">Enter to Send</string>
+    <string name="pref_keyboard_new_line">Enter for a new line</string>
 
 </resources>
