@@ -181,4 +181,13 @@
             android:dependency="pref_key_enable_emojis"
             android:defaultValue="false" />
     </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_soft_keyboard_title">
+        <ListPreference
+            android:key="pref_key_mms_input_type"
+            android:title="@string/pref_title_input_type"
+            android:summary="@string/pref_summary_input_type"
+            android:entries="@array/pref_entries_input_type"
+            android:entryValues="@array/pref_values_input_type" />
+    </PreferenceCategory>
 </PreferenceScreen>
