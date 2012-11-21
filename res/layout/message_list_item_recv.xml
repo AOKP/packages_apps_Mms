@@ -128,6 +128,7 @@
 
                 <ViewStub android:id="@+id/mms_layout_view_stub"
                     android:layout="@layout/mms_layout_view"
+                    android:layout_below="@id/status_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
