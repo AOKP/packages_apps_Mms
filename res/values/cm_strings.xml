@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- SMS TEMPLATES -->
+    <string name="prefs_templates_settings">SMS templates</string>
+
+    <!-- Manage SMS templates -->
+    <string name="pref_title_templates_manage">Templates</string>
+    <string name="pref_summary_templates_manage">Manage your SMS templates</string>
+    <string name="template_explanation">Insert or modify the template text and optionally draw a gesture to associate it</string>
+    <string name="template_insert_hint">Insert here the template text</string>
+    <string name="template_empty_text">Text field cannot be empty</string>
+    <string name="template_save">Save</string>
+    <string name="template_ctx_menu_title">Actions</string>
+    <string name="template_edit">Edit</string>
+    <string name="template_delete">Delete</string>
+    <string name="template_list_title">Templates</string>
+    <string name="template_new_title">New template</string>
+    <string name="template_insert">Insert template</string>
+    <string name="template_gesture_draw">Draw the gesture in the space below</string>
+    <string name="template_not_present_error">There are no defined templates</string>
+    <string name="template_not_present_error_title">Error</string>
+    <string name="template_select">Select a template</string>
+    <string name="template_confirm_dialog_title">Delete?</string>
+    <string name="gestures_already_present">A similar gesture is already associated with another template</string>
+    <string name="select_template">Select templates</string>
+
+    <!-- Show gesture trace -->
+    <string name="pref_title_templates_show_gesture">Gesture</string>
+    <string name="pref_summary_templates_show_gesture">Show gesture trace</string>
+
+    <!-- Gesture sensitivity -->
+    <string name="pref_title_template_gestures_sensitivity">Gesture sensitivity</string>
+
+</resources>
