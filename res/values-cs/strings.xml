@@ -382,4 +382,6 @@
     <string name="pref_summary_quickreply_mark_read">Zobrazit tlačítko Jako přečtené v notifikaci zprávy</string>
     <string name="pref_title_fulldate">Zobrazit celé datum</string>
     <string name="pref_summary_fulldate">Zobrazit u zpráv celé datum</string>
+    <string name="pref_title_strip_unicode">Oříznout unicode</string>
+    <string name="pref_summary_strip_unicode">Nahradit speciální znaky normálními pro zachování délky 160 znaků na SMS</string>
 </resources>
