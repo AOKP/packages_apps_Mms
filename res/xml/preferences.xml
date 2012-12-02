@@ -181,4 +181,10 @@
             android:dependency="pref_key_enable_emojis"
             android:defaultValue="false" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_extra_settings">
+    <CheckBoxPreference android:key="pref_key_strip_unicode"
+        android:title="@string/pref_title_strip_unicode"
+        android:summary="@string/pref_summary_strip_unicode"
+        android:defaultValue="false" />
+    </PreferenceCategory>
 </PreferenceScreen>
