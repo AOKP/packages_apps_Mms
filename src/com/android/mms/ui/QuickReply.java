@@ -1,4 +1,3 @@
-
 package com.android.mms.ui;
 
 /*
@@ -17,6 +16,54 @@ package com.android.mms.ui;
  * limitations under the License.
  */
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.KeyguardManager;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
+import android.text.Editable;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.android.mms.R;
 import com.android.mms.data.Conversation;
 import com.android.mms.util.EmojiParser;
@@ -27,59 +74,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.KeyguardManager;
-import android.app.NotificationManager;
-import android.content.BroadcastReceiver;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.content.DialogInterface.OnDismissListener;
-import android.database.sqlite.SQLiteException;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.telephony.SmsManager;
-import android.telephony.SmsMessage;
-import android.text.Editable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.SimpleAdapter;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.PopupMenu.OnMenuItemClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-
 public class QuickReply extends Activity implements OnDismissListener, OnClickListener,
-        OnMenuItemClickListener {
+    OnMenuItemClickListener {
+    private final String TAG = getClass().getSimpleName();
+    private static final boolean DEBUG = true;
     Context mContext = this;
 
     private Bitmap avatar;
@@ -132,6 +130,15 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
         LayoutInflater inflater = LayoutInflater.from(this);
         final View mView = inflater.inflate(R.layout.quick_reply_sms, null);
+
+        // ensure we donw't have a legacy view
+        if (alert != null) {
+            Log.v(TAG, "AlertDialog was not null!!! clearing it out.");
+            if (alert.isShowing())
+                alert.dismiss();
+            alert = null;
+        }
+
         alert = new AlertDialog.Builder(this).setView(mView).create();
 
         Bundle extras = getIntent().getExtras();
@@ -144,6 +151,8 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         threadId = extras.getLong("threadId");
         messageType = extras.getInt("count");
         fromMulti = extras.getBoolean("from");
+        boolean deleteSms = extras.getBoolean("needs_deleted");
+        boolean markSmsRead = extras.getBoolean("needs_marked_read");
         nameContact = (TextView) mView.findViewById(R.id.contact_name);
         nameContact.setText(contactName);
         prevText = (TextView) mView.findViewById(R.id.prev_text_body);
@@ -169,6 +178,25 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         textBox.addTextChangedListener(mTextEditorWatcher);
         textBoxCounter = (TextView) mView.findViewById(R.id.text_counter);
         alert.setOnDismissListener(this);
+
+        Log.d(TAG, "extras delete:" + deleteSms + " markRead:" + markSmsRead);
+        // check if we can bail before setting up listeners
+        // user clicked delete thread
+        if (deleteSms) {
+            Log.v(TAG, "QuickReply action:" +
+                " message delete returned { " + deleteMessage() + " }");
+            setRead();
+            finish();
+        }
+
+        // user clicked mark read
+        if (markSmsRead) {
+            Log.v(TAG, "QuickReply action: mark message as read");
+            setRead();
+            finish();
+        }
+        Log.v(TAG, "loading QuickReply dialog");
+
         // set alert system to make sure it is always on top, permission
         // required.
         alert.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
@@ -177,6 +205,11 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             wasLocked = true;
         }
         alert.show();
+    }
+
+    private int deleteMessage() {
+        return mContext.getContentResolver().delete(
+            Uri.parse("content://sms/" + messageId), null, null);
     }
 
     private BroadcastReceiver screenReceiver = new BroadcastReceiver() {
@@ -197,13 +230,13 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         Resources res = mContext.getResources();
         if (bitmap != null) {
             final int idealIconHeight =
-                    res.getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
+                res.getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
             final int idealIconWidth =
-                    res.getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
+                res.getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
             if (bitmap.getHeight() < idealIconHeight) {
                 // Scale this image to fit the intended size
                 bitmap = Bitmap.createScaledBitmap(
-                        bitmap, idealIconWidth, idealIconHeight, true);
+                    bitmap, idealIconWidth, idealIconHeight, true);
             }
             icon = new BitmapDrawable(getResources(), bitmap);
         } else {
@@ -217,7 +250,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            textBoxCounter.setText(String.valueOf(s.length()));
+            textBoxCounter.setText(String.valueOf(160 - s.length()) + "/160");
             if (s.length() > 160) {
                 textBoxCounter.setTextColor(Color.RED);
             } else if (s.length() > 100) {
@@ -234,7 +267,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     /**
      * Use smiley parser and emoji parser to show emotes in text body this
      * method is modified from the MessageListItem.java
-     * 
+     *
      * @param: body of text from an SMS in String format
      * @return: formatted text to use smiley emotes & emoji
      */
@@ -242,10 +275,10 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         SpannableStringBuilder buf = new SpannableStringBuilder();
 
         SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
+            .getDefaultSharedPreferences(mContext);
         boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
 
-        if (!TextUtils.isEmpty(body)) {
+        if (! TextUtils.isEmpty(body)) {
             SmileyParser parser = SmileyParser.getInstance();
             CharSequence smileyBody = parser.addSmileySpans(body);
             if (enableEmojis) {
@@ -260,7 +293,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     /**
      * Use smiley parser and emoji parser to show emotes in text body this
      * method is modified from the MessageListItem.java
-     * 
+     *
      * @param: body of text from an SMS in CharSequence format
      * @return: formatted text to use smiley emotes & emoji
      */
@@ -268,10 +301,10 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         SpannableStringBuilder buf = new SpannableStringBuilder();
 
         SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
+            .getDefaultSharedPreferences(mContext);
         boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
 
-        if (!TextUtils.isEmpty(body)) {
+        if (! TextUtils.isEmpty(body)) {
             SmileyParser parser = SmileyParser.getInstance();
             CharSequence smileyBody = parser.addSmileySpans(body);
             if (enableEmojis) {
@@ -336,12 +369,12 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             values.put("READ", 1);
             values.put("SEEN", 1);
             getContentResolver().update(Uri.parse("content://sms/"),
-                    values, "_id=" + messageId, null);
+                values, "_id=" + messageId, null);
         }
 
         // clear the notification
         NotificationManager nm = (NotificationManager) mContext.getSystemService(
-                Context.NOTIFICATION_SERVICE);
+            Context.NOTIFICATION_SERVICE);
         nm.cancel(NOTIFICATION_ID);
     }
 
@@ -370,7 +403,6 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         } else if (v == qrMenu) {
             showPopup(v);
         }
-
     }
 
     @Override
@@ -382,8 +414,8 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             Intent i = new Intent();
             i.setClass(mContext, com.android.mms.ui.QuickReplyMulti.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         }
         unregisterReceiver(screenReceiver);
@@ -397,8 +429,8 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         boolean isLocked = km.inKeyguardRestrictedInputMode();
 
-        if (!isLocked) {
-            if (!screenIsOff) {
+        if (! isLocked) {
+            if (! screenIsOff) {
                 finish();
             }
         }
@@ -424,7 +456,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 LayoutInflater inflater = LayoutInflater.from(QuickReply.this);
                 final View mView = inflater.inflate(R.layout.quick_reply_sms, null);
                 AlertDialog alert = new AlertDialog.Builder(QuickReply.this).setView(mView)
-                        .create();
+                    .create();
 
                 nameContact = (TextView) mView.findViewById(R.id.contact_name);
                 nameContact.setText(contactName);
@@ -466,7 +498,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
     /**
      * Make our own option menu since we have no action bar
-     * 
+     *
      * @param view
      */
     public void showPopup(View v) {
@@ -496,14 +528,14 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 return false;
         }
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.qr_menu, menu);
         return true;
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -533,9 +565,9 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         if (mSmileyDialog == null) {
             int[] icons = SmileyParser.DEFAULT_SMILEY_RES_IDS;
             String[] names = getResources().getStringArray(
-                    SmileyParser.DEFAULT_SMILEY_NAMES);
+                SmileyParser.DEFAULT_SMILEY_NAMES);
             final String[] texts = getResources().getStringArray(
-                    SmileyParser.DEFAULT_SMILEY_TEXTS);
+                SmileyParser.DEFAULT_SMILEY_TEXTS);
 
             final int N = names.length;
 
@@ -550,7 +582,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                         break;
                     }
                 }
-                if (!added) {
+                if (! added) {
                     HashMap<String, Object> entry = new HashMap<String, Object>();
 
                     entry.put("icon", icons[i]);
@@ -562,15 +594,15 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             }
 
             final SimpleAdapter a = new SimpleAdapter(
-                    this,
-                    entries,
-                    R.layout.smiley_menu_item,
-                    new String[] {
-                            "icon", "name", "text"
-                    },
-                    new int[] {
-                            R.id.smiley_icon, R.id.smiley_name, R.id.smiley_text
-                    });
+                this,
+                entries,
+                R.layout.smiley_menu_item,
+                new String[] {
+                    "icon", "name", "text"
+                },
+                new int[] {
+                    R.id.smiley_icon, R.id.smiley_name, R.id.smiley_text
+                });
             SimpleAdapter.ViewBinder viewBinder = new SimpleAdapter.ViewBinder() {
                 @Override
                 public boolean setViewValue(View view, Object data, String textRepresentation) {
@@ -625,7 +657,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     // We use the new unified Unicode 6.1 emoji code points
                     CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
-                            EmojiParser.mEmojiTexts[position]);
+                        EmojiParser.mEmojiTexts[position]);
                     editText.append(emoji);
                 }
             });
@@ -633,10 +665,10 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             gridView.setOnItemLongClickListener(new OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-                        long id) {
+                                               long id) {
                     // We use the new unified Unicode 6.1 emoji code points
                     CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
-                            EmojiParser.mEmojiTexts[position]);
+                        EmojiParser.mEmojiTexts[position]);
                     textBox.append(emoji);
 
                     mEmojiDialog.dismiss();
