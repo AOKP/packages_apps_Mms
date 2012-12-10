@@ -23,6 +23,7 @@ import com.android.mms.util.EmojiParser;
 import com.android.mms.util.SmileyParser;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,14 +41,12 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.DialogInterface.OnDismissListener;
-import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -61,7 +60,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -101,6 +99,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     private KeyguardManager.KeyguardLock kl;
     private boolean typing;
     private boolean wasLocked = false;
+    private long timestamp;
     private boolean fromMulti = false;
     private boolean screenIsOff;
 
@@ -132,7 +131,6 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
         LayoutInflater inflater = LayoutInflater.from(this);
         final View mView = inflater.inflate(R.layout.quick_reply_sms, null);
-        alert = new AlertDialog.Builder(this).setView(mView).create();
 
         Bundle extras = getIntent().getExtras();
         avatar = (Bitmap) extras.get("avatar");
@@ -143,6 +141,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         messageId = extras.getLong("msgId");
         threadId = extras.getLong("threadId");
         messageType = extras.getInt("count");
+        timestamp = extras.getLong("timestamp");
         fromMulti = extras.getBoolean("from");
         nameContact = (TextView) mView.findViewById(R.id.contact_name);
         nameContact.setText(contactName);
@@ -155,6 +154,23 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         contactIcon = (ImageView) mView.findViewById(R.id.contact_avatar);
         icon = null;
         icon = getConactAvatar(avatar);
+
+        // check if we can bail before setting up listeners
+        // user clicked delete thread
+        if (extras.getBoolean("needs_deleted")) {
+            setRead();
+            deleteMessage();
+            finish();
+        }
+
+        // user clicked mark read
+        if (extras.getBoolean("needs_marked_read")) {
+            setRead();
+            finish();
+        }
+
+        alert = new AlertDialog.Builder(this).setView(mView).create();
+
         if (icon != null) {
             contactIcon.setBackgroundDrawable(icon);
         } else {
@@ -217,7 +233,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            textBoxCounter.setText(String.valueOf(s.length()));
+            textBoxCounter.setText(String.valueOf(160 - s.length()) + "/160");
             if (s.length() > 160) {
                 textBoxCounter.setTextColor(Color.RED);
             } else if (s.length() > 100) {
@@ -234,7 +250,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     /**
      * Use smiley parser and emoji parser to show emotes in text body this
      * method is modified from the MessageListItem.java
-     * 
+     *
      * @param: body of text from an SMS in String format
      * @return: formatted text to use smiley emotes & emoji
      */
@@ -260,7 +276,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     /**
      * Use smiley parser and emoji parser to show emotes in text body this
      * method is modified from the MessageListItem.java
-     * 
+     *
      * @param: body of text from an SMS in CharSequence format
      * @return: formatted text to use smiley emotes & emoji
      */
@@ -345,11 +361,18 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         nm.cancel(NOTIFICATION_ID);
     }
 
+    public int deleteMessage() {
+        return getContentResolver().delete(Uri.parse("content://sms"),
+            "person=? and date=?",
+            new String[] { contactName, String.valueOf(timestamp) });
+    }
+
     private void addMessageToSent(String messageSent) {
         ContentValues sentSms = new ContentValues();
         sentSms.put("address", phoneNumber);
         sentSms.put("body", messageSent);
         getContentResolver().insert(Uri.parse("content://sms/sent"), sentSms);
+
     }
 
     @Override
@@ -438,7 +461,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 icon = null;
                 icon = getConactAvatar(avatar);
                 if (icon != null) {
-                    contactIcon.setBackgroundDrawable(icon);
+                    contactIcon.setBackground(icon);
                 } else {
                     contactIcon.setBackgroundResource(R.drawable.ic_contact_picture);
                 }
@@ -466,11 +489,11 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
     /**
      * Make our own option menu since we have no action bar
-     * 
+     *
      * @param view
      */
-    public void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
+    public void showPopup(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.qr_menu);
         popup.show();
@@ -486,6 +509,10 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 setRead();
                 finish();
                 return true;
+            case R.id.qr_menu_delete:
+                setRead();
+                deleteMessage();
+                finish();
             case R.id.qr_menu_smiley:
                 showSmileyDialog();
                 return true;
@@ -496,14 +523,14 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 return false;
         }
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.qr_menu, menu);
         return true;
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -514,6 +541,9 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 setRead();
                 finish();
                 return true;
+            case R.id.qr_menu_delete:
+                deleteMessage();
+                finish();
             case R.id.qr_menu_smiley:
                 showSmileyDialog();
                 return true;

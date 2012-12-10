@@ -17,17 +17,6 @@
 
 package com.android.mms.transaction;
 
-import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
-import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -49,6 +38,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
 import android.text.Spannable;
@@ -59,7 +49,6 @@ import android.text.style.StyleSpan;
 import android.text.style.TextAppearanceSpan;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.android.mms.LogTag;
 import com.android.mms.R;
 import com.android.mms.data.Contact;
@@ -81,6 +70,18 @@ import com.google.android.mms.pdu.MultimediaMessagePdu;
 import com.google.android.mms.pdu.PduHeaders;
 import com.google.android.mms.pdu.PduPersister;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
+import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
+
 /**
  * This class is used to update the notification indicator. It will check
  * whether there are unread messages. If yes, it would show the notification
@@ -90,7 +91,7 @@ public class MessagingNotification {
 
     private static final String TAG = LogTag.APP;
 
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
 
     private static final int NOTIFICATION_ID = 123;
     public static final int MESSAGE_FAILED_NOTIFICATION_ID = 789;
@@ -207,7 +208,7 @@ public class MessagingNotification {
      * play the notification sound at a lower volume. Make sure you set this to
      * THREAD_NONE when the UI component that shows the thread is no longer
      * visible to the user (e.g. Activity.onPause(), etc.)
-     * 
+     *
      * @param threadId The ID of the thread that the user is currently viewing.
      *            Pass THREAD_NONE if the user is not viewing a thread, or
      *            THREAD_ALL if the user is viewing the conversation list (note:
@@ -226,7 +227,7 @@ public class MessagingNotification {
      * Checks to see if there are any "unseen" messages or delivery reports.
      * Shows the most recent notification if there is one. Does its work and
      * query in a worker thread.
-     * 
+     *
      * @param context the context to use
      */
     public static void nonBlockingUpdateNewMessageIndicator(final Context context,
@@ -248,7 +249,7 @@ public class MessagingNotification {
     /**
      * Checks to see if there are any "unseen" messages or delivery reports and
      * builds a sorted (by delivery date) list of unread notifications.
-     * 
+     *
      * @param context the context to use
      * @param newMsgThreadId The thread ID of a new message that we're to notify
      *            about; if there's no new message, use THREAD_NONE. If we
@@ -826,7 +827,7 @@ public class MessagingNotification {
     /**
      * updateNotification is *the* main function for building the actual
      * notification handed to the NotificationManager
-     * 
+     *
      * @param context
      * @param isNew if we've got a new message, show the ticker
      * @param uniqueThreadCount
@@ -986,6 +987,7 @@ public class MessagingNotification {
             quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
             quickReply.putExtra("threadId", mostRecentNotification.mThreadId);
             quickReply.putExtra("count", uniqueThreadCount);
+            quickReply.putExtra("timestamp", mostRecentNotification.getTime());
             quickReply.putExtra("from", false);
 
             // get the messageId so we can mark as read
@@ -1032,9 +1034,32 @@ public class MessagingNotification {
         }
 
         if (mostRecentNotification.mIsSms) {
+            // check if user wants custom actions
+            boolean selections[] = new boolean[4];
+            String userSelection;
+            userSelection = Settings.System.getString(
+                context.getContentResolver(),
+                Settings.System.QUICK_REPLY_BUTTONS);
+            // respect user's wishes
+            if (userSelection != null) {
+                int monkeySpanker = 0;
+                for (String flag : userSelection.split("\\|")) {
+                    selections[monkeySpanker++] = Boolean.parseBoolean(flag);
+                }
+            } else {
+                // default { true, true, false, false }
+                selections = new boolean[] { true, true, false, false };
+            }
+
+            if (DEBUG)
+                Log.v(TAG, Arrays.toString(selections));
+            String dbgOut = "adding QuickReply action: ";
+
             // first add the call back option
-            if ((messageCount == 1 || uniqueThreadCount == 1)
+            if ((messageCount == 1 || uniqueThreadCount == 1) && selections[0]
                     && MessagingPreferenceActivity.getQRCallButtonEnabled(context)) {
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + context.getText(R.string.quick_call_back));
                 CharSequence callBack = context.getText(R.string.quick_call_back);
                 Intent call = new Intent(Intent.ACTION_CALL);
                 call.setData(mostRecentNotification.mSender.getPhoneUri());
@@ -1043,11 +1068,33 @@ public class MessagingNotification {
                 noti.addAction(R.drawable.ic_menu_call, callBack, piCall);
             }
             // second add the quick reply action
-            if (quickReply != null) {
+            if (quickReply != null && selections[1]) {
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + context.getText(R.string.quick_reply_sms));
                 CharSequence quickText = context.getText(R.string.quick_reply_sms);
                 PendingIntent piText = PendingIntent.getActivity(context, 0, quickReply,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 noti.addAction(R.drawable.ic_menu_msg_compose_holo_dark, quickText, piText);
+            }
+            // third add delete thread
+            if (quickReply != null && selections[2]) {
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + context.getText(R.string.quick_reply_delete));
+                CharSequence deleteText = context.getText(R.string.quick_reply_delete);
+                quickReply.putExtra("needs_deleted", true);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, quickReply,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+                noti.addAction(R.drawable.ic_menu_delete_played, deleteText, pendingIntent);
+            }
+            // fourth add mark read and close
+            if (quickReply != null && selections[3]) {
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + context.getText(R.string.quick_reply_mark_read));
+                CharSequence readText = context.getText(R.string.quick_reply_mark_read);
+                quickReply.putExtra("needs_marked_read", true);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context,
+                    0, quickReply, PendingIntent.FLAG_UPDATE_CURRENT);
+                noti.addAction(R.drawable.widget_conversation_read_selector, readText, pendingIntent);
             }
         }
 
@@ -1056,10 +1103,8 @@ public class MessagingNotification {
 
             // This sets the text for the collapsed form:
             noti.setContentText(mostRecentNotification.formatBigMessage(context));
-
             if (mostRecentNotification.mAttachmentBitmap != null) {
                 // The message has a picture, show that
-
                 notification = new Notification.BigPictureStyle(noti)
                         .bigPicture(mostRecentNotification.mAttachmentBitmap)
                         // This sets the text for the expanded picture form:
@@ -1095,7 +1140,6 @@ public class MessagingNotification {
                         buf.append('\n');
                     }
                 }
-
                 noti.setContentText(context.getString(R.string.message_count_notification,
                         messageCount));
 
@@ -1180,7 +1224,6 @@ public class MessagingNotification {
         SpannableString spanText = new SpannableString(buf.toString());
         spanText.setSpan(new StyleSpan(Typeface.BOLD), 0, offset,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         return spanText;
     }
 
@@ -1268,11 +1311,8 @@ public class MessagingNotification {
             failedIntent = new Intent(context, ConversationList.class);
         }
         taskStackBuilder.addNextIntent(failedIntent);
-
         notification.icon = R.drawable.stat_notify_sms_failed;
-
         notification.tickerText = title;
-
         notification.setLatestEventInfo(context, title, description,
                 taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT));
 
@@ -1291,7 +1331,6 @@ public class MessagingNotification {
 
         NotificationManager notificationMgr = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
-
         if (isDownload) {
             notificationMgr.notify(DOWNLOAD_FAILED_NOTIFICATION_ID, notification);
         } else {
@@ -1302,7 +1341,7 @@ public class MessagingNotification {
     /**
      * Query the DB and return the number of undelivered messages (total for
      * both SMS and MMS)
-     * 
+     *
      * @param context The context
      * @param threadIdResult A container to put the result in, according to the
      *            following rules: threadIdResult[0] contains the thread id of
@@ -1410,7 +1449,7 @@ public class MessagingNotification {
 
     /**
      * Get the message ID of the SMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The message id
@@ -1434,7 +1473,7 @@ public class MessagingNotification {
 
     /**
      * Get the thread ID of the SMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The thread ID, or THREAD_NONE if the URI contains no entries
@@ -1478,7 +1517,7 @@ public class MessagingNotification {
 
     /**
      * Get the thread ID of the MMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The thread ID, or THREAD_NONE if the URI contains no entries

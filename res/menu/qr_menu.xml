@@ -5,6 +5,9 @@
         android:id="@+id/qr_menu_close"
         android:title="@string/qr_close_popup"/>
     <item
+        android:id="@+id/qr_menu_delete"
+        android:title="@string/menu_delete"/>
+    <item
         android:id="@+id/qr_menu_read"
         android:title="@string/qr_mark_read"/>
     <item
