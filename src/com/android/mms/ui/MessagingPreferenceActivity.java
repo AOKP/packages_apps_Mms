@@ -37,12 +37,14 @@ import android.provider.SearchRecentSuggestions;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.Toast;
 import com.android.mms.MmsApp;
 import com.android.mms.MmsConfig;
 import com.android.mms.R;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.Recycler;
+
+import static android.preference.Preference.OnPreferenceClickListener;
 
 /**
  * With this activity, users can set preferences for MMS and SMS and
@@ -69,6 +71,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
     public static final String DISPLAY_FULLDATE         = "pref_key_display_fulldate";
     public static final String DISPLAY_QR_CALLBUTTON    = "pref_key_display_quickreply_callbutton";
+    public static final String DISPLAY_QR_SMS_REPLY     = "pref_key_display_quickreply_sms_reply";
+    public static final String DISPLAY_QR_DELETE        = "pref_key_display_quickreply_delete";
+    public static final String DISPLAY_QR_MARK_READ     = "pref_key_display_quickreply_mark_read";
 
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     public static final String ENABLE_QUICK_EMOJIS      = "pref_key_emojis_quick";
@@ -94,6 +99,13 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private CharSequence[] mVibrateEntries;
     private CharSequence[] mVibrateValues;
 
+    // QuickReply options
+    private PreferenceCategory mQuickReplyCat;
+    private CheckBoxPreference mQrCallBack;
+    private CheckBoxPreference mQrSmsReply;
+    private CheckBoxPreference mQrDelete;
+    private CheckBoxPreference mQrMarkRead;
+
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -114,6 +126,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         registerListeners();
     }
 
+    @SuppressWarnings("deprecation")
     private void loadPrefs() {
         addPreferencesFromResource(R.xml.preferences);
 
@@ -129,12 +142,25 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mEnableNotificationsPref = (CheckBoxPreference) findPreference(NOTIFICATION_ENABLED);
         mMmsAutoRetrievialPref = (CheckBoxPreference) findPreference(AUTO_RETRIEVAL);
         mVibrateWhenPref = (ListPreference) findPreference(NOTIFICATION_VIBRATE_WHEN);
+        mQuickReplyCat = (PreferenceCategory) findPreference("category_quick_reply");
+        mQrCallBack = (CheckBoxPreference) findPreference(DISPLAY_QR_CALLBUTTON);
+        mQrSmsReply = (CheckBoxPreference) findPreference(DISPLAY_QR_SMS_REPLY);
+        mQrDelete = (CheckBoxPreference) findPreference(DISPLAY_QR_DELETE);
+        mQrMarkRead = (CheckBoxPreference) findPreference(DISPLAY_QR_MARK_READ);
 
         mVibrateEntries = getResources().getTextArray(R.array.prefEntries_vibrateWhen);
         mVibrateValues = getResources().getTextArray(R.array.prefValues_vibrateWhen);
 
         setMessagePreferences();
     }
+
+    private OnPreferenceClickListener quickRepliesClickAction = new OnPreferenceClickListener() {
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+            quickReplyAction(getApplicationContext(), (CheckBoxPreference) preference);
+            return true;
+        }
+    };
 
     private void restoreDefaultPreferences() {
         PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply();
@@ -219,6 +245,31 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         setMmsDisplayLimit();
 
         adjustVibrateSummary(mVibrateWhenPref.getValue());
+
+        // set a listener to avoid adding more than 3 actions
+        mQrCallBack.setOnPreferenceClickListener(quickRepliesClickAction);
+        mQrSmsReply.setOnPreferenceClickListener(quickRepliesClickAction);
+        mQrDelete.setOnPreferenceClickListener(quickRepliesClickAction);
+        mQrMarkRead.setOnPreferenceClickListener(quickRepliesClickAction);
+    }
+
+    private void quickReplyAction(Context context, CheckBoxPreference cbPreference) {
+        if (getQuickReplyOptionsCount() > 3) {
+            cbPreference.setChecked(!cbPreference.isChecked());
+            Toast.makeText(context,
+                           R.string.only_three_please,
+                           Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private int getQuickReplyOptionsCount() {
+        int count = 0;
+        for (int i = 0; (mQuickReplyCat.getPreferenceCount() ) > i; i++) {
+            if (((CheckBoxPreference) mQuickReplyCat.getPreference(i)).isChecked()) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private void setEnabledNotificationsPref() {
@@ -405,10 +456,55 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         return fullDateEnabled;
     }
 
+    /**
+     * checks if user has a preference to show QuickReply:Call Back
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
     public static boolean getQRCallButtonEnabled(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean qrCallButtonEnabled =
             prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_CALLBUTTON, true);
+        return qrCallButtonEnabled;
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Sms Reply
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRSmsReplyButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qrCallButtonEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_SMS_REPLY, true);
+        return qrCallButtonEnabled;
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Delete
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRDeleteButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qrCallButtonEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_DELETE, false);
+        return qrCallButtonEnabled;
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Mark Read
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRMarkReadButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean qrCallButtonEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_MARK_READ, false);
         return qrCallButtonEnabled;
     }
 }

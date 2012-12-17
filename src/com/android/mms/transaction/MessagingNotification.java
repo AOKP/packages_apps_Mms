@@ -17,17 +17,6 @@
 
 package com.android.mms.transaction;
 
-import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
-import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -49,6 +38,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
 import android.text.Spannable;
@@ -59,7 +49,6 @@ import android.text.style.StyleSpan;
 import android.text.style.TextAppearanceSpan;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.android.mms.LogTag;
 import com.android.mms.R;
 import com.android.mms.data.Contact;
@@ -71,6 +60,7 @@ import com.android.mms.ui.ComposeMessageActivity;
 import com.android.mms.ui.ConversationList;
 import com.android.mms.ui.MessageUtils;
 import com.android.mms.ui.MessagingPreferenceActivity;
+import com.android.mms.ui.QuickReplyMulti;
 import com.android.mms.util.AddressUtils;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.widget.MmsWidgetProvider;
@@ -80,6 +70,19 @@ import com.google.android.mms.pdu.GenericPdu;
 import com.google.android.mms.pdu.MultimediaMessagePdu;
 import com.google.android.mms.pdu.PduHeaders;
 import com.google.android.mms.pdu.PduPersister;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
+import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
 
 /**
  * This class is used to update the notification indicator. It will check
@@ -207,7 +210,7 @@ public class MessagingNotification {
      * play the notification sound at a lower volume. Make sure you set this to
      * THREAD_NONE when the UI component that shows the thread is no longer
      * visible to the user (e.g. Activity.onPause(), etc.)
-     * 
+     *
      * @param threadId The ID of the thread that the user is currently viewing.
      *            Pass THREAD_NONE if the user is not viewing a thread, or
      *            THREAD_ALL if the user is viewing the conversation list (note:
@@ -226,7 +229,7 @@ public class MessagingNotification {
      * Checks to see if there are any "unseen" messages or delivery reports.
      * Shows the most recent notification if there is one. Does its work and
      * query in a worker thread.
-     * 
+     *
      * @param context the context to use
      */
     public static void nonBlockingUpdateNewMessageIndicator(final Context context,
@@ -248,7 +251,7 @@ public class MessagingNotification {
     /**
      * Checks to see if there are any "unseen" messages or delivery reports and
      * builds a sorted (by delivery date) list of unread notifications.
-     * 
+     *
      * @param context the context to use
      * @param newMsgThreadId The thread ID of a new message that we're to notify
      *            about; if there's no new message, use THREAD_NONE. If we
@@ -826,7 +829,7 @@ public class MessagingNotification {
     /**
      * updateNotification is *the* main function for building the actual
      * notification handed to the NotificationManager
-     * 
+     *
      * @param context
      * @param isNew if we've got a new message, show the ticker
      * @param uniqueThreadCount
@@ -976,78 +979,114 @@ public class MessagingNotification {
         // TODO: add MMS support later
         Intent quickReply = null;
         if ((messageCount == 1 || uniqueThreadCount == 1) && mostRecentNotification.mIsSms) {
-            quickReply = new Intent();
-            quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            quickReply.setClass(context, com.android.mms.ui.QuickReply.class);
-            quickReply.putExtra("number", mostRecentNotification.mSender.getNumber());
-            quickReply.putExtra("name", mostRecentNotification.mSender.getName());
-            quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
-            quickReply.putExtra("threadId", mostRecentNotification.mThreadId);
-            quickReply.putExtra("count", uniqueThreadCount);
-            quickReply.putExtra("from", false);
-
-            // get the messageId so we can mark as read
-            Long messageId = null;
-            messageId = getSmsMessageId(context, SMS_INBOX_URI);
-            if (messageId != null) {
-                quickReply.putExtra("msgId", messageId);
-            }
-
-            // get the contact avatar
-            BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
-                    .getAvatar(context, null);
-            Bitmap contactPic = null;
-            if (contactDrawable != null) {
-                contactPic = contactDrawable.getBitmap();
-                if (contactPic != null) {
-                    quickReply.putExtra("avatar", contactPic);
-                }
-            }
-
-            // grab all texts from same person to build into one string
-            if (uniqueThreadCount == 1) {
-                SpannableStringBuilder buf = new SpannableStringBuilder();
-                NotificationInfo infos[] =
-                        notificationSet.toArray(new NotificationInfo[messageCount]);
-                int len = infos.length;
-                for (int i = len - 1; i >= 0; i--) {
-                    NotificationInfo info = infos[i];
-
-                    buf.append(info.formatBigMessage(context));
-
-                    if (i != 0) {
-                        buf.append('\n');
-                    }
-                }
-                quickReply.putExtra("bodies", buf);
-            }
+            // make our main intent
+            quickReply = getReplyIntent(context, mostRecentNotification, uniqueThreadCount,
+                notificationSet, messageCount);
         } else if (messageCount != 1 && uniqueThreadCount != 1 && mostRecentNotification.mIsSms) {
             quickReply = new Intent();
             quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_SINGLE_TOP
                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            quickReply.setClass(context, com.android.mms.ui.QuickReplyMulti.class);
+            quickReply.setClass(context, QuickReplyMulti.class);
         }
 
         if (mostRecentNotification.mIsSms) {
+            String dbgOut = "adding QuickReply action: ";
+            // intents
+            Intent textReply = new Intent(quickReply);
+            Intent deleteSms = new Intent(quickReply);
+            Intent markSmsRead = new Intent(quickReply);
+
+            // user preferences
+            boolean wantCallBack = MessagingPreferenceActivity.getQRCallButtonEnabled(context);
+            boolean wantSmsReply = MessagingPreferenceActivity.getQRSmsReplyButtonEnabled(context);
+            boolean wantDelete = MessagingPreferenceActivity.getQRDeleteButtonEnabled(context);
+            boolean wantMarkReply = MessagingPreferenceActivity.getQRMarkReadButtonEnabled(context);
+
+            // determines the if we use normal or short button messages
+            int actionsCount = 0;
+            if (wantCallBack) actionsCount++;
+            if (wantSmsReply) actionsCount++;
+            if (wantDelete) actionsCount++;
+            if (wantMarkReply) actionsCount++;
+            boolean useShortText = actionsCount >= 3;
+
             // first add the call back option
-            if ((messageCount == 1 || uniqueThreadCount == 1)
-                    && MessagingPreferenceActivity.getQRCallButtonEnabled(context)) {
-                CharSequence callBack = context.getText(R.string.quick_call_back);
+            if ((messageCount == 1 || uniqueThreadCount == 1) && wantCallBack) {
+                CharSequence callBack;
+                if (!useShortText)
+                    callBack = context.getText(R.string.quick_call_back);
+                else
+                    callBack = context.getText(R.string.quick_call_back_short);
+
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + callBack);
+
                 Intent call = new Intent(Intent.ACTION_CALL);
                 call.setData(mostRecentNotification.mSender.getPhoneUri());
-                PendingIntent piCall = PendingIntent.getActivity(context, 0, call,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-                noti.addAction(R.drawable.ic_menu_call, callBack, piCall);
+                noti.addAction(R.drawable.ic_menu_call,
+                    callBack,
+                    PendingIntent.getActivity(context,
+                        new Random().nextInt(), // required to prevent cache from taking over
+                        call,
+                        PendingIntent.FLAG_UPDATE_CURRENT));
             }
+
             // second add the quick reply action
-            if (quickReply != null) {
-                CharSequence quickText = context.getText(R.string.quick_reply_sms);
-                PendingIntent piText = PendingIntent.getActivity(context, 0, quickReply,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-                noti.addAction(R.drawable.ic_menu_msg_compose_holo_dark, quickText, piText);
+            if (quickReply != null && wantSmsReply) {
+                CharSequence quickText;
+                if (!useShortText)
+                    quickText = context.getText(R.string.quick_reply_sms);
+                else
+                    quickText = context.getText(R.string.quick_reply_sms_short);
+
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + quickText);
+
+                noti.addAction(R.drawable.ic_menu_msg_compose_holo_dark,
+                    quickText,
+                    PendingIntent.getActivity(context,
+                        new Random().nextInt(), // required to prevent cache from taking over
+                        textReply,
+                        PendingIntent.FLAG_UPDATE_CURRENT));
+            }
+
+            // third add delete thread
+            if (deleteSms != null && wantDelete) {
+                CharSequence deleteText;
+                if (!useShortText)
+                    deleteText = context.getText(R.string.quick_reply_delete);
+                else
+                    deleteText = context.getText(R.string.quick_reply_delete_short);
+
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + deleteText);
+
+                noti.addAction(R.drawable.emoji_nortab_delete,
+                    deleteText,
+                    PendingIntent.getActivity(context,
+                        new Random().nextInt(), // required to prevent cache from taking over
+                        deleteSms.putExtra("needsDeleted", true),
+                        PendingIntent.FLAG_UPDATE_CURRENT));
+            }
+
+            // fourth add mark read and close
+            if (markSmsRead != null && wantMarkReply) {
+                CharSequence readText;
+                if (!useShortText)
+                    readText = context.getText(R.string.quick_reply_mark_read);
+                else
+                    readText = context.getText(R.string.quick_reply_mark_read_short);
+
+                if (DEBUG)
+                    Log.v(TAG, dbgOut + readText);
+
+                noti.addAction(R.drawable.emoji_nortab_thing,
+                    readText,
+                    PendingIntent.getActivity(context,
+                        new Random().nextInt(), // required to prevent cache from taking over
+                        markSmsRead.putExtra("makeAndClose", true),
+                        PendingIntent.FLAG_UPDATE_CURRENT));
             }
         }
 
@@ -1151,8 +1190,62 @@ public class MessagingNotification {
                 }
             }
         }
-
         nm.notify(NOTIFICATION_ID, notification);
+    }
+
+    private static Intent getReplyIntent(Context context,
+                                         NotificationInfo mostRecentNotification,
+                                         int uniqueThreadCount,
+                                         SortedSet<NotificationInfo> notificationSet,
+                                         int messageCount) {
+        Intent intent_ = new Intent();
+        intent_.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+            | Intent.FLAG_ACTIVITY_SINGLE_TOP
+            | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent_.setClass(context, com.android.mms.ui.QuickReply.class);
+        intent_.putExtra("number", mostRecentNotification.mSender.getNumber());
+        intent_.putExtra("name", mostRecentNotification.mSender.getName());
+        intent_.putExtra("body", mostRecentNotification.mMessage.toString());
+        intent_.putExtra("threadId", mostRecentNotification.mThreadId);
+        intent_.putExtra("count", uniqueThreadCount);
+        intent_.putExtra("from", false);
+
+        // get the messageId so we can mark as read
+        Long messageId = null;
+        messageId = getSmsMessageId(context, SMS_INBOX_URI);
+        if (messageId != null) {
+            intent_.putExtra("msgId", messageId);
+        }
+
+        // get the contact avatar
+        BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
+            .getAvatar(context, null);
+        Bitmap contactPic = null;
+        if (contactDrawable != null) {
+            contactPic = contactDrawable.getBitmap();
+            if (contactPic != null) {
+                intent_.putExtra("avatar", contactPic);
+            }
+        }
+
+        // grab all texts from same person to build into one string
+        if (uniqueThreadCount == 1) {
+            SpannableStringBuilder buf = new SpannableStringBuilder();
+            NotificationInfo infos[] =
+                notificationSet.toArray(new NotificationInfo[messageCount]);
+            int len = infos.length;
+            for (int i = len - 1; i >= 0; i--) {
+                NotificationInfo info = infos[i];
+
+                buf.append(info.formatBigMessage(context));
+
+                if (i != 0) {
+                    buf.append('\n');
+                }
+            }
+            intent_.putExtra("bodies", buf);
+        }
+        return intent_;
     }
 
     protected static CharSequence buildTickerMessage(
@@ -1302,7 +1395,7 @@ public class MessagingNotification {
     /**
      * Query the DB and return the number of undelivered messages (total for
      * both SMS and MMS)
-     * 
+     *
      * @param context The context
      * @param threadIdResult A container to put the result in, according to the
      *            following rules: threadIdResult[0] contains the thread id of
@@ -1410,7 +1503,7 @@ public class MessagingNotification {
 
     /**
      * Get the message ID of the SMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The message id
@@ -1434,7 +1527,7 @@ public class MessagingNotification {
 
     /**
      * Get the thread ID of the SMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The thread ID, or THREAD_NONE if the URI contains no entries
@@ -1478,7 +1571,7 @@ public class MessagingNotification {
 
     /**
      * Get the thread ID of the MMS message with the given URI
-     * 
+     *
      * @param context The context
      * @param uri The URI of the SMS message
      * @return The thread ID, or THREAD_NONE if the URI contains no entries
