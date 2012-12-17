@@ -51,7 +51,7 @@
             android:layout_weight="1.0"
             android:autoText="true"
             android:capitalize="sentences"
-            android:hint="Type message"
+            android:hint="@string/quick_reply_hint"
             android:inputType="textShortMessage|textAutoCorrect|textCapSentences|textMultiLine"
             android:minHeight="@dimen/input_text_height"
             android:textAppearance="?android:attr/textAppearanceSmall" />

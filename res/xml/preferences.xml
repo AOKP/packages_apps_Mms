@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 /*
  * Copyright (C) 2007-2008 Esmertec AG.
  * Copyright (C) 2007-2008 The Android Open Source Project
@@ -18,107 +17,172 @@
  */
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <PreferenceCategory android:title="@string/pref_sms_storage_title"
-                      android:key="pref_key_storage_settings">
-<!--
-    <Preference android:key="pref_key_mms_clear_history"
-                      android:title="@string/pref_mms_clear_search_history_title"
-                      android:summary="@string/pref_mms_clear_search_history_summary" />
--->
-     <CheckBoxPreference android:defaultValue="false"
-                      android:key="pref_key_auto_delete"
-                      android:summary="@string/pref_summary_auto_delete"
-                      android:title="@string/pref_title_auto_delete" />
-    <Preference android:key="pref_key_sms_delete_limit"
-                      android:dependency="pref_key_auto_delete"
-                      android:persistent="false"
-                      android:summary="@string/pref_summary_delete_limit"
-                      android:title="@string/pref_title_sms_delete" />
-    <Preference android:key="pref_key_mms_delete_limit"
-                      android:dependency="pref_key_auto_delete"
-                      android:persistent="false"
-                      android:summary="@string/pref_summary_delete_limit"
-                      android:title="@string/pref_title_mms_delete" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/pref_sms_settings_title"
-                      android:key="pref_key_sms_settings" >
-    <CheckBoxPreference android:defaultValue="false"
-                      android:key="pref_key_sms_delivery_reports"
-                      android:summary="@string/pref_summary_sms_delivery_reports"
-                      android:title="@string/pref_title_sms_delivery_reports" />
-    <CheckBoxPreference android:defaultValue="false"
-                      android:key="pref_key_sms_split_counter"
-                      android:summary="@string/pref_summary_sms_split_counter"
-                      android:title="@string/pref_title_sms_split_counter" />
-    <Preference android:key="pref_key_manage_sim_messages"
-                      android:summary="@string/pref_summary_manage_sim_messages"
-                      android:title="@string/pref_title_manage_sim_messages" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/pref_mms_settings_title"
-                      android:key="pref_key_mms_settings">
-    <CheckBoxPreference android:defaultValue="true"
-                      android:key="pref_key_mms_group_mms"
-                      android:summary="@string/pref_summary_mms_group_mms"
-                      android:title="@string/pref_title_mms_group_mms" />
-    <CheckBoxPreference android:defaultValue="false"
-                      android:key="pref_key_mms_delivery_reports"
-                      android:summary="@string/pref_summary_mms_delivery_reports"
-                      android:title="@string/pref_title_mms_delivery_reports" />
-    <CheckBoxPreference android:defaultValue="false"
-                      android:key="pref_key_mms_read_reports"
-                      android:summary="@string/pref_summary_mms_read_reports"
-                      android:title="@string/pref_title_mms_read_reports" />
-    <CheckBoxPreference android:defaultValue="true"
-                      android:key="pref_key_mms_auto_retrieval"
-                      android:title="@string/pref_title_mms_auto_retrieval"
-                      android:summary="@string/pref_summary_mms_auto_retrieval" />
-    <CheckBoxPreference android:layout="?android:attr/preferenceLayoutChild"
-                        android:dependency="pref_key_mms_auto_retrieval"
-                        android:defaultValue="false"
-                        android:key="pref_key_mms_retrieval_during_roaming"
-                        android:title="@string/pref_title_mms_retrieval_during_roaming"
-                        android:summary="@string/pref_summary_mms_retrieval_during_roaming" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/pref_notification_settings_title">
-    <CheckBoxPreference android:key="pref_key_enable_notifications"
-                        android:title="@string/pref_title_notification_enabled"
-                        android:summary="@string/pref_summary_notification_enabled"
-                        android:defaultValue="true" />
-    <RingtonePreference android:layout="?android:attr/preferenceLayoutChild"
-                        android:dependency="pref_key_enable_notifications"
-                        android:key="pref_key_ringtone"
-                        android:title="@string/pref_title_notification_ringtone"
-                        android:ringtoneType="notification"
-                        android:defaultValue="content://settings/system/notification_sound" />
-    <ListPreference     android:layout="?android:attr/preferenceLayoutChild"
-                        android:dependency="pref_key_enable_notifications"
-                        android:key="pref_key_vibrateWhen"
-                        android:defaultValue="@string/prefDefault_vibrateWhen"
-                        android:title="@string/pref_title_notification_vibrateWhen"
-                        android:summary="@string/pref_summary_notification_vibrateWhen"
-                        android:entries="@array/prefEntries_vibrateWhen"
-                        android:entryValues="@array/prefValues_vibrateWhen"
-                        android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
-    <CheckBoxPreference android:defaultValue="true"
-                        android:key="pref_key_display_quickreply_callbutton"
-                        android:summary="@string/pref_summary_quickreply_callbutton"
-                        android:title="@string/pref_title_quickreply_callbutton"
-                        android:dependency="pref_key_enable_notifications" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/pref_display_title"
-                      android:key="pref_key_display_settings">
-    <CheckBoxPreference android:defaultValue="false"
-                        android:key="pref_key_display_fulldate"
-                        android:summary="@string/pref_summary_fulldate"
-                        android:title="@string/pref_title_fulldate" />
-    <CheckBoxPreference android:key="pref_key_enable_emojis"
-                        android:title="@string/pref_title_enable_emojis"
-                        android:summary="@string/pref_summary_enable_emojis"
-                        android:defaultValue="false" />
-    <CheckBoxPreference android:key="pref_key_emojis_quick"
-                        android:title="@string/pref_title_pref_key_emojis_quick"
-                        android:summary="@string/pref_summary_pref_key_emojis_quick"
-                        android:dependency="pref_key_enable_emojis"
-                        android:defaultValue="false" />
+    <PreferenceCategory
+        android:title="@string/pref_sms_storage_title"
+        android:key="pref_key_storage_settings">
+
+        <!--
+            <Preference android:key="pref_key_mms_clear_history"
+                              android:title="@string/pref_mms_clear_search_history_title"
+                              android:summary="@string/pref_mms_clear_search_history_summary" />
+        -->
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_auto_delete"
+            android:summary="@string/pref_summary_auto_delete"
+            android:title="@string/pref_title_auto_delete" />
+
+        <Preference
+            android:key="pref_key_sms_delete_limit"
+            android:dependency="pref_key_auto_delete"
+            android:persistent="false"
+            android:summary="@string/pref_summary_delete_limit"
+            android:title="@string/pref_title_sms_delete" />
+
+        <Preference
+            android:key="pref_key_mms_delete_limit"
+            android:dependency="pref_key_auto_delete"
+            android:persistent="false"
+            android:summary="@string/pref_summary_delete_limit"
+            android:title="@string/pref_title_mms_delete" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_sms_settings_title"
+        android:key="pref_key_sms_settings">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_sms_delivery_reports"
+            android:summary="@string/pref_summary_sms_delivery_reports"
+            android:title="@string/pref_title_sms_delivery_reports" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_sms_split_counter"
+            android:summary="@string/pref_summary_sms_split_counter"
+            android:title="@string/pref_title_sms_split_counter" />
+
+        <Preference
+            android:key="pref_key_manage_sim_messages"
+            android:summary="@string/pref_summary_manage_sim_messages"
+            android:title="@string/pref_title_manage_sim_messages" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_mms_settings_title"
+        android:key="pref_key_mms_settings">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_mms_group_mms"
+            android:summary="@string/pref_summary_mms_group_mms"
+            android:title="@string/pref_title_mms_group_mms" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_mms_delivery_reports"
+            android:summary="@string/pref_summary_mms_delivery_reports"
+            android:title="@string/pref_title_mms_delivery_reports" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_mms_read_reports"
+            android:summary="@string/pref_summary_mms_read_reports"
+            android:title="@string/pref_title_mms_read_reports" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_mms_auto_retrieval"
+            android:title="@string/pref_title_mms_auto_retrieval"
+            android:summary="@string/pref_summary_mms_auto_retrieval" />
+
+        <CheckBoxPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_mms_auto_retrieval"
+            android:defaultValue="false"
+            android:key="pref_key_mms_retrieval_during_roaming"
+            android:title="@string/pref_title_mms_retrieval_during_roaming"
+            android:summary="@string/pref_summary_mms_retrieval_during_roaming" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_notification_settings_title">
+        <CheckBoxPreference
+            android:key="pref_key_enable_notifications"
+            android:title="@string/pref_title_notification_enabled"
+            android:summary="@string/pref_summary_notification_enabled"
+            android:defaultValue="true" />
+
+        <RingtonePreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_enable_notifications"
+            android:key="pref_key_ringtone"
+            android:title="@string/pref_title_notification_ringtone"
+            android:ringtoneType="notification"
+            android:defaultValue="content://settings/system/notification_sound" />
+
+        <ListPreference
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_enable_notifications"
+            android:key="pref_key_vibrateWhen"
+            android:defaultValue="@string/prefDefault_vibrateWhen"
+            android:title="@string/pref_title_notification_vibrateWhen"
+            android:summary="@string/pref_summary_notification_vibrateWhen"
+            android:entries="@array/prefEntries_vibrateWhen"
+            android:entryValues="@array/prefValues_vibrateWhen"
+            android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_display_quickreply_callbutton"
+            android:summary="@string/pref_summary_quickreply_callbutton"
+            android:title="@string/pref_title_quickreply_callbutton"
+            android:dependency="pref_key_enable_notifications" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_display_quickreply_sms_reply"
+            android:summary="@string/pref_summary_quickreply_sms_reply"
+            android:title="@string/pref_title_quickreply_sms_reply"
+            android:dependency="pref_key_enable_notifications" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_display_quickreply_delete"
+            android:summary="@string/pref_summary_quickreply_delete"
+            android:title="@string/pref_title_quickreply_delete"
+            android:dependency="pref_key_enable_notifications" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_display_quickreply_mark_read"
+            android:summary="@string/pref_summary_quickreply_mark_read"
+            android:title="@string/pref_title_quickreply_mark_read"
+            android:dependency="pref_key_enable_notifications" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_display_title"
+        android:key="pref_key_display_settings">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_display_fulldate"
+            android:summary="@string/pref_summary_fulldate"
+            android:title="@string/pref_title_fulldate" />
+
+        <CheckBoxPreference
+            android:key="pref_key_enable_emojis"
+            android:title="@string/pref_title_enable_emojis"
+            android:summary="@string/pref_summary_enable_emojis"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_emojis_quick"
+            android:title="@string/pref_title_pref_key_emojis_quick"
+            android:summary="@string/pref_summary_pref_key_emojis_quick"
+            android:dependency="pref_key_enable_emojis"
+            android:defaultValue="false" />
     </PreferenceCategory>
 </PreferenceScreen>

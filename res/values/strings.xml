@@ -375,12 +375,19 @@
     <string name="pref_messages_to_save">Set number of messages to save</string>
     <!-- Settings item for boolean option to show the full datetime -->
     <string name="pref_title_fulldate">Show full date</string>
-    <!-- Settings item description for boolean full datetime setting -->
     <string name="pref_summary_fulldate">Show the full date for messages</string>
     <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
     <string name="pref_title_quickreply_callbutton">Show call back button</string>
-    <!-- Settings item description for boolean full datetime setting -->
     <string name="pref_summary_quickreply_callbutton">Show the call back button in the quick reply notification</string>
+    <!-- Settings item for boolean option to show the sms reply button in the quick reply notification -->
+    <string name="pref_title_quickreply_sms_reply">Show sms reply button</string>
+    <string name="pref_summary_quickreply_sms_reply">Show the sms reply button in the quick reply notification</string>
+    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
+    <string name="pref_title_quickreply_delete">Show delete button</string>
+    <string name="pref_summary_quickreply_delete">Show the delete message button in the quick reply notification</string>
+    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
+    <string name="pref_title_quickreply_mark_read">Show mark read button</string>
+    <string name="pref_summary_quickreply_mark_read">Show the mark as read button in the quick reply notification</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
@@ -885,7 +892,13 @@
 
     <!-- Quick Reply -->
     <string name="quick_call_back">Call Back</string>
+    <string name="quick_call_back_short">Call</string>
     <string name="quick_reply_sms">Quick Reply</string>
+    <string name="quick_reply_sms_short">Reply</string>
+    <string name="quick_reply_delete">Delete Sms</string>
+    <string name="quick_reply_delete_short">Delete</string>
+    <string name="quick_reply_mark_read">Mark as Read</string>
+    <string name="quick_reply_mark_read_short">Read</string>
     <string name="quick_reply_sending">Quick reply sent to</string>
     <string name="qr_alert_title">Nothing Has Been Sent</string>
     <string name="qr_alert_message">Did you want to cancel this message?</string>
@@ -897,5 +910,6 @@
     <string name="qr_pick_emoji">Insert Emoji</string>
     <string name="qr_close_popup">Close</string>
     <string name="qr_multi_ask">Who do you want to reply to?</string>
+    <string name="quick_reply_hint">Type Message</string>
 
 </resources>
