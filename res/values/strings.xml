@@ -373,6 +373,33 @@
     <string name="pref_messages_to_save">Set number of messages to save</string>
     <!-- Settings screen, what to display for Ringtone when the user chooses "silent" [CHAR LIMIT=100]-->
     <string name="silent_ringtone">Silent</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_fulldate">Show full date</string>
+    <string name="pref_summary_fulldate">Show the full date for messages</string>
+    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
+    <string name="pref_title_quickreply_callbutton">Show call back button</string>
+    <string name="pref_summary_quickreply_callbutton">Show the call back button in the quick reply notification</string>
+    <!-- Settings item for boolean option to show the sms reply button in the quick reply notification -->
+    <string name="pref_title_quickreply_sms_reply">Show sms reply button</string>
+    <string name="pref_summary_quickreply_sms_reply">Show the sms reply button in the quick reply notification</string>
+    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
+    <string name="pref_title_quickreply_delete">Show delete button</string>
+    <string name="pref_summary_quickreply_delete">Show the delete message button in the quick reply notification</string>
+    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
+    <string name="pref_title_quickreply_mark_read">Show mark read button</string>
+    <string name="pref_summary_quickreply_mark_read">Show the mark as read button in the quick reply notification</string>
+
+    <!-- The vibrate notification modes -->
+    <string-array name="prefEntries_vibrateWhen">
+
+        <!-- Always -->
+        <item>Always</item>
+        <!-- Only when the phone is in Silent mode -->
+        <item>Only when silent</item>
+        <!-- Never -->
+        <item>Never</item>
+    </string-array>
+
 
     <!-- The value to use when migrating from old versions for a true vibrate setting -->
     <string translatable="false" name="prefDefault_vibrate_true">always</string>
@@ -792,9 +819,9 @@
 
     <!-- In message list items, this string builds the timestamp line when the message is in a group [CHAR LIMIT=NONE] -->
     <string name="message_timestamp_format"><xliff:g id="string" example="Fred Flinstone">%1$s</xliff:g>\u0020-\u0020<xliff:g id="string" example="9:39AM">%2$s</xliff:g></string>
-
     <string name="storage_warning_title">"Your phone's storage is full"</string>
     <string name="storage_warning_content">"You won't receive new SMS/MMS messages"</string>
+    
     <!--  Strings used forh MMS push of messages in outbox -->
     <string name="label_mms_send_outbox_msg">MMS Wakeup</string>
     <string name="desc_mms_send_outbox_msg">Sends out all MMSs from the outbox to the network</string>
@@ -803,5 +830,43 @@
     <string name="banner_sms_promo_title_initial">Messaging is not your SMS app</string>
     <string name="banner_sms_promo_title_application"><xliff:g id="appName">%s</xliff:g> is your SMS app</string>
     <string name="banner_sms_promo_message">You can change this in Settings</string>
+
+   <!-- Settings item for boolean option for SMS Split Counter -->
+   <string name="pref_title_sms_split_counter">Split counter</string>
+   <!-- Settings item description for boolean SMS Split 160 characters setting -->
+   <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Extra settings</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji support</string>
+    <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
+    <string name="pref_title_pref_key_emojis_quick">Quick emojis button</string>
+    <string name="pref_summary_pref_key_emojis_quick">Shows a button to the left of text input-area for quick access</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Call Back</string>
+    <string name="quick_call_back_short">Call</string>
+    <string name="quick_reply_sms">Quick Reply</string>
+    <string name="quick_reply_sms_short">Reply</string>
+    <string name="quick_reply_delete">Delete Sms</string>
+    <string name="quick_reply_delete_short">Delete</string>
+    <string name="quick_reply_mark_read">Mark as Read</string>
+    <string name="quick_reply_mark_read_short">Read</string>
+    <string name="quick_reply_sending">Quick reply sent to</string>
+    <string name="qr_alert_title">Nothing Has Been Sent</string>
+    <string name="qr_alert_message">Did you want to cancel this message?</string>
+    <string name="qr_alert_yes">Yes</string>
+    <string name="qr_alert_no">No</string>
+    <string name="qr_alert_read">Mark Read</string>
+    <string name="qr_mark_read">Mark Read &amp; Close</string>
+    <string name="qr_pick_smiley">Insert Smiley</string>
+    <string name="qr_pick_emoji">Insert Emoji</string>
+    <string name="qr_close_popup">Close</string>
+    <string name="qr_multi_ask">Who do you want to reply to?</string>
+    <string name="quick_reply_hint">Type Message</string>
+    <string name="only_three_please">Only select three options at once</string>
+    <string name="pref_title_quick_reply">Quick Reply</string>
 
 </resources>
