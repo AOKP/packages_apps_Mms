@@ -891,6 +891,7 @@
     <string name="qr_alert_message">Did you want to cancel this message?</string>
     <string name="qr_alert_yes">Yes</string>
     <string name="qr_alert_no">No</string>
+    <string name="quick_reply_delete">Delete</string>
     <string name="qr_alert_read">Mark Read</string>
     <string name="qr_mark_read">Mark Read &amp; Close</string>
     <string name="qr_pick_smiley">Insert Smiley</string>
