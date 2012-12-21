@@ -153,7 +153,8 @@ public class ImageModel extends RegionMediaModel {
     }
 
     private Bitmap createBitmap(int thumbnailBoundsLimit, Uri uri) {
-        byte[] data = UriImage.getResizedImageData(mWidth, mHeight,
+        UriImage image = new UriImage(mContext, uri);
+        byte[] data = image.getResizedImageData(mWidth, mHeight, image.getOrientation(),
                 thumbnailBoundsLimit, thumbnailBoundsLimit, PICTURE_SIZE_LIMIT, uri, mContext);
         if (LOCAL_LOGV) {
             Log.v(TAG, "createBitmap size: " + (data == null ? data : data.length));
@@ -211,7 +212,7 @@ public class ImageModel extends RegionMediaModel {
         // MediaModel.initMediaSize. Sometimes it'll compute zero and it's costly to read the
         // whole stream to compute the size. When we call getResizedImageAsPart(), we'll correctly
         // set the size.
-        if (size != 0 && size <= byteLimit &&
+        if (size != 0 && size <= byteLimit && image.getOrientation() == 0 &&
                 image.getWidth() <= widthLimit &&
                 image.getHeight() <= heightLimit &&
                 SUPPORTED_MMS_IMAGE_CONTENT_TYPES.contains(image.getContentType())) {

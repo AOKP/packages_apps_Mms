@@ -29,6 +29,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.util.Log;
@@ -308,6 +309,8 @@ public class ThumbnailManager extends BackgroundLoaderManager {
 
             UriImage uriImage = new UriImage(mContext, mUri);
             String path = uriImage.getPath();
+            int orientation = uriImage.getOrientation();
+            Log.w(TAG, "Orientation requested for thumbnail = " + orientation);
 
             if (path == null) {
                 return null;
@@ -331,6 +334,11 @@ public class ThumbnailManager extends BackgroundLoaderManager {
                 if (bitmap == null) {
                     Log.w(TAG, "decode cached failed " + path);
                 }
+                if (orientation != 0) {
+                    Matrix m = new Matrix();
+                    UriImage.endowTransformMatrix(m, 1, orientation);
+                    bitmap = Bitmap.createBitmap(bitmap,0, 0, bitmap.getWidth(), bitmap.getHeight(), m, false);
+                }
                 return bitmap;
             } else {
                 Bitmap bitmap;
@@ -344,7 +352,7 @@ public class ThumbnailManager extends BackgroundLoaderManager {
                     return null;
                 }
 
-                bitmap = resizeDownBySideLength(bitmap, THUMBNAIL_TARGET_SIZE, true);
+                bitmap = resizeDownBySideLength(bitmap, THUMBNAIL_TARGET_SIZE, orientation, true);
 
                 if (!isTempFile) {
                     byte[] array = compressBitmap(bitmap);
@@ -387,27 +395,30 @@ public class ThumbnailManager extends BackgroundLoaderManager {
                     BitmapFactory.decodeByteArray(bytes, offset, length, options));
         }
 
+        // @param orientation: After resizing also rotate
         private Bitmap resizeDownBySideLength(
-                Bitmap bitmap, int maxLength, boolean recycle) {
+                Bitmap bitmap, int maxLength, int orientation, boolean recycle) {
             int srcWidth = bitmap.getWidth();
             int srcHeight = bitmap.getHeight();
             float scale = Math.min(
                     (float) maxLength / srcWidth, (float) maxLength / srcHeight);
             if (scale >= 1.0f) return bitmap;
-            return resizeBitmapByScale(bitmap, scale, recycle);
+
+            Log.w(TAG, "resizeDownBySideLength, orientation = " + orientation);
+            return resizeBitmapByScale(bitmap, scale, orientation, recycle);
         }
 
+        // @param orientation: After resizing also rotate
         private Bitmap resizeBitmapByScale(
-                Bitmap bitmap, float scale, boolean recycle) {
+                Bitmap bitmap, float scale, int orientation, boolean recycle) {
+            Matrix m = new Matrix();
+            UriImage.endowTransformMatrix(m,scale,orientation);
             int width = Math.round(bitmap.getWidth() * scale);
             int height = Math.round(bitmap.getHeight() * scale);
             if (width == bitmap.getWidth()
-                    && height == bitmap.getHeight()) return bitmap;
-            Bitmap target = Bitmap.createBitmap(width, height, getConfig(bitmap));
-            Canvas canvas = new Canvas(target);
-            canvas.scale(scale, scale);
-            Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
-            canvas.drawBitmap(bitmap, 0, 0, paint);
+                    && height == bitmap.getHeight() && orientation ==0) return bitmap;
+            Log.w(TAG, "resizeBitmapByScale, orientation = " + orientation + " scale = " + scale);
+            Bitmap target = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),m,false);
             if (recycle) bitmap.recycle();
             return target;
         }
@@ -514,7 +525,7 @@ public class ThumbnailManager extends BackgroundLoaderManager {
             float scale = Math.max(
                     (float) targetSize / srcWidth, (float) targetSize / srcHeight);
             if (scale > 0.5f) return bitmap;
-            return resizeBitmapByScale(bitmap, scale, recycle);
+            return resizeBitmapByScale(bitmap, scale, 0, recycle);
         }
 
     }
