@@ -156,6 +156,7 @@
     <string name="pref_mms_settings_title" msgid="55618772118264355">"彩信 (MMS)"</string>
     <string name="pref_sms_settings_title" msgid="5173078369851066881">"短信 (SMS)"</string>
     <string name="pref_sms_storage_title" msgid="9001233319190616445">"存储"</string>
+    <string name="pref_display_title">显示</string>
     <string name="pref_summary_manage_sim_messages" msgid="4141349892597640864">"管理 SIM 卡中存储的信息"</string>
     <string name="pref_summary_mms_delivery_reports" msgid="4874657984217756112">"要求每次发送信息后都返回发送报告"</string>
     <string name="pref_summary_mms_read_reports" msgid="2748323864008907440">"要求每次发送信息后都返回已读回执"</string>
@@ -177,6 +178,16 @@
     <string name="pref_summary_notification_vibrateWhen" msgid="669655090822561447">"收到通知时还振动提醒"</string>
     <string name="pref_title_notification_ringtone" msgid="5467265237106229952">"选择铃声"</string>
     <string name="pref_messages_to_save" msgid="3202539743892934926">"设置要保存的信息数量"</string>
+    <string name="pref_title_fulldate">显示完整日期</string>
+    <string name="pref_summary_fulldate">在信息后显示完整的日期</string>
+    <string name="pref_title_quickreply_callbutton">显示回拨按钮</string>
+    <string name="pref_summary_quickreply_callbutton">在信息通知栏显示回拨按钮</string>
+    <string name="pref_title_quickreply_sms_reply">显示快捷回复按钮</string>
+    <string name="pref_summary_quickreply_sms_reply">在信息通知栏显示快捷回复按钮</string>
+    <string name="pref_title_quickreply_delete">显示删除按钮</string>
+    <string name="pref_summary_quickreply_delete">在信息通知栏显示删除按钮</string>
+    <string name="pref_title_quickreply_mark_read">显示标记已读按钮</string>
+    <string name="pref_summary_quickreply_mark_read">在信息通知栏显示标记已读按钮</string>
   <string-array name="prefEntries_vibrateWhen">
     <item msgid="2520871831815631409">"始终"</item>
     <item msgid="6069709696037750627">"仅在静音时"</item>
@@ -290,6 +301,7 @@
     <string name="saved_ringtone_fail" msgid="4778500070919251116">"无法保存铃声。"</string>
     <string name="menu_insert_smiley" msgid="4964504393061025071">"插入表情符号"</string>
     <string name="menu_group_participants" msgid="4288356090262299071">"群组参与者"</string>
+    <string name="menu_insert_emoji">插入 emoji 表情</string>
     <string name="select_link_title" msgid="3371818607625768447">"选择操作"</string>
     <string name="slide_number" msgid="1923958526266726635">"幻灯片 <xliff:g id="NUMBER">%s</xliff:g>"</string>
   <plurals name="slide_duration">
@@ -349,4 +361,40 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">"、 "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> - <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
+
+	<string name="pref_title_sms_split_counter">分割序号</string>
+	<string name="pref_summary_sms_split_counter">显示分割后的短信序号，例： (1/2)</string>
+
+	<!-- Extra Settings: -->
+	<string name="pref_extra_settings">其它设置</string>
+
+	<!-- Enable emojis -->
+	<string name="pref_title_enable_emojis">启用 emoji 表情</string>
+	<string name="pref_summary_enable_emojis">启用支持日本软银的emoji表情(unicode)，共 471 个</string>
+	<string name="pref_title_pref_key_emojis_quick">快捷 emoji 表情按钮</string>
+	<string name="pref_summary_pref_key_emojis_quick">在信息文本输入框左边显示快捷按钮</string>
+
+	<!-- Quick Reply -->
+	<string name="quick_call_back">回拨电话</string>
+	<string name="quick_call_back_short">回拨</string>
+	<string name="quick_reply_sms">快捷回复</string>
+	<string name="quick_reply_sms_short">回复</string>
+    <string name="quick_reply_delete">删除信息</string>
+    <string name="quick_reply_delete_short">删除</string>
+    <string name="quick_reply_mark_read">标记已读</string>
+    <string name="quick_reply_mark_read_short">已读</string>
+	<string name="quick_reply_sending">发送快捷回复到</string>
+	<string name="qr_alert_title">未发送任何内容</string>
+	<string name="qr_alert_message">你确定要取消这条信息？</string>
+	<string name="qr_alert_yes">是</string>
+	<string name="qr_alert_no">否</string>
+	<string name="qr_alert_read">标记已读</string>
+	<string name="qr_mark_read">标记已读 &amp; 关闭</string>
+	<string name="qr_pick_smiley">插入表情</string>
+	<string name="qr_pick_emoji">插入 emoji 表情</string>
+	<string name="qr_close_popup">关闭</string>
+	<string name="qr_multi_ask">你想回复给谁？</string>
+	<string name="quick_reply_hint">键入信息</string>
+    <string name="only_three_please">一次只能选择三项</string>
+    <string name="pref_title_quick_reply">快捷回复</string>
 </resources>
