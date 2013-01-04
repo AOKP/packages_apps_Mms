@@ -366,8 +366,6 @@
     <string name="pref_summary_quickreply_mark_read">Viser en marker som læst knap i hurtigsvar vinduet</string>
 
     <!-- Menu item  [CHAR LIMIT=40] -->
-    <string name="menu_group_participants">Gruppe deltagere</string>
-
     <string name="menu_insert_emoji">Indsæt emojis</string>
 
    <!-- Settings item for boolean option for SMS Split Counter -->
