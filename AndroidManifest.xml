@@ -190,6 +190,10 @@
             android:label="@string/edit_slideshow_activity"
             android:theme="@style/MmsHoloTheme" />
         <activity
+            android:name=".ui.RecipientListActivity"
+            android:theme="@style/MmsHoloTheme"
+            android:label="@string/recipient_list_activity" />
+        <activity
             android:name=".ui.SlideEditorActivity"
             android:label="@string/edit_slide_activity"
             android:theme="@style/MmsHoloTheme"
