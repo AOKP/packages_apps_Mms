@@ -349,4 +349,61 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> – <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
+
+    <string name="pref_title_fulldate">Vis fuld dato</string>
+    <string name="pref_summary_fulldate">Viser den fulde dato for beskeder</string>
+    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
+    <string name="pref_title_quickreply_callbutton">Vis ring tilbage knap</string>
+    <string name="pref_summary_quickreply_callbutton">Viser en ring tilbage knap i hurtigsvar vinduet</string>
+    <!-- Settings item for boolean option to show the sms reply button in the quick reply notification -->
+    <string name="pref_title_quickreply_sms_reply">Vis sms svar knap</string>
+    <string name="pref_summary_quickreply_sms_reply">Viser en sms svar knap i hurtigsvar vinduet</string>
+    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
+    <string name="pref_title_quickreply_delete">Vis slet knap</string>
+    <string name="pref_summary_quickreply_delete">Viser en slet knap i hurtigsvar vinduet</string>
+    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
+    <string name="pref_title_quickreply_mark_read">Vis marker som læst</string>
+    <string name="pref_summary_quickreply_mark_read">Viser en marker som læst knap i hurtigsvar vinduet</string>
+
+    <!-- Menu item  [CHAR LIMIT=40] -->
+    <string name="menu_insert_emoji">Indsæt emojis</string>
+
+   <!-- Settings item for boolean option for SMS Split Counter -->
+   <string name="pref_title_sms_split_counter">Split tæller</string>
+   <!-- Settings item description for boolean SMS Split 160 characters setting -->
+   <string name="pref_summary_sms_split_counter">Tilføjer tæller til besked, f.eks. (1/2)</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Ekstra indstillinger</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji understøttelse</string>
+    <string name="pref_summary_enable_emojis">Enable understøttelse for unicode emojis, et sæt med 471 fede emoticons</string>
+    <string name="pref_title_pref_key_emojis_quick">Hurtig emojis knap</string>
+    <string name="pref_summary_pref_key_emojis_quick">Viser en knap til venstre for tekstfeltet for hurtig adgang</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Ring tilbage</string>
+    <string name="quick_call_back_short">Ring op</string>
+    <string name="quick_reply_sms">Hurtigsvar</string>
+    <string name="quick_reply_sms_short">Svar</string>
+    <string name="quick_reply_delete">Slet Sms</string>
+    <string name="quick_reply_delete_short">Slet</string>
+    <string name="quick_reply_mark_read">Marker som læst</string>
+    <string name="quick_reply_mark_read_short">Læst</string>
+    <string name="quick_reply_sending">Hurtigsvar sendt til</string>
+    <string name="qr_alert_title">Intet blev sendt</string>
+    <string name="qr_alert_message">Ville du annullere denne besked?</string>
+    <string name="qr_alert_yes">Ja</string>
+    <string name="qr_alert_no">Nej</string>
+    <string name="qr_alert_read">Marker som læst</string>
+    <string name="qr_mark_read">Marker som læst &amp; luk</string>
+    <string name="qr_pick_smiley">Indsæt Smiley</string>
+    <string name="qr_pick_emoji">Indsæt Emoji</string>
+    <string name="qr_close_popup">Luk</string>
+    <string name="qr_multi_ask">Hvem vil du svare?</string>
+    <string name="quick_reply_hint">Skriv besked</string>
+    <string name="only_three_please">Vælg kun 3 ting af gangen</string>
+    <string name="pref_title_quick_reply">Hurtigsvar</string>
+
 </resources>
