@@ -35,6 +35,8 @@ import android.provider.Telephony.Mms.Part;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 
 import com.android.mms.LogTag;
 import com.android.mms.model.ImageModel;
@@ -50,9 +52,11 @@ public class UriImage {
     private final Uri mUri;
     private String mContentType;
     private String mPath;
+    private String mPathUrl;
     private String mSrc;
     private int mWidth;
     private int mHeight;
+    private int mOrientation;
 
     public UriImage(Context context, Uri uri) {
         if ((null == context) || (null == uri)) {
@@ -166,6 +170,36 @@ public class UriImage {
                 }
             }
             mPath = filePath;
+
+            String pathUrl;
+            try {
+                pathUrl = c.getString(c.getColumnIndexOrThrow(Images.Media.DATA));
+                if (pathUrl != null) {
+                    Log.e(TAG, "pathUrl = " + pathUrl);
+                    mPathUrl = pathUrl;
+                }
+            } catch (IllegalArgumentException e) {
+                mPathUrl = null;
+            }
+
+            if(mPathUrl != null) {
+                try {
+                    ExifInterface exif = new ExifInterface(mPathUrl);
+                    String orientation = exif.getAttribute(ExifInterface.TAG_ORIENTATION);
+                    if (orientation.equals(ExifInterface.ORIENTATION_NORMAL)) {
+                        mOrientation = 0;
+                     } else if (orientation.equals(ExifInterface.ORIENTATION_ROTATE_90+"")) {
+                        mOrientation = 90;
+                     } else if (orientation.equals(ExifInterface.ORIENTATION_ROTATE_180+"")) {
+                        mOrientation = 180;
+                     } else if (orientation.equals(ExifInterface.ORIENTATION_ROTATE_270+"")) {
+                        mOrientation = 270;
+                     }
+                } catch (IOException ex) {
+                    Log.e(TAG, "cannot read exif", ex);
+                    mOrientation = 0;
+                }
+            } else mOrientation = 0;
             if (mSrc == null) {
                 buildSrcFromPath();
             }
@@ -212,12 +246,20 @@ public class UriImage {
         return mPath;
     }
 
+    public String getUrl() {
+        return mPathUrl;
+    }
+
     public int getWidth() {
         return mWidth;
     }
 
     public int getHeight() {
         return mHeight;
+    }
+
+    public int getOrientation() {
+        return mOrientation;
     }
 
     /**
@@ -233,7 +275,7 @@ public class UriImage {
     public PduPart getResizedImageAsPart(int widthLimit, int heightLimit, int byteLimit) {
         PduPart part = new PduPart();
 
-        byte[] data =  getResizedImageData(mWidth, mHeight,
+        byte[] data =  getResizedImageData(mWidth, mHeight, mOrientation,
                 widthLimit, heightLimit, byteLimit, mUri, mContext);
         if (data == null) {
             if (LOCAL_LOGV) {
@@ -252,14 +294,15 @@ public class UriImage {
     private static final int NUMBER_OF_RESIZE_ATTEMPTS = 4;
 
     /**
-     * Resize and recompress the image such that it fits the given limits. The resulting byte
+     * Resize/rotate and recompress the image such that it fits the given limits. The resulting byte
      * array contains an image in JPEG format, regardless of the original image's content type.
+     * @param orientation Image orientation
      * @param widthLimit The width limit, in pixels
      * @param heightLimit The height limit, in pixels
      * @param byteLimit The binary size limit, in bytes
      * @return A resized/recompressed version of this image, in JPEG format
      */
-    public static byte[] getResizedImageData(int width, int height,
+    public static byte[] getResizedImageData(int width, int height, int orientation,
             int widthLimit, int heightLimit, int byteLimit, Uri uri, Context context) {
         int outWidth = width;
         int outHeight = height;
@@ -329,20 +372,18 @@ public class UriImage {
             // and file-size limits.
             do {
                 try {
-                    if (options.outWidth > widthLimit || options.outHeight > heightLimit ||
+                    if (orientation != 0 || options.outWidth > widthLimit || options.outHeight > heightLimit ||
                             (os != null && os.size() > byteLimit)) {
-                        // The decoder does not support the inSampleSize option.
-                        // Scale the bitmap using Bitmap library.
-                        int scaledWidth = (int)(outWidth * scaleFactor);
-                        int scaledHeight = (int)(outHeight * scaleFactor);
+                        Matrix TransformMatrix = new Matrix();
+                        endowTransformMatrix(TransformMatrix, scaleFactor, orientation);
 
                         if (Log.isLoggable(LogTag.APP, Log.VERBOSE)) {
                             Log.v(TAG, "getResizedImageData: retry scaling using " +
-                                    "Bitmap.createScaledBitmap: w=" + scaledWidth +
-                                    ", h=" + scaledHeight);
+                                    "Bitmap.createBitmap: orientation=" + orientation +
+                                    ", scaleFactor=" + scaleFactor);
                         }
 
-                        b = Bitmap.createScaledBitmap(b, scaledWidth, scaledHeight, false);
+                        b = Bitmap.createBitmap(b,0,0,b.getWidth(),b.getHeight(),TransformMatrix,false);
                         if (b == null) {
                             if (Log.isLoggable(LogTag.APP, Log.VERBOSE)) {
                                 Log.v(TAG, "Bitmap.createScaledBitmap returned NULL!");
@@ -401,5 +442,23 @@ public class UriImage {
             Log.e(TAG, e.getMessage(), e);
             return null;
         }
+    }
+
+    public static void endowTransformMatrix(Matrix m, float scaleFactor, int orientation) {
+        m.postScale(scaleFactor, scaleFactor);
+        switch (orientation) {
+            case 90:
+                m.postRotate(90);
+                break;
+            case 180:
+                m.postRotate(180);
+                break;
+            case 270:
+                m.postRotate(270);
+                break;
+             default:
+                m.postRotate(0);
+        }
+
     }
 }
