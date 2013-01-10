@@ -358,7 +358,14 @@
     <string name="pref_summary_pref_key_emojis_quick">Zobrazit tlačítko vlevo od vstupního pole pro rychlý přístup</string>
     <string name="menu_insert_emoji">Vložit emojík</string>
     <string name="quick_call_back">Zavolat zpět</string>
+    <string name="quick_call_back_short">Zavolat</string>
     <string name="quick_reply_sms">Rychlá odpověď</string>
+    <string name="quick_reply_sms_short">Odpověď</string>
+    <string name="quick_reply_delete">Smazat SMS</string>
+    <string name="quick_reply_delete_short">Smazat</string>
+    <string name="quick_reply_mark_read">Jako přečtené</string>
+    <string name="quick_reply_mark_read_short">Přečtené</string>
+    <string name="quick_reply_hint">Psát zprávu</string>
     <string name="quick_reply_sending">Rychlá odpověď odeslána</string>
     <string name="qr_alert_title">Nic nebylo odesláno</string>
     <string name="qr_alert_message">Opravdu zrušit tuto zprávu?</string>
@@ -370,8 +377,16 @@
     <string name="qr_pick_emoji">Vložit emojík</string>
     <string name="qr_close_popup">Zavřít</string>
     <string name="qr_multi_ask">Na čí zprávu odpovědět?</string>
+    <string name="only_three_please">Najednou mohou být zvolené nejvýše 3 možnosti</string>
+    <string name="pref_title_quick_reply">Rychlá odpověď</string>
     <string name="pref_title_quickreply_callbutton">Zobrazit tlačítko Zavolat zpět</string>
     <string name="pref_summary_quickreply_callbutton">Zobrazit tlačítko Zavolat zpět v notifikaci zprávy</string>
+    <string name="pref_title_quickreply_sms_reply">Zobrazit tlačítko Rychlá odpověď</string>
+    <string name="pref_summary_quickreply_sms_reply">Zobrazit tlačítko Rychlá odpověď v notifikaci zprávy</string>
+    <string name="pref_title_quickreply_delete">Zobrazit tlačítko Smazat</string>
+    <string name="pref_summary_quickreply_delete">Zobrazit tlačítko Smazat v notifikaci zprávy</string>
+    <string name="pref_title_quickreply_mark_read">Zobrazit tlačítko Jako přečtené</string>
+    <string name="pref_summary_quickreply_mark_read">Zobrazit tlačítko Jako přečtené v notifikaci zprávy</string>
     <string name="pref_title_fulldate">Zobrazit celé datum</string>
     <string name="pref_summary_fulldate">Zobrazit u zpráv celé datum</string>
 </resources>
