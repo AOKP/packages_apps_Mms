@@ -349,4 +349,49 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> – <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
+    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
+    <string name="pref_title_quickreply_callbutton">Mutassa a visszahívás gombot</string>
+    <string name="pref_title_quickreply_sms_reply">Mutassa a válasz sms gombot</string>
+    <string name="pref_summary_quickreply_sms_reply">Válasz sms gomb mutatása a gyors válasz értesítőben</string>
+    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
+    <string name="pref_title_quickreply_delete">Mutassa a törlés gombot</string>
+    <string name="pref_summary_quickreply_delete">Törlés gomb mutatása a gyors válasz értesítőben</string>
+    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
+    <string name="pref_title_quickreply_mark_read">Mutassa az olvasottnak jelölés gombot</string>
+    <string name="pref_summary_quickreply_mark_read">Olvasottnak jelölés gomb mutatása a gyors válasz értesítőben</string>
+    <!-- Settings item description for boolean full datetime setting -->
+    <string name="pref_summary_quickreply_callbutton">Mutassa a visszahívás gombot a gyors válasz értesítésnél</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_fulldate">Teljes dátum mutatása</string>
+    <!-- Settings item description for boolean full datetime setting -->
+    <string name="pref_summary_fulldate">Teljes dátum mutatása az üzeneteknél</string>
+    <!-- Settings screen, section heading for display-specific settings -->
+    <string name="pref_display_title">Kijelző</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoció támogatás</string>
+    <string name="pref_summary_enable_emojis">Unicode emóciós támogatás, 471 szép emociós készletből.</string>
+    <string name="pref_title_pref_key_emojis_quick">Gyors emociós gomb</string>
+    <string name="pref_summary_pref_key_emojis_quick">A szöveg bal oldalán mutatja a gyors elérésű gombot</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Visszahívás</string>
+    <string name="quick_reply_sms">Gyors válasz</string>
+    <string name="quick_reply_sending">Gyors választ küldött</string>
+    <string name="qr_alert_title">Semmi sem lett elküldve</string>
+    <string name="qr_alert_message">Valóban törölni szeretné az üzenetet?</string>
+    <string name="qr_alert_yes">Igen</string>
+    <string name="qr_alert_no">Nem</string>
+    <string name="qr_alert_read">Olvasotnak jelölve</string>
+    <string name="qr_mark_read">Olvasotnak jelölve &amp; Bezár</string>
+    <string name="qr_pick_smiley">Szmájli beszúrás</string>
+    <string name="qr_pick_emoji">Emoji beszúrás</string>
+    <string name="qr_close_popup">Bezár</string>
+    <string name="qr_multi_ask">Kinek akarsz válaszolni?</string>
+    <string name="quick_reply_hint">Üzenet írás</string>
+    <string name="only_three_please">Csak 3 opciót válasz egyszerre</string>
+    <string name="pref_title_quick_reply">Gyors válasz</string>
+
+
+
 </resources>
