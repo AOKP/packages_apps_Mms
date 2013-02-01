@@ -34,6 +34,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
+import android.media.VibrationPattern;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -875,6 +876,7 @@ public class MessagingNotification {
         final Resources res = context.getResources();
         String title = null;
         Bitmap avatar = null;
+        long[] customVibration = null;
         if (uniqueThreadCount > 1) { // messages from multiple threads
             Intent mainActivityIntent = new Intent(Intent.ACTION_MAIN);
 
@@ -910,6 +912,9 @@ public class MessagingNotification {
                     }
                 }
             }
+
+            //check for custom vibration pattern
+            customVibration = getVibrationPattern(context, mostRecentNotification.mSender.getCustomVibrationUriString());
 
             taskStackBuilder.addParentStack(ComposeMessageActivity.class);
             taskStackBuilder.addNextIntent(mostRecentNotification.mClickIntent);
@@ -952,7 +957,12 @@ public class MessagingNotification {
                 vibrate = "always".equals(vibrateWhen);
             }
             if (vibrate) {
-                defaults |= Notification.DEFAULT_VIBRATE;
+                if (customVibration == null) {
+                    defaults |= Notification.DEFAULT_VIBRATE;
+                }
+                else {
+                    noti.setVibrate(customVibration);
+                }
             }
 
             String ringtoneStr = sp.getString(MessagingPreferenceActivity.NOTIFICATION_RINGTONE,
@@ -1607,6 +1617,17 @@ public class MessagingNotification {
             }
         } finally {
             cursor.close();
+        }
+    }
+
+    private static long[] getVibrationPattern(Context context, String mCustomVibrationUriString) {
+        if (TextUtils.isEmpty(mCustomVibrationUriString)) {
+            return null;
+        }
+        else {
+            Uri mCustomVibrationUri = Uri.parse(mCustomVibrationUriString);
+            VibrationPattern mVibrationPattern = new VibrationPattern(mCustomVibrationUri, context);
+            return mVibrationPattern.getPattern();
         }
     }
 }
