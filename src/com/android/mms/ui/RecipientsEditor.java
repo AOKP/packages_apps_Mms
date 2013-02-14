@@ -274,23 +274,25 @@ public class RecipientsEditor extends RecipientEditTextView {
             for (Contact c : list) {
                 // Calling setText to set the recipients won't create chips,
                 // but calling append() will.
-                append(contactToToken(c) + ", ");
+                append(contactToToken(c) + ",");
             }
         }
     }
 
     private int pointToPosition(int x, int y) {
+        // Check layout before getExtendedPaddingTop().
+        // mLayout is used in getExtendedPaddingTop().
+        Layout layout = getLayout();
+        if (layout == null) {
+            return -1;
+        }
+
         x -= getCompoundPaddingLeft();
         y -= getExtendedPaddingTop();
 
 
         x += getScrollX();
         y += getScrollY();
-
-        Layout layout = getLayout();
-        if (layout == null) {
-            return -1;
-        }
 
         int line = layout.getLineForVertical(y);
         int off = layout.getOffsetForHorizontal(line, x);

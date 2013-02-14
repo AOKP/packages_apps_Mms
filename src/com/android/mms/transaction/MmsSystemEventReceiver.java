@@ -64,13 +64,17 @@ public class MmsSystemEventReceiver extends BroadcastReceiver {
             Uri changed = (Uri) intent.getParcelableExtra(Mms.Intents.DELETED_CONTENTS);
             MmsApp.getApplication().getPduLoaderManager().removePdu(changed);
         } else if (action.equals(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
-            String state = intent.getStringExtra(PhoneConstants.STATE_KEY);
+            String apnType = intent.getStringExtra(PhoneConstants.DATA_APN_TYPE_KEY);
+            boolean available = !(intent.getBooleanExtra(
+                                      PhoneConstants.NETWORK_UNAVAILABLE_KEY, false));
 
             if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
-                Log.v(TAG, "ANY_DATA_STATE event received: " + state);
+                Log.v(TAG, "ANY_DATA_STATE event received: apnType = " + apnType +
+                           ", available = " + available);
             }
 
-            if (state.equals("CONNECTED")) {
+            // Wake up transact service when MMS data is available.
+            if (apnType.equals(PhoneConstants.APN_TYPE_MMS) && available) {
                 wakeUpService(context);
             }
         } else if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
@@ -79,6 +83,10 @@ public class MmsSystemEventReceiver extends BroadcastReceiver {
             // Called on the UI thread so don't block.
             MessagingNotification.nonBlockingUpdateNewMessageIndicator(
                     context, MessagingNotification.THREAD_NONE, false);
+
+            // Scan and send pending Mms once after boot completed since
+            // ACTION_ANY_DATA_CONNECTION_STATE_CHANGED wasn't registered in a whole life cycle
+            wakeUpService(context);
         }
     }
 

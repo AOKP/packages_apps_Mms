@@ -81,7 +81,6 @@ public class MmsApp extends Application {
             }
         };
         mCountryDetector.addCountryListener(mCountryListener, getMainLooper());
-        mCountryIso = mCountryDetector.detectCountry().getCountryIso();
 
         Context context = getApplicationContext();
         mPduLoaderManager = new PduLoaderManager(context);
@@ -154,7 +153,14 @@ public class MmsApp extends Application {
         return mRecentSuggestions;
     }
 
+    // This function CAN return null.
     public String getCurrentCountryIso() {
+        if (mCountryIso == null) {
+            Country country = mCountryDetector.detectCountry();
+            if (country != null) {
+                mCountryIso = country.getCountryIso();
+            }
+        }
         return mCountryIso;
     }
 

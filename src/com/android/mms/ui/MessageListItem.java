@@ -215,6 +215,7 @@ public class MessageListItem extends LinearLayout implements
         mDateView.setText(buildTimestampLine(msgSizeText + " " + mMessageItem.mTimestamp));
 
         switch (mMessageItem.getMmsDownloadStatus()) {
+            case DownloadManager.STATE_PRE_DOWNLOADING:
             case DownloadManager.STATE_DOWNLOADING:
                 showDownloadingAttachment();
                 break;
@@ -249,6 +250,9 @@ public class MessageListItem extends LinearLayout implements
                         intent.putExtra(TransactionBundle.TRANSACTION_TYPE,
                                 Transaction.RETRIEVE_TRANSACTION);
                         mContext.startService(intent);
+
+                        DownloadManager.getInstance().markState(
+                                    mMessageItem.mMessageUri, DownloadManager.STATE_PRE_DOWNLOADING);
                     }
                 });
                 break;

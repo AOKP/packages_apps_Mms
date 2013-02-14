@@ -363,14 +363,10 @@
     <string name="pref_title_mms_delete">Multimedia message limit</string>
     <!-- Settings item for boolean option to display message notifications -->
     <string name="pref_title_notification_enabled">Notifications</string>
-    <!-- Settings item description for boolean message notification option -->
-    <string name="pref_summary_notification_enabled">Display message notifications in status bar</string>
     <!-- Settings item for boolean option to vibrate during message notification -->
     <string name="pref_title_notification_vibrateWhen">Vibrate</string>
-    <!-- Settings item description for boolean vibrate option -->
-    <string name="pref_summary_notification_vibrateWhen">Also vibrate when notified</string>
     <!-- Settings item for entering ringtone selection screen -->
-    <string name="pref_title_notification_ringtone">Choose ringtone</string>
+    <string name="pref_title_notification_ringtone">Sound</string>
     <!-- Settings item for setting the number of message to save for each conversation -->
     <string name="pref_messages_to_save">Set number of messages to save</string>
     <!-- Settings item for boolean option to show the full datetime -->
@@ -402,6 +398,9 @@
 
     <!-- The default vibrateWhen value, when none is set -->
     <string name="prefDefault_vibrateWhen" translatable="false">never</string>
+    <!-- Settings screen, what to display for Ringtone when the user chooses "silent" [CHAR LIMIT=100]-->
+    <string name="silent_ringtone">Silent</string>
+
     <!-- The value to use when migrating from old versions for a true vibrate setting -->
     <string name="prefDefault_vibrate_true" translatable="false">always</string>
     <!-- The value to use when migrating from old versions for a false vibrate setting -->
