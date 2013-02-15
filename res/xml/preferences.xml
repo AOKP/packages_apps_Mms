@@ -112,27 +112,18 @@
         <CheckBoxPreference
             android:key="pref_key_enable_notifications"
             android:title="@string/pref_title_notification_enabled"
-            android:summary="@string/pref_summary_notification_enabled"
             android:defaultValue="true" />
 
-        <RingtonePreference
-            android:layout="?android:attr/preferenceLayoutChild"
-            android:dependency="pref_key_enable_notifications"
-            android:key="pref_key_ringtone"
+        <RingtonePreference android:key="pref_key_ringtone"
             android:title="@string/pref_title_notification_ringtone"
             android:ringtoneType="notification"
+            android:dependency="pref_key_enable_notifications"
             android:defaultValue="content://settings/system/notification_sound" />
 
-        <ListPreference
-            android:layout="?android:attr/preferenceLayoutChild"
-            android:dependency="pref_key_enable_notifications"
-            android:key="pref_key_vibrateWhen"
-            android:defaultValue="@string/prefDefault_vibrateWhen"
+        <CheckBoxPreference android:key="pref_key_vibrate"
             android:title="@string/pref_title_notification_vibrateWhen"
-            android:summary="@string/pref_summary_notification_vibrateWhen"
-            android:entries="@array/prefEntries_vibrateWhen"
-            android:entryValues="@array/prefValues_vibrateWhen"
-            android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
+            android:dependency="pref_key_enable_notifications"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_title_quick_reply"
