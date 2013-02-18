@@ -156,6 +156,8 @@
     <string name="pref_mms_settings_title" msgid="55618772118264355">"マルチメディアメッセージ（MMS）"</string>
     <string name="pref_sms_settings_title" msgid="5173078369851066881">"テキストメッセージ（SMS）"</string>
     <string name="pref_sms_storage_title" msgid="9001233319190616445">"ストレージ"</string>
+    <string name="pref_display_title">表示</string>
+
     <string name="pref_summary_manage_sim_messages" msgid="4141349892597640864">"SIMカードに保存したメッセージを管理する"</string>
     <string name="pref_summary_mms_delivery_reports" msgid="4874657984217756112">"送信するメッセージの受取確認を毎回要求する"</string>
     <string name="pref_summary_mms_read_reports" msgid="2748323864008907440">"送信する全メッセージに対して開封確認レポートを要求する"</string>
@@ -175,7 +177,38 @@
     <string name="pref_title_notification_vibrateWhen" msgid="4251208067092761057">"バイブレーション"</string>
     <string name="pref_title_notification_ringtone" msgid="8667533917574559659">"着信音"</string>
     <string name="pref_messages_to_save" msgid="3202539743892934926">"保存するメッセージ件数を設定"</string>
+    <!-- Settings item for boolean option to show the full datetime -->
+    <string name="pref_title_fulldate">完全な日付を表示</string>
+    <string name="pref_summary_fulldate">メッセージに完全な日付を表示する</string>
+    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
+    <string name="pref_title_quickreply_callbutton">電話ボタンを表示</string>
+    <string name="pref_summary_quickreply_callbutton">クイックリプライ通知に電話ボタンを表示する</string>
+    <!-- Settings item for boolean option to show the sms reply button in the quick reply notification -->
+    <string name="pref_title_quickreply_sms_reply">SMS返信ボタンを表示</string>
+    <string name="pref_summary_quickreply_sms_reply">クイックリプライ通知にSMS返信ボタンを表示する</string>
+    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
+    <string name="pref_title_quickreply_delete">削除ボタンを表示</string>
+    <string name="pref_summary_quickreply_delete">クイックリプライ通知にメッセージ削除ボタンを表示する</string>
+    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
+    <string name="pref_title_quickreply_mark_read">既読ボタンを表示</string>
+    <string name="pref_summary_quickreply_mark_read">クイックリプライ通知に既読ボタンを表示する</string>
+
+    <!-- The vibrate notification modes -->
+    <string-array name="prefEntries_vibrateWhen">
+
+        <!-- Always -->
+        <item>常に使用</item>
+        <!-- Only when the phone is in Silent mode -->
+        <item>マナーモード時のみ</item>
+        <!-- Never -->
+        <item>使用しない</item>
+    </string-array>
+
     <string name="silent_ringtone" msgid="7981237991326592780">"マナーモード"</string>
+
+    <!-- Dialog title for the Vibrate dialog -->
+    <string name="prefDialogTitle_vibrateWhen">バイブレーション</string>
+
     <string name="pref_title_mms_auto_retrieval" msgid="4021878285474431355">"自動で取得"</string>
     <string name="pref_summary_mms_auto_retrieval" msgid="925163257363757048">"メッセージを自動的に取得する"</string>
     <string name="pref_title_mms_retrieval_during_roaming" msgid="6016227402731817804">"ローミング時に自動取得"</string>
@@ -283,6 +316,9 @@
     <string name="saved_ringtone_fail" msgid="4778500070919251116">"着信音を保存できませんでした。"</string>
     <string name="menu_insert_smiley" msgid="4964504393061025071">"絵文字を挿入"</string>
     <string name="menu_group_participants" msgid="4288356090262299071">"参加者をグループ化"</string>
+
+    <string name="menu_insert_emoji">絵文字を挿入</string>
+
     <string name="select_link_title" msgid="3371818607625768447">"操作の選択"</string>
     <string name="slide_number" msgid="1923958526266726635">"スライド<xliff:g id="NUMBER">%s</xliff:g>"</string>
   <plurals name="slide_duration">
@@ -342,28 +378,6 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">"、 "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> - <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
-
-    <!-- Settings screen, section heading for display-specific settings -->
-    <string name="pref_display_title">表示</string>
-
-    <!-- Settings item for boolean option to show the full datetime -->
-    <string name="pref_title_fulldate">完全な日付を表示</string>
-    <string name="pref_summary_fulldate">メッセージに完全な日付を表示する</string>
-    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
-    <string name="pref_title_quickreply_callbutton">電話ボタンを表示</string>
-    <string name="pref_summary_quickreply_callbutton">クイックリプライ通知に電話ボタンを表示する</string>
-    <!-- Settings item for boolean option to show the sms reply button in the quick reply notification -->
-    <string name="pref_title_quickreply_sms_reply">SMS返信ボタンを表示</string>
-    <string name="pref_summary_quickreply_sms_reply">クイックリプライ通知にSMS返信ボタンを表示する</string>
-    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
-    <string name="pref_title_quickreply_delete">削除ボタンを表示</string>
-    <string name="pref_summary_quickreply_delete">クイックリプライ通知にメッセージ削除ボタンを表示する</string>
-    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
-    <string name="pref_title_quickreply_mark_read">既読ボタンを表示</string>
-    <string name="pref_summary_quickreply_mark_read">クイックリプライ通知に既読ボタンを表示する</string>
-
-    <!-- Menu item  [CHAR LIMIT=40] -->
-    <string name="menu_insert_emoji">絵文字を挿入</string>
 
     <!-- Settings item for boolean option for SMS Split Counter -->
     <string name="pref_title_sms_split_counter">分割カウンタ</string>
