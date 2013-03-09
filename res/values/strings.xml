@@ -801,4 +801,8 @@
     <string name="banner_sms_promo_title_application"><xliff:g id="appName">%s</xliff:g> is your SMS app</string>
     <string name="banner_sms_promo_message">You can change this in Settings</string>
 
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">Breathing SMS</string>
+   <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
+
 </resources>

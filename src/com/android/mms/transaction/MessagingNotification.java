@@ -874,6 +874,8 @@ public class MessagingNotification {
             return;
         }
 
+        boolean makeBreath = MessagingPreferenceActivity.getBreathEnabled(context);
+
         // Figure out what we've got -- whether all sms's, mms's, or a mixture of both.
         final int messageCount = notificationSet.size();
         NotificationInfo mostRecentNotification = notificationSet.first();
@@ -959,7 +961,11 @@ public class MessagingNotification {
             taskStackBuilder.addNextIntent(mostRecentNotification.mClickIntent);
         }
         // Always have to set the small icon or the notification is ignored
-        noti.setSmallIcon(R.drawable.stat_notify_sms);
+        if (!makeBreath) {
+            noti.setSmallIcon(R.drawable.stat_notify_sms);
+          } else {
+            noti.setSmallIcon(R.drawable.stat_notify_sms_breath);
+        }
 
         NotificationManager nm = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);

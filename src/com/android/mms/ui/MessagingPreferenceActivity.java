@@ -67,6 +67,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String NOTIFICATION_VIBRATE     = "pref_key_vibrate";
     public static final String NOTIFICATION_VIBRATE_WHEN= "pref_key_vibrateWhen";
     public static final String NOTIFICATION_RINGTONE    = "pref_key_ringtone";
+    public static final String NOTIFICATION_BREATH      = "pref_key_sms_breath";
     public static final String AUTO_RETRIEVAL           = "pref_key_mms_auto_retrieval";
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
@@ -129,6 +130,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private Preference mManageSimPref;
     private Preference mClearHistoryPref;
     private CheckBoxPreference mVibratePref;
+    private CheckBoxPreference mBreathPref;
     private CheckBoxPreference mEnableNotificationsPref;
     private CheckBoxPreference mEnablePrivacyModePref;
     private CheckBoxPreference mMmsAutoRetrievialPref;
@@ -227,6 +229,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mMmsAutoRetrievialPref = (CheckBoxPreference) findPreference(AUTO_RETRIEVAL);
         mEnablePrivacyModePref = (CheckBoxPreference) findPreference(PRIVACY_MODE_ENABLED);
         mVibratePref = (CheckBoxPreference) findPreference(NOTIFICATION_VIBRATE);
+        mBreathPref = (CheckBoxPreference) findPreference(NOTIFICATION_BREATH);
         mRingtonePref = (RingtonePreference) findPreference(NOTIFICATION_RINGTONE);
 
         mManageTemplate = findPreference(MANAGE_TEMPLATES);
@@ -727,4 +730,66 @@ public class MessagingPreferenceActivity extends PreferenceActivity
                 groupMmsPrefOn &&
                 !TextUtils.isEmpty(MessageUtils.getLocalNumber());
     }
+
+    public static boolean getResumeSleepFromQrEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.RESUME_SLEEP_FROM_QR, false);
+    }
+
+    public static boolean getFullDateEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean fullDateEnabled =
+            prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_FULLDATE, false);
+        return fullDateEnabled;
+    }
+
+    public static boolean getBreathEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.NOTIFICATION_BREATH, false);
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Call Back
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRCallButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_CALLBUTTON, true);
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Sms Reply
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRSmsReplyButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_SMS_REPLY, true);
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Delete
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRDeleteButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_DELETE, false);
+    }
+
+    /**
+     * checks if user has a preference to show QuickReply:Mark Read
+     * action in Sms notifications
+     * @param context local context of caller *must be local package*
+     * @return if we should show action in QuickReply to sms in notifications
+     */
+    public static boolean getQRMarkReadButtonEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.DISPLAY_QR_MARK_READ, false);
+    }
+
 }
