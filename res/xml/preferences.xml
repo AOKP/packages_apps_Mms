@@ -124,6 +124,11 @@
             android:title="@string/pref_title_notification_vibrateWhen"
             android:dependency="pref_key_enable_notifications"
             android:defaultValue="false" />
+
+        <CheckBoxPreference android:key="pref_key_sms_breath"
+            android:title="@string/sms_breath"
+            android:summary="@string/sms_breath_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_title_quick_reply"
