@@ -913,4 +913,8 @@
     <string name="only_three_please">Only select three options at once</string>
     <string name="pref_title_quick_reply">Quick Reply</string>
 
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">Breathing SMS</string>
+   <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
+
 </resources>
