@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2007-2008 Esmertec AG.
+ * Copyright (C) 2007-2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources>
+    <color name="text_hairline">#ffcccccc</color>
+    <color name="message_count_color">#76cfcfcf</color>
+    <color name="timestamp_color">#7cefefef</color>
+    <color name="unread_bgcolor">#655e5e5e</color>
+    <color name="read_bgcolor">#55000000</color>
+    <color name="widget_sender_text_color_read">#ffdfdfdf</color>
+    <color name="widget_sender_text_color_unread">#ffefefef</color>
+    <color name="widget_subject_text_color_read">#ffbfbfbf</color>
+    <color name="widget_subject_text_color_unread">#ffcfcfcf</color>
+    <color name="action_bar_button_text_color">#ffffffff</color>
+    <color name="compose_message_edit_text">#ffffffff</color>
+    <color name="compose_message_text_counter">#ffffffff</color>
+    <color name="actionbar_text">#ffdddddd</color>
+    <color name="delete_thread_dialog">#ffcccccc</color>
+    <color name="delivery_report_header">#ffeeeeee</color>
+    <color name="delivery_report_recipient">#ffffffff</color>
+    <color name="delivery_report_status">#ffcccccc</color>
+    <color name="delivery_report_date">#ffcccccc</color>
+    <color name="button_text">#ffffffff</color>
+    <color name="message_received">#ff33b5e5</color>
+    <color name="message_sent">#ffffffff</color>
+    <color name="widget_unread_text">#ffdddddd</color>
+    <color name="widget_loading">#ffffffff</color>
+    <color name="background">#ff000000</color>
+    <color name="darkgray_backgrounds">#ff111111</color>
+    <color name="quickmessage_body_dark_bg">#ff000000</color>
+    <color name="quickmessage_body_light_bg">#fff3f3f3</color>
+    <color name="dividers">#ffeeeeee</color>
+    <color name="transparent">#00000000</color>
+</resources>
