@@ -626,7 +626,11 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                     HashMap<String, Object> item = (HashMap<String, Object>) a.getItem(which);
 
                     String smiley = (String) item.get("text");
-                    textBox.append(smiley);
+                    // add the smiley at the cursor location or replace selected
+                    int start = textBox.getSelectionStart();
+                    int end = textBox.getSelectionEnd();
+                    textBox.getText().replace(Math.min(start, end),
+                            Math.max(start, end), smiley);
 
                     dialog.dismiss();
                 }
@@ -667,7 +671,11 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                     // We use the new unified Unicode 6.1 emoji code points
                     CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
                             EmojiParser.mEmojiTexts[position]);
-                    textBox.append(emoji);
+                    // add the emoji at the cursor location or replace selected
+                    int start = textBox.getSelectionStart();
+                    int end = textBox.getSelectionEnd();
+                    textBox.getText().replace(Math.min(start, end),
+                            Math.max(start, end), emoji);
 
                     mEmojiDialog.dismiss();
                     return true;
@@ -677,7 +685,11 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             button.setOnClickListener(new android.view.View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    textBox.append(editText.getText());
+                    // add the emoji at the cursor location or replace selected
+                    int start = textBox.getSelectionStart();
+                    int end = textBox.getSelectionEnd();
+                    textBox.getText().replace(Math.min(start, end),
+                            Math.max(start, end), editText.getText());
                     mEmojiDialog.dismiss();
                 }
             });
