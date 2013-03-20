@@ -428,7 +428,13 @@
     <string name="pref_title_mms_user_agent">自定义用户代理</string>
     <string name="pref_summary_mms_user_agent">发送信息时将手机伪装成不同的设备</string>
     <string name="pref_mms_user_agent_custom_set">自定义用户代理设置为：\n</string>
-
     <string name="storage_warning_title">你的手机内存已满</string>
     <string name="storage_warning_content">你将不会接受新的短/彩信</string>
+    <string name="app_not_exists">”没有接收此操作的应用“</string>
+    <string name="attach_vcard">"电子名片"</string>
+    <string name="type_vcard">"电子名片"</string>
+    <string name="unnamed_vcard_name">"未命名"</string>
+    <string name="failed_to_add_text">"超出大小限制，无法添加"</string>
+    <string name="has_no_right">"抱歉，无法分享该文件"</string>
+
 </resources>
