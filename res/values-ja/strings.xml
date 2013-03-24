@@ -192,6 +192,9 @@
     <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
     <string name="pref_title_quickreply_mark_read">既読ボタンを表示</string>
     <string name="pref_summary_quickreply_mark_read">クイックリプライ通知に既読ボタンを表示する</string>
+    <!-- Settings to enabled pm.goToSleep after sending a sms via qr from lockscreen -->
+    <string name="pref_title_quickreply_resume_sleep">スリープに移行</string>
+    <string name="pref_summary_quickreply_resume_sleep">ロック画面でクイックリプライからSMS送信したときスリープに戻る</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
@@ -387,6 +390,10 @@
     <!-- Extra Settings: -->
     <string name="pref_extra_settings">拡張設定</string>
 
+    <!-- Strip unicode -->
+    <string name="pref_title_strip_unicode">ユニコードを取り除く</string>
+    <string name="pref_summary_strip_unicode">160文字のSMSメッセージでサポートされない一般的な文字を置き換える</string>
+
     <!-- Enable emojis -->
     <string name="pref_title_enable_emojis">絵文字サポート</string>
     <string name="pref_summary_enable_emojis">ユニコード絵文字サポートを有効にする, 471個のステキな絵文字</string>
@@ -409,6 +416,7 @@
     <string name="qr_alert_no">いいえ</string>
     <string name="qr_alert_read">既読にする</string>
     <string name="qr_mark_read">既読にして閉じる</string>
+    <string name="qr_mark_open">開く</string>
     <string name="qr_pick_smiley">顔文字を挿入</string>
     <string name="qr_pick_emoji">絵文字を挿入</string>
     <string name="qr_close_popup">閉じる</string>
