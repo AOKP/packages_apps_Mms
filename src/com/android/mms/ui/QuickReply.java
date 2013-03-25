@@ -722,11 +722,18 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             final EditText editText = (EditText) mEmojiView.findViewById(R.id.emoji_edit_text);
             final Button button = (Button) mEmojiView.findViewById(R.id.emoji_button);
 
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+            final boolean useSoftBankEmojiEncoding = prefs.getBoolean(MessagingPreferenceActivity.SOFTBANK_EMOJIS, false);
+
             gridView.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    // We use the new unified Unicode 6.1 emoji code points
-                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
-                            EmojiParser.mEmojiTexts[position]);
+                    // We use the new unified Unicode 6.1 emoji code points by default
+                    CharSequence emoji;
+                    if (useSoftBankEmojiEncoding) {
+                        emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mSoftbankEmojiTexts[position]);
+                    } else {
+                        emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mEmojiTexts[position]);
+                    }
                     editText.append(emoji);
                 }
             });
@@ -735,9 +742,13 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
                         long id) {
-                    // We use the new unified Unicode 6.1 emoji code points
-                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
-                            EmojiParser.mEmojiTexts[position]);
+                    // We use the new unified Unicode 6.1 emoji code points by default
+                    CharSequence emoji;
+                    if (useSoftBankEmojiEncoding) {
+                        emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mSoftbankEmojiTexts[position]);
+                    } else {
+                        emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mEmojiTexts[position]);
+                    }
                     // add the emoji at the cursor location or replace selected
                     int start = textBox.getSelectionStart();
                     int end = textBox.getSelectionEnd();
