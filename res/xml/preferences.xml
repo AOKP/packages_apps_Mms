@@ -192,7 +192,15 @@
             android:summary="@string/pref_summary_pref_key_emojis_quick"
             android:dependency="pref_key_enable_emojis"
             android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_enable_softbank_encoding"
+            android:title="@string/pref_title_enable_softbank_encoding"
+            android:summary="@string/pref_summary_enable_softbank_encoding"
+            android:dependency="pref_key_enable_emojis"
+            android:defaultValue="false" />
     </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_extra_settings">
     <CheckBoxPreference android:key="pref_key_strip_unicode"
         android:title="@string/pref_title_strip_unicode"
