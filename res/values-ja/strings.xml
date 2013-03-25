@@ -400,6 +400,10 @@
     <string name="pref_title_pref_key_emojis_quick">クイック絵文字ボタン</string>
     <string name="pref_summary_pref_key_emojis_quick">絵文字を素早く入力するためにテキスト入力エリアの左側に絵文字ボタンを配置する</string>
 
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank絵文字</string>
+    <string name="pref_summary_enable_softbank_encoding">SoftBankの絵文字変換ルールを使用する</string>
+
     <!-- Quick Reply -->
     <string name="quick_call_back">電話する</string>
     <string name="quick_call_back_short">電話</string>
