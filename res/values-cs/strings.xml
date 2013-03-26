@@ -366,6 +366,7 @@
     <string name="qr_alert_no">Ne</string>
     <string name="qr_alert_read">Označit jako přečtené</string>
     <string name="qr_mark_read">Označit jako přečetené a zavřít</string>
+    <string name="qr_mark_open">Otevřít</string>
     <string name="qr_pick_smiley">Vložit smajlík</string>
     <string name="qr_pick_emoji">Vložit emojík</string>
     <string name="qr_close_popup">Zavřít</string>
@@ -384,4 +385,8 @@
     <string name="pref_summary_fulldate">Zobrazit u zpráv celé datum</string>
     <string name="pref_title_strip_unicode">Oříznout unicode</string>
     <string name="pref_summary_strip_unicode">Nahradit speciální znaky normálními pro zachování délky 160 znaků na SMS</string>
+    <string name="pref_title_quickreply_resume_sleep">Umožnit zařízení návrat do spánku</string>
+    <string name="pref_summary_quickreply_resume_sleep">Během odesílání zprávy přes rychlou odpověď na zamčené obrazovce umožnit zařízení návrat do spánku</string>
+    <string name="sms_breath">Pulzující SMS</string>
+    <string name="sms_breath_summary">Přidá upozorněním na zprávy ve stavové liště pulzující efekt.</string>
 </resources>
