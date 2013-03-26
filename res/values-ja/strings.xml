@@ -425,4 +425,8 @@
     <string name="only_three_please">3つまでしか選択できません</string>
     <string name="pref_title_quick_reply">クイックリプライ</string>
 
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">通知アニメーション</string>
+   <string name="sms_breath_summary">ステータスバーの通知アイコンを明滅させる</string>
+
 </resources>
