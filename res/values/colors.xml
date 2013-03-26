@@ -44,7 +44,7 @@
 
     <!-- New text colors from layouts to make theme chooser apk easier to theme -->
     <color name="compose_message_edit_text">#000000</color>
-    <color name="actionbar_text">#333333</color>
+    <color name="actionbar_text">#FFFFFF</color>
     <color name="delete_thread_dialog">#000000</color>
     <color name="delivery_report_header">#222222</color>
     <color name="delivery_report_recipient">#222222</color>
