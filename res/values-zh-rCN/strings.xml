@@ -186,6 +186,8 @@
     <string name="pref_summary_quickreply_delete">在信息通知栏显示删除按钮</string>
     <string name="pref_title_quickreply_mark_read">显示标记已读按钮</string>
     <string name="pref_summary_quickreply_mark_read">在信息通知栏显示标记已读按钮</string>
+    <string name="pref_title_quickreply_resume_sleep">允许设备返回睡眠状态</string>
+    <string name="pref_summary_quickreply_resume_sleep">在锁屏界面通过快捷回复发送短信后回到睡眠状态</string>
   <string-array name="prefEntries_vibrateWhen">
     <item msgid="2520871831815631409">"始终"</item>
     <item msgid="6069709696037750627">"仅在静音时"</item>
@@ -367,6 +369,10 @@
 	<!-- Extra Settings: -->
 	<string name="pref_extra_settings">其它设置</string>
 
+    <!-- Strip unicode -->
+	<string name="pref_title_strip_unicode">过滤 unicode</string>
+    <string name="pref_summary_strip_unicode">在160字母的短信中用普通字符替换不支持的字符。</string>
+
 	<!-- Enable emojis -->
 	<string name="pref_title_enable_emojis">启用 emoji 表情</string>
 	<string name="pref_summary_enable_emojis">启用支持日本软银的emoji表情(unicode)，共 471 个</string>
@@ -389,6 +395,7 @@
 	<string name="qr_alert_no">否</string>
 	<string name="qr_alert_read">标记已读</string>
 	<string name="qr_mark_read">标记已读 &amp; 关闭</string>
+	<string name="qr_mark_open">打开</string>
 	<string name="qr_pick_smiley">插入表情</string>
 	<string name="qr_pick_emoji">插入 emoji 表情</string>
 	<string name="qr_close_popup">关闭</string>
@@ -396,4 +403,10 @@
 	<string name="quick_reply_hint">键入信息</string>
     <string name="only_three_please">一次只能选择三项</string>
     <string name="pref_title_quick_reply">快捷回复</string>
+
+
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">呼吸效果短信提醒</string>
+   <string name="sms_breath_summary">为状态栏的短信通知提供呼吸效果</string>
+
 </resources>
