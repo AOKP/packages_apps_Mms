@@ -186,8 +186,8 @@
     <string name="pref_summary_quickreply_delete">在信息通知栏显示删除按钮</string>
     <string name="pref_title_quickreply_mark_read">显示标记已读按钮</string>
     <string name="pref_summary_quickreply_mark_read">在信息通知栏显示标记已读按钮</string>
-    <string name="pref_title_quickreply_resume_sleep">允许设备返回睡眠状态</string>
-    <string name="pref_summary_quickreply_resume_sleep">在锁屏界面通过快捷回复发送短信后回到睡眠状态</string>
+    <string name="pref_title_quickreply_resume_sleep">允许设备返回休眠状态</string>
+    <string name="pref_summary_quickreply_resume_sleep">在锁屏界面通过快捷回复发送短信后回到休眠状态</string>
   <string-array name="prefEntries_vibrateWhen">
     <item msgid="2520871831815631409">"始终"</item>
     <item msgid="6069709696037750627">"仅在静音时"</item>
