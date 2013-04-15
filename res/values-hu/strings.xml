@@ -385,6 +385,16 @@
     <string name="only_three_please">Csak 3 opciót válasz egyszerre</string>
     <string name="pref_title_quick_reply">Gyors válasz</string>
 
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Extra beállítások</string>
+
+    <!-- Strip unicode -->
+    <string name="pref_title_strip_unicode">Unicode vágás</string>
+    <string name="pref_summary_strip_unicode">Átalakítja a nem támogatott karaktereket, hogy 160 karakterben lehessen küldeni az SMS-t</string>
+    <!-- Settings to enabled pm.goToSleep after sending a sms via qr from lockscreen -->
+    <string name="pref_title_quickreply_resume_sleep">Alvó állapot engedélyezése</string>
+    <string name="pref_summary_quickreply_resume_sleep">Ha gyors választ küldesz lezárt képernyőről, engedélyezi az alvó állapotba való visszatérést</string>
+
 
 
 </resources>
