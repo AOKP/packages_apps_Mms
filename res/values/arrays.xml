@@ -76,4 +76,16 @@
     <string-array name="empty_subject_strings">
         <item>no subject</item>
     </string-array>
+
+    <string-array name="pref_key_sms_send_countdown_labels">
+       <item>3 seconds</item>
+       <item>5 seconds</item>
+       <item>10 seconds</item>
+    </string-array>
+
+    <string-array name="pref_key_sms_send_countdown_values">
+       <item>3000</item>
+       <item>5000</item>
+       <item>10000</item>
+    </string-array>
 </resources>

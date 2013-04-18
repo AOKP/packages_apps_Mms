@@ -190,6 +190,11 @@ public class WorkingMessage {
         void onMessageSent();
 
         /**
+         * Called each time the count-down ticks if the feature is enabled
+         */
+        void onMessageCountDownTick();
+
+        /**
          * Called if there are too many unsent messages in the queue and we're not allowing
          * any more Mms's to be sent.
          */

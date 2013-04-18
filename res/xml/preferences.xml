@@ -68,6 +68,18 @@
             android:key="pref_key_manage_sim_messages"
             android:summary="@string/pref_summary_manage_sim_messages"
             android:title="@string/pref_title_manage_sim_messages" />
+
+    <CheckBoxPreference android:defaultValue="false"
+                      android:key="pref_key_sms_send_countdown"
+                      android:summary="@string/pref_summary_sms_send_countdown"
+                      android:title="@string/pref_title_sms_send_countdown" />
+    <ListPreference android:entries="@array/pref_key_sms_send_countdown_labels"
+            android:entryValues="@array/pref_key_sms_send_countdown_values"
+            android:dependency="pref_key_sms_send_countdown"
+            android:key="pref_key_sms_send_countdown_value"
+            android:summary="@string/pref_summary_sms_send_countdown_value"
+            android:title="@string/pref_title_sms_send_countdown_value" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
