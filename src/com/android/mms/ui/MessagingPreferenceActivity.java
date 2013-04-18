@@ -85,6 +85,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String DISPLAY_QR_MARK_READ     = "pref_key_display_quickreply_mark_read";
 
     public static final String RESUME_SLEEP_FROM_QR     = "pref_key_resume_sleep_from_qr";
+    public static final String AUTO_OPEN_IME_QR         = "pref_key_open_ime";
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     public static final String ENABLE_QUICK_EMOJIS      = "pref_key_emojis_quick";
     public static final String STRIP_UNICODE            = "pref_key_strip_unicode";
@@ -118,6 +119,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private CheckBoxPreference mQrDelete;
     private CheckBoxPreference mQrMarkRead;
     private CheckBoxPreference mQrResumeSleep;
+    private CheckBoxPreference mQrOpenIme;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -159,6 +161,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mQrDelete = (CheckBoxPreference) findPreference(DISPLAY_QR_DELETE);
         mQrMarkRead = (CheckBoxPreference) findPreference(DISPLAY_QR_MARK_READ);
         mQrResumeSleep = (CheckBoxPreference) findPreference(RESUME_SLEEP_FROM_QR);
+        mQrOpenIme = (CheckBoxPreference) findPreference(AUTO_OPEN_IME_QR);
 
         // Get the MMS retrieval settings. Defaults to enabled with roaming disabled
         mMmsAutoRetrievialPref = (CheckBoxPreference) findPreference(AUTO_RETRIEVAL);
@@ -485,6 +488,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static boolean getResumeSleepFromQrEnabled(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean(MessagingPreferenceActivity.RESUME_SLEEP_FROM_QR, false);
+    }
+
+    public static boolean getShouldOpenIme (Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(MessagingPreferenceActivity.AUTO_OPEN_IME_QR, true);
     }
 
     public static boolean getFullDateEnabled(Context context) {

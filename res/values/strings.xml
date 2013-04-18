@@ -387,6 +387,9 @@
     <!-- Settings to enabled pm.goToSleep after sending a sms via qr from lockscreen -->
     <string name="pref_title_quickreply_resume_sleep">Enable device to return to sleep</string>
     <string name="pref_summary_quickreply_resume_sleep">When sending a sms via quickreply from the lockscreen, allow device to return to sleep</string>
+    <!-- Settings item for boolean option to auto show the keyboard on quick reply -->
+    <string name="pref_title_open_ime">Display Keyboard</string>
+    <string name="pref_summary_open_ime">Keyboard will automatically show upon quickreply being opened</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
