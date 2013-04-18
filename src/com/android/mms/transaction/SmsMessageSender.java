@@ -19,6 +19,8 @@ package com.android.mms.transaction;
 
 import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
+import com.android.mms.data.Conversation;
+import com.android.mms.data.WorkingMessage;
 import com.android.mms.ui.MessagingPreferenceActivity;
 import com.google.android.mms.MmsException;
 import android.database.sqlite.SqliteWrapper;
@@ -30,6 +32,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.provider.Telephony.Sms;
 import android.provider.Telephony.Sms.Inbox;
@@ -88,6 +91,8 @@ public class SmsMessageSender implements MessageSender {
     }
 
     private boolean queueMessage(long token) throws MmsException {
+        // In order to send the message one by one, instead of sending now, the message will split,
+        // and be put into the queue along with each destinations
         if ((mMessageText == null) || (mNumberOfDests == 0)) {
             // Don't try to send an empty message.
             throw new MmsException("Null message body or dest.");
@@ -162,12 +167,54 @@ public class SmsMessageSender implements MessageSender {
                }
             }
         }
-        // Notify the SmsReceiverService to send the message out
-        mContext.sendBroadcast(new Intent(SmsReceiverService.ACTION_SEND_MESSAGE,
-                null,
-                mContext,
-                SmsReceiver.class));
+
+        boolean countDownEnabled = prefs.getBoolean(MessagingPreferenceActivity.SMS_SEND_COUNTDOWN, false);
+        boolean conversationExists = Conversation.exists(mThreadId);
+        if(countDownEnabled && conversationExists) {
+            int countDownDelay = Integer.valueOf(prefs.getString(MessagingPreferenceActivity.SMS_SEND_COUNTDOWN_VALUE, "3000"));
+            Looper.prepare();
+            AbstractCountDownSender countDownSender = new SmsCountDownSender(countDownDelay);
+            mCountDownSenders.put(mTimestamp, countDownSender);
+            countDownSender.start();
+            Log.d(TAG, "Starting countdown for message: "+mTimestamp);
+            Looper.loop();
+        } else {
+            // Notify the SmsReceiverService to send the message out
+            mContext.sendBroadcast(new Intent(SmsReceiverService.ACTION_SEND_MESSAGE,
+                        null,
+                        mContext,
+                        SmsReceiver.class));
+        }
         return false;
+    }
+
+    /**
+     * Implementation of the abstract CountDownSender class to be able to delay sending SMS messages
+     */
+    public class SmsCountDownSender extends AbstractCountDownSender {
+
+        public SmsCountDownSender(long millisInFuture) {
+            super(millisInFuture);
+        }
+
+        public void onTick(long millisUntilFinished) {
+            super.onTick(millisUntilFinished);
+            Log.d(TAG, "SmsCountDownSender waiting before sending message: "+millisUntilFinished + "ms remaining");
+            if(mContext instanceof WorkingMessage.MessageStatusListener) {
+                WorkingMessage.MessageStatusListener statusListener = (WorkingMessage.MessageStatusListener) mContext;
+                statusListener.onMessageCountDownTick();
+            }
+        }
+
+        public void onFinish() {
+            // Notify the SmsReceiverService to send the message out
+            mContext.sendBroadcast(new Intent(SmsReceiverService.ACTION_SEND_MESSAGE,
+                    null,
+                    mContext,
+                    SmsReceiver.class));
+            mCountDownSenders.remove(mTimestamp);
+            Log.d(TAG, "Removing countdown for message: "+mTimestamp);
+        }
     }
 
     /**

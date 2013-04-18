@@ -67,6 +67,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String READ_REPORT_MODE         = "pref_key_mms_read_reports";
     public static final String SMS_DELIVERY_REPORT_MODE = "pref_key_sms_delivery_reports";
     public static final String SMS_SPLIT_COUNTER        = "pref_key_sms_split_counter";
+    public static final String SMS_SEND_COUNTDOWN       = "pref_key_sms_send_countdown";
+    public static final String SMS_SEND_COUNTDOWN_VALUE = "pref_key_sms_send_countdown_value";
     public static final String NOTIFICATION_ENABLED     = "pref_key_enable_notifications";
     public static final String NOTIFICATION_VIBRATE     = "pref_key_vibrate";
     public static final String NOTIFICATION_VIBRATE_WHEN= "pref_key_vibrateWhen";

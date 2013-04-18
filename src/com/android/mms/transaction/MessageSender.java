@@ -17,6 +17,11 @@
 
 package com.android.mms.transaction;
 
+import java.util.Map;
+import java.util.HashMap;
+
+import android.os.CountDownTimer;
+
 import com.google.android.mms.MmsException;
 
 public interface MessageSender {
@@ -31,4 +36,31 @@ public interface MessageSender {
      * @throws MmsException Error occurred while sending the message.
      */
     boolean sendMessage(long token) throws MmsException;
+
+    /**
+     * Countdown class which can be implemented to delay sending the message.
+     */
+    public abstract class AbstractCountDownSender extends CountDownTimer {
+        private final static long countDownInterval = 500;
+        long remainingTime;
+
+        public AbstractCountDownSender(long millisInFuture) {
+            // We add 500ms because the user doesn't want to see the counter quickly starting
+            super(millisInFuture + 500, countDownInterval);
+        }
+
+        public void onTick(long millisUntilFinished) {
+            remainingTime = millisUntilFinished;
+        }
+
+        public int getRemainingSeconds() {
+            return (int) remainingTime / 1000;
+        }
+    }
+
+    /**
+     * Map containing the spawned countdowns used to delay sending messages
+     */
+    public static final Map<Long, AbstractCountDownSender> mCountDownSenders = new HashMap<Long, AbstractCountDownSender>();
 }
+
