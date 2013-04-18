@@ -69,6 +69,7 @@ public class MessageItem {
     final String mType;
     final long mMsgId;
     final int mBoxId;
+    final long mDate;
 
     DeliveryStatus mDeliveryStatus;
     boolean mReadReport;
@@ -153,15 +154,21 @@ public class MessageItem {
             // Unless the message is currently in the progress of being sent, it gets a time stamp.
             if (!isOutgoingMessage()) {
                 // Set "received" or "sent" time stamp
-                long date = cursor.getLong(columnsMap.mColumnSmsDate);
-                mTimestamp = MessageUtils.formatTimeStampString(context, date,
-                    MessagingPreferenceActivity.getFullDateEnabled(context));
+                if (mSentTimestamp && (mBoxId == Sms.MESSAGE_TYPE_INBOX)) {
+                    mDate = cursor.getLong(columnsMap.mColumnSmsDateSent);
+                } else {
+                    mDate = cursor.getLong(columnsMap.mColumnSmsDate);
+                }
+                mTimestamp = MessageUtils.formatTimeStampString(context, mDate, mFullTimestamp);
+            } else {
+                mDate = cursor.getLong(columnsMap.mColumnSmsDate);
             }
 
             mLocked = cursor.getInt(columnsMap.mColumnSmsLocked) != 0;
             mErrorCode = cursor.getInt(columnsMap.mColumnSmsErrorCode);
         } else if ("mms".equals(type)) {
             mMessageUri = ContentUris.withAppendedId(Mms.CONTENT_URI, mMsgId);
+            mDate = cursor.getInt(columnsMap.mColumnMmsDate);
             mBoxId = cursor.getInt(columnsMap.mColumnMmsMessageBox);
             mMessageType = cursor.getInt(columnsMap.mColumnMmsMessageType);
             mErrorType = cursor.getInt(columnsMap.mColumnMmsErrorType);

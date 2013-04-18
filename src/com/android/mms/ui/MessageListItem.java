@@ -65,6 +65,8 @@ import com.android.mms.data.Contact;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.transaction.MessageSender;
+import com.android.mms.transaction.MessageSender.AbstractCountDownSender;
 import com.android.mms.transaction.Transaction;
 import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
@@ -359,11 +361,20 @@ public class MessageListItem extends LinearLayout implements
         }
 
         // If we're in the process of sending a message (i.e. pending), then we show a "SENDING..."
-        // string in place of the timestamp.
+        // string in place of the timestamp. If the countdown feature is enabled, then we show
+        // the time we have to wait.
+
         if (!sameItem || haveLoadedPdu) {
-            mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
-                    mContext.getResources().getString(R.string.sending_message) :
-                        mMessageItem.mTimestamp));
+        AbstractCountDownSender countDownSender = MessageSender.mCountDownSenders.get(mMessageItem.mDate);
+            if(mMessageItem.isSending() && countDownSender != null) {
+                mDateView.setText(mContext.getResources().getString(R.string.sending_countdown_prefix)
+                        +countDownSender.getRemainingSeconds()
+                        +mContext.getResources().getString(R.string.sending_countdown_suffix));
+            } else {
+                mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
+                        mContext.getResources().getString(R.string.sending_message) :
+                           mMessageItem.mTimestamp));
+            }
         }
         if (mMessageItem.isSms()) {
             showMmsView(false);
