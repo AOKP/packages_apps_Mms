@@ -409,4 +409,12 @@
    <string name="sms_breath">呼吸效果短信提醒</string>
    <string name="sms_breath_summary">为状态栏的短信通知提供呼吸效果</string>
 
+   <!-- Soft Keyboard Type -->
+   <string name="pref_soft_keyboard_title">键盘</string>
+   <string name="pref_title_input_type">软键盘类型</string>
+   <string name="pref_summary_input_type">选择编辑信息时软键盘如何使用</string>
+   <string name="pref_keyboard_emoji">Emoji 表情</string>
+   <string name="pref_keyboard_send">回车键发送</string>
+   <string name="pref_keyboard_new_line">回车键换行</string>
+
 </resources>
