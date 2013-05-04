@@ -4236,12 +4236,14 @@ public class ComposeMessageActivity extends Activity
                     int newSelectionPos = -1;
                     long targetMsgId = getIntent().getLongExtra("select_id", -1);
                     if (targetMsgId != -1) {
-                        cursor.moveToPosition(-1);
-                        while (cursor.moveToNext()) {
-                            long msgId = cursor.getLong(COLUMN_ID);
-                            if (msgId == targetMsgId) {
-                                newSelectionPos = cursor.getPosition();
-                                break;
+                        if (cursor != null) {
+                            cursor.moveToPosition(-1);
+                            while (cursor.moveToNext()) {
+                                long msgId = cursor.getLong(COLUMN_ID);
+                                if (msgId == targetMsgId) {
+                                    newSelectionPos = cursor.getPosition();
+                                    break;
+                                }
                             }
                         }
                     } else if (mSavedScrollPosition != -1) {
@@ -4273,7 +4275,7 @@ public class ComposeMessageActivity extends Activity
                     } else {
                         int count = mMsgListAdapter.getCount();
                         long lastMsgId = 0;
-                        if (count > 0) {
+                        if (cursor != null && count > 0) {
                             cursor.moveToLast();
                             lastMsgId = cursor.getLong(COLUMN_ID);
                         }
@@ -4297,7 +4299,8 @@ public class ComposeMessageActivity extends Activity
                     // mSentMessage is true).
                     // Show the recipients editor to give the user a chance to add
                     // more people before the conversation begins.
-                    if (cursor.getCount() == 0 && !isRecipientsEditorVisible() && !mSentMessage) {
+                    if (cursor != null && cursor.getCount() == 0
+                            && !isRecipientsEditorVisible() && !mSentMessage) {
                         initRecipientsEditor();
                     }
 
