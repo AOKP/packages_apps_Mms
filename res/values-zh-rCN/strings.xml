@@ -363,44 +363,48 @@
     <string name="enumeration_comma" msgid="213598026698964628">"、 "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> - <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
 
-	<string name="pref_title_sms_split_counter">分割序号</string>
-	<string name="pref_summary_sms_split_counter">显示分割后的短信序号，例： (1/2)</string>
+    <string name="pref_title_sms_split_counter">分割序号</string>
+    <string name="pref_summary_sms_split_counter">显示分割后的短信序号，例： (1/2)</string>
 
-	<!-- Extra Settings: -->
-	<string name="pref_extra_settings">其它设置</string>
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">其它设置</string>
 
     <!-- Strip unicode -->
-	<string name="pref_title_strip_unicode">过滤 unicode</string>
+    <string name="pref_title_strip_unicode">过滤 unicode</string>
     <string name="pref_summary_strip_unicode">在160字母的短信中用普通字符替换不支持的字符。</string>
 
-	<!-- Enable emojis -->
-	<string name="pref_title_enable_emojis">启用 emoji 表情</string>
-	<string name="pref_summary_enable_emojis">启用支持日本软银的emoji表情(unicode)，共 471 个</string>
-	<string name="pref_title_pref_key_emojis_quick">快捷 emoji 表情按钮</string>
-	<string name="pref_summary_pref_key_emojis_quick">在信息文本输入框左边显示快捷按钮</string>
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">启用 emoji 表情</string>
+    <string name="pref_summary_enable_emojis">启用支持日本软银的emoji表情(unicode)，共 471 个</string>
+    <string name="pref_title_pref_key_emojis_quick">快捷 emoji 表情按钮</string>
+    <string name="pref_summary_pref_key_emojis_quick">在信息文本输入框左边显示快捷按钮</string>
 
-	<!-- Quick Reply -->
-	<string name="quick_call_back">回拨电话</string>
-	<string name="quick_call_back_short">回拨</string>
-	<string name="quick_reply_sms">快捷回复</string>
-	<string name="quick_reply_sms_short">回复</string>
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank emoji 表情</string>
+    <string name="pref_summary_enable_softbank_encoding">使用 SoftBank emoji 表情编码</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">回拨电话</string>
+    <string name="quick_call_back_short">回拨</string>
+    <string name="quick_reply_sms">快捷回复</string>
+    <string name="quick_reply_sms_short">回复</string>
     <string name="quick_reply_delete">删除信息</string>
     <string name="quick_reply_delete_short">删除</string>
     <string name="quick_reply_mark_read">标记已读</string>
     <string name="quick_reply_mark_read_short">已读</string>
-	<string name="quick_reply_sending">发送快捷回复到</string>
-	<string name="qr_alert_title">未发送任何内容</string>
-	<string name="qr_alert_message">你确定要取消这条信息？</string>
-	<string name="qr_alert_yes">是</string>
-	<string name="qr_alert_no">否</string>
-	<string name="qr_alert_read">标记已读</string>
-	<string name="qr_mark_read">标记已读 &amp; 关闭</string>
-	<string name="qr_mark_open">打开</string>
-	<string name="qr_pick_smiley">插入表情</string>
-	<string name="qr_pick_emoji">插入 emoji 表情</string>
-	<string name="qr_close_popup">关闭</string>
-	<string name="qr_multi_ask">你想回复给谁？</string>
-	<string name="quick_reply_hint">键入信息</string>
+    <string name="quick_reply_sending">发送快捷回复到</string>
+    <string name="qr_alert_title">未发送任何内容</string>
+    <string name="qr_alert_message">你确定要取消这条信息？</string>
+    <string name="qr_alert_yes">是</string>
+    <string name="qr_alert_no">否</string>
+    <string name="qr_alert_read">标记已读</string>
+    <string name="qr_mark_read">标记已读 &amp; 关闭</string>
+    <string name="qr_mark_open">打开</string>
+    <string name="qr_pick_smiley">插入表情</string>
+    <string name="qr_pick_emoji">插入 emoji 表情</string>
+    <string name="qr_close_popup">关闭</string>
+    <string name="qr_multi_ask">你想回复给谁？</string>
+    <string name="quick_reply_hint">键入信息</string>
     <string name="only_three_please">一次只能选择三项</string>
     <string name="pref_title_quick_reply">快捷回复</string>
 
@@ -416,5 +420,12 @@
    <string name="pref_keyboard_emoji">Emoji 表情</string>
    <string name="pref_keyboard_send">回车键发送</string>
    <string name="pref_keyboard_new_line">回车键换行</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_ua_default_android">默认Android</string>
+    <string name="pref_mms_ua_custom_option">自定义…</string>
+    <string name="pref_title_mms_user_agent">自定义用户代理</string>
+    <string name="pref_summary_mms_user_agent">发送信息时将手机伪装成不同的设备</string>
+    <string name="pref_mms_user_agent_custom_set">自定义用户代理设置为：\n</string>
 
 </resources>
