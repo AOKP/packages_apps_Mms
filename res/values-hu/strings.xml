@@ -395,6 +395,36 @@
     <string name="pref_title_quickreply_resume_sleep">Alvó állapot engedélyezése</string>
     <string name="pref_summary_quickreply_resume_sleep">Ha gyors választ küldesz lezárt képernyőről, engedélyezi az alvó állapotba való visszatérést</string>
 
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">Lüktető SMS</string>
+   <string name="sms_breath_summary">SMS értesítésnél lüktető effekt az Állapotsávon.</string>
+
+   <!-- Soft Keyboard Type -->
+   <string name="pref_soft_keyboard_title">Billentyűzet</string>
+   <string name="pref_title_input_type">Billentyűzet típusa</string>
+   <string name="pref_summary_input_type">Válassz billentyűzetet üzenet íráshoz</string>
+   <string name="pref_keyboard_emoji">Emóció</string>
+   <string name="pref_keyboard_send">Enter Küldés</string>
+   <string name="pref_keyboard_new_line">Enter új sor</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_ua_default_android">Alapértelmezett Android</string>
+    <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
+    <string name="pref_mms_ua_iphone_3_0">iPhone (3.0)</string>
+    <string name="pref_mms_ua_blackberry_8800">BlackBerry 8800</string>
+    <string name="pref_mms_ua_sonyericsson_w800i">Sony Ericsson W800i</string>
+    <string name="pref_mms_ua_softbank_x01t">SoftBank X01T</string>
+    <string name="pref_mms_ua_softbank_myrmms">SoftBank MyrMMS</string>
+    <string name="pref_mms_ua_custom_option">Egyéni\u2026</string>
+    <string name="pref_title_mms_user_agent">Egyéni felhasználó-ügynök</string>
+    <string name="pref_summary_mms_user_agent">Telefon becsapása üzenet küldéshez</string>
+    <string name="pref_mms_user_agent_custom_set">Egyéni felhasználó ügynök beállítása:\n</string>
+
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank emóció</string>
+    <string name="pref_summary_enable_softbank_encoding">SoftBank emóció kodólás használata</string>
+
+
 
 
 </resources>
