@@ -860,6 +860,7 @@ public class MessagingNotification {
 
         final Notification.Builder noti = new Notification.Builder(context)
                 .setWhen(mostRecentNotification.mTimeMillis);
+        noti.setNumber(messageCount);
 
         if (isNew) {
             noti.setTicker(mostRecentNotification.mTicker);
