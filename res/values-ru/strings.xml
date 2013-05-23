@@ -322,7 +322,7 @@
     <string name="pick_too_many_recipients" msgid="650087588867628044">"Слишком много получателей"</string>
     <string name="adding_recipients" msgid="2962810172527532357">"Добавление получателей..."</string>
     <string name="draft_separator" msgid="5402575086540243019">", "</string>
-    <string name="message_count_format" msgid="4434763220590778012">" <xliff:g id="NUMBER">%1$s</xliff:g>"</string>
+    <string name="message_count_format" msgid="4434763220590778012">" <xliff:g id="NUMBER">%1$s</xliff:g>"</string>
     <string name="message_count_notification" msgid="3629968600032690007">"Новые сообщения (<xliff:g id="NUMBER">%1$s</xliff:g>)"</string>
   <plurals name="message_count_notification_overflow">
     <item quantity="one" msgid="3340591167508150806">"Еще сообщений: <xliff:g id="NUMBER">%1$s</xliff:g>"</item>
@@ -342,4 +342,71 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> – <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
+    <string name="pref_display_title">Дисплей</string>
+    <string name="pref_title_fulldate">Показать полную дату</string>
+    <string name="pref_summary_fulldate">Показать полную дату для сообщений</string>
+    <string name="pref_title_quickreply_callbutton">Показать вызов</string>
+    <string name="pref_summary_quickreply_callbutton">Показать кнопку вызова в уведомлении быстрого ответа</string>
+    <string name="pref_title_quickreply_sms_reply">Показать \"ответ СМС\"</string>
+    <string name="pref_summary_quickreply_sms_reply">Показать кнопку ответа СМС в уведомлении быстрого ответа</string>
+    <string name="pref_title_quickreply_delete">Показать \"удалить\"</string>
+    <string name="pref_summary_quickreply_delete">Показать кнопку \"удалить\" в уведомлении быстрого ответа</string>
+    <string name="pref_title_quickreply_mark_read">Показать \"прочитано\"</string>
+    <string name="pref_summary_quickreply_mark_read">Показать кнопку \"прочитано\" в уведомлении быстрого ответа</string>
+    <string name="pref_title_quickreply_resume_sleep">Включить возвращение в сон</string>
+    <string name="pref_summary_quickreply_resume_sleep">При отправке СМС через быстрый ответ с экрана блокировки, разрешить устройству возвращаться в сон</string>
+    <string name="prefDialogTitle_vibrateWhen">Вибрация</string>
+    <string name="menu_insert_emoji">Вставить emojis</string>
+    <string name="pref_title_sms_split_counter">Счётчик частей</string>
+    <string name="pref_summary_sms_split_counter">Добавляет счётчик к сообщению типа (1/2)</string>
+    <string name="pref_extra_settings">Дополнительные настройки</string>
+    <string name="pref_title_strip_unicode">Заменять юникод</string>
+    <string name="pref_summary_strip_unicode">Заменять неподдерживаемые символы в 160-символьных СМС</string>
+    <string name="pref_title_enable_emojis">Поддержка Emoji</string>
+    <string name="pref_summary_enable_emojis">Включить поддержку emojis юникода, набора из 471 эмотиконов</string>
+    <string name="pref_title_pref_key_emojis_quick">Быстрая кнопка emojis</string>
+    <string name="pref_summary_pref_key_emojis_quick">Показывать слева от области ввода текста кнопку быстрого доступа</string>
+    <string name="pref_title_enable_softbank_encoding">SoftBank для emoji</string>
+    <string name="pref_summary_enable_softbank_encoding">Использовать кодировку SoftBank для emoji</string>
+    <string name="quick_call_back">Ответный вызов</string>
+    <string name="quick_call_back_short">Вызов</string>
+    <string name="quick_reply_sms">Быстрый ответ</string>
+    <string name="quick_reply_sms_short">Ответ</string>
+    <string name="quick_reply_delete">Удалить СМС</string>
+    <string name="quick_reply_delete_short">Удалить</string>
+    <string name="quick_reply_mark_read">Отметить как прочитано</string>
+    <string name="quick_reply_mark_read_short">Прочитано</string>
+    <string name="quick_reply_sending">Быстрый ответ отправлен</string>
+    <string name="qr_alert_title">Ничего не отправлено</string>
+    <string name="qr_alert_message">Хотите заменить сообщение?</string>
+    <string name="qr_alert_yes">Да</string>
+    <string name="qr_alert_no">Нет</string>
+    <string name="qr_alert_read">Отметить как прочитано</string>
+    <string name="qr_mark_read">Отметить как прочитано и закрыть</string>
+    <string name="qr_mark_open">Открыть</string>
+    <string name="qr_pick_smiley">Вставить смайл</string>
+    <string name="qr_pick_emoji">Вставить Emoji</string>
+    <string name="qr_close_popup">Закрыть</string>
+    <string name="qr_multi_ask">Как Вы хотите ответить?</string>
+    <string name="quick_reply_hint">Напечатать сообщение</string>
+    <string name="only_three_please">Выберите только 3 опции за раз</string>
+    <string name="pref_title_quick_reply">Быстрый ответ</string>
+    <string name="sms_breath">Дышащие СМС</string>
+    <string name="sms_breath_summary">Придаст уведомлениям о СМС в строке состояния эффект дыхания.</string>
+    <string name="pref_soft_keyboard_title">Клавиатура</string>
+    <string name="pref_title_input_type">Тип клавиатуры</string>
+    <string name="pref_summary_input_type">Выбрать клавиатуру для использования при наборе сообщений</string>
+    <string name="pref_keyboard_emoji">Emoji</string>
+    <string name="pref_keyboard_send">Ввод для отправки</string>
+    <string name="pref_keyboard_new_line">Ввод для новой строки</string>
+    <string name="pref_mms_ua_default_android">По умолчанию Андроид</string>
+    <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
+    <string name="pref_mms_ua_iphone_3_0">iPhone (3.0)</string>
+    <string name="pref_mms_ua_blackberry_8800">BlackBerry 8800</string>
+    <string name="pref_mms_ua_sonyericsson_w800i">Sony Ericsson W800i</string>
+    <string name="pref_mms_ua_softbank_x01t">SoftBank X01T</string>
+    <string name="pref_mms_ua_softbank_myrmms">SoftBank MyrMMS</string>
+    <string name="pref_mms_ua_custom_option">Пользовательский…</string>
+    <string name="pref_title_mms_user_agent">Пользовательское клиентское приложение</string>
+    <string name="pref_summary_mms_user_agent">Имитировать другую модель телефона для  MMS</string>
 </resources>
