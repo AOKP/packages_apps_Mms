@@ -51,7 +51,7 @@
     <color name="delivery_report_status">#111111</color>
     <color name="delivery_report_date">#111111</color>
     <color name="button_text">#000000</color>
-    <color name="message_recieved">#111111</color>
+    <color name="message_received">#111111</color>
     <color name="message_sent">#222222</color>
     <color name="widget_unread_text">#222222</color>
     <color name="widget_loading">#000000</color>
