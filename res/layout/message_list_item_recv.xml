@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:linksClickable="false"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/message_recieved"
+                    android:textColor="@color/message_received"
                     android:textSize="16sp" />
 
                 <LinearLayout
