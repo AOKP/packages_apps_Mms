@@ -361,6 +361,13 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".ui.SmsStorageMonitor" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_FULL" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_NOT_FULL" />
+            </intent-filter>
+        </receiver>
+
         <!-- Widget -->
         <receiver
             android:name=".widget.MmsWidgetProvider"

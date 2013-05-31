@@ -428,4 +428,6 @@
     <string name="pref_summary_mms_user_agent">发送信息时将手机伪装成不同的设备</string>
     <string name="pref_mms_user_agent_custom_set">自定义用户代理设置为：\n</string>
 
+    <string name="storage_warning_title">你的手机内存已满</string>
+    <string name="storage_warning_content">你将不会接受新的短/彩信</string>
 </resources>
