@@ -950,4 +950,7 @@
     <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
     <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
 
+    <string name="storage_warning_title">Your phone\'s storage is full</string>
+    <string name="storage_warning_content">You won\'t receive new SMS/MMS messages</string>
+
 </resources>
