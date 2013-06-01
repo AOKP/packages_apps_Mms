@@ -53,6 +53,12 @@ public class SmsReceiver extends BroadcastReceiver {
             return;
         }
 
+        // same thing applies to the send-queued-messages request: it can be used to send
+        // SMS without having the SEND_SMS permission
+        if (!privileged && intent.getAction().equals(SmsReceiverService.ACTION_SEND_MESSAGE)) {
+            return;
+        }
+
         intent.setClass(context, SmsReceiverService.class);
         intent.putExtra("result", getResultCode());
         beginStartingService(context, intent);
