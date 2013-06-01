@@ -237,6 +237,14 @@
             </intent-filter>
         </receiver>
 
+        <!-- Require sender permissions as it can be used to indirectly send SMS -->
+        <receiver android:name=".transaction.PrivilegedSmsReceiver"
+            android:permission="android.permission.SEND_SMS">
+            <intent-filter>
+                <action android:name="com.android.mms.transaction.SEND_MESSAGE" />
+            </intent-filter>
+        </receiver>
+
         <!-- Catch-all receiver for broadcasts that don't have associated security -->
         <receiver android:name=".transaction.SmsReceiver">
             <intent-filter>
@@ -246,9 +254,6 @@
                 <action android:name="com.android.mms.transaction.MESSAGE_SENT" />
                 <!-- TODO Do a better data match here. -->
                 <data android:scheme="content" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.SEND_MESSAGE" />
             </intent-filter>
         </receiver>
 
