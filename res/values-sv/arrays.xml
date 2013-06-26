@@ -41,6 +41,16 @@
     <item msgid="8479809115158836070">"Flinar"</item>
     <item msgid="638612939305162424">"Pokeransikte"</item>
   </string-array>
+    <string-array name="pref_mms_user_agent_values" translatable="false">
+        <item>standard</item>
+        <item>NokiaN95/11.0.026; Series60/3.1 Profil/MIDP-2.0 Konfiguration/CLDC-1.1</item>
+        <item>iPhoneOS/3.0 (7A341)</item>
+        <item>BlackBerry8800/4.2.1 Profil/MIDP-2.0 Konfiguration/CLDC-1.1 VendorID/100</item>
+        <item>SonyEricssonW800i/R1L</item>
+        <item>SoftBank/1.0/X01T/TJ001</item>
+        <item>SoftBank/1.0/Smart/MyrMMS</item>
+        <item>anpassad</item>
+    </string-array>
   <string-array name="empty_subject_strings">
     <item msgid="7691141505407124426">"inget ämne"</item>
   </string-array>

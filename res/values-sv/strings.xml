@@ -342,4 +342,94 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> – <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
+
+    <!-- AOKP additional -->
+
+    <!-- Breathing Notifications -->
+    <string name="sms_breath">SMS Andning</string>
+    <string name="sms_breath_summary">Kommer att ge dina SMS-meddelanden en andnings effekt i statusraden.</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Ring Tillbaka</string>
+    <string name="quick_call_back_short">Ring</string>
+    <string name="quick_reply_sms">Snabbsvar</string>
+    <string name="quick_reply_sms_short">Svara</string>
+    <string name="quick_reply_delete">Ta bort Sms</string>
+    <string name="quick_reply_delete_short">Ta bort</string>
+    <string name="quick_reply_mark_read">Markera som läst</string>
+    <string name="quick_reply_mark_read_short">Läs</string>
+    <string name="quick_reply_sending">Snabbt svar skickas till</string>
+    <string name="qr_alert_title">Ingenting har skickats</string>
+    <string name="qr_alert_message">Vill du avbryta det här meddelandet?</string>
+    <string name="qr_alert_yes">Ja</string>
+    <string name="qr_alert_no">Nej</string>
+    <string name="qr_alert_read">Markera som läst</string>
+    <string name="qr_mark_read">Markera som läst &amp; Stäng</string>
+    <string name="qr_pick_smiley">Infoga Smiley</string>
+    <string name="qr_pick_emoji">Infoga Emoji</string>
+    <string name="qr_close_popup">Stäng</string>
+    <string name="qr_multi_ask">Vem vill du svara?</string>
+    <string name="quick_reply_hint">Skriv Meddelande</string>
+    <string name="only_three_please">Du kan bara att välja tre alternativ åt gången</string>
+    <string name="pref_title_quick_reply">Snabbsvar</string>
+
+    <!-- Settings screen, section heading for display-specific settings -->
+    <string name="pref_display_title">Visa</string>
+    <!-- Settings item for boolean option to show the call back button in the quick reply notification -->
+    <string name="pref_title_quickreply_callbutton">Visa ringa tillbaka knappen</string>
+    <string name="pref_summary_quickreply_callbutton">Visa ringa tillbaka knappen i snabb svara notifikationen</string>
+    <!-- Settings item for boolean option to show the sms reply button in the quick reply notification -->
+    <string name="pref_title_quickreply_sms_reply">Visa sms svara knappen</string>
+    <string name="pref_summary_quickreply_sms_reply">Visa sms svara knappen i snabb svara notifikationen</string>
+    <!-- Settings item for boolean option to show the delete button in the quick reply notification -->
+    <string name="pref_title_quickreply_delete">Visa radera knappen</string>
+    <string name="pref_summary_quickreply_delete">Visa radera knappen i snabb svara notifikationen</string>
+    <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
+    <string name="pref_title_quickreply_mark_read">Visa markera som läst knapp</string>
+    <string name="pref_summary_quickreply_mark_read">Visa markera som läst knapp i snabb svara notifikationen</string>
+    <!-- Settings to enabled pm.goToSleep after sending a sms via qr from lockscreen -->
+    <string name="pref_title_quickreply_resume_sleep">Aktivera enheten att återgå till vila</string>
+    <string name="pref_summary_quickreply_resume_sleep">När du skickar ett SMS via snabbsvar från låsskärmen, tillåta enheten att återgå till vila</string>
+
+    <string name="pref_title_fulldate">Visa fullständigt datum</string>
+    <string name="pref_summary_fulldate">Visa fullständigt datum för meddelande</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji support</string>
+    <string name="pref_summary_enable_emojis">Aktivera support för unicode emojis, en samling av 471 trevliga uttryckssymboler</string>
+    <string name="pref_title_pref_key_emojis_quick">Snabb emoji knapp</string>
+    <string name="pref_summary_pref_key_emojis_quick">Visar en knapp till vänster om textinmatning, område för snabb åtkomst</string>
+
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank emoji</string>
+    <string name="pref_summary_enable_softbank_encoding">Använd SoftBank emoji kodning</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Extra inställningar</string>
+
+    <!-- Strip unicode -->
+    <string name="pref_title_strip_unicode">Strip unicode</string>
+    <string name="pref_summary_strip_unicode">Suppleant vanliga tecken som inte stöds i 160 tecken SMS</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_ua_default_android">Standard Android</string>
+    <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
+    <string name="pref_mms_ua_iphone_3_0">iPhone (3.0)</string>
+    <string name="pref_mms_ua_blackberry_8800">BlackBerry 8800</string>
+    <string name="pref_mms_ua_sonyericsson_w800i">Sony Ericsson W800i</string>
+    <string name="pref_mms_ua_softbank_x01t">SoftBank X01T</string>
+    <string name="pref_mms_ua_softbank_myrmms">SoftBank MyrMMS</string>
+    <string name="pref_mms_ua_custom_option">Anpassad\u2026</string>
+    <string name="pref_title_mms_user_agent">Anpassad Användar-Agent</string>
+    <string name="pref_summary_mms_user_agent">Använd telefonen som en annan modell för MMS</string>
+    <string name="pref_mms_user_agent_custom_set">Anpassad Användar Agent satt till:\n</string>
+
+   <!-- Soft Keyboard Type -->
+   <string name="pref_soft_keyboard_title">Tangentbord</string>
+   <string name="pref_title_input_type">Virtuellt tangentbord skriv</string>
+   <string name="pref_summary_input_type">Välj virtuellt tangentbordet för att använda när du skriver meddelanden</string>
+   <string name="pref_keyboard_emoji">Emoji</string>
+   <string name="pref_keyboard_send">Retur för att skicka</string>
+   <string name="pref_keyboard_new_line">Retur för en ny linje</string>
+
 </resources>
