@@ -241,6 +241,8 @@ public class ComposeMessageActivity extends Activity
 
     private static final int MENU_INSERT_EMOJI          = 33;
 
+    private static final int MENU_SMS_NUMBER_SELECTED   = 34;
+
     private static final int RECIPIENTS_MAX_LENGTH = 312;
 
     private static final int MESSAGE_LIST_QUERY_TOKEN = 9527;
@@ -1125,6 +1127,17 @@ public class ComposeMessageActivity extends Activity
                 menu.add(0, MENU_ADD_ADDRESS_TO_CONTACTS, 0, addContactString)
                     .setOnMenuItemClickListener(l)
                     .setIntent(intent);
+            }
+            if (knownPrefix && contactUri == null) {
+                Intent sms = createIntent(this, 0);
+                sms.setData(Uri.parse("sms:" + uriString));
+
+                String addSmsString = getString(R.string.menu_sms_number_selected,
+                    uriString);
+                menu.add(0, MENU_SMS_NUMBER_SELECTED, 0, addSmsString)
+                    .setOnMenuItemClickListener(l)
+                    .setIntent(sms);
+                saveDraft(false);
             }
         }
     }
