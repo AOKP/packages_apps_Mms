@@ -883,7 +883,13 @@ public class WorkingMessage {
                 mHasMmsDraft = true;
             }
         } else {
-            String content = mText.toString();
+            String content = null;
+            try {
+                content = mText.toString();
+            } catch (NullPointerException npe) {
+                // Catch a blank text when using number longpress to contact via SMS
+                LogTag.debug("[WorkingMessage] discard");
+            }
 
             // bug 2169583: don't bother creating a thread id only to delete the thread
             // because the content is empty. When we delete the thread in updateDraftSmsMessage,

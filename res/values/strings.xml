@@ -41,6 +41,7 @@
          contacts. [CHAR LIMIT=50]
     -->
     <string name="menu_add_address_to_contacts">Add <xliff:g id="contactEmailOrNumber">%s</xliff:g> to People</string>
+    <string name="menu_sms_number_selected">Contact <xliff:g id="contactEmailOrNumber">%s</xliff:g> via SMS</string>
     <!-- Menu item to call the recipient of the conversation on the phone (imperative verb) -->
     <string name="menu_call">Call</string>
     <!-- Menu item for search -->
