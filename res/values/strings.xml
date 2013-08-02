@@ -801,4 +801,14 @@
     <string name="banner_sms_promo_title_application"><xliff:g id="appName">%s</xliff:g> is your SMS app</string>
     <string name="banner_sms_promo_message">You can change this in Settings</string>
 
+ <!-- Multi recipients -->
+    <string name="select_recipients">Select recipients</string>
+    <string name="groups_header">Groups</string>
+    <string name="no_recipients">No contacts found</string>
+    <string name="no_recipients_mobile_only">No matching contacts found. Try without the \'Mobile nu
+mbers only\' filter</string>
+    <string name="menu_done">Done</string>
+    <string name="menu_mobile">Mobile numbers only</string>
+    <string name="menu_groups">Show groups</string>
+    <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
 </resources>
