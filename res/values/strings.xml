@@ -955,4 +955,14 @@
     <string name="storage_warning_title">Your phone\'s storage is full</string>
     <string name="storage_warning_content">You won\'t receive new SMS/MMS messages</string>
 
+ <!-- Multi recipients -->
+    <string name="select_recipients">Select recipients</string>
+    <string name="groups_header">Groups</string>
+    <string name="no_recipients">No contacts found</string>
+    <string name="no_recipients_mobile_only">No matching contacts found. Try without the \'Mobile nu
+mbers only\' filter</string>
+    <string name="menu_done">Done</string>
+    <string name="menu_mobile">Mobile numbers only</string>
+    <string name="menu_groups">Show groups</string>
+    <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
 </resources>
