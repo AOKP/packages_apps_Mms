@@ -164,6 +164,12 @@
 
         <activity android:name=".ui.RecipientListActivity"
             android:theme="@style/MmsHoloTheme"
+            android:label="@string/select_recipients"
+            android:parentActivityName=".ui.ComposeMessageActivity">
+        </activity>
+        <activity
+            android:name=".ui.RecipientListActivity"
+            android:theme="@style/MmsHoloTheme"
             android:label="@string/recipient_list_activity" />
 
         <activity android:name=".ui.SlideEditorActivity"
