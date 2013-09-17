@@ -923,8 +923,9 @@
     <string name="qr_multi_ask">Who do you want to reply to?</string>
     <string name="quick_reply_hint">Type Message</string>
     <string name="only_three_please">Only select three options at once</string>
-    <string name="pref_title_quick_reply">Quick Reply</string>
-    
+    <string name="pref_title_quick_reply">Quick Reply Buttons</string>
+    <string name="pref_category_quick_reply_extra">Quick Reply Extras</string>
+
    <!-- Breathing Notifications -->
    <string name="sms_breath">Breathing SMS</string>
    <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
