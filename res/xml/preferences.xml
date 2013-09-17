@@ -211,6 +211,12 @@
             android:summary="@string/pref_summary_templates_manage"
             android:title="@string/pref_title_templates_manage" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_quick_reply_extra"
+        android:key="pref_key_quick_reply_extras">
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_key_templates_show_gesture"

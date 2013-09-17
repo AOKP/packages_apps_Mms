@@ -789,7 +789,6 @@
 
     <!-- In message list items, this string builds the timestamp line when the message is in a group [CHAR LIMIT=NONE] -->
     <string name="message_timestamp_format"><xliff:g id="string" example="Fred Flinstone">%1$s</xliff:g>\u0020-\u0020<xliff:g id="string" example="9:39AM">%2$s</xliff:g></string>
-
     <string name="storage_warning_title">"Your phone's storage is full"</string>
     <string name="storage_warning_content">"You won't receive new SMS/MMS messages"</string>
     <!--  Strings used forh MMS push of messages in outbox -->
@@ -800,5 +799,81 @@
     <string name="banner_sms_promo_title_initial">Messaging is not your SMS app</string>
     <string name="banner_sms_promo_title_application"><xliff:g id="appName">%s</xliff:g> is your SMS app</string>
     <string name="banner_sms_promo_message">You can change this in Settings</string>
+
+   <!-- Settings item for boolean option for SMS Split Counter -->
+   <string name="pref_title_sms_split_counter">Split counter</string>
+   <!-- Settings item description for boolean SMS Split 160 characters setting -->
+   <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Extra settings</string>
+
+    <!-- Strip unicode -->
+    <string name="pref_title_strip_unicode">Strip unicode</string>
+    <string name="pref_summary_strip_unicode">Substitute common characters that are not supported in 160 character SMS messages</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji support</string>
+    <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
+    <string name="pref_title_pref_key_emojis_quick">Quick emojis button</string>
+    <string name="pref_summary_pref_key_emojis_quick">Shows a button to the left of text input-area for quick access</string>
+
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank emoji</string>
+    <string name="pref_summary_enable_softbank_encoding">Use SoftBank emoji encoding</string>
+
+    <!-- Quick Reply -->
+    <string name="quick_call_back">Call Back</string>
+    <string name="quick_call_back_short">Call</string>
+    <string name="quick_reply_sms">Quick Reply</string>
+    <string name="quick_reply_sms_short">Reply</string>
+    <string name="quick_reply_delete">Delete Sms</string>
+    <string name="quick_reply_delete_short">Delete</string>
+    <string name="quick_reply_mark_read">Mark as Read</string>
+    <string name="quick_reply_mark_read_short">Read</string>
+    <string name="quick_reply_sending">Quick reply sent to</string>
+    <string name="qr_alert_title">Nothing Has Been Sent</string>
+    <string name="qr_alert_message">Did you want to cancel this message?</string>
+    <string name="qr_alert_yes">Yes</string>
+    <string name="qr_alert_no">No</string>
+    <string name="qr_alert_read">Mark Read</string>
+    <string name="qr_mark_read">Mark Read &amp; Close</string>
+    <string name="qr_mark_open">Open</string>
+    <string name="qr_pick_smiley">Insert Smiley</string>
+    <string name="qr_pick_emoji">Insert Emoji</string>
+    <string name="qr_close_popup">Close</string>
+    <string name="qr_multi_ask">Who do you want to reply to?</string>
+    <string name="quick_reply_hint">Type Message</string>
+    <string name="only_three_please">Only select three options at once</string>
+    <string name="pref_title_quick_reply">Quick Reply Buttons</string>
+    <string name="pref_category_quick_reply_extra">Quick Reply Extras</string>
+
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">Breathing SMS</string>
+   <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
+
+   <!-- Soft Keyboard Type -->
+   <string name="pref_soft_keyboard_title">Keyboard</string>
+   <string name="pref_title_input_type">Soft keyboard type</string>
+   <string name="pref_summary_input_type">Select the soft keyboard to use when composing messages</string>
+   <string name="pref_keyboard_emoji">Emoji</string>
+   <string name="pref_keyboard_send">Enter to Send</string>
+   <string name="pref_keyboard_new_line">Enter for a new line</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_ua_default_android">Default Android</string>
+    <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
+    <string name="pref_mms_ua_iphone_3_0">iPhone (3.0)</string>
+    <string name="pref_mms_ua_blackberry_8800">BlackBerry 8800</string>
+    <string name="pref_mms_ua_sonyericsson_w800i">Sony Ericsson W800i</string>
+    <string name="pref_mms_ua_softbank_x01t">SoftBank X01T</string>
+    <string name="pref_mms_ua_softbank_myrmms">SoftBank MyrMMS</string>
+    <string name="pref_mms_ua_custom_option">Custom\u2026</string>
+    <string name="pref_title_mms_user_agent">Custom User-Agent</string>
+    <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
+    <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
+
+    <string name="storage_warning_title">Your phone\'s storage is full</string>
+    <string name="storage_warning_content">You won\'t receive new SMS/MMS messages</string>
 
 </resources>
