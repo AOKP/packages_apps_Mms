@@ -868,5 +868,35 @@
     <string name="quick_reply_hint">Type Message</string>
     <string name="only_three_please">Only select three options at once</string>
     <string name="pref_title_quick_reply">Quick Reply</string>
+    <string name="pref_title_quick_reply">Quick Reply Buttons</string>
+    <string name="pref_category_quick_reply_extra">Quick Reply Extras</string>
+
+   <!-- Breathing Notifications -->
+   <string name="sms_breath">Breathing SMS</string>
+   <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
+
+   <!-- Soft Keyboard Type -->
+   <string name="pref_soft_keyboard_title">Keyboard</string>
+   <string name="pref_title_input_type">Soft keyboard type</string>
+   <string name="pref_summary_input_type">Select the soft keyboard to use when composing messages</string>
+   <string name="pref_keyboard_emoji">Emoji</string>
+   <string name="pref_keyboard_send">Enter to Send</string>
+   <string name="pref_keyboard_new_line">Enter for a new line</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_ua_default_android">Default Android</string>
+    <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
+    <string name="pref_mms_ua_iphone_3_0">iPhone (3.0)</string>
+    <string name="pref_mms_ua_blackberry_8800">BlackBerry 8800</string>
+    <string name="pref_mms_ua_sonyericsson_w800i">Sony Ericsson W800i</string>
+    <string name="pref_mms_ua_softbank_x01t">SoftBank X01T</string>
+    <string name="pref_mms_ua_softbank_myrmms">SoftBank MyrMMS</string>
+    <string name="pref_mms_ua_custom_option">Custom\u2026</string>
+    <string name="pref_title_mms_user_agent">Custom User-Agent</string>
+    <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
+    <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
+
+    <string name="storage_warning_title">Your phone\'s storage is full</string>
+    <string name="storage_warning_content">You won\'t receive new SMS/MMS messages</string>
 
 </resources>
