@@ -1540,7 +1540,7 @@ public class MessagingNotification {
      * @param uri The URI of the SMS message
      * @return The message id
      */
-    private static long getSmsMessageId(Context context, Uri uri) {
+    public static long getSmsMessageId(Context context, Uri uri) {
         long messageId = 0;
         Cursor cursor = context.getContentResolver().query(
                 uri,

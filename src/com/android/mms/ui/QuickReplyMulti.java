@@ -42,7 +42,9 @@ import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
+import com.android.mms.data.Conversation;
 import com.android.mms.data.WorkingMessage;
+import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.R;
 
 import android.database.sqlite.SqliteWrapper;
@@ -100,10 +102,14 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        final Intent thisMethod = getIntent();
         // find if the phone is on the lockscreen to allow dialog popup above it
         // if needed
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         boolean isLocked = km.inKeyguardRestrictedInputMode();
+
+        final boolean deleteSms = thisMethod.getBooleanExtra("needsDeleted", false);
+        final boolean markSmsRead = thisMethod.getBooleanExtra("makeAndClose", false);
 
         kl = km.newKeyguardLock("QuickReply");
 
@@ -119,7 +125,13 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         nameList = getNoteNames();
 
         AlertDialog.Builder b = new AlertDialog.Builder(mContext);
-        b.setTitle(R.string.qr_multi_ask);
+        if (deleteSms) {
+            b.setTitle(R.string.qr_multi_delete);
+        } else if (markSmsRead) {
+            b.setTitle(R.string.qr_multi_read);
+        } else {
+            b.setTitle(R.string.qr_multi_ask);
+        }
         b.setItems(nameList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 Log.d("QuickReplyMulti", "item= " + item + ". nameList length= " + nameList.length
@@ -155,6 +167,17 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
                         }
                     }
 
+                    if (deleteSms || markSmsRead) {
+                        Conversation cnv = Conversation.get(mContext, mostRecentNotification.mThreadId, true);
+                        cnv.markAsRead();
+                        if (deleteSms) {
+                            Long messageId = null;
+                            messageId = MessagingNotification.getSmsMessageId(mContext, SMS_INBOX_URI);
+                            mContext.getContentResolver().delete(
+                                    Uri.parse("content://sms/" + messageId), null, null);
+                        }
+                    }
+
                     quickReply = new Intent();
                     quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -170,7 +193,10 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
                         quickReply.putExtra("count", 0);
                         quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
                     }
+                    quickReply.putExtra("needsDeleted", deleteSms);
+                    quickReply.putExtra("makeAndClose", markSmsRead);
                     quickReply.putExtra("from", true);
+
                     // get the contact avatar
                     BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
                             .getAvatar(mContext, null);
