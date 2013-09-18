@@ -1080,7 +1080,7 @@ public class MessagingNotification {
             }
 
             // third add delete thread
-            if (deleteSms != null && wantDelete) {
+            if (messageCount == 1 && deleteSms != null && wantDelete) {
                 CharSequence deleteText;
                 if (!useShortText)
                     deleteText = context.getText(R.string.quick_reply_delete);
@@ -1540,7 +1540,7 @@ public class MessagingNotification {
      * @param uri The URI of the SMS message
      * @return The message id
      */
-    private static long getSmsMessageId(Context context, Uri uri) {
+    public static long getSmsMessageId(Context context, Uri uri) {
         long messageId = 0;
         Cursor cursor = context.getContentResolver().query(
                 uri,

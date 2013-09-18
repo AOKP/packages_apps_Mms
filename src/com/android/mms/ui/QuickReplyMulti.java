@@ -42,7 +42,9 @@ import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
+import com.android.mms.data.Conversation;
 import com.android.mms.data.WorkingMessage;
+import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.R;
 
 import android.database.sqlite.SqliteWrapper;
@@ -105,6 +107,8 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         boolean isLocked = km.inKeyguardRestrictedInputMode();
 
+        final boolean markSmsRead = getIntent().getBooleanExtra("makeAndClose", false);
+
         kl = km.newKeyguardLock("QuickReply");
 
         if (!sNotificationSet.isEmpty()) {
@@ -119,73 +123,78 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         nameList = getNoteNames();
 
         AlertDialog.Builder b = new AlertDialog.Builder(mContext);
-        b.setTitle(R.string.qr_multi_ask);
+        if (markSmsRead) {
+            b.setTitle(R.string.qr_multi_read);
+        } else {
+            b.setTitle(R.string.qr_multi_ask);
+        }
         b.setItems(nameList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 Log.d("QuickReplyMulti", "item= " + item + ". nameList length= " + nameList.length
                         + ". keyArray size= " + keyArray.size() + ".");
-                if (item == keyArray.size()) {
-                    if (wasLocked) {
-                        kl.reenableKeyguard();
-                    }
-                    finish();
-                } else {
-                    Intent quickReply = null;
-                    long key = keyArray.get(item);
-                    NotificationInfo mostRecentNotification = noteHash.get(key);
-                    boolean multi = noteHashs.containsKey(key);
-                    SpannableStringBuilder buf = new SpannableStringBuilder();
-                    if (multi) {
-                        ArrayList<String> textBody = new ArrayList<String>();
-                        ArrayList<NotificationInfo> multiNotification = new ArrayList<NotificationInfo>();
-                        multiNotification = noteHashs.get(key);
-                        int count = noteHashs.size() + 1;
-                        for (int i = 0; i > count; i++) {
-                            if (i == 0) {
-                                textBody.add(noteHash.get(key).mMessage.toString());
-                            } else {
-                                textBody.add(multiNotification.get(i).mMessage.toString());
-                            }
-                        }
-                        for (int i = 0; i > 0; i++) {
-                            buf.append(formatBigMessage(textBody.get(i)));
-                            if (i != 0) {
-                                buf.append('\n');
-                            }
+                Intent quickReply = null;
+                long key = keyArray.get(item);
+                NotificationInfo mostRecentNotification = noteHash.get(key);
+                boolean multi = noteHashs.containsKey(key);
+                SpannableStringBuilder buf = new SpannableStringBuilder();
+                if (multi) {
+                    ArrayList<String> textBody = new ArrayList<String>();
+                    ArrayList<NotificationInfo> multiNotification = new ArrayList<NotificationInfo>();
+                    multiNotification = noteHashs.get(key);
+                    int count = noteHashs.size() + 1;
+                    for (int i = 0; i > count; i++) {
+                        if (i == 0) {
+                            textBody.add(noteHash.get(key).mMessage.toString());
+                        } else {
+                            textBody.add(multiNotification.get(i).mMessage.toString());
                         }
                     }
-
-                    quickReply = new Intent();
-                    quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                            | Intent.FLAG_ACTIVITY_SINGLE_TOP
-                            | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    quickReply.setClass(mContext, com.android.mms.ui.QuickReply.class);
-                    quickReply.putExtra("number", mostRecentNotification.mSender.getNumber());
-                    quickReply.putExtra("name", mostRecentNotification.mSender.getName());
-                    quickReply.putExtra("threadId", mostRecentNotification.mThreadId);
-                    if (multi) {
-                        quickReply.putExtra("count", 1);
-                        quickReply.putExtra("bodies", buf);
-                    } else {
-                        quickReply.putExtra("count", 0);
-                        quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
-                    }
-                    quickReply.putExtra("from", true);
-                    // get the contact avatar
-                    BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
-                            .getAvatar(mContext, null);
-                    Bitmap contactPic = null;
-                    if (contactDrawable != null) {
-                        contactPic = contactDrawable.getBitmap();
-                        if (contactPic != null) {
-                            quickReply.putExtra("avatar", contactPic);
+                    for (int i = 0; i > 0; i++) {
+                        buf.append(formatBigMessage(textBody.get(i)));
+                        if (i != 0) {
+                            buf.append('\n');
                         }
                     }
-                    startActivity(quickReply);
-                    finish();
                 }
+
+                if (markSmsRead) {
+                    Conversation cnv = Conversation.get(mContext, mostRecentNotification.mThreadId, true);
+                    cnv.markAsRead();
+                }
+
+                quickReply = new Intent();
+                quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                quickReply.setClass(mContext, com.android.mms.ui.QuickReply.class);
+                quickReply.putExtra("number", mostRecentNotification.mSender.getNumber());
+                quickReply.putExtra("name", mostRecentNotification.mSender.getName());
+                quickReply.putExtra("threadId", mostRecentNotification.mThreadId);
+                if (multi) {
+                    quickReply.putExtra("count", 1);
+                    quickReply.putExtra("bodies", buf);
+                } else {
+                    quickReply.putExtra("count", 0);
+                    quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
+                }
+                quickReply.putExtra("makeAndClose", markSmsRead);
+                quickReply.putExtra("from", true);
+
+                // get the contact avatar
+                BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
+                        .getAvatar(mContext, null);
+                Bitmap contactPic = null;
+                if (contactDrawable != null) {
+                    contactPic = contactDrawable.getBitmap();
+                    if (contactPic != null) {
+                        quickReply.putExtra("avatar", contactPic);
+                    }
+                }
+                startActivity(quickReply);
+                finish();
             }
         });
+
         AlertDialog alert = b.create();
         if (isLocked) {
             kl.disableKeyguard();
