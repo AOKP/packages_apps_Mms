@@ -110,6 +110,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
     private boolean fromMulti = false;
     private boolean screenIsOff;
     private boolean resumeSleep;
+    private boolean markSmsRead;
 
     private AlertDialog mSmileyDialog;
     private AlertDialog mEmojiDialog;
@@ -160,7 +161,11 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         messageType = extras.getInt("count");
         fromMulti = extras.getBoolean("from");
         boolean deleteSms = extras.getBoolean("needsDeleted", false);
-        boolean markSmsRead = extras.getBoolean("makeAndClose", false);
+        markSmsRead = extras.getBoolean("makeAndClose", false);
+
+        if (markSmsRead && fromMulti) {
+            finish();
+        }
         boolean openSms = extras.getBoolean("needsOpened", false);
         boolean test = extras.getBoolean("test", false);
         nameContact = (TextView) mView.findViewById(R.id.contact_name);
@@ -472,6 +477,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_SINGLE_TOP
                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.putExtra("makeAndClose", markSmsRead);
             startActivity(i);
         }
         unregisterReceiver(screenReceiver);

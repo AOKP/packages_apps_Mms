@@ -42,7 +42,9 @@ import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
+import com.android.mms.data.Conversation;
 import com.android.mms.data.WorkingMessage;
+import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.R;
 
 import android.database.sqlite.SqliteWrapper;
@@ -105,6 +107,8 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         boolean isLocked = km.inKeyguardRestrictedInputMode();
 
+        final boolean markSmsRead = getIntent().getBooleanExtra("makeAndClose", false);
+
         kl = km.newKeyguardLock("QuickReply");
 
         if (!sNotificationSet.isEmpty()) {
@@ -119,7 +123,11 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         nameList = getNoteNames();
 
         AlertDialog.Builder b = new AlertDialog.Builder(mContext);
-        b.setTitle(R.string.qr_multi_ask);
+        if (markSmsRead) {
+            b.setTitle(R.string.qr_multi_read);
+        } else {
+            b.setTitle(R.string.qr_multi_ask);
+        }
         b.setItems(nameList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 Log.d("QuickReplyMulti", "item= " + item + ". nameList length= " + nameList.length
@@ -155,6 +163,11 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
                         }
                     }
 
+                    if (markSmsRead) {
+                        Conversation cnv = Conversation.get(mContext, mostRecentNotification.mThreadId, true);
+                        cnv.markAsRead();
+                    }
+
                     quickReply = new Intent();
                     quickReply.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -170,7 +183,9 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
                         quickReply.putExtra("count", 0);
                         quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
                     }
+                    quickReply.putExtra("makeAndClose", markSmsRead);
                     quickReply.putExtra("from", true);
+
                     // get the contact avatar
                     BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
                             .getAvatar(mContext, null);
@@ -186,6 +201,7 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
                 }
             }
         });
+
         AlertDialog alert = b.create();
         if (isLocked) {
             kl.disableKeyguard();
