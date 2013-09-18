@@ -921,6 +921,8 @@
     <string name="qr_pick_emoji">Insert Emoji</string>
     <string name="qr_close_popup">Close</string>
     <string name="qr_multi_ask">Who do you want to reply to?</string>
+    <string name="qr_multi_read">Which thread do you want to mark read?</string>
+    <string name="qr_multi_delete">Which message do you want to delete?</string>
     <string name="quick_reply_hint">Type Message</string>
     <string name="only_three_please">Only select three options at once</string>
     <string name="pref_title_quick_reply">Quick Reply</string>

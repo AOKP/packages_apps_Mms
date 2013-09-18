@@ -43,6 +43,7 @@ import android.util.Log;
 import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
 import com.android.mms.data.WorkingMessage;
+import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.R;
 
 import android.database.sqlite.SqliteWrapper;
@@ -105,6 +106,9 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         boolean isLocked = km.inKeyguardRestrictedInputMode();
 
+        final boolean deleteSms = getIntent().getBooleanExtra("needsDeleted", false);
+        final boolean markSmsRead = getIntent().getBooleanExtra("makeAndClose", false);
+
         kl = km.newKeyguardLock("QuickReply");
 
         if (!sNotificationSet.isEmpty()) {
@@ -119,7 +123,13 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
         nameList = getNoteNames();
 
         AlertDialog.Builder b = new AlertDialog.Builder(mContext);
-        b.setTitle(R.string.qr_multi_ask);
+        if (deleteSms) {
+            b.setTitle(R.string.qr_multi_delete);
+        } else if (markSmsRead) {
+            b.setTitle(R.string.qr_multi_read);
+        } else {
+            b.setTitle(R.string.qr_multi_ask);
+        }
         b.setItems(nameList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 Log.d("QuickReplyMulti", "item= " + item + ". nameList length= " + nameList.length
@@ -171,6 +181,20 @@ public class QuickReplyMulti extends Activity implements OnDismissListener {
                         quickReply.putExtra("body", mostRecentNotification.mMessage.toString());
                     }
                     quickReply.putExtra("from", true);
+
+                    if (deleteSms || markSmsRead) {
+                        Long messageId = null;
+                        messageId = MessagingNotification.getSmsMessageId(mContext, SMS_INBOX_URI);
+                        if (messageId != null) {
+                            quickReply.putExtra("msgId", messageId);
+                        }
+                        if (deleteSms) {
+                            quickReply.putExtra("needsDeleted", deleteSms);
+                        } else {
+                            quickReply.putExtra("makeAndClose", markSmsRead);
+                        }
+                    }
+
                     // get the contact avatar
                     BitmapDrawable contactDrawable = (BitmapDrawable) mostRecentNotification.mSender
                             .getAvatar(mContext, null);
