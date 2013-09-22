@@ -373,8 +373,10 @@
     <string name="qr_pick_emoji">Vložit emojík</string>
     <string name="qr_close_popup">Zavřít</string>
     <string name="qr_multi_ask">Na čí zprávu odpovědět?</string>
+    <string name="qr_multi_read">Jaké vlákno označit jako přečtené?</string>
     <string name="only_three_please">Najednou mohou být zvolené nejvýše 3 možnosti</string>
-    <string name="pref_title_quick_reply">Rychlá odpověď</string>
+    <string name="pref_title_quick_reply">Tlačítka rychlé odpovědi</string>
+    <string name="pref_category_quick_reply_extra">Možnosti rychlé odpovědi</string>
     <string name="pref_title_quickreply_callbutton">Zobrazit tlačítko Zavolat zpět</string>
     <string name="pref_summary_quickreply_callbutton">Zobrazit tlačítko Zavolat zpět v notifikaci zprávy</string>
     <string name="pref_title_quickreply_sms_reply">Zobrazit tlačítko Rychlá odpověď</string>
