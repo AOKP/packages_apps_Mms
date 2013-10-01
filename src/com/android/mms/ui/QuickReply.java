@@ -49,6 +49,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -191,6 +192,7 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         textBox = (EditText) mView.findViewById(R.id.edit_box);
         textBox.setOnClickListener(this);
         textBox.addTextChangedListener(mTextEditorWatcher);
+        textBox.setOnKeyListener(mDoneListener);
         textBoxCounter = (TextView) mView.findViewById(R.id.text_counter);
         alert.setOnDismissListener(this);
         // set alert system to make sure it is always on top, permission
@@ -299,6 +301,25 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
         }
 
         public void afterTextChanged(Editable s) {
+        }
+    };
+
+    private final EditText.OnKeyListener mDoneListener = new EditText.OnKeyListener() {
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
+            if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                    (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (typing) {
+                    imm.hideSoftInputFromWindow(textBox.getWindowToken(), 0);
+                    typing = false;
+                }
+                sendSms();
+                String nyan = getResources().getString(R.string.quick_reply_sending);
+                Toast.makeText(QuickReply.this, nyan + ": " + contactName, Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            return false;
         }
     };
 
