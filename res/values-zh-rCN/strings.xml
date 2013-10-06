@@ -404,10 +404,11 @@
     <string name="qr_pick_emoji">插入 emoji 表情</string>
     <string name="qr_close_popup">关闭</string>
     <string name="qr_multi_ask">你想回复给谁？</string>
+    <string name="qr_multi_read">你想标记哪条为已读？</string>
     <string name="quick_reply_hint">键入信息</string>
     <string name="only_three_please">一次只能选择三项</string>
     <string name="pref_title_quick_reply">快捷回复</string>
-
+    <string name="pref_category_quick_reply_extra">更多快捷回复</string>
 
    <!-- Breathing Notifications -->
    <string name="sms_breath">呼吸效果短信提醒</string>
