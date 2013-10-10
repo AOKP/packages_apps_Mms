@@ -112,6 +112,9 @@ public class MessageUtils {
 
     private static HashMap numericSugarMap = new HashMap (NUMERIC_CHARS_SUGAR.length);
 
+    // Save the thread id for same recipient forward mms
+    public static ArrayList<Long> sSameRecipientList = new ArrayList<Long>();
+
     static {
         for (int i = 0; i < NUMERIC_CHARS_SUGAR.length; i++) {
             numericSugarMap.put(NUMERIC_CHARS_SUGAR[i], NUMERIC_CHARS_SUGAR[i]);
