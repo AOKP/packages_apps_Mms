@@ -159,6 +159,9 @@ public class WorkingMessage {
 
     private static final int MMS_MESSAGE_SIZE_INDEX  = 1;
 
+    // flag indicate resend sms that the recipient of conversion is more than one.
+    private boolean mResendMultiRecipients;
+
     /**
      * Callback interface for communicating important state changes back to
      * ComposeMessageActivity.
@@ -1316,7 +1319,13 @@ public class WorkingMessage {
 
         // just do a regular send. We're already on a non-ui thread so no need to fire
         // off another thread to do this work.
-        sendSmsWorker(msgText, semiSepRecipients, threadId);
+        if (mResendMultiRecipients) {
+            Log.d(TAG, "it is resend sms recipient="+recipientsInUI);
+            sendSmsWorker(msgText, recipientsInUI, threadId);
+            mResendMultiRecipients = false;
+        } else {
+            sendSmsWorker(msgText, semiSepRecipients, threadId);
+        }
 
         // Be paranoid and clean any draft SMS up.
         deleteDraftSmsMessage(threadId);
@@ -1808,6 +1817,14 @@ public class WorkingMessage {
         // to clear those messages as well as ones with a valid thread id.
         final String where = Mms.THREAD_ID +  (threadId > 0 ? " = " + threadId : " IS NULL");
         asyncDelete(Mms.Draft.CONTENT_URI, where, null);
+    }
+
+    public void setResendMultiRecipients(boolean bResendMultiRecipients) {
+        mResendMultiRecipients = bResendMultiRecipients;
+    }
+
+    public boolean getResendMultiRecipients() {
+        return mResendMultiRecipients;
     }
 
     /**
