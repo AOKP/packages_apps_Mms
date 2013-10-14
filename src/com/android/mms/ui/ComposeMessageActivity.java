@@ -241,6 +241,8 @@ public class ComposeMessageActivity extends Activity
 
     private static final int MENU_INSERT_EMOJI          = 33;
 
+    private static final int MENU_RESEND = 34;
+
     private static final int RECIPIENTS_MAX_LENGTH = 312;
 
     private static final int MESSAGE_LIST_QUERY_TOKEN = 9527;
@@ -350,6 +352,9 @@ public class ComposeMessageActivity extends Activity
                                             // If the value >= 0, then we jump to that line. If the
                                             // value is maxint, then we jump to the end.
     private long mLastMessageId;
+    
+    //record the resend sms recipient when the sms send to more than one recipient 	
+    private String mResendSmsRecipient;
 
     /**
      * Whether this activity is currently running (i.e. not paused)
@@ -1205,9 +1210,15 @@ public class ComposeMessageActivity extends Activity
 
             // Forward is not available for undownloaded messages.
             if (msgItem.isDownloaded() && (msgItem.isSms() || isForwardable(msgId))) {
-                menu.add(0, MENU_FORWARD_MESSAGE, 0, R.string.menu_forward)
-                        .setOnMenuItemClickListener(l);
+                    menu.add(0, MENU_FORWARD_MESSAGE, 0, R.string.menu_forward)
+                            .setOnMenuItemClickListener(l);
             }
+           
+            //only failed send message have resend function 	
+	    if (msgItem.isFailedMessage()) {	
+			menu.add(0, MENU_RESEND, 0, R.string.menu_resend)	
+			.setOnMenuItemClickListener(l);	
+			}
 
             if (msgItem.isMms()) {
                 switch (msgItem.mBoxId) {
@@ -1410,6 +1421,35 @@ public class ComposeMessageActivity extends Activity
             }
         }, R.string.building_slideshow_title);
     }
+    
+    private void resendMessage(MessageItem msgItem) {	
+	if (msgItem.isMms()) {	
+	   //if it is mms, we delete current mms and use current mms 	
+	   //uri to create new working message object. 	
+	   WorkingMessage newWorkingMessage = WorkingMessage.load(this, msgItem.mMessageUri);	
+	   if (newWorkingMessage == null)	
+	      return;	
+				
+	   // Discard the current message in progress. 	
+	   mWorkingMessage.discard();	
+				
+	   mWorkingMessage = newWorkingMessage;	
+           mWorkingMessage.setConversation(mConversation);	
+	   mWorkingMessage.setSubject(msgItem.mSubject, false);	
+	} else {	
+	    if (getRecipients().size() > 1) {	
+		//if the number is more than one when send sms, there will show serveral msg items 	
+	        //the recipient of msg item is not equal with recipients of conversation 	
+		//so we should record the recipient of this msg item. 	
+		mWorkingMessage.setResendMultiRecipients(true);	
+		mResendSmsRecipient = msgItem.mAddress;	
+	    }	
+				
+	    editSmsMessageItem(msgItem);	
+	}	
+				
+	sendMessage(true);	
+    }
 
     /**
      * Context menu handlers for the message list view.
@@ -1440,6 +1480,10 @@ public class ComposeMessageActivity extends Activity
                 case MENU_FORWARD_MESSAGE:
                     forwardMessage(mMsgItem);
                     return true;
+    
+                case MENU_RESEND:	
+		     resendMessage(mMsgItem);
+                     return true;
 
                 case MENU_VIEW_SLIDESHOW:
                     MessageUtils.viewMmsMessageAttachment(ComposeMessageActivity.this,
@@ -3929,11 +3973,17 @@ public class ComposeMessageActivity extends Activity
             // them back once the recipient list has settled.
             removeRecipientsListeners();
 
-            mWorkingMessage.send(mDebugRecipients);
+            if (mWorkingMessage.getResendMultiRecipients()) {	
+	       //if resend sms recipient is more than one, use mResendSmsRecipient 	
+	       mWorkingMessage.send(mResendSmsRecipient);	
+	    } else {
+                mWorkingMessage.send(mDebugRecipients); 
+            }
 
             mSentMessage = true;
             mSendingMessage = true;
             addRecipientsListeners();
+    
 
             mScrollOnSend = true;   // in the next onQueryComplete, scroll the list to the end.
         }
