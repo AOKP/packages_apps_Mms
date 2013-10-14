@@ -342,6 +342,7 @@
     <string name="notification_separator" msgid="2334673105226536422">"  "</string>
     <string name="enumeration_comma" msgid="213598026698964628">", "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> – <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
+    <string name="menu_resend">Znovu odeslat</string>
     <string name="pref_title_sms_split_counter">Počítadlo rozdělení</string>
     <string name="pref_summary_sms_split_counter">Přidat počítadlo do zprávy. Např. (1/2)</string>
     <string name="pref_extra_settings">Speciální nastavení</string>
