@@ -425,9 +425,11 @@
     <string name="qr_pick_emoji">絵文字を挿入</string>
     <string name="qr_close_popup">閉じる</string>
     <string name="qr_multi_ask">誰に返信しますか？</string>
+    <string name="qr_multi_read">どのスレッドを既読にしますか？</string>
     <string name="quick_reply_hint">メッセージを入力</string>
     <string name="only_three_please">3つまでしか選択できません</string>
     <string name="pref_title_quick_reply">クイックリプライ</string>
+    <string name="pref_category_quick_reply_extra">クイックリプライ追加</string>
 
     <!-- Breathing Notifications -->
     <string name="sms_breath">通知アニメーション</string>
@@ -453,5 +455,8 @@
     <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
     <string name="pref_summary_mms_user_agent">MMSクライアントのUser-Agent文字列を変更する</string>
     <string name="pref_mms_user_agent_custom_set">設定されているUser-Agent:\n</string>
+
+    <string name="storage_warning_title">端末のストレージが満タンです</string>
+    <string name="storage_warning_content">新しいSMS/MMSメッセージを受信しなくなります</string>
 
 </resources>
