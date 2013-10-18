@@ -411,4 +411,13 @@
     <string name="pref_title_mms_user_agent">Vlastní User-Agent</string>
     <string name="pref_summary_mms_user_agent">Spoof phone jako jiný model pro MMS</string>
     <string name="pref_mms_user_agent_custom_set">Vlastní User Agent nastaven na:\n</string>
+    <!-- Multi recipients -->
+    <string name="select_recipients">Vybrat příjemce</string>
+    <string name="groups_header">Skupiny</string>
+    <string name="no_recipients">Nenalezen žádný kontakt</string>
+    <string name="no_recipients_mobile_only">Nenalezen žádný kontakt. Lepší bude zkusit bez filtru \'Pouze čísla\'.</string>
+    <string name="menu_done">Hotovo</string>
+    <string name="menu_mobile">Pouze čísla</string>
+    <string name="menu_groups">Zobrazit skupiny</string>
+    <string name="fastscroll_index_groups">SK</string>
 </resources>
