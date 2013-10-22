@@ -1,6 +1,8 @@
 /*
  * Copyright (C) 2008 Esmertec AG.
  * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2010-2013, The Linux Foundation. All rights reserved.
+ * Not a Contribution.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +44,9 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
+import android.telephony.TelephonyManager;
+import android.telephony.MSimSmsManager;
+import android.telephony.MSimTelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -107,13 +112,11 @@ public class MessagingNotification {
 
     // This must be consistent with the column constants below.
     private static final String[] MMS_STATUS_PROJECTION = new String[] {
-            Mms.THREAD_ID, Mms.DATE, Mms._ID, Mms.SUBJECT, Mms.SUBJECT_CHARSET
-    };
+        Mms.THREAD_ID, Mms.DATE, Mms._ID, Mms.SUBJECT, Mms.SUBJECT_CHARSET, Mms.SUB_ID };
 
     // This must be consistent with the column constants below.
     private static final String[] SMS_STATUS_PROJECTION = new String[] {
-            Sms.THREAD_ID, Sms.DATE, Sms.ADDRESS, Sms.SUBJECT, Sms.BODY
-    };
+        Sms.THREAD_ID, Sms.DATE, Sms.ADDRESS, Sms.SUBJECT, Sms.BODY, Sms.SUB_ID };
 
     // These must be consistent with MMS_STATUS_PROJECTION and
     // SMS_STATUS_PROJECTION.
@@ -121,9 +124,10 @@ public class MessagingNotification {
     private static final int COLUMN_DATE = 1;
     private static final int COLUMN_MMS_ID = 2;
     private static final int COLUMN_SMS_ADDRESS = 2;
-    private static final int COLUMN_SUBJECT = 3;
-    private static final int COLUMN_SUBJECT_CS = 4;
-    private static final int COLUMN_SMS_BODY = 4;
+    private static final int COLUMN_SUBJECT     = 3;
+    private static final int COLUMN_SUBJECT_CS  = 4;
+    private static final int COLUMN_SMS_BODY    = 4;
+    private static final int COLUMN_SUB_ID      = 5;
 
     private static final Uri SMS_INBOX_URI = Uri.withAppendedPath(
             Uri.parse("content://sms"), "inbox");
@@ -629,6 +633,7 @@ public class MessagingNotification {
 
                 long threadId = cursor.getLong(COLUMN_THREAD_ID);
                 long timeMillis = cursor.getLong(COLUMN_DATE) * 1000;
+                int subId = cursor.getInt(COLUMN_SUB_ID);
 
                 if (Log.isLoggable(LogTag.APP, Log.VERBOSE)) {
                     Log.d(TAG, "addMmsNotificationInfos: count=" + cursor.getCount() +
@@ -666,7 +671,7 @@ public class MessagingNotification {
                         false /* isSms */,
                         address,
                         messageBody, subject,
-                        threadId,
+                        threadId, subId,
                         timeMillis,
                         attachedPicture,
                         contact,
@@ -760,6 +765,7 @@ public class MessagingNotification {
                 String message = cursor.getString(COLUMN_SMS_BODY);
                 long threadId = cursor.getLong(COLUMN_THREAD_ID);
                 long timeMillis = cursor.getLong(COLUMN_DATE);
+                int subId = cursor.getInt(COLUMN_SUB_ID);
 
                 if (Log.isLoggable(LogTag.APP, Log.VERBOSE))
                 {
@@ -769,7 +775,7 @@ public class MessagingNotification {
 
                 NotificationInfo info = getNewMessageNotificationInfo(context, true /* isSms */,
                         address, message, null /* subject */,
-                        threadId, timeMillis, null /* attachmentBitmap */,
+                        threadId, subId, timeMillis, null /* attachmentBitmap */,
                         contact, WorkingMessage.TEXT);
 
                 notificationSet.add(info);
@@ -789,6 +795,7 @@ public class MessagingNotification {
             String message,
             String subject,
             long threadId,
+            int subId,
             long timeMillis,
             Bitmap attachmentBitmap,
             Contact contact,
@@ -799,11 +806,11 @@ public class MessagingNotification {
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         String senderInfo = buildTickerMessage(
-                context, address, null, null).toString();
+                context, address, null, null, subId).toString();
         String senderInfoName = senderInfo.substring(
-                0, senderInfo.length() - 2);
+                0, senderInfo.length());
         CharSequence ticker = buildTickerMessage(
-                context, address, subject, message);
+                context, address, subject, message, subId);
 
         return new NotificationInfo(isSms,
                 clickIntent, message, subject, ticker, timeMillis,
@@ -1281,7 +1288,7 @@ public class MessagingNotification {
     }
 
     protected static CharSequence buildTickerMessage(
-            Context context, String address, String subject, String body) {
+            Context context, String address, String subject, String body, int subId) {
         String displayAddress = Contact.get(address, true).getName();
 
         StringBuilder buf = new StringBuilder(
@@ -1289,6 +1296,12 @@ public class MessagingNotification {
                         ? ""
                         : displayAddress.replace('\n', ' ').replace('\r', ' '));
         buf.append(':').append(' ');
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            int subscription = subId + 1;
+            buf.append("SUB" + subscription);
+            buf.append("-");
+        }
 
         int offset = buf.length();
         if (!TextUtils.isEmpty(subject)) {

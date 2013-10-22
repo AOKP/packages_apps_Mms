@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.provider.Telephony.Mms;
@@ -92,8 +93,9 @@ public class NotificationTransaction extends Transaction implements Runnable {
             throw new IllegalArgumentException();
         }
 
-        mId = new String(mNotificationInd.getTransactionId());
         mContentLocation = new String(mNotificationInd.getContentLocation());
+        mId = mContentLocation;
+        Log.d(TAG, "mId=" + mId);
 
         // Attach the transaction to the instance of RetryScheduler.
         attach(RetryScheduler.getInstance(context));
@@ -119,7 +121,8 @@ public class NotificationTransaction extends Transaction implements Runnable {
         }
 
         mNotificationInd = ind;
-        mId = new String(ind.getTransactionId());
+        mId = new String(mNotificationInd.getContentLocation());
+        Log.d(TAG, "mId=" + mId);
     }
 
     /*
@@ -187,8 +190,22 @@ public class NotificationTransaction extends Transaction implements Runnable {
                             MessagingPreferenceActivity.getIsGroupMmsEnabled(mContext), null);
 
                     // Use local time instead of PDU time
-                    ContentValues values = new ContentValues(1);
+                    ContentValues values = new ContentValues(2);
                     values.put(Mms.DATE, System.currentTimeMillis() / 1000L);
+                    Cursor c = mContext.getContentResolver().query(mUri,
+                            null, null, null, null);
+                    if (c != null) {
+                        try {
+                            if (c.moveToFirst()) {
+                                int subId = c.getInt(c.getColumnIndex(Mms.SUB_ID));
+                                values.put(Mms.SUB_ID, subId);
+                            }
+                        } catch (Exception ex) {
+                            Log.e(TAG, "Exception:" + ex);
+                        } finally {
+                            c.close();
+                        }
+                    }
                     SqliteWrapper.update(mContext, mContext.getContentResolver(),
                             uri, values, null, null);
 

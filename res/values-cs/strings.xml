@@ -420,4 +420,22 @@
     <string name="menu_mobile">Pouze čísla</string>
     <string name="menu_groups">Zobrazit skupiny</string>
     <string name="fastscroll_index_groups">SK</string>
+    <string name="mms1">MMS1</string> 
+    <string name="mms2">MMS2</string> 
+    <string name="mms3">MMS3</string> 
+    <string name="sub1">SUB 1</string> 
+    <string name="sub2">SUB 2</string> 
+    <string name="sub3">SUB 3</string> 
+    <string name="select_subscription_title">Zvolit předplatné</string> 
+    <string name="subscription1_title">Předplatné 1</string> 
+    <string name="subscription2_title">Předplatné 2</string> 
+    <string name="subscription3_title">Předplatné 3</string> 
+    <string name="pending_mms_title">Čekající MMS v jiném předplatném.</string> 
+    <string name="pending_mms">Zprávy: Jedna nebo více MMS čeká.</string> 
+    <string name="pending_mms_text">Dotykem přepnout předplatné.</string> 
+    <string name="abort_mms">Zprávy: Zrušit MMS</string> 
+    <string name="abort_mms_text ">Dotykem zrušit a přepnout zpět.</string> 
+    <string name="progress_mms_title">Probíhá MMS transakce v jiném předplatném</string> 
+    <string name="progress_mms">Zprávy: MMS probíhá...</string> 
+    <string name="progress_mms_text ">Dotykem zkusit znovu</string> 
 </resources>

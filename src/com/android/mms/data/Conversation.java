@@ -392,7 +392,7 @@ public class Conversation {
                         LogTag.debug("markAsRead: update read/seen for thread uri: " +
                                 threadUri);
                         mContext.getContentResolver().update(threadUri, sReadContentValues,
-                                UNREAD_SELECTION, null);
+                                UNREAD_SELECTION, null); 
                     }
                     setHasUnreadMessages(false);
                 }
