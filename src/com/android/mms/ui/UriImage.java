@@ -269,7 +269,7 @@ public class UriImage {
      * @param byteLimit The binary size limit, in bytes
      * @return A resized/recompressed version of this image, in JPEG format
      */
-    public static byte[] getResizedImageData(int width, int height,
+    public synchronized static byte[] getResizedImageData(int width, int height,
             int widthLimit, int heightLimit, int byteLimit, Uri uri, Context context) {
         int outWidth = width;
         int outHeight = height;
