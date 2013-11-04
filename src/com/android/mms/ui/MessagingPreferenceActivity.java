@@ -92,9 +92,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String INPUT_TYPE               = "pref_key_mms_input_type";
     public static final String USER_AGENT               = "pref_key_mms_user_agent";
     public static final String USER_AGENT_CUSTOM        = "pref_key_mms_user_agent_custom";
+    public static final String MESSAGE_FONT_SIZE         = "pref_key_mms_message_font_size";
 
     // Menu entries
-    private static final int MENU_RESTORE_DEFAULTS    = 1;
+    private static final int MENU_RESTORE_DEFAULTS       = 1;
 
     private Preference mSmsLimitPref;
     private Preference mSmsDeliveryReportPref;

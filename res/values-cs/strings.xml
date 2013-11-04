@@ -438,4 +438,8 @@
     <string name="progress_mms_title">Probíhá MMS transakce v jiném předplatném</string> 
     <string name="progress_mms">Zprávy: MMS probíhá...</string> 
     <string name="progress_mms_text ">Dotykem zkusit znovu</string> 
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">Velikost textu zpráv</string>
+    <string name="pref_summary_mms_message_font_size">Změnit velikost písma u zobrazení zpráv</string>
+    <string name="pref_dialogtitle_mms_message_font_size">Zvolit velikost písma</string>
 </resources>

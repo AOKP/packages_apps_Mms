@@ -990,4 +990,8 @@ mbers only\' filter</string>
     <string name="menu_mobile">Mobile numbers only</string>
     <string name="menu_groups">Show groups</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">Message font size</string>
+    <string name="pref_summary_mms_message_font_size">Change font size of message view</string>
+    <string name="pref_dialogtitle_mms_message_font_size">Select font size</string>
 </resources>

@@ -186,6 +186,15 @@
             android:summary="@string/pref_summary_fulldate"
             android:title="@string/pref_title_fulldate" />
 
+        <ListPreference
+            android:key="pref_key_mms_message_font_size"
+            android:defaultValue="18"
+            android:title="@string/pref_title_mms_message_font_size"
+            android:summary="@string/pref_summary_mms_message_font_size"
+            android:entries="@array/pref_mms_message_font_size_entries"
+            android:entryValues="@array/pref_mms_message_font_size_values"
+            android:dialogTitle="@string/pref_dialogtitle_mms_message_font_size"/>
+
         <CheckBoxPreference
             android:key="pref_key_enable_emojis"
             android:title="@string/pref_title_enable_emojis"
