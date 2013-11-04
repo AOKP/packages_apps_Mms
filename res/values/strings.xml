@@ -994,4 +994,7 @@ mbers only\' filter</string>
     <string name="pref_title_mms_message_font_size">Message font size</string>
     <string name="pref_summary_mms_message_font_size">Change font size of message view</string>
     <string name="pref_dialogtitle_mms_message_font_size">Select font size</string>
+    <!-- Text area -->
+    <string name="pref_text_area_size_title">Text area size</string>
+    <string name="pref_text_area_size_summary">Set text area to <xliff:g id="lines">%1$s</xliff:g> lines</string>
 </resources>

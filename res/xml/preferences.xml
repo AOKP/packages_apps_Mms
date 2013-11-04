@@ -241,6 +241,12 @@
             android:entries="@array/pref_entries_input_type"
             android:entryValues="@array/pref_values_input_type" />
 
+        <Preference
+            android:key="pref_text_area_size"
+            android:persistent="false"
+            android:title="@string/pref_text_area_size_title"
+            android:summary="@string/pref_text_area_size_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

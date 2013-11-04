@@ -442,4 +442,7 @@
     <string name="pref_title_mms_message_font_size">Velikost textu zpráv</string>
     <string name="pref_summary_mms_message_font_size">Změnit velikost písma u zobrazení zpráv</string>
     <string name="pref_dialogtitle_mms_message_font_size">Zvolit velikost písma</string>
+    <!-- Text area -->
+    <string name="pref_text_area_size_title">Velikost textového pole</string>
+    <string name="pref_text_area_size_summary">Nastavit velikost pole na <xliff:g id="lines">%1$s</xliff:g> řádků</string>
 </resources>
