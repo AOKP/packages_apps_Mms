@@ -27,6 +27,7 @@
     <string name="menu_compose_new" msgid="3763437973691046238">"撰写"</string>
     <string name="menu_preferences" msgid="4693148116114749414">"设置"</string>
     <string name="menu_add_address_to_contacts" msgid="4491980950419914944">"将 <xliff:g id="CONTACTEMAILORNUMBER">%s</xliff:g> 添加到联系人"</string>
+    <string name="menu_sms_number_selected">联系人 <xliff:g id="contactEmailOrNumber">%s</xliff:g> 转至短信</string>
     <string name="menu_call" msgid="5877123227307074690">"呼叫"</string>
     <string name="menu_search" msgid="2289469305728821360">"搜索"</string>
     <string name="menu_resend">"重新发送"</string>
@@ -364,6 +365,23 @@
     <string name="enumeration_comma" msgid="213598026698964628">"、 "</string>
     <string name="message_timestamp_format" msgid="4188999027493614617">"<xliff:g id="STRING_0">%1$s</xliff:g> - <xliff:g id="STRING_1">%2$s</xliff:g>"</string>
 
+    <!-- Subscription selection strings -->
+    <string name="select_subscription_title">选择预约</string>
+    <string name="subscription1_title">预约 1</string>
+    <string name="subscription2_title">预约 2</string>
+    <string name="subscription3_title">预约 3</string>
+
+    <string name="pending_mms_title">在其他预约挂起MMS</string>
+    <string name="pending_mms">信息：一个或更多MMS挂起</string>
+    <string name="pending_mms_text">点击将切换预约</string>
+
+    <string name="abort_mms">信息：终止MMS</string>
+    <string name="abort_mms_text ">点击将终止并返回</string>
+
+    <string name="progress_mms_title">MMS在其他预约进行处理</string>
+    <string name="progress_mms">信息：MMS正在处理...</string>
+    <string name="progress_mms_text ">点击将重试</string>
+
     <string name="pref_title_sms_split_counter">分割序号</string>
     <string name="pref_summary_sms_split_counter">显示分割后的短信序号，例： (1/2)</string>
 
@@ -432,4 +450,14 @@
 
     <string name="storage_warning_title">你的手机内存已满</string>
     <string name="storage_warning_content">你将不会接受新的短/彩信</string>
+
+    <!-- Multi recipients -->
+    <string name="select_recipients">选择收件人</string>
+    <string name="groups_header">群组</string>
+    <string name="no_recipients">找不到联系人</string>
+    <string name="no_recipients_mobile_only">找不到匹配的联系人。请尝试用“仅手机号码”进行筛选。</string>
+    <string name="menu_done">完成</string>
+    <string name="menu_mobile">仅手机号码</string>
+    <string name="menu_groups">显示群组</string>
+    <string name="fastscroll_index_groups">GR</string>
 </resources>
