@@ -118,4 +118,10 @@
     <string name="pref_keyboard_new_line">Show the Enter key</string>
     <string name="pref_keyboard_unknown">Unknown, please reselect</string>
 
+    <!-- Settings item for boolean option for SMS Split Counter -->
+    <string name="pref_title_sms_split_counter">Split counter</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
+
+
 </resources>
