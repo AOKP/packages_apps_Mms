@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">添加日历提醒</string>
+    <string name="button_close">关闭</string>
+    <string name="button_view">查看</string>
+    <string name="button_templates">模板</string>
+    <string name="type_to_reply_text_enter_to_send">键入信息</string>
+    <string name="toast_sending_message">信息发送中</string>
+    <string name="qm_quick_reply">回复</string>
+    <string name="qm_mark_read">已读</string>
+    <string name="message_counter_separator">/</string>
+    <string name="pref_title_notification_privacy_mode_enabled">隐私模式</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">在信息通知内隐藏发件人与信息, 并同时禁用 \'快速回复\'</string>
+    <string name="notification_single_title_privacy_mode">新信息</string>
+    <string name="notification_single_text_privacy_mode">1 条未读信息</string>
+    <string name="notification_multiple_title_privacy_mode">新信息</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> 条未读信息</string>
+    <string name="notification_ticker_privacy_mode">收到了新信息</string>
+    <string name="pref_quickmessage">快速回复</string>
+    <string name="pref_dark_theme_title">使用暗色主题</string>
+    <string name="pref_dark_theme_summary">如果未被选中，默认的 \'淡色\' 主题将会被使用</string>
+    <string name="pref_quickmessage_title">显示弹出窗口</string>
+    <string name="pref_quickmessage_summary">收到短信时弹出快速信息对话框</string>
+    <string name="pref_wake_unlock_title">唤醒和解锁</string>
+    <string name="pref_wake_unlock_summary">收到消息时唤醒和解锁设备 (仅在非安全锁定屏幕时有效)</string>
+    <string name="pref_close_all_title">全部关闭</string>
+    <string name="pref_close_all_summary">\'关闭\' 按钮将关闭所有的消息</string>
+    <string name="prefs_templates_settings">短信模板</string>
+    <string name="pref_title_templates_manage">模板</string>
+    <string name="pref_summary_templates_manage">管理您的短信模板</string>
+    <string name="template_explanation">插入或修改模板文本并且可以画一个手势与它关联.</string>
+    <string name="template_insert_hint">在此输入模板文本</string>
+    <string name="template_empty_text">文本栏不能为空</string>
+    <string name="template_save">保存</string>
+    <string name="template_ctx_menu_title">动作</string>
+    <string name="template_edit">编辑</string>
+    <string name="template_delete">删除</string>
+    <string name="template_list_title">模板</string>
+    <string name="template_new_title">新建模板</string>
+    <string name="template_insert">插入模板</string>
+    <string name="template_gesture_draw">在下面的空白处画出您想关联的手势</string>
+    <string name="template_not_present_error">您没有定义任何模板</string>
+    <string name="template_not_present_error_title">错误</string>
+    <string name="template_select">选择一个模板</string>
+    <string name="template_confirm_dialog_title">确定删除?</string>
+    <string name="gestures_already_present">一个相似的手势已与另一个模板关联</string>
+    <string name="select_template">选择模板</string>
+    <string name="pref_title_templates_show_gesture">手势</string>
+    <string name="pref_summary_templates_show_gesture">显示手势轨迹</string>
+    <string name="pref_title_template_gestures_sensitivity">手势灵敏度</string>
+    <string name="pref_extra_settings">其他设置</string>
+    <string name="pref_title_unicode_stripping">除去 Unicode</string>
+    <string name="pref_unicode_stripping_leave_intact">保留所有字符</string>
+    <string name="pref_unicode_stripping_non_encodable">除去非可编码字符</string>
+    <string name="pref_unicode_stripping_all">除去所有 Unicode 字符</string>
+    <string name="pref_title_mms_full_timestamp">完整时间戳</string>
+    <string name="pref_summary_mms_full_timestamp">在时间戳中显示日期和时间</string>
+    <string name="pref_title_mms_use_sent_timestamp">原始时间戳</string>
+    <string name="pref_summary_mms_use_sent_timestamp">在时间戳中显示发送时间而不是接收时间</string>
+    <string name="pref_title_input_type">软键盘样式</string>
+    <string name="pref_keyboard_emoji">显示表情符号按键</string>
+    <string name="pref_keyboard_new_line">显示回车键</string>
+    <string name="pref_keyboard_unknown">未知，请重新选择</string>
+    <string name="pref_title_sms_split_counter">分割编号</string>
+    <string name="pref_summary_sms_split_counter">在分割的消息中加入编号，例如：(1/2)</string>
+    <string name="blacklist_title">黑名单</string>
+    <string name="blacklist_summary_disabled">禁用</string>
+    <string name="blacklist_summary">来自于黑名单中电话号码的短信信息将会被阻止</string>
+    <string name="blacklist_notification">来自于 %s 的信息已被阻止</string>
+    <string name="blacklist_notification_private_number">阻止来自于私人号码的信息</string>
+    <string name="blacklist_notification_list_private">私人号码</string>
+    <string name="blacklist_notification_unknown_number">来自于未知号码 %s 的信息已阻止</string>
+    <string name="blacklist_notification_multiple">已阻止<xliff:g id="count">%d</xliff:g> 条信息</string>
+    <string name="unblock_number">解除阻止</string>
+    <string name="add_to_blacklist">添加到黑名单</string>
+    <string name="add_to_blacklist_message">未来来自于 %s 的信息将会被阻止</string>
+    <string name="alert_dialog_yes">是</string>
+    <string name="alert_dialog_no">否</string>
+    <string name="select_recipients">选择收件人</string>
+    <string name="groups_header">组</string>
+    <string name="no_recipients">未找到联系人</string>
+    <string name="no_recipients_mobile_only">没有找到匹配的联系人. 请尝试取消\'仅限手机号码\'过滤器</string>
+    <string name="menu_done">完成</string>
+    <string name="menu_mobile">仅限手机号码</string>
+    <string name="menu_groups">显示组</string>
+    <string name="fastscroll_index_groups">GR</string>
+</resources>

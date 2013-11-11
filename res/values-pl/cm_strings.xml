@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="prefs_templates_settings">Szablony SMS</string>
+    <string name="pref_title_templates_manage">Szablony</string>
+    <string name="pref_summary_templates_manage">Zarządzaj swoimi szablonami SMS</string>
+    <string name="pref_title_templates_show_gesture">Gest</string>
+    <string name="pref_summary_templates_show_gesture">Pokaż ślad gestu</string>
+    <string name="pref_title_template_gestures_sensitivity">Czułość gestu</string>
+    <string name="template_save">Zapisz</string>
+    <string name="template_insert_hint">Tu wstaw tekst szablonu</string>
+    <string name="template_empty_text">Pole tekstowe nie może być puste</string>
+    <string name="template_explanation">Wstaw lub modyfikuj tekst szablonu i ewentualnie narysuj gest dla niego</string>
+    <string name="template_edit">Edytuj</string>
+    <string name="template_delete">Usuń</string>
+    <string name="template_ctx_menu_title">Akcje</string>
+    <string name="template_list_title">Szablony</string>
+    <string name="template_new_title">Nowy szablon</string>
+    <string name="template_insert">Wstaw szablon</string>
+    <string name="template_gesture_draw">Narysuj gest w polu poniżej</string>
+    <string name="template_not_present_error">Brak zdefiniowanych szablonów</string>
+    <string name="template_not_present_error_title">Błąd</string>
+    <string name="template_select">Wybierz szablon</string>
+    <string name="template_confirm_dialog_title">Usunąć?</string>
+    <string name="gestures_already_present">Podobny gest jest już powiązany z innym szablonem</string>
+    <string name="select_template">Wybierz szablony</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Tryb prywatny</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">"Ukrywa treść i nadawcę na pasku statusu oraz wyłącza 'Szybką Odpowiedź'"</string>
+    <string name="notification_single_title_privacy_mode">Nowa wiadomość</string>
+    <string name="notification_single_text_privacy_mode">1 nowa wiadomość</string>
+    <string name="notification_multiple_title_privacy_mode">Nowe wiadomości</string>
+    <string name="notification_multiple_text_privacy_mode">%1$s nieprzeczytanych wiadomości</string>
+    <string name="notification_ticker_privacy_mode">Otrzymano nową wiadomość</string>
+    <string name="pref_extra_settings">Dodatkowe ustawienia</string>
+    <string name="pref_title_mms_full_timestamp">Pełna data</string>
+    <string name="pref_summary_mms_full_timestamp">Wyświetla pełną datę oraz czas w wiadomościach</string>
+    <string name="pref_title_mms_use_sent_timestamp">Oryginalna data</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Wyświetla datę wysłania zamiast daty odebrania wiadomości</string>
+    <string name="pref_title_input_type">Typ klawiatury</string>
+    <string name="pref_keyboard_emoji">Pokaż przycisk emotikon</string>
+    <string name="pref_keyboard_new_line">Pokaż przycisk enter</string>
+    <string name="pref_keyboard_unknown">Nieznane, proszę wybrać ponownie</string>
+    <string name="pref_quickmessage">Szybka wiadomość</string>
+    <string name="pref_quickmessage_title">Włącz Szybkie wiadomości</string>
+    <string name="pref_quickmessage_summary">Pokaż wyskakujące okno wiadomości</string>
+    <string name="pref_wake_unlock_title">Wybudź i odblokuj</string>
+    <string name="pref_wake_unlock_summary">Wybudź i odblokuj urządzenie przy nadejściu wiadomości (tylko niezabezpieczone ekrany blokady)</string>
+    <string name="pref_close_all_title">Zamknij wszystkie</string>
+    <string name="pref_close_all_summary">Przycisk „Zamknij” zamyka wszystkie wiadomości</string>
+    <string name="pref_dark_theme_title">Użyj ciemnego motywu</string>
+    <string name="pref_dark_theme_summary">"Jeśli opcja jest odznaczona, używany będzie jasny motyw."</string>
+    <string name="message_counter_separator">z</string>
+    <string name="button_close">Zamknij</string>
+    <string name="button_view">Zobacz</string>
+    <string name="button_templates">Szablony</string>
+    <string name="type_to_reply_text_enter_to_send">Wpisz wiadomość</string>
+    <string name="toast_sending_message">Wysyłanie</string>
+    <string name="qm_quick_reply">Odpisz</string>
+    <string name="qm_mark_read">Odznacz</string>
+    <string name="menu_add_to_calendar">Dodaj do kalendarza</string>
+    <string name="pref_title_unicode_stripping">Opuszczanie Unicode</string>
+    <string name="pref_unicode_stripping_leave_intact">Pozostaw znaki niezmienione</string>
+    <string name="pref_unicode_stripping_non_encodable">Opuszczaj znaki niekodowalne</string>
+    <string name="pref_unicode_stripping_all">Opuszczaj wszystkie znaki</string>
+    <string name="blacklist_title">Czarna lista</string>
+    <string name="blacklist_summary_disabled">Wyłączona</string>
+    <string name="blacklist_summary">Przychodzące wiadomości z numerów znajdujących się na czarnej liście będą zablokowane</string>
+    <string name="blacklist_notification">Zablokowano wiadomość od %s</string>
+    <string name="blacklist_notification_private_number">Zablokowano wiadomość od numeru prywatnego</string>
+    <string name="blacklist_notification_list_private">Numery prywatne</string>
+    <string name="blacklist_notification_unknown_number">Zablokowano wiadomość od nieznanego numeru %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> wiadomości zablokowano</string>
+    <string name="unblock_number">Odblokuj</string>
+    <string name="add_to_blacklist">Dodaj do czarnej listy</string>
+    <string name="add_to_blacklist_message">Przyszłe wiadomości od %s będą zablokowane</string>
+    <string name="alert_dialog_yes">Tak</string>
+    <string name="alert_dialog_no">Nie</string>
+    <string name="select_recipients">Wybierz adresatów</string>
+    <string name="groups_header">Grupy</string>
+    <string name="no_recipients">Nie znaleziono kontaktów.</string>
+    <string name="no_recipients_mobile_only">Nie znaleziono pasujących kontaktów. Wyłącz filtr \'Tylko numery komórkowe\' i spróbuj ponownie.</string>
+    <string name="menu_done">Gotowe</string>
+    <string name="menu_mobile">Tylko numery komórkowe</string>
+    <string name="menu_groups">Pokaż grupy</string>
+    <string name="fastscroll_index_groups">GR</string>
+</resources>

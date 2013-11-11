@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="template_confirm_delete_conversation">
+        <item quantity="one">Будет удалён <xliff:g id="number" example="1">%1$s</xliff:g> шаблон.</item>
+        <item quantity="few">Будет удалено <xliff:g id="number" example="2">%1$s</xliff:g> шаблона.</item>
+        <item quantity="other">Будет удалено <xliff:g id="number" example="5">%1$s</xliff:g> шаблонов.</item>
+    </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="one">Отправка через %1$d секунду, нажмите для отмены.</item>
+        <item quantity="few">Отправка через %1$d секунды, нажмите для отмены.</item>
+        <item quantity="other">Отправка через %1$d секунд, нажмите для отмены.</item>
+    </plurals>
+</resources>

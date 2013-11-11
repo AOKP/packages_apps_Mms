@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">يىلنامەگە قوش</string>
+    <string name="button_close">ياپ</string>
+    <string name="button_view">كۆرۈنۈش</string>
+    <string name="button_templates">قېلىپلار</string>
+    <string name="type_to_reply_text_enter_to_send">ئۇچۇر كىرگۈزۈڭ</string>
+    <string name="toast_sending_message">ئۇچۇر يوللاۋاتىدۇ</string>
+    <string name="qm_quick_reply">جاۋاب قايتۇر</string>
+    <string name="qm_mark_read">ئوقۇ</string>
+    <string name="message_counter_separator">نىڭ</string>
+    <string name="pref_title_notification_privacy_mode_enabled">شەخسىيەت ھالىتى</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">ھالەت بالداقتا يوللىغۇچى ۋە مەزمۇن ھەمدە «تېز جاۋاب» نى چەكلە</string>
+    <string name="notification_single_title_privacy_mode">يېڭى ئۇچۇر</string>
+    <string name="notification_single_text_privacy_mode">بىر ئۇقۇلمىغان ئۇچۇر</string>
+    <string name="notification_multiple_title_privacy_mode">يېڭى ئۇچۇر</string>
+    <string name="notification_multiple_text_privacy_mode">ئوقۇلمىغان ئۇچۇر <xliff:g id="number" example="3">%1$s</xliff:g></string>
+    <string name="notification_ticker_privacy_mode">يېڭى ئۇچۇر قوبۇللاندى</string>
+    <string name="pref_quickmessage">تېز جاۋاب</string>
+    <string name="pref_dark_theme_title">قاراڭغۇ ئۆرنەك ئىشلەت</string>
+    <string name="pref_dark_theme_summary">ئەگەر تاللانمىسا، كۆڭۈلدىكى \'يورۇق\' ئۆرنەكنى ئىشلىتىدۇ</string>
+    <string name="pref_quickmessage_title">قاڭقىش كۆزنىكىنى كۆرسەت</string>
+    <string name="pref_quickmessage_summary">قىسقا ئۇچۇر تاپشۇرۇۋالغاندا تېز ئۇچۇر قاڭقىش كۆزنىكىنى كۆرسىتىدۇ</string>
+    <string name="pref_wake_unlock_title">ئويغات ۋە قۇلۇپ ئاچ</string>
+    <string name="pref_wake_unlock_summary">ئۇچۇر تاپشۇرۇۋالغاندا ئويغىتىپ قۇلۇپنى ئاچىدۇ (ئېكراننى بىخەتەر قۇلۇپلىمىغاندىلا ئىناۋەتلىك)</string>
+    <string name="pref_close_all_title">ھەممىنى ياپ</string>
+    <string name="pref_close_all_summary">ياپ توپچا ھەممە ئۇچۇرلارنى ياپىدۇ</string>
+    <string name="prefs_templates_settings">قىسقا ئۇچۇر قېلىپلىرى</string>
+    <string name="pref_title_templates_manage">قېلىپلار</string>
+    <string name="pref_summary_templates_manage">قىسقا ئۇچۇر قېلىپلىرىڭىزنى باشقۇرۇڭ</string>
+    <string name="template_explanation">قېلىپ تېكىستىنى قىستۇرۇپ ياكى تەھرىرلەپلا قالماي بەلكى بىر قول ئىشارىتى سىزىپ ئۇنى زىيارەت قىلغىلى بولىدۇ</string>
+    <string name="template_insert_hint">قېلىپ تېكىستنى بۇ جايغا قىستۇرۇڭ</string>
+    <string name="template_empty_text">تېكىست بۆلىكى بوش قالدۇرۇلمايدۇ</string>
+    <string name="template_save">ساقلا</string>
+    <string name="template_ctx_menu_title">مەشغۇلاتلار</string>
+    <string name="template_edit">تەھرىر</string>
+    <string name="template_delete">ئۆچۈر</string>
+    <string name="template_list_title">قېلىپلار</string>
+    <string name="template_new_title">يېڭى قېلىپ</string>
+    <string name="template_insert">قېلىپ قىستۇر</string>
+    <string name="template_gesture_draw">تۆۋەندىكى بوش جايغا قول ئىشارىتىدىن بىرنى سىزىڭ</string>
+    <string name="template_not_present_error">ھېچقانداق قېلىپ بەلگىلەنمىگەن</string>
+    <string name="template_not_present_error_title">خاتالىق</string>
+    <string name="template_select">بىر قېلىپ تاللاڭ</string>
+    <string name="template_confirm_dialog_title">ئۆچۈرەمدۇ؟</string>
+    <string name="gestures_already_present">ئوخشاپ كېتىدىغان قول ئىشارىتى يەنە بىر قېلىپ بىلەن باغلاندى</string>
+    <string name="select_template">قېلىپ تاللاڭ</string>
+    <string name="pref_title_templates_show_gesture">قول ئىشارەت</string>
+    <string name="pref_summary_templates_show_gesture">قول ئىشارەت ئىزلاشنى كۆرسەت</string>
+    <string name="pref_title_template_gestures_sensitivity">قول ئىشارەت سەزگۈرلۈكى</string>
+    <string name="pref_extra_settings">قوشۇمچە تەڭشەكلەر</string>
+    <string name="pref_title_unicode_stripping">يۇنىكودنى چىقىرىۋەت</string>
+    <string name="pref_unicode_stripping_leave_intact">ھەرپلەر ئۆزگەرمىسۇن</string>
+    <string name="pref_unicode_stripping_non_encodable">كودلانمايدىغان ھەرپلەرنى تازىلىۋەت</string>
+    <string name="pref_unicode_stripping_all">بارلىق يۇنىكود ھەرپلەرنى چىقىرىۋەت</string>
+    <string name="pref_title_mms_full_timestamp">مۇكەممەل ۋاقىت تامغىسى</string>
+    <string name="pref_summary_mms_full_timestamp">ۋاقىت تامغىسىدا چېسلا ۋە ۋاقىتنى كۆرسىتىدۇ</string>
+    <string name="pref_title_mms_use_sent_timestamp">دەسلەپكى ۋاقىت تامغىسى</string>
+    <string name="pref_summary_mms_use_sent_timestamp">ۋاقىت تامغىسىدا قوبۇللىغان ۋاقىتنى ئەمەس بەلكى يوللىغان ۋاقىتنى كۆرسىتىدۇ</string>
+    <string name="pref_title_input_type">يۇمشاق ھەرپتاختا تىپى</string>
+    <string name="pref_keyboard_emoji">چىراي ئىپادە كۇنۇپكىسىنى كۆرسەت</string>
+    <string name="pref_keyboard_new_line">Enter كۇنۇپكىسىنى كۆرسەت</string>
+    <string name="pref_keyboard_unknown">يوچۇن، قايتا تاللاڭ</string>
+    <string name="pref_title_sms_split_counter">پارچە سانى</string>
+    <string name="pref_summary_sms_split_counter">پارچىلىغان ئۇچۇرغا تەرتىپ بەلگىسى قوش، مەسىلەن: (1/2)</string>
+    <string name="blacklist_title">قارا تىزىم</string>
+    <string name="blacklist_summary_disabled">چەكلەنگەن</string>
+    <string name="blacklist_summary">قارا تىزىمغا كىرگۈزۈلگەن تېلېفون نومۇرىدىن كەلگەن ئۇچۇرلار توسۇلىدۇ</string>
+    <string name="blacklist_notification">%s نىڭ ئۇچۇرىنى توستى</string>
+    <string name="blacklist_notification_private_number">شەخسىي نومۇردىن كەلگەن ئۇچۇرنى توستى</string>
+    <string name="blacklist_notification_list_private">شەخسىي</string>
+    <string name="blacklist_notification_unknown_number">يوچۇن نومۇر %s دىن كەلگەن بىر ئۇچۇرنى توستى</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> ئۇچۇر توسۇلدى</string>
+    <string name="unblock_number">توسما</string>
+    <string name="add_to_blacklist">قارا تىزىمغا قوش</string>
+    <string name="add_to_blacklist_message">كەلگۈسىدە %s دىن كەلگەن ئۇچۇرنى توسىدۇ</string>
+    <string name="alert_dialog_yes">ھەئە</string>
+    <string name="alert_dialog_no">ياق</string>
+    <string name="select_recipients">تاپشۇرۇۋالغۇچىنى تاللاڭ</string>
+    <string name="groups_header">گۇرۇپپا</string>
+    <string name="no_recipients">ئالاقەداش تېپىلمىدى</string>
+    <string name="no_recipients_mobile_only">ماس كېلىدىغان ئالاقەدەش تېپىلمىدى. «يان تېلېفون نومۇرلا» سۈزگۈچىنى ئىشلەتمەي سىناپ بېقىڭ</string>
+    <string name="menu_done">تامام</string>
+    <string name="menu_mobile">يان تېلېفون نومۇرلا</string>
+    <string name="menu_groups">گۇرۇپپىلارنى كۆرسەت</string>
+    <string name="fastscroll_index_groups">GR</string>
+</resources>

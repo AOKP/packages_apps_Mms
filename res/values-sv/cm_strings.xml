@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Lägg till i kalender</string>
+    <string name="button_close">Stäng</string>
+    <string name="button_view">Visa</string>
+    <string name="button_templates">Mallar</string>
+    <string name="type_to_reply_text_enter_to_send">Skriv för att svara</string>
+    <string name="toast_sending_message">Skickar meddelande</string>
+    <string name="qm_quick_reply">Svara</string>
+    <string name="qm_mark_read">Läst</string>
+    <string name="message_counter_separator">av</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Integritetsläge</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Döljer sändare och meddelande i statusraden samt avaktiverar Snabbsvar</string>
+    <string name="notification_single_title_privacy_mode">Nytt meddelande</string>
+    <string name="notification_single_text_privacy_mode">1 oläst meddelande</string>
+    <string name="notification_multiple_title_privacy_mode">Nya meddelanden</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> olästa meddelanden</string>
+    <string name="notification_ticker_privacy_mode">Nytt meddelande mottaget</string>
+    <string name="pref_quickmessage">Snabbsvar</string>
+    <string name="pref_dark_theme_title">Använd mörkt tema</string>
+    <string name="pref_dark_theme_summary">Om avmarkerat kommer det vanliga ljusa temat att användas</string>
+    <string name="pref_quickmessage_title">Visa pop-up</string>
+    <string name="pref_quickmessage_summary">Visa snabbmeddelandepop-up för inkommande SMS</string>
+    <string name="pref_wake_unlock_title">Väck och lås upp</string>
+    <string name="pref_wake_unlock_summary">Väck och lås upp enhet vid inkommande meddelande (endast osäkra låsskärmar)</string>
+    <string name="pref_close_all_title">Stäng alla</string>
+    <string name="pref_close_all_summary">Stängknappen stänger alla meddelanden</string>
+    <string name="prefs_templates_settings">SMS-mallar</string>
+    <string name="pref_title_templates_manage">Mallar</string>
+    <string name="pref_summary_templates_manage">Hantera dina SMS-mallar</string>
+    <string name="template_explanation">Mata in eller ändra malltexten och rita eventuellt en gest att associera den med</string>
+    <string name="template_insert_hint">Mata in malltexten här</string>
+    <string name="template_empty_text">Textfältet kan inte lämnas tomt</string>
+    <string name="template_save">Spara</string>
+    <string name="template_ctx_menu_title">Åtgärder</string>
+    <string name="template_edit">Ändra</string>
+    <string name="template_delete">Radera</string>
+    <string name="template_list_title">Mallar</string>
+    <string name="template_new_title">Ny mall</string>
+    <string name="template_insert">Lägg till mall</string>
+    <string name="template_gesture_draw">Rita gesten i fältet nedanför</string>
+    <string name="template_not_present_error">Det finns inga skapade mallar</string>
+    <string name="template_not_present_error_title">Fel</string>
+    <string name="template_select">Välj en mall</string>
+    <string name="template_confirm_dialog_title">Ta bort?</string>
+    <string name="gestures_already_present">En liknande gest finns redan assocerad med en annan mall</string>
+    <string name="select_template">Välj mallar</string>
+    <string name="pref_title_templates_show_gesture">Gest</string>
+    <string name="pref_summary_templates_show_gesture">Visa gestspår</string>
+    <string name="pref_title_template_gestures_sensitivity">Gestkänslighet</string>
+    <string name="pref_extra_settings">Extra inställningar</string>
+    <string name="pref_title_unicode_stripping">Konvertera unicode</string>
+    <string name="pref_unicode_stripping_leave_intact">Lämna tecken intakta</string>
+    <string name="pref_unicode_stripping_non_encodable">Konvertera ej kodbara tecken</string>
+    <string name="pref_unicode_stripping_all">Konvertera alla unicodetecken</string>
+    <string name="pref_title_mms_full_timestamp">Fullständiga tidsstämplar</string>
+    <string name="pref_summary_mms_full_timestamp">Visa både datum och tid i tidsstämplar</string>
+    <string name="pref_title_mms_use_sent_timestamp">Ursprungliga tidsstämplar</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Visa skickadatum istället för mottagelsedatum i tidsstämplar</string>
+    <string name="pref_title_input_type">Tangentbordsläge</string>
+    <string name="pref_keyboard_emoji">Visa smileyknapp</string>
+    <string name="pref_keyboard_new_line">Visa enterknapp</string>
+    <string name="pref_keyboard_unknown">Okänt, var god välj om</string>
+    <string name="pref_title_sms_split_counter">SMS-räknare</string>
+    <string name="pref_summary_sms_split_counter">Visa antal SMS vid meddelande, ex. (1/2)</string>
+    <string name="blacklist_title">Svartlista</string>
+    <string name="blacklist_summary_disabled">Avaktiverad</string>
+    <string name="blacklist_summary">Inkommande meddelanden från telefonnummer i svartlistan kommer att blockeras</string>
+    <string name="blacklist_notification">Blockerade meddelande från %s</string>
+    <string name="blacklist_notification_private_number">Blockerade meddelande från hemligt nummer</string>
+    <string name="blacklist_notification_list_private">Hemligt</string>
+    <string name="blacklist_notification_unknown_number">Blockerade meddelande från okänt nummer %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> meddelanden har blockerats</string>
+    <string name="unblock_number">Häv blockering</string>
+    <string name="add_to_blacklist">Lägg till i svartlista</string>
+    <string name="add_to_blacklist_message">Framtida meddelanden från %s kommer att blockeras</string>
+    <string name="alert_dialog_yes">Ja</string>
+    <string name="alert_dialog_no">Nej</string>
+    <string name="select_recipients">Välj mottagare</string>
+    <string name="groups_header">Grupper</string>
+    <string name="no_recipients">Hittade inga kontakter</string>
+    <string name="no_recipients_mobile_only">Hittade inga matchande kontakter. Försök utan filtret \'Endast mobilnummer\'</string>
+    <string name="menu_done">Färdig</string>
+    <string name="menu_mobile">Endast mobilnummer</string>
+    <string name="menu_groups">Visa grupper</string>
+</resources>

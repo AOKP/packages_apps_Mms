@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Lisää kalenteriin</string>
+    <string name="button_close">Sulje</string>
+    <string name="button_view">Lue</string>
+    <string name="button_templates">Viestipohjat</string>
+    <string name="type_to_reply_text_enter_to_send">Kirjoita vastataksesi</string>
+    <string name="toast_sending_message">Lähetetään</string>
+    <string name="qm_quick_reply">Vastaa</string>
+    <string name="qm_mark_read">Merkitse luetuksi</string>
+    <string name="message_counter_separator">/</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Yksityisyys-tila</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Piilota lähettäjä ja viesti tilapalkista ja ota pikavastaus pois käytöstä</string>
+    <string name="notification_single_title_privacy_mode">Uusi viesti</string>
+    <string name="notification_single_text_privacy_mode">1 lukematon viesti</string>
+    <string name="notification_multiple_title_privacy_mode">Uusia viestejä</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> lukematonta viestiä</string>
+    <string name="notification_ticker_privacy_mode">Uusi viesti vastaanotettu</string>
+    <string name="pref_quickmessage">Pikavastaus</string>
+    <string name="pref_dark_theme_title">Käytä tummaa teemaa</string>
+    <string name="pref_dark_theme_summary">Jos ei valittuna, alkuperäinen \'vaalea\' teema on käytössä</string>
+    <string name="pref_quickmessage_title">Näytä ponnahdusikkuna</string>
+    <string name="pref_quickmessage_summary">Näytä QuickMessage-ponnahdusikkuna viestin saapuessa</string>
+    <string name="pref_wake_unlock_title">Herätä ja poista lukitus</string>
+    <string name="pref_wake_unlock_summary">Herätä ja poista laitteen lukitus viestin saapuessa (vain epäturvallinen lukitusnäyttö)</string>
+    <string name="pref_close_all_title">Sulje kaikki</string>
+    <string name="pref_close_all_summary">Sulje-painike sulkee kaikki viestit</string>
+    <string name="prefs_templates_settings">Viestipohjat</string>
+    <string name="pref_title_templates_manage">Pohjat</string>
+    <string name="pref_summary_templates_manage">Hallitse viestipohjia</string>
+    <string name="template_explanation">Aseta tai muokkaa viestipohjaa ja halutessasi piirrä ele jolla se lisätään</string>
+    <string name="template_insert_hint">Aseta pohjan teksti tähän</string>
+    <string name="template_empty_text">Tekstikenttä ei voi olla tyhjä</string>
+    <string name="template_save">Tallenna</string>
+    <string name="template_ctx_menu_title">Tehtävät</string>
+    <string name="template_edit">Muokkaa</string>
+    <string name="template_delete">Poista</string>
+    <string name="template_list_title">Viestipohjat</string>
+    <string name="template_new_title">Uusi viestipohja</string>
+    <string name="template_insert">Lisää viestipohja</string>
+    <string name="template_gesture_draw">Piirrä ele alla olevaan tilaan</string>
+    <string name="template_not_present_error">Määritettyä pohjaa ei löydy</string>
+    <string name="template_not_present_error_title">Virhe</string>
+    <string name="template_select">Valitse viestipohja</string>
+    <string name="template_confirm_dialog_title">Poista?</string>
+    <string name="gestures_already_present">Samankaltainen ele on liitetty toiseen pohjaan</string>
+    <string name="select_template">Valitse pohjat</string>
+    <string name="pref_title_templates_show_gesture">Ele</string>
+    <string name="pref_summary_templates_show_gesture">Näytä eleen jälki</string>
+    <string name="pref_title_template_gestures_sensitivity">Eleen tarkkuus</string>
+    <string name="pref_extra_settings">Lisäasetukset</string>
+    <string name="pref_title_unicode_stripping">Poista unicode</string>
+    <string name="pref_unicode_stripping_leave_intact">Älä tee mitään</string>
+    <string name="pref_unicode_stripping_non_encodable">Poista koodaamattomat merkit</string>
+    <string name="pref_unicode_stripping_all">Poista kaikki unicode-merkitStrip all unicode characters</string>
+    <string name="pref_title_mms_full_timestamp">Näytä aikaleimat</string>
+    <string name="pref_summary_mms_full_timestamp">Näytä aika ja päivämäärä aikaleimassa</string>
+    <string name="pref_title_mms_use_sent_timestamp">Alkuperäinen aikaleima</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Näytä lähetyspäivä vastaanottopäivän sijaan</string>
+    <string name="pref_title_input_type">Näppäimistön tyyppi</string>
+    <string name="pref_keyboard_emoji">Emoji</string>
+    <string name="pref_keyboard_new_line">Uusi rivi</string>
+    <string name="pref_keyboard_unknown">Tuntematon, valitse uudestaan</string>
+    <string name="pref_title_sms_split_counter">Viestin jakolaskuri</string>
+    <string name="pref_summary_sms_split_counter">Lisää laskurin viesteihin, esim. (1/2)</string>
+    <string name="blacklist_title">Musta lista</string>
+    <string name="blacklist_summary_disabled">Pois käytöstä</string>
+    <string name="blacklist_summary">Tulevat viestit mustalla listalla olevista puhelinnumeroista estetään</string>
+    <string name="blacklist_notification">Viesti numerosta %s estettiin</string>
+    <string name="blacklist_notification_private_number">Viesti salaisesta numerosta estettiin</string>
+    <string name="blacklist_notification_list_private">Salainen</string>
+    <string name="blacklist_notification_unknown_number">Viesti tuntemattomasta (ei yhteystiedoissa) numerosta %s estettiin</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> viestiä estettiin</string>
+    <string name="unblock_number">Poista esto</string>
+    <string name="add_to_blacklist">Lisää mustalle listalle</string>
+    <string name="add_to_blacklist_message">Uudet viestit numerosta %s estetään</string>
+    <string name="alert_dialog_yes">Kyllä</string>
+    <string name="alert_dialog_no">Ei</string>
+</resources>
+

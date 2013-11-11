@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="pref_extra_settings">Дополнительные настройки</string>
+    <string name="pref_title_unicode_stripping">Заменять юникод</string>
+    <string name="pref_unicode_stripping_leave_intact">Не заменять символы юникода</string>
+    <string name="pref_unicode_stripping_non_encodable">Заменять некодируемые символы</string>
+    <string name="pref_unicode_stripping_all">Заменять все символы юникода</string>
+    <string name="pref_title_sms_split_counter">Счётчик фрагментов</string>
+    <string name="pref_summary_sms_split_counter">Добавляет к сообщению счётчик вида «1/2»</string>
+    <string name="prefs_templates_settings">SMS-шаблоны</string>
+    <string name="pref_title_templates_manage">Шаблоны</string>
+    <string name="pref_summary_templates_manage">Управление шаблонами SMS</string>
+    <string name="pref_title_templates_show_gesture">Жесты</string>
+    <string name="pref_summary_templates_show_gesture">Показывать след жеста</string>
+    <string name="pref_title_template_gestures_sensitivity">Точность распознавания жестов</string>
+    <string name="template_save">Сохранить</string>
+    <string name="template_insert_hint">Введите сюда текст шаблона</string>
+    <string name="template_empty_text">Текст шаблона не может быть пустым</string>
+    <string name="template_explanation">Введите текст шаблона и нарисуйте жест, чтобы связать их</string>
+    <string name="template_edit">Изменить</string>
+    <string name="template_delete">Удалить</string>
+    <string name="template_ctx_menu_title">Действия</string>
+    <string name="template_list_title">Шаблоны</string>
+    <string name="template_new_title">Новый шаблон</string>
+    <string name="template_insert">Ввести шаблон</string>
+    <string name="template_gesture_draw">Нарисуйте жест в области ниже</string>
+    <string name="template_not_present_error">Нет шаблонов</string>
+    <string name="template_not_present_error_title">Ошибка</string>
+    <string name="template_confirm_dialog_title">Удалить?</string>
+    <string name="gestures_already_present">Подобный жест связан с другим шаблоном</string>
+    <string name="select_template">Выберите шаблоны</string>
+    <string name="template_select">Выберите шаблон</string>
+    <string name="pref_title_mms_full_timestamp">Полная метка времени</string>
+    <string name="pref_summary_mms_full_timestamp">Отображать полную дату и время в сообщениях</string>
+    <string name="pref_title_mms_use_sent_timestamp">Исходная метка времени</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Отображать время отправки сообщения вместо времени приёма</string>
+    <string name="menu_add_to_calendar">Добавить в календарь</string>
+    <string name="pref_keyboard_emoji">Кнопка «Смайлики»</string>
+    <string name="pref_keyboard_new_line">Кнопка «Отправить»</string>
+    <string name="pref_keyboard_unknown">Неизвестный тип. Пожалуйста, повторите выбор</string>
+    <string name="pref_title_input_type">Тип клавиатуры</string>
+    <string name="pref_quickmessage">Быстрый ответ</string>
+    <string name="pref_quickmessage_title">Включить быстрый ответ</string>
+    <string name="pref_quickmessage_summary">Показывать всплывающее окно для быстрого ответа</string>
+    <string name="pref_wake_unlock_title">Автоматическая разблокировка</string>
+    <string name="pref_wake_unlock_summary">Пробуждать и разблокировать устройство при входящем сообщении (если нет блокировки экрана)</string>
+    <string name="pref_close_all_title">Закрыть всё</string>
+    <string name="pref_close_all_summary">Кнопка «Закрыть» закрывает все сообщения</string>
+    <string name="pref_dark_theme_title">Тёмная тема</string>
+    <string name="pref_dark_theme_summary">Если не выбрано, будет использована светлая тема</string>
+    <string name="message_counter_separator">из</string>
+    <string name="button_close">Закрыть</string>
+    <string name="button_view">Посмотреть</string>
+    <string name="button_templates">Шаблоны</string>
+    <string name="type_to_reply_text_enter_to_send">Введите текст для ответа</string>
+    <string name="toast_sending_message">Отправка сообщения\u2026</string>
+    <string name="qm_quick_reply">Ответить</string>
+    <string name="qm_mark_read">Прочтено</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Режим инкогнито</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Скрывать отправителя и сообщение в строке состояния, а также отключить «Быстрый ответ»</string>
+    <string name="notification_single_title_privacy_mode">Новое сообщение</string>
+    <string name="notification_single_text_privacy_mode">1 непрочитанное сообщение</string>
+    <string name="notification_multiple_title_privacy_mode">Новые сообщения</string>
+    <string name="notification_multiple_text_privacy_mode">Сообщений: <xliff:g id="number" example="3">%1$s</xliff:g></string>
+    <string name="notification_ticker_privacy_mode">Получено новое сообщение</string>
+    <string name="blacklist_title">Чёрный список</string>
+    <string name="blacklist_summary_disabled">Выключен</string>
+    <string name="blacklist_summary">Входящие сообщения от абонентов из чёрного списка будут блокироваться</string>
+    <string name="blacklist_notification">Сообщение от %s заблокировано</string>
+    <string name="blacklist_notification_private_number">Сообщение от неизвестного номера заблокировано</string>
+    <string name="blacklist_notification_list_private">Скрытый</string>
+    <string name="blacklist_notification_unknown_number">Заблокирован неизвестный номер %s</string>
+    <string name="blacklist_notification_multiple">Заблокировано сообщений: <xliff:g id="count">%d</xliff:g></string>
+    <string name="unblock_number">Разблокировать</string>
+    <string name="add_to_blacklist">Добавить в чёрный список</string>
+    <string name="add_to_blacklist_message">Будущие сообщения от %s будут блокироваться</string>
+    <string name="alert_dialog_yes">Да</string>
+    <string name="alert_dialog_no">Нет</string>
+    <string name="select_recipients">Выбор получателей</string>
+    <string name="groups_header">Группы</string>
+    <string name="no_recipients">Контакты не найдены</string>
+    <string name="no_recipients_mobile_only">Ничего не найдено. Попробуйте отключить фильтр «Только мобильные».</string>
+    <string name="menu_done">Готово</string>
+    <string name="menu_mobile">Только мобильные</string>
+    <string name="menu_groups">Показывать группы</string>
+    <string name="fastscroll_index_groups">Грп</string> <!-- CHAR LIMIT=3 -->
+</resources>

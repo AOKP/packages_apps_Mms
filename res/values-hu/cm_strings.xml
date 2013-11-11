@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Hozzáadás a naptárhoz</string>
+    <string name="button_close">Bezárás</string>
+    <string name="button_view">Megtekintés</string>
+    <string name="button_templates">Sablonok</string>
+    <string name="type_to_reply_text_enter_to_send">Írja be az üzenetet</string>
+    <string name="toast_sending_message">Üzenet küldése</string>
+    <string name="qm_quick_reply">Válasz</string>
+    <string name="qm_mark_read">Elolvasva</string>
+    <string name="message_counter_separator">/</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Privát megjelenítés</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Az üzenet és annak feladójának elrejtése az értesítési sávon, és a \"Gyors válasz\" tiltása</string>
+    <string name="notification_single_title_privacy_mode">Új üzenet</string>
+    <string name="notification_single_text_privacy_mode">1 olvasatlan üzenet</string>
+    <string name="notification_multiple_title_privacy_mode">Új üzenetek</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> olvasatlan üzenet</string>
+    <string name="notification_ticker_privacy_mode">Új üzenet érkezett</string>
+    <string name="pref_quickmessage">Gyors válasz</string>
+    <string name="pref_dark_theme_title">Sötét téma használata</string>
+    <string name="pref_dark_theme_summary">Ha nincs kiválasztva, az alapértelmezett \"világos\" téma lesz használva</string>
+    <string name="pref_quickmessage_title">Gyors válasz engedélyezése</string>
+    <string name="pref_quickmessage_summary">Gyors válasz felugró ablak megjelenítése</string>
+    <string name="pref_wake_unlock_title">Felébresztés és feloldás</string>
+    <string name="pref_wake_unlock_summary">Készülék felébresztése és feloldása üzenet érkezésekor (csak nem biztonságos képernyőzár esetén)</string>
+    <string name="pref_close_all_title">Összes bezárása</string>
+    <string name="pref_close_all_summary">A bezárás gomb az összes üzenetet zárja be</string>
+    <string name="prefs_templates_settings">SMS Sablonok</string>
+    <string name="pref_title_templates_manage">Sablonok</string>
+    <string name="pref_summary_templates_manage">SMS sablonok kezelése</string>
+    <string name="template_explanation">Írja be, vagy módosítsa a sablon szövegét. Opcionálisan társíthat hozzá kézmozdulatot is.</string>
+    <string name="template_insert_hint">Írja be a sablon szövegét</string>
+    <string name="template_empty_text">A mező nem lehet üres.</string>
+    <string name="template_save">Mentés</string>
+    <string name="template_ctx_menu_title">Műveletek</string>
+    <string name="template_edit">Szerkesztés</string>
+    <string name="template_delete">Törlés</string>
+    <string name="template_list_title">Sablonok</string>
+    <string name="template_new_title">Új sablon</string>
+    <string name="template_insert">Sablon beszúrása</string>
+    <string name="template_gesture_draw">Rajzolja le a társítani kívánt kézmozdulatot az alábbi felületre.</string>
+    <string name="template_not_present_error">Még nincs definiált sablon.</string>
+    <string name="template_not_present_error_title">Hiba</string>
+    <string name="template_select">Válassza ki a sablont</string>
+    <string name="template_confirm_dialog_title">Biztosan törli?</string>
+    <string name="select_template">Válasszon sablont</string>
+    <string name="gestures_already_present">Figyelem: Egy hasonló kézmozdulat már társítva van egy másik sablonhoz!</string>
+    <string name="pref_title_templates_show_gesture">Kézmozdulat</string>
+    <string name="pref_summary_templates_show_gesture">Kézmozdulat útvonalának megjelenítése</string>
+    <string name="pref_title_template_gestures_sensitivity">Kézmozdulat érzékenysége</string>
+    <string name="pref_extra_settings">Extra beállítások</string>
+    <string name="pref_title_unicode_stripping">Unicode beállítások</string>
+    <string name="pref_unicode_stripping_leave_intact">Ne módosítsa a karaktereket</string>
+    <string name="pref_unicode_stripping_non_encodable">Helyettesítse a nem kódolható karaktereket</string>
+    <string name="pref_unicode_stripping_all">Helyettesítse az összes unicode karaktert</string>
+    <string name="pref_title_mms_full_timestamp">Teljes időbélyeg</string>
+    <string name="pref_summary_mms_full_timestamp">Mindkét dátum/idő megjelenítése</string>
+    <string name="pref_title_mms_use_sent_timestamp">Eredeti dátum</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Küldés dátumának megjelenítése a fogadás dátuma helyett</string>
+    <string name="pref_title_input_type">Enter billentyű</string>
+    <string name="pref_keyboard_emoji">Hangulatjel beszúrása</string>
+    <string name="pref_keyboard_new_line">Új sor beszúrása</string>
+    <string name="pref_keyboard_unknown">Ismeretlen, kérjük, válassza ki újra</string>
+    <string name="pref_title_sms_split_counter">Darabszám</string>
+    <string name="pref_summary_sms_split_counter">Számláló megjelenítése pl. (1/2)</string>
+    <string name="blacklist_title">Tiltólista</string>
+    <string name="blacklist_summary_disabled">Letiltva</string>
+    <string name="blacklist_summary">Bejövő üzenetek blokkolása, melyek szerepelnek a tiltólistán</string>
+    <string name="blacklist_notification">Blokkolt üzenet a következő számról: %s</string>
+    <string name="blacklist_notification_private_number">Blokkolt szám nélküli üzenet</string>
+    <string name="blacklist_notification_list_private">Rejtett szám</string>
+    <string name="blacklist_notification_unknown_number">Blokkolt ismeretlen üzenet: %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> blokkolt üzenet</string>
+    <string name="unblock_number">Eltávolítás</string>
+    <string name="add_to_blacklist">Hozzáadás a tiltólistához</string>
+    <string name="add_to_blacklist_message">%s számról érkező üzenetek blokkolva lesznek</string>
+    <string name="alert_dialog_yes">Igen</string>
+    <string name="alert_dialog_no">Nem</string>
+    <string name="select_recipients">Válasszon címzetteket</string>
+    <string name="groups_header">Csoportok</string>
+    <string name="no_recipients">Nincs találat</string>
+    <string name="no_recipients_mobile_only">Nincs találat. Próbálja meg a \'Csak mobil számok\' szűrőfeltétel nélkül</string>
+    <string name="menu_done">Kész</string>
+    <string name="menu_mobile">Csak mobilszámok</string>
+    <string name="menu_groups">Csoportok megjelenítése</string>
+    <string name="fastscroll_index_groups">Cs</string>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="pref_title_sms_split_counter">"Contor împărţire"</string>
+    <string name="pref_summary_sms_split_counter">"Adaugă contor la mesaj ex. (1/2)"</string>
+    <string name="prefs_templates_settings">"Şabloane SMS"</string>
+    <string name="pref_title_templates_manage">"Şabloane"</string>
+    <string name="pref_summary_templates_manage">"Gestionaţi şabloanele SMS"</string>
+    <string name="pref_title_templates_show_gesture">"Gest"</string>
+    <string name="pref_summary_templates_show_gesture">"Arată urmă gest"</string>
+    <string name="pref_title_template_gestures_sensitivity">"Sensibilitate gest"</string>
+    <string name="template_save">"Salvaţi"</string>
+    <string name="template_insert_hint">"Introduceţi aici textul şablonului"</string>
+    <string name="template_empty_text">"Câmpul textului nu poate fi gol"</string>
+    <string name="template_explanation">"Introduceţi sau modificaţi textul şablonului şi opţional desenaţi un gest asociat"</string>
+    <string name="template_edit">"Editaţi"</string>
+    <string name="template_delete">"Ştergeţi"</string>
+    <string name="template_ctx_menu_title">"Acţiuni"</string>
+    <string name="template_list_title">"Şabloane"</string>
+    <string name="template_new_title">"Şablon nou"</string>
+    <string name="template_insert">"Introduceţi şablonul"</string>
+    <string name="template_gesture_draw">"Desenaţi gestul în spaţiul de mai jos"</string>
+    <string name="template_not_present_error">"Nu aveţi nici un şablon definit"</string>
+    <string name="template_not_present_error_title">"Eroare"</string>
+    <string name="template_select">"Selectaţi un şablon"</string>
+    <string name="gestures_already_present">"Avertisment: Un gest smilar este asociat cu un alt şablon!"</string>
+    <string name="pref_extra_settings">"Setări suplimentare"</string>
+    <string name="pref_title_mms_full_timestamp">"Marcaje de timp integrale"</string>
+    <string name="pref_summary_mms_full_timestamp">"Afişaţi atât data cât şi ora în marcajul de timp"</string>
+    <string name="pref_title_mms_use_sent_timestamp">"Marcaje de timp originale"</string>
+    <string name="pref_summary_mms_use_sent_timestamp">"Afişaţi data expedierii în loc de data primirii în în marcajul de timp"</string>
+    <string name="pref_quickmessage">"Mesaj Rapid"</string>
+    <string name="pref_quickmessage_title">"Activaţi Mesaj Rapid"</string>
+    <string name="pref_quickmessage_summary">"Afişaţi fereastra de dialog pop-up pentru Mesaj Rapid"</string>
+    <string name="pref_wake_unlock_title">"Trezire şi deblocare"</string>
+    <string name="pref_wake_unlock_summary">"Trezeşte şi deblochează dispozitivul la recepţionarea unui mesaj (numai ecrane de blocare nesigure)"</string>
+    <string name="pref_close_all_title">"Închideţi toate"</string>
+    <string name="pref_close_all_summary">"Butonul Închidere închide toate mesajele"</string>
+    <string name="pref_dark_theme_title">"Utilizaţi tema întunecată"</string>
+    <string name="pref_dark_theme_summary">"Dacă nu este selectat, va fi utilizată tema \"deschisă\""</string>
+    <string name="message_counter_separator">"din"</string>
+    <string name="button_close">"Închideţi"</string>
+    <string name="button_view">"Vizualizaţi"</string>
+    <string name="type_to_reply_text_enter_to_send">"Introduceţi text pentru a răspunde"</string>
+    <string name="toast_sending_message">"Expediere mesaj"</string>
+    <string name="qm_quick_reply">"Răspuns rapid"</string>
+</resources>
