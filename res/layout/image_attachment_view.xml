@@ -30,7 +30,8 @@
     <ImageView
         android:id="@+id/image_content"
         android:layout_width="match_parent"
-        android:layout_height="135dip"
+        android:layout_height="wrap_content"
+        android:maxHeight="300dip"
         android:layout_weight="1" />
 
     <LinearLayout
@@ -44,7 +45,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dip"
             android:layout_height="45dip"
-            android:textColor="@android:color/black"
+            android:textColor="@color/button_text"
             android:text="@string/view" />
 
         <Button
@@ -52,7 +53,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dip"
             android:layout_height="45dip"
-            android:textColor="@android:color/black"
+            android:textColor="@color/button_text"
             android:text="@string/replace" />
 
         <Button
@@ -60,7 +61,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dip"
             android:layout_height="45dip"
-            android:textColor="@android:color/black"
+            android:textColor="@color/button_text"
             android:text="@string/remove" />
 
     </LinearLayout>

@@ -63,7 +63,7 @@
                     android:linksClickable="false"
                     android:gravity="right"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#ff000000"
+                    android:textColor="@color/message_sent"
                     android:textSize="16sp" />
 
                 <LinearLayout
