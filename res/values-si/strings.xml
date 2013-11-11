@@ -282,7 +282,6 @@
     <string name="save_ringtone" msgid="2310157075045201051">"රිංග්ටෝනයක් ලෙස සුරකින්න"</string>
     <string name="saved_ringtone" msgid="3847363932276708626">"රිංග්ටෝන් සුරැකිණි."</string>
     <string name="saved_ringtone_fail" msgid="4778500070919251116">"රිංග්ටෝන් සුරැකිය නොහැකි විය."</string>
-    <string name="menu_insert_smiley" msgid="4964504393061025071">"සිනාසිමක් ඇතුලත් කරන්න"</string>
     <string name="menu_group_participants" msgid="4288356090262299071">"කණ්ඩායම් සාමාජිකයින්"</string>
     <string name="select_link_title" msgid="3371818607625768447">"ක්‍රියාව තෝරන්න"</string>
     <string name="slide_number" msgid="1923958526266726635">"කදාව <xliff:g id="NUMBER">%s</xliff:g>"</string>
