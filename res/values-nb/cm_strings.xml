@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Legg til i kalender</string>
+    <string name="button_close">Lukk</string>
+    <string name="button_view">Vis</string>
+    <string name="button_templates">Maler</string>
+    <string name="type_to_reply_text_enter_to_send">Skriv for å svare</string>
+    <string name="toast_sending_message">Sender melding</string>
+    <string name="qm_quick_reply">Svar</string>
+    <string name="qm_mark_read">Les</string>
+    <string name="message_counter_separator">av</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Personvernmodus</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Skjul sender og melding i statuslinjen, og deaktiver \'Hurtigsvar\'</string>
+    <string name="notification_single_title_privacy_mode">Ny melding</string>
+    <string name="notification_single_text_privacy_mode">1 ulest melding</string>
+    <string name="notification_multiple_title_privacy_mode">Nye meldinger</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> uleste meldinger</string>
+    <string name="notification_ticker_privacy_mode">Ny melding mottatt</string>
+    <string name="pref_quickmessage">Hurtigsvar</string>
+    <string name="pref_dark_theme_title">Bruk mørkt tema</string>
+    <string name="pref_dark_theme_summary">Hvis ikke valgt, vil \'Lyst\' tema bli brukt.</string>
+    <string name="pref_quickmessage_title">Vis dialog</string>
+    <string name="pref_quickmessage_summary">Vis Hurtigsvars-dialog ved innkommende SMS-meldinger</string>
+    <string name="pref_wake_unlock_title">Vekk og lås opp</string>
+    <string name="pref_wake_unlock_summary">Vekk og lås opp enheten ved innkommende meldinger (kun usikre låseskjermer)</string>
+    <string name="pref_close_all_title">Lukk alle</string>
+    <string name="pref_close_all_summary">Lukk-knappen lukker alle meldinger</string>
+    <string name="prefs_templates_settings">SMS-maler</string>
+    <string name="pref_title_templates_manage">Maler</string>
+    <string name="pref_summary_templates_manage">Administrer dine SMS-maler</string>
+    <string name="template_explanation">Sett inn eller endre malen, og eventuelt tegn en bevegelse for å tilknytte den</string>
+    <string name="template_insert_hint">Sett inn tekst her</string>
+    <string name="template_empty_text">Tekstfeltet kan ikke være tomt</string>
+    <string name="template_save">Lagre</string>
+    <string name="template_ctx_menu_title">Handlinger</string>
+    <string name="template_edit">Endre</string>
+    <string name="template_delete">Slett</string>
+    <string name="template_list_title">Maler</string>
+    <string name="template_new_title">Ny mal</string>
+    <string name="template_insert">Sett inn en mal</string>
+    <string name="template_gesture_draw">Tegn en bevegelse i rommet under</string>
+    <string name="template_not_present_error">Det er ingen maler</string>
+    <string name="template_not_present_error_title">Feil</string>
+    <string name="template_select">Velg en mal</string>
+    <string name="template_confirm_dialog_title">Slett?</string>
+    <string name="gestures_already_present">En lignende bevegelse er allerede tilknyttet en annen mal</string>
+    <string name="select_template">Velg maler</string>
+    <string name="pref_title_templates_show_gesture">Bevegelse</string>
+    <string name="pref_summary_templates_show_gesture">Vis bevegelse</string>
+    <string name="pref_title_template_gestures_sensitivity">Følsomhet på bevegelse</string>
+    <string name="pref_extra_settings">Ekstra innstillinger</string>
+    <string name="pref_title_unicode_stripping">Fjern unicode</string>
+    <string name="pref_unicode_stripping_leave_intact">Forlat tegn intakte</string>
+    <string name="pref_unicode_stripping_non_encodable">Fjern ikke-kodbare tegn</string>
+    <string name="pref_unicode_stripping_all">Fjern alle unicode-tegn</string>
+    <string name="pref_title_mms_full_timestamp">Hele tidsstempler</string>
+    <string name="pref_summary_mms_full_timestamp">Vis både dato og tid i tidsstempler</string>
+    <string name="pref_title_mms_use_sent_timestamp">Originale tidsstempler</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Vis dato sendt og ikke dato mottatt i tidsstempler</string>
+    <string name="pref_title_input_type">Tastaturtype</string>
+    <string name="pref_keyboard_emoji">Vis uttrykksikon-tast</string>
+    <string name="pref_keyboard_new_line">Vis enter-tast</string>
+    <string name="pref_keyboard_unknown">Ukjent, vennligst velg igjen</string>
+    <string name="pref_title_sms_split_counter">Meldingsteller</string>
+    <string name="pref_summary_sms_split_counter">Legger til teller i meldingen, f.eks. (1/2)</string>
+</resources>

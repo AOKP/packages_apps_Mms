@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Pridať do kalendára</string>
+    <string name="button_close">Zavrieť</string>
+    <string name="button_view">Zobraziť</string>
+    <string name="button_templates">Šablóny</string>
+    <string name="type_to_reply_text_enter_to_send">Napíšte odpoveď</string>
+    <string name="toast_sending_message">Odosiela sa správa</string>
+    <string name="qm_quick_reply">Odpovedať</string>
+    <string name="qm_mark_read">Prečítané</string>
+    <string name="message_counter_separator">z</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Režim súkromia</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Skryje odosielateľa a správu v oznamovacej oblasti a zakáže \'Rýchlu odpoveď\'</string>
+    <string name="notification_single_title_privacy_mode">Nová správa</string>
+    <string name="notification_single_text_privacy_mode">1 neprečítaná správa</string>
+    <string name="notification_multiple_title_privacy_mode">Nové správy</string>
+    <string name="notification_multiple_text_privacy_mode">Neprečítané správy: <xliff:g id="number" example="3">%1$s</xliff:g></string>
+    <string name="notification_ticker_privacy_mode">Bola prijatá nová správa</string>
+    <string name="pref_quickmessage">Rýchla odpoveď</string>
+    <string name="pref_dark_theme_title">Použiť tmavú tému</string>
+    <string name="pref_dark_theme_summary">Ak nie je zvolené, bude použitá predvolená \'svetlá\' téma</string>
+    <string name="pref_quickmessage_title">Zobraziť vyskakovacie okná</string>
+    <string name="pref_quickmessage_summary">Zobrazí vyskakovacie okno s rýchlou správou pre prichádzajúcu SMS správu</string>
+    <string name="pref_wake_unlock_title">Prebudiť a odomknúť</string>
+    <string name="pref_wake_unlock_summary">Prebudí a odomkne zariadenie pri prichádzajúcej správe (iba nezabezpečené uzamykacie obrazovky)</string>
+    <string name="pref_close_all_title">Zavrieť všetky</string>
+    <string name="pref_close_all_summary">Tlačidlom zavrieť sa zavrú všetky správy</string>
+    <string name="prefs_templates_settings">SMS šablóny</string>
+    <string name="pref_title_templates_manage">Šablóny</string>
+    <string name="pref_summary_templates_manage">Správa vašich SMS šablón</string>
+    <string name="template_explanation">Zadajte alebo upravte text šablóny a voliteľne nakreslite gesto, ktoré sa k nej má priradiť</string>
+    <string name="template_insert_hint">Sem zadajte text šablóny</string>
+    <string name="template_empty_text">Textové pole nemôže byť prázdne</string>
+    <string name="template_save">Uložiť</string>
+    <string name="template_ctx_menu_title">Akcie</string>
+    <string name="template_edit">Upraviť</string>
+    <string name="template_delete">Odstrániť</string>
+    <string name="template_list_title">Šablóny</string>
+    <string name="template_new_title">Nová šablóna</string>
+    <string name="template_insert">Vložiť šablónu</string>
+    <string name="template_gesture_draw">Nakreslite gesto do nasledovného poľa</string>
+    <string name="template_not_present_error">Nie sú definované žiadne šablóny</string>
+    <string name="template_not_present_error_title">Chyba</string>
+    <string name="template_select">Vyberte šablónu</string>
+    <string name="template_confirm_dialog_title">Odstrániť?</string>
+    <string name="gestures_already_present">Podobné gesto je už priradené k inej šablóne</string>
+    <string name="select_template">Vyberte šablóny</string>
+    <string name="pref_title_templates_show_gesture">Gesto</string>
+    <string name="pref_summary_templates_show_gesture">Zobraziť stopy gesta</string>
+    <string name="pref_title_template_gestures_sensitivity">Citlivosť giest</string>
+    <string name="pref_extra_settings">Extra nastavenia</string>
+    <string name="alert_dialog_yes">Áno</string>
+    <string name="alert_dialog_no">Nie</string>
+    <string name="pref_title_unicode_stripping">Odstrániť Unicode znaky</string>
+    <string name="pref_unicode_stripping_leave_intact">Ponechať znaky bezo zmeny</string>
+    <string name="pref_unicode_stripping_non_encodable">Odstrániť nekódovateľné znaky</string>
+    <string name="pref_unicode_stripping_all">Odstrániť všetky Unicode znaky</string>
+    <string name="pref_title_mms_full_timestamp">Kompletný časový údaj</string>
+    <string name="pref_summary_mms_full_timestamp">Zobraziť čas a dátum v informáciách o správe</string>
+    <string name="pref_title_mms_use_sent_timestamp">Pôvodné časové údaje</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Zobraziť len čas odoslania správy</string>
+    <string name="pref_title_input_type">Typ softvérovej klávesnice</string>
+    <string name="pref_keyboard_emoji">Zobraziť klávesu pre smajlíkov</string>
+    <string name="pref_keyboard_new_line">Zobraziť klávesu Zadať</string>
+    <string name="pref_keyboard_unknown">Neplatná voľba, skúste znova</string>
+    <string name="pref_title_sms_split_counter">Počítadlo správ</string>
+    <string name="pref_summary_sms_split_counter">Pridať počítadlo pre správy, napríklad (1/2)</string>
+    <string name="blacklist_title">Čierna listina</string>
+    <string name="blacklist_summary_disabled">Zakázané</string>
+    <string name="blacklist_summary">Prichádzajúce správy z telefónnych čísel, ktoré su na čiernej listine budú blokované</string>
+    <string name="blacklist_notification">Blokovaná správa od %s</string>
+    <string name="blacklist_notification_private_number">Blokovaná správa zo súkromného čísla</string>
+    <string name="blacklist_notification_list_private">Súkromné</string>
+    <string name="blacklist_notification_unknown_number">Blokovaná správa z neznámeho čísla %s</string>
+    <string name="blacklist_notification_multiple">Zablokovaných správ: <xliff:g id="count">%d</xliff:g></string>
+    <string name="unblock_number">Odblokovať</string>
+    <string name="add_to_blacklist">Pridať na čiernu listinu</string>
+    <string name="add_to_blacklist_message">Ďalšie správy od %s budú blokované</string>
+    <string name="select_recipients">Vyberte príjemcov</string>
+    <string name="groups_header">Skupiny</string>
+    <string name="no_recipients">Nenašli sa žiadne kontakty</string>
+    <string name="no_recipients_mobile_only">Nenašli sa žiadne kontakty. Skúste použiť filter bez voľby \'Iba mobilné čísla\'</string>
+    <string name="menu_done">Hotovo</string>
+    <string name="menu_mobile">Iba mobilné čísla</string>
+    <string name="menu_groups">Zobraziť skupiny</string>
+    <string name="fastscroll_index_groups">SK</string>
+</resources>

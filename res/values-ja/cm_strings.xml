@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="pref_title_sms_split_counter">分割カウンタ</string>
+    <string name="pref_summary_sms_split_counter">メッセージに分割数のカウンタを追加する。例: (1/2)</string>
+    <string name="prefs_templates_settings">SMSテンプレート</string>
+    <string name="pref_title_templates_manage">テンプレート</string>
+    <string name="pref_summary_templates_manage">SMSテンプレートの管理</string>
+    <string name="pref_title_templates_show_gesture">ジェスチャー</string>
+    <string name="pref_summary_templates_show_gesture">ジェスチャーの軌跡を表示</string>
+    <string name="pref_title_template_gestures_sensitivity">ジェスチャーの感度</string>
+    <string name="template_save">保存</string>
+    <string name="template_insert_hint">テンプレートテキストを挿入</string>
+    <string name="template_empty_text">テキストフィールドは空にできません</string>
+    <string name="template_explanation">テンプレートテキストを挿入あるいは編集し、必要であればジェスチャーを描いて定義します</string>
+    <string name="template_edit">編集</string>
+    <string name="template_delete">削除</string>
+    <string name="template_ctx_menu_title">アクション</string>
+    <string name="template_list_title">テンプレート</string>
+    <string name="template_new_title">新規テンプレート</string>
+    <string name="template_insert">テンプレートを挿入</string>
+    <string name="template_gesture_draw">下のスペースにジェスチャーを描いてください</string>
+    <string name="template_not_present_error">テンプレートは定義されてません</string>
+    <string name="template_not_present_error_title">エラー</string>
+    <string name="template_select">テンプレートを選択</string>
+    <string name="gestures_already_present">警告: 他のテンプレートに似たようなジェスチャーが設定されています!</string>
+    <string name="pref_extra_settings">拡張設定</string>
+    <string name="pref_title_mms_full_timestamp">完全なタイムスタンプ</string>
+    <string name="pref_summary_mms_full_timestamp">タイムスタンプに日付と時刻の両方を表示する</string>
+    <string name="pref_title_mms_use_sent_timestamp">送信時刻表示</string>
+    <string name="pref_summary_mms_use_sent_timestamp">着信時刻の代わりに送信時刻を表示する</string>
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Tilføj til kalender</string>
+    <string name="button_close">Luk</string>
+    <string name="button_view">Vis</string>
+    <string name="button_templates">Skabeloner</string>
+    <string name="type_to_reply_text_enter_to_send">Skriv for at svare</string>
+    <string name="toast_sending_message">Sender besked...</string>
+    <string name="qm_quick_reply">Svar</string>
+    <string name="qm_mark_read">Læst</string>
+    <string name="message_counter_separator">af</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Privatlivstilstand</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Skjul afsender og besked i statuslinje og slå Svar fra</string>
+    <string name="notification_single_title_privacy_mode">Ny besked</string>
+    <string name="notification_single_text_privacy_mode">1 ulæst besked</string>
+    <string name="notification_multiple_title_privacy_mode">Nye beskeder</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> ulæste beskeder</string>
+    <string name="notification_ticker_privacy_mode">Ny besked modtaget</string>
+    <string name="pref_quickmessage">HurtigBesked</string>
+    <string name="pref_dark_theme_title">Brug mørkt tema</string>
+    <string name="pref_dark_theme_summary">Hvis ikke valgt, vil det \'lyse\' standardtema blive anvendt</string>
+    <string name="pref_quickmessage_title">Vis popup</string>
+    <string name="pref_quickmessage_summary">Vis popup-dialogen til HurtigBesked for indgående SMS-beskeder</string>
+    <string name="pref_wake_unlock_title">Vågn og lås op</string>
+    <string name="pref_wake_unlock_summary">Vågn og lås enhed op ved indkommende besked (kun usikre skærmlåse)</string>
+    <string name="pref_close_all_title">Luk alle</string>
+    <string name="pref_close_all_summary">Lukknap lukker alle beskeder</string>
+    <string name="prefs_templates_settings">SMS-skabeloner</string>
+    <string name="pref_title_templates_manage">Skabeloner</string>
+    <string name="pref_summary_templates_manage">Administrér dine SMS-skabeloner</string>
+    <string name="template_explanation">Indsæt eller ret skabelonteksten og tegn evt. en bevægelse for at tilknytte den</string>
+    <string name="template_insert_hint">Indsæt skabelon-teksten her</string>
+    <string name="template_empty_text">Tekstfeltet kan ikke være tomt</string>
+    <string name="template_save">Gem</string>
+    <string name="template_ctx_menu_title">Handlinger</string>
+    <string name="template_edit">Redigér</string>
+    <string name="template_delete">Slet</string>
+    <string name="template_list_title">Skabeloner</string>
+    <string name="template_new_title">Ny skabelon</string>
+    <string name="template_insert">Indsæt skabelon</string>
+    <string name="template_gesture_draw">Tegn bevægelsen i pladsen herunder</string>
+    <string name="template_not_present_error">Du har ikke defineret nogen skabelon</string>
+    <string name="template_not_present_error_title">Fejl</string>
+    <string name="template_select">Vælg en skabelon</string>
+    <string name="template_confirm_dialog_title">Slet?</string>
+    <string name="gestures_already_present">En lign. bevægelse er allerede tilknyttet en anden skabelon</string>
+    <string name="select_template">Vælg skabeloner</string>
+    <string name="pref_title_templates_show_gesture">Bevægelse</string>
+    <string name="pref_summary_templates_show_gesture">Vis spor ved bevægelse</string>
+    <string name="pref_title_template_gestures_sensitivity">Følsomhed for bevægelse</string>
+    <string name="pref_extra_settings">Ekstra indstillinger</string>
+    <string name="pref_title_unicode_stripping">Fjern Unicode</string>
+    <string name="pref_unicode_stripping_leave_intact">Lad tegn være uberørte</string>
+    <string name="pref_unicode_stripping_non_encodable">Fjern ikke-kodbare tegn</string>
+    <string name="pref_unicode_stripping_all">Fjern alle Unicode-tegn</string>
+    <string name="pref_title_mms_full_timestamp">Fulde tidsstempler</string>
+    <string name="pref_summary_mms_full_timestamp">Vis både dato og tid i tidsstempler</string>
+    <string name="pref_title_mms_use_sent_timestamp">Originale tidsstempler</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Vis sendt dato i stedet for modtaget dato i tidsstempler</string>
+    <string name="pref_title_input_type">Type af softwaretastatur</string>
+    <string name="pref_keyboard_emoji">Vis smiley-tasten</string>
+    <string name="pref_keyboard_new_line">Vis Enter-tasten</string>
+    <string name="pref_keyboard_unknown">Ukendt, vælg venligst igen</string>
+    <string name="pref_title_sms_split_counter">Delingstæller</string>
+    <string name="pref_summary_sms_split_counter">Tilføjer tæller til besked fx (1/2)</string>
+    <string name="blacklist_title">Sortliste</string>
+    <string name="blacklist_summary_disabled">Deaktiveret</string>
+    <string name="blacklist_summary">Indgående beskeder fra telefonnumre på sortlisten vil blive blokeret</string>
+    <string name="blacklist_notification">Blokerede en besked fra %s</string>
+    <string name="blacklist_notification_private_number">Blokerede en besked fra et privat nummer</string>
+    <string name="blacklist_notification_list_private">Privat</string>
+    <string name="blacklist_notification_unknown_number">Blokerede en besked fra et ukendt nummer %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> beskeder blev blokeret</string>
+    <string name="unblock_number">Fjern blokering</string>
+    <string name="add_to_blacklist">Føj til sortliste</string>
+    <string name="add_to_blacklist_message">Fremtidige beskeder fra %s vil blive blokeret</string>
+    <string name="alert_dialog_yes">Ja</string>
+    <string name="alert_dialog_no">Nej</string>
+    <string name="select_recipients">Vælg modtagere</string>
+    <string name="groups_header">Grupper</string>
+    <string name="no_recipients">Ingen kontakter fundet</string>
+    <string name="no_recipients_mobile_only">Ingen kontakter fundet. Prøv uden filteret \'Kun mobilnumre\'</string>
+    <string name="menu_done">Udført</string>
+    <string name="menu_mobile">Kun mobilnumre</string>
+    <string name="menu_groups">Vis grupper</string>
+    <string name="fastscroll_index_groups">GR</string>
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_add_to_calendar">Añadir al calendario</string>
+    <string name="button_close">Cerrar</string>
+    <string name="button_view">Ver</string>
+    <string name="button_templates">Plantillas</string>
+    <string name="type_to_reply_text_enter_to_send">Escribir mensaje</string>
+    <string name="toast_sending_message">Enviando mensaje\u2026</string>
+    <string name="qm_quick_reply">Responder</string>
+    <string name="qm_mark_read">Leído</string>
+    <string name="message_counter_separator">de</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Modo privacidad</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Ocultar remitente y mensaje en la barra de estado y deshabilitar la respuesta rápida</string>
+    <string name="notification_single_title_privacy_mode">Nuevo mensaje</string>
+    <string name="notification_single_text_privacy_mode">1 mensaje no leído</string>
+    <string name="notification_multiple_title_privacy_mode">Nuevos mensajes</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> mensajes no leídos</string>
+    <string name="notification_ticker_privacy_mode">Nuevo mensaje recibido</string>
+    <string name="pref_quickmessage">Respuesta rápida</string>
+    <string name="pref_dark_theme_title">Usar tema oscuro</string>
+    <string name="pref_dark_theme_summary">Si no está seleccionado, se utilizará el tema claro</string>
+    <string name="pref_quickmessage_title">Habilitar respuesta rápida</string>
+    <string name="pref_quickmessage_summary">Mostrar el cuadro de diálogo para una respuesta rápida</string>
+    <string name="pref_wake_unlock_title">Despertar y desbloquear</string>
+    <string name="pref_wake_unlock_summary">Despierta y desbloquea el dispositivo al recibir un mensaje (solamente con bloqueo de pantalla)</string>
+    <string name="pref_close_all_title">Cerrar todo</string>
+    <string name="pref_close_all_summary">Al pulsar Cerrar, se cerrarán todos los mensajes</string>
+    <string name="prefs_templates_settings">Plantillas SMS</string>
+    <string name="pref_title_templates_manage">Plantillas</string>
+    <string name="pref_summary_templates_manage">Administrar plantillas de SMS</string>
+    <string name="template_explanation">Insertar o modificar el texto de la plantilla y, opcionalmente, dibujar un gesto para asociarlo</string>
+    <string name="template_insert_hint">Insertar la plantilla de texto aquí</string>
+    <string name="template_empty_text">El campo de texto no puede estar vacío</string>
+    <string name="template_save">Guardar</string>
+    <string name="template_ctx_menu_title">Acciones</string>
+    <string name="template_edit">Editar</string>
+    <string name="template_delete">Eliminar</string>
+    <string name="template_list_title">Plantillas</string>
+    <string name="template_new_title">Nueva plantilla</string>
+    <string name="template_insert">Insertar plantilla</string>
+    <string name="template_gesture_draw">Dibujar el gesto en el espacio de abajo</string>
+    <string name="template_not_present_error">No ha definido ninguna plantilla</string>
+    <string name="template_not_present_error_title">Error</string>
+    <string name="template_select">Seleccionar una plantilla</string>
+    <string name="template_confirm_dialog_title">¿Eliminar?</string>
+    <string name="gestures_already_present">Un gesto similar está actualmente asociado a otra plantilla</string>
+    <string name="select_template">Seleccionar plantillas</string>
+    <string name="pref_title_templates_show_gesture">Gestos</string>
+    <string name="pref_summary_templates_show_gesture">Habilitar el uso de gestos para acceder a plantillas</string>
+    <string name="pref_title_template_gestures_sensitivity">Sensibilidad gestual</string>
+    <string name="pref_extra_settings">Ajustes adicionales</string>
+    <string name="pref_title_unicode_stripping">Limpiar Unicode en SMS</string>
+    <string name="pref_unicode_stripping_leave_intact">No modificar el mensaje</string>
+    <string name="pref_unicode_stripping_non_encodable">Sustituir los caracteres no soportados</string>
+    <string name="pref_unicode_stripping_all">Sustituir todos los caracteres</string>
+    <string name="pref_title_mms_full_timestamp">Marca de tiempo completa</string>
+    <string name="pref_summary_mms_full_timestamp">Mostrar fecha y hora en las marcas de tiempo</string>
+    <string name="pref_title_mms_use_sent_timestamp">Marca de tiempo original</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Mostrar fecha de envío en lugar de la fecha de recepción en las marcas de tiempo</string>
+    <string name="pref_title_input_type">Tipo de teclado</string>
+    <string name="pref_keyboard_emoji">Mostrar tecla de emoticonos</string>
+    <string name="pref_keyboard_new_line">Mostrar tecla Entrar</string>
+    <string name="pref_keyboard_unknown">Desconocido. Por favor, seleccionar nuevamente</string>
+    <string name="pref_title_sms_split_counter">Contador de división</string>
+    <string name="pref_summary_sms_split_counter">Añade un contador de división de mensajes. Ej. (1/2)</string>
+    <string name="blacklist_title">Lista negra</string>
+    <string name="blacklist_summary_disabled">Deshabilitada</string>
+    <string name="blacklist_summary">Los mensajes entrantes de los números en la lista negra serán bloqueados</string>
+    <string name="blacklist_notification">Mensaje de %s, bloqueado</string>
+    <string name="blacklist_notification_private_number">Mensaje de número privado, bloqueado</string>
+    <string name="blacklist_notification_list_private">Privado</string>
+    <string name="blacklist_notification_unknown_number">Mensaje de número desconocido %s, bloqueado</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> mensajes fueron bloqueados</string>
+    <string name="unblock_number">Desbloquear</string>
+    <string name="add_to_blacklist">Añadir a la lista negra</string>
+    <string name="add_to_blacklist_message">Los mensajes de %s serán bloqueados</string>
+    <string name="alert_dialog_yes">Sí</string>
+    <string name="alert_dialog_no">No</string>
+    <string name="select_recipients">Seleccionar destinatarios</string>
+    <string name="groups_header">Grupos</string>
+    <string name="no_recipients">No se han encontrado contactos</string>
+    <string name="no_recipients_mobile_only">No hay contactos coincidentes. Prueba sin el filtro \u00ABSolo números de teléfono\u00BB</string>
+    <string name="menu_done">Hecho</string>
+    <string name="menu_mobile">Solo números de teléfono</string>
+    <string name="menu_groups">Mostrar grupos</string>
+    <string name="fastscroll_index_groups">GRP</string>
+</resources>
