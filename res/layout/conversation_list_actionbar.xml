@@ -28,7 +28,7 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ccffffff"
+        android:textColor="@color/actionbar_text"
         android:layout_gravity="center_vertical"
         android:paddingRight="10dip"
         android:layout_width="wrap_content"

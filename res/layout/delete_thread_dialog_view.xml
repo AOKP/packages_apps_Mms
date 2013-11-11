@@ -21,9 +21,10 @@
         android:padding="15dip">
 
     <TextView android:id="@+id/message"
-            style="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:textColor="@color/delete_thread_dialog"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <CheckBox android:id="@+id/delete_locked"
         android:layout_height="wrap_content"
