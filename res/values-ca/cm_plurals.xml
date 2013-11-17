@@ -18,8 +18,4 @@
         <item quantity="one">S\'ha esborrat una plantilla.</item>
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> plantilles s\'esborraran.</item>
     </plurals>
-    <plurals name="remaining_delay_time">
-        <item quantity="one">Enviament en 1 segon, toca per cancel·lar.</item>
-        <item quantity="other">Enviament en %1$d segons, toca per cancel·lar.</item>
-    </plurals>
 </resources>
