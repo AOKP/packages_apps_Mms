@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="prefs_templates_settings">SMS šablonai</string>
+    <string name="pref_title_templates_manage">Šablonai</string>
+    <string name="pref_summary_templates_manage">Valdykite SMS šablonus</string>
+    <string name="pref_title_templates_show_gesture">Gestas</string>
+    <string name="pref_summary_templates_show_gesture">Rodyti gesto pėdsaką</string>
+    <string name="pref_title_template_gestures_sensitivity">Gesto jautrumas</string>
+    <string name="template_save">Išsaugoti</string>
+    <string name="template_insert_hint">Įveskite šablono tekstą čia</string>
+    <string name="template_empty_text">Teksto laukas negali būti tuščias</string>
+    <string name="template_explanation">Įveskite arba pakeiskite šablono tekstą ir pasirinktinai nubrėžkite gestą tam kad jį susietumėte</string>
+    <string name="template_edit">Redaguoti</string>
+    <string name="template_delete">Ištrinti</string>
+    <string name="template_ctx_menu_title">Veiksmai</string>
+    <string name="template_list_title">Šablonai</string>
+    <string name="template_new_title">Naujas šablonas</string>
+    <string name="template_insert">Įterpkite šabloną</string>
+    <string name="template_gesture_draw">Nubrėžkite gestą į žemiau esantį laukelį</string>
+    <string name="template_not_present_error">Nėra sudarytų šablonų</string>
+    <string name="template_not_present_error_title">Klaida</string>
+    <string name="template_select">Pasirinkite šabloną</string>
+    <string name="template_confirm_dialog_title">Ištrinti?</string>
+    <string name="gestures_already_present">Panašus gestas jau yra susietas su kitu šablonu</string>
+    <string name="select_template">Pasirinkite šablonus</string>
+    <string name="pref_title_notification_privacy_mode_enabled">Privatumo režimas</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">Slėpti siuntėją ir pranešimą būsenos juostoje bei išjungti \'Greitą atsakymą\'</string>
+    <string name="notification_single_title_privacy_mode">Naujas pranešimas</string>
+    <string name="notification_single_text_privacy_mode">Neperskaitytas 1 pranešimas</string>
+    <string name="notification_multiple_title_privacy_mode">Nauji pranešimai</string>
+    <string name="notification_multiple_text_privacy_mode">%1$s neperskaityti pranešimai</string>
+    <string name="notification_ticker_privacy_mode">Gautas naujas pranešimas</string>
+    <string name="pref_extra_settings">Papildomi nustatymai</string>
+    <string name="pref_title_mms_full_timestamp">Visos laiko žymos</string>
+    <string name="pref_summary_mms_full_timestamp">Laiko žymose rodyti datą ir laiką</string>
+    <string name="pref_title_mms_use_sent_timestamp">Originalios laiko žymos</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Rodyti išsiuntimo datą o ne gautą datą, laiko žymose</string>
+    <string name="pref_title_input_type">Klaviatūros tipas</string>
+    <string name="pref_keyboard_emoji">Rodyti šypsenėlių mygtuką</string>
+    <string name="pref_keyboard_new_line">Rodyti naujos eilutės mygtuką</string>
+    <string name="pref_keyboard_unknown">Nežinomas, prašome pasirinkti iš naujo</string>
+    <string name="pref_title_sms_split_counter">SMS skaitliukas</string>
+    <string name="pref_summary_sms_split_counter">Prideda skaitliuką pranešimuose pvz. (1/2)</string>
+    <string name="pref_quickmessage">Greitas atsakymas</string>
+    <string name="pref_quickmessage_title">Rodyti laikinąjį langą</string>
+    <string name="pref_quickmessage_summary">Rodyti greitų žinučių laikinąjį langą gaunamiems SMS pranešimams</string>
+    <string name="pref_wake_unlock_title">Pažadinti ir atrakinti</string>
+    <string name="pref_wake_unlock_summary">Pažadinti ir atrakinti įrenginį gaunamiems pranešimams (tik nesaugus ekrano užraktas)</string>
+    <string name="pref_close_all_title">Uždaryti viską</string>
+    <string name="pref_close_all_summary">Mygtukas \'Uždaryti\' uždaro visas žinutes</string>
+    <string name="pref_dark_theme_title">Naudoti tamsią temą</string>
+    <string name="pref_dark_theme_summary">Pagal nutylėjimą bus naudojama šviesi tema</string>
+    <string name="message_counter_separator">iš</string>
+    <string name="button_close">Uždaryti</string>
+    <string name="button_view">Peržiūrėti</string>
+    <string name="button_templates">Šablonai</string>
+    <string name="type_to_reply_text_enter_to_send">Rašykite norėdami atsakyti</string>
+    <string name="toast_sending_message">Siunčiamas pranešimas</string>
+    <string name="qm_quick_reply">Atsakyti</string>
+    <string name="qm_mark_read">Skaityti</string>
+    <string name="menu_add_to_calendar">Pridėti į kalendorių</string>
+    <string name="pref_title_unicode_stripping">Pašalinti \'Unicode\'</string>
+    <string name="pref_unicode_stripping_leave_intact">Palikti nepaliestus simbolius</string>
+    <string name="pref_unicode_stripping_non_encodable">Pašalinti \'non-encodable\' simbolius</string>
+    <string name="pref_unicode_stripping_all">Pašalinti visus \'unicode\' simbolius</string>
+    <string name="blacklist_title">Juodasis sąrašas</string>
+    <string name="blacklist_summary_disabled">Išjungtas</string>
+    <string name="blacklist_summary">Gaunami pranešimai iš telefonų numerių kurie yra juodajame sąraše bus blokuojami</string>
+    <string name="blacklist_notification">Užblokuotas pranešimas iš %s</string>
+    <string name="blacklist_notification_private_number">Užblokuotas pranešimas iš privataus numerio</string>
+    <string name="blacklist_notification_list_private">Privatus</string>
+    <string name="blacklist_notification_unknown_number">Užblokuotas pranešimas iš nežinomo numerio %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> pranešimai buvo užblokuoti</string>
+    <string name="unblock_number">Atblokuoti</string>
+    <string name="add_to_blacklist">Pridėti į juodąjį sąrašą</string>
+    <string name="add_to_blacklist_message">Būsimi pranešimai iš %s bus blokuojami</string>
+    <string name="alert_dialog_yes">Taip</string>
+    <string name="alert_dialog_no">Ne</string>
+    <string name="select_recipients">Pasirinkite gavėjus</string>
+    <string name="groups_header">Grupės</string>
+    <string name="no_recipients">Kontaktų nerasta</string>
+    <string name="no_recipients_mobile_only">Nerasti atitinkantys kontaktai. Išjunkite filtrą \'tik mobilieji numeriai\' ir bandykite dar kartą.</string>
+    <string name="menu_done">Atlikta</string>
+    <string name="menu_mobile">Tik mobilieji numeriai</string>
+    <string name="menu_groups">Rodyti grupes</string>
+    <string name="fastscroll_index_groups">GR</string>
+    <string name="pref_title_send_delay">Siuntimo delsimas</string>
+    <string name="send_delay_immediate">Siųsti iš karto</string>
+    <string name="send_delay_3seconds">3 sekundės</string>
+    <string name="send_delay_5seconds">5 sekundės</string>
+    <string name="send_delay_10seconds">10 sekundžių</string>
+    <string name="send_delay_20seconds">20 sekundžių</string>
+    <string name="send_delay_30seconds">30 sekundžių</string>
+    <string name="sent_countdown">Pranešimo siuntimo laikmatis</string>
+</resources>

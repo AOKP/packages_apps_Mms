@@ -14,14 +14,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="pref_mms_notification_vibrate_pattern_entries">
-        <item>Normal</item>
-        <item>Mittel</item>
-        <item>Lang</item>
-        <item>Mehrmals kurz</item>
-        <item>Mehrmals lang</item>
-        <item>Benutzerdefiniert</item>
-    </string-array>
     <string-array name="pref_templates_gestures_sensitivity_entries">
         <item>1 (Sehr unempfindlich)</item>
         <item>2</item>

@@ -100,4 +100,12 @@
     <string name="menu_mobile">Solo numeri cellulare</string>
     <string name="menu_groups">Mostra gruppi</string>
     <string name="fastscroll_index_groups">GR</string>
+    <string name="pref_title_send_delay">Invio posticipato</string>
+    <string name="send_delay_immediate">Invia immediatamente</string>
+    <string name="send_delay_3seconds">3 secondi</string>
+    <string name="send_delay_5seconds">5 secondi</string>
+    <string name="send_delay_10seconds">10 secondi</string>
+    <string name="send_delay_20seconds">20 secondi</string>
+    <string name="send_delay_30seconds">30 secondi</string>
+    <string name="sent_countdown">Conto alla rovescia invio</string>
 </resources>

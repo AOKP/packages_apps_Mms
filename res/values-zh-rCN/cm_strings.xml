@@ -98,4 +98,12 @@
     <string name="menu_mobile">仅限手机号码</string>
     <string name="menu_groups">显示组</string>
     <string name="fastscroll_index_groups">GR</string>
+    <string name="pref_title_send_delay">延迟发送短信</string>
+    <string name="send_delay_immediate">立即发送</string>
+    <string name="send_delay_3seconds">3 秒</string>
+    <string name="send_delay_5seconds">5 秒</string>
+    <string name="send_delay_10seconds">10 秒</string>
+    <string name="send_delay_20seconds">20 秒</string>
+    <string name="send_delay_30seconds">30 秒</string>
+    <string name="sent_countdown">延迟发送倒计时</string>
 </resources>

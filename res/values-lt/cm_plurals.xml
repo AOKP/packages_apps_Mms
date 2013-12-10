@@ -14,18 +14,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="pref_templates_gestures_sensitivity_entries">
-        <item>1 (mais amplo)</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12 (estrita)</item>
-    </string-array>
+    <plurals name="template_confirm_delete_conversation">
+        <item quantity="one">Šablonas bus ištrintas.</item>
+        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> šablonai bus ištrinti.</item>
+    </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="one">Siųs po 1 sekundės, palieskite norėdami atšaukti.</item>
+        <item quantity="other">Siųs po %1$d sekundžių, palieskite norėdami atšaukti.</item>
+    </plurals>
 </resources>

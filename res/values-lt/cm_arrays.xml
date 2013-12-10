@@ -15,7 +15,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="pref_templates_gestures_sensitivity_entries">
-        <item>1 (mais amplo)</item>
+        <item>1 (labai jautrus)</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
@@ -26,6 +26,6 @@
         <item>9</item>
         <item>10</item>
         <item>11</item>
-        <item>12 (estrita)</item>
+        <item>12 (mažiau jautrūs)</item>
     </string-array>
 </resources>

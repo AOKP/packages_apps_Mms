@@ -98,4 +98,13 @@
     <string name="menu_mobile">Nur Mobilnummern anzeigen</string>
     <string name="menu_groups">Gruppen anzeigen</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+    <!-- Delay delivery -->
+    <string name="pref_title_send_delay">Versandverzögerung</string>
+    <string name="send_delay_immediate">Sofort versenden</string>
+    <string name="send_delay_3seconds">3 Sekunden</string>
+    <string name="send_delay_5seconds">5 Sekunden</string>
+    <string name="send_delay_10seconds">10 Sekunden</string>
+    <string name="send_delay_20seconds">20 Sekunden</string>
+    <string name="send_delay_30seconds">30 Sekunden</string>
+    <string name="sent_countdown">Zeit bis zum Versand</string>
 </resources>
