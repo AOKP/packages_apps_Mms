@@ -28,11 +28,4 @@
         <item>11</item>
         <item>12 (estrita)</item>
     </string-array>
-    <string-array name="pref_mms_notification_vibrate_pattern_entries">
-        <item>Normal</item>
-        <item>Vibração Média</item>
-        <item>Vibração Longa</item>
-        <item>Curto Múltiplo</item>
-        <item>Longo Múltiplo</item>
-    </string-array>
 </resources>
