@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="menu_add_to_calendar">เพิ่มไปยังปฏิทิน</string>
+  <string name="button_close">ปิด</string>
+  <string name="button_view">ดู</string>
+  <string name="button_templates">แม่แบบ</string>
+  <string name="type_to_reply_text_enter_to_send">พิมพ์ตอบ</string>
+  <string name="toast_sending_message">กำลังส่งข้อความ</string>
+  <string name="qm_quick_reply">ตอบ</string>
+  <string name="qm_mark_read">อ่าน</string>
+  <string name="message_counter_separator">ของ</string>
+  <string name="pref_title_notification_privacy_mode_enabled">รูปแบบความเป็นส่วนตัว</string>
+  <string name="pref_summary_notification_privacy_mode_enabled">ซ่อนผู้ส่งและข้อความในแถบสถานะและปิด \'ตอบด่วน\'</string>
+  <string name="notification_single_title_privacy_mode">ข้อความใหม่</string>
+  <string name="notification_single_text_privacy_mode">1 ข้อความไม่ได้อ่าน</string>
+  <string name="notification_multiple_title_privacy_mode">ข้อความใหม่</string>
+  <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> ข้อความไม่ได้อ่าน</string>
+  <string name="notification_ticker_privacy_mode">ได้รับข้อความใหม่</string>
+  <string name="pref_quickmessage">ตอบด่วน</string>
+  <string name="pref_dark_theme_title">ใช้ธีมมืด</string>
+  <string name="pref_dark_theme_summary">ถ้าไม่เลือก,ค่าเริ่มต้น ธีม\'สว่าง\' จะถูกใช้งาน</string>
+  <string name="pref_quickmessage_title">แสดงป็อปอัพ</string>
+  <string name="pref_quickmessage_summary">แสดงป๊อปอัพตอบข้อความด่วน สำหรับข้อความเข้า</string>
+  <string name="pref_wake_unlock_title">ตื่นและปลดล็อค</string>
+  <string name="pref_wake_unlock_summary">ตื่นและปลดล็อคเมื่อมีข้อความเข้า (หน้าล็อคจอแบบไม่ปลอดภัยเท่านั้น)</string>
+  <string name="pref_close_all_title">ปิดทั้งหมด</string>
+  <string name="pref_close_all_summary">ปุ่มปิด เพื่อปิดข้อความทั้งหมด</string>
+  <string name="prefs_templates_settings">แม่แบบ SMS</string>
+  <string name="pref_title_templates_manage">แม่แบบ</string>
+  <string name="pref_summary_templates_manage">จัดการแม่แบบ SMS ของคุณ</string>
+  <string name="template_explanation">เพิ่มหรือแก้ไขข้อความแม่แบบและตั้งรูปแบบลายเขียน</string>
+  <string name="template_insert_hint">กรอกข้อความแม่แบบที่นี่</string>
+  <string name="template_empty_text">พื้นที่กรอกข้อความไม่สามารถว่างได้</string>
+  <string name="template_save">บันทึก</string>
+  <string name="template_ctx_menu_title">การกระทำ</string>
+  <string name="template_edit">แก้ไข</string>
+  <string name="template_delete">ลบ</string>
+  <string name="template_list_title">แม่แบบ</string>
+  <string name="template_new_title">แม่แบบใหม่</string>
+  <string name="template_insert">เพิ่มแม่แบบ</string>
+  <string name="template_gesture_draw">วาดลายเส้นในพื้นที่บริเวณนี้</string>
+  <string name="template_not_present_error">ไม่มีแม่แบบที่กำหนดไว้</string>
+  <string name="template_not_present_error_title">ผิดพลาด</string>
+  <string name="template_select">เลือกแม่แบบ</string>
+  <string name="template_confirm_dialog_title">ลบ?</string>
+  <string name="gestures_already_present">มีการตั้งลายเส้นที่เหมือนกันแล้วในแม่แบบอื่น</string>
+  <string name="select_template">เลือกแม่แบบ</string>
+  <string name="pref_title_templates_show_gesture">ลายเส้น</string>
+  <string name="pref_summary_templates_show_gesture">แสดงติดตามลายเส้น</string>
+  <string name="pref_title_template_gestures_sensitivity">ความไวของลานเส้น</string>
+  <string name="pref_extra_settings">การตั้งค่าเพิ่มเติม</string>
+  <string name="pref_title_unicode_stripping">Strip unicode</string>
+  <string name="pref_unicode_stripping_leave_intact">ปล่อยให้ตัวอักขระเหมือนเดิม</string>
+  <string name="pref_unicode_stripping_non_encodable">Strip non-encodable characters</string>
+  <string name="pref_unicode_stripping_all">Strip all unicode characters</string>
+  <string name="pref_title_mms_full_timestamp">รายละเอียดวันเวลาแบบเต็ม</string>
+  <string name="pref_summary_mms_full_timestamp">แสดงทั้งวันและเวลาในรายละเอียดวันเวลา</string>
+  <string name="pref_title_mms_use_sent_timestamp">รายละเอียดวันเวลาดั้งเดิม</string>
+  <string name="pref_summary_mms_use_sent_timestamp">แสดงวันส่ง/วันที่รับในรายละเอียดวันเวลา</string>
+  <string name="pref_title_input_type">พิมพ์โดยใช้แป้นพิมพ์บนจอ</string>
+  <string name="pref_keyboard_emoji">แสดงอีโมติคอน</string>
+  <string name="pref_keyboard_new_line">แสดงปุ่ม Enter</string>
+  <string name="pref_keyboard_unknown">ไม่ทราบกรุณาเลือกใหม่</string>
+  <string name="pref_title_sms_split_counter">แบ่งตัวนับ</string>
+  <string name="pref_summary_sms_split_counter">เพิ่มตัวนับไปยังข้อความ (1/2)</string>
+  <string name="blacklist_title">บัญชีดำ</string>
+  <string name="blacklist_summary_disabled">ปิด</string>
+  <string name="blacklist_summary">ข้อความเข้าจากหมายเลขในบัญชีดำจะถูกบล็อค</string>
+  <string name="blacklist_notification">บล็อคข้อความจาก %s</string>
+  <string name="blacklist_notification_private_number">บล็อคข้อความจากหมายเลขส่วนตัว</string>
+  <string name="blacklist_notification_list_private">ส่วนตัว</string>
+  <string name="blacklist_notification_unknown_number">บล็อคข้อความจากหมายเลขที่ไม่รู้จัก  %s</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g>ข้อความโดนบล็อค</string>
+  <string name="unblock_number">ปลดล็อค</string>
+  <string name="add_to_blacklist">เพิ่มไปยังบัญชีดำ</string>
+  <string name="add_to_blacklist_message">ข้อความในอนาคตจาก %s จะโดนบล็อค</string>
+  <string name="alert_dialog_yes">ใช่</string>
+  <string name="alert_dialog_no">ไม่</string>
+  <string name="select_recipients">เลือกผู้รับ</string>
+  <string name="groups_header">กลุ่ม</string>
+  <string name="no_recipients">ไม่พบผู้ติดต่อ</string>
+  <string name="no_recipients_mobile_only">ไม่พบรายชื่อผู้ติดต่อที่ต้องการ ลองอีกครั้งโดยไม่ใช้ตัวกรอง \"หมายเลขโทรศัพท์เท่านั้น\"</string>
+  <string name="menu_done">เสร็จสิ้น</string>
+  <string name="menu_mobile">หมายเลขโทรศัพท์เท่านั้น</string>
+  <string name="menu_groups">แสดงกลุ่ม</string>
+</resources>

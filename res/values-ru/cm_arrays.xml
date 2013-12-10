@@ -29,11 +29,4 @@
       <item>12 (точные жесты)</item>
     </string-array>
 
-    <string-array name="pref_mms_notification_vibrate_pattern_entries">
-        <item>Нормальный</item>
-        <item>Средняя вибрация</item>
-        <item>Длинная вибрация</item>
-        <item>Несколько коротких</item>
-        <item>Несколько длинных</item>
-    </string-array>
 </resources>
