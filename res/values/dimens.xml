@@ -21,4 +21,6 @@ All Rights Reserved. -->
     <!-- Bammer item spacing -->
     <dimen name="banner_s_space">4dip</dimen>
     <dimen name="banner_m_space">8dip</dimen>
+
+    <dimen name="quick_message_width">300dp</dimen>
 </resources>
