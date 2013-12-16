@@ -18,8 +18,4 @@
         <item quantity="one">Eine Vorlage wird gelöscht.</item>
         <item quantity="other"><xliff:g id="number">%1$s</xliff:g> Vorlagen werden gelöscht.</item>
     </plurals>
-    <plurals name="remaining_delay_time">
-        <item quantity="one">Versand in 1 Sekunde - zum Abbrechen berühren.</item>
-        <item quantity="other">Versand in %1$d Sekunden - zum Abbrechen berühren.</item>
-    </plurals>
 </resources>
