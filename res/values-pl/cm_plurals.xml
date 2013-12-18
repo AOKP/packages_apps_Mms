@@ -19,4 +19,8 @@
         <item quantity="few"><xliff:g id="number" example="15">%1$s</xliff:g> szablony zostaną usunięte.</item>
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> szablonów zostanie usuniętych.</item>
     </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="one">Wysłanie w ciągu 1 sekundy, dotknij aby przerwać.</item>
+        <item quantity="other">Wysłanie w ciągu %1$d sekund, dotknij aby przerwać.</item>
+    </plurals>
 </resources>

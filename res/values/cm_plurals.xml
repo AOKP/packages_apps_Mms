@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,11 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <plurals name="template_confirm_delete_conversation">
-        <item quantity="one">One template will be deleted.</item>
+        <item quantity="one"><xliff:g id="number">%1$s</xliff:g> template will be deleted.</item>
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> templates will be deleted.</item>
     </plurals>
     <plurals name="remaining_delay_time">
-        <item quantity="one">Sending in 1 second, touch to cancel.</item>
+        <item quantity="one">Sending in %1$d second, touch to cancel.</item>
         <item quantity="other">Sending in %1$d seconds, touch to cancel.</item>
     </plurals>
 </resources>

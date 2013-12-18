@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -27,12 +28,5 @@
         <item>10</item>
         <item>11</item>
         <item>12 (meest strikt)</item>
-    </string-array>
-    <string-array name="pref_mms_notification_vibrate_pattern_entries">
-        <item>Normaal</item>
-        <item>Gemiddeld</item>
-        <item>Lang</item>
-        <item>Meerdere keren kort</item>
-        <item>Meerdere keren lang</item>
     </string-array>
 </resources>

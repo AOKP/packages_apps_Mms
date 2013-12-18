@@ -98,4 +98,12 @@
     <string name="menu_mobile">Только мобильные</string>
     <string name="menu_groups">Показывать группы</string>
     <string name="fastscroll_index_groups">Грп</string> <!-- CHAR LIMIT=3 -->
+    <string name="pref_title_send_delay">Задержка отправки</string>
+    <string name="send_delay_immediate">Без задержки</string>
+    <string name="send_delay_3seconds">3 секунды</string>
+    <string name="send_delay_5seconds">5 секунд</string>
+    <string name="send_delay_10seconds">10 секунд</string>
+    <string name="send_delay_20seconds">20 секунд</string>
+    <string name="send_delay_30seconds">30 секунд</string>
+    <string name="sent_countdown">Обратный отсчёт</string>
 </resources>

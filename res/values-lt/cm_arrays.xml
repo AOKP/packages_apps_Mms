@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2013 The CyanogenMod Project
+<!-- Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,12 +14,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <plurals name="template_confirm_delete_conversation">
-        <item quantity="one">Eén sjabloon wordt verwijderd.</item>
-        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> sjablonen worden verwijderd.</item>
-    </plurals>
-    <plurals name="remaining_delay_time">
-        <item quantity="one">Verzenden over 1 seconde, tik om te annuleren.</item>
-        <item quantity="other">Verzenden over %1$d seconden, tik om te annuleren.</item>
-    </plurals>
+    <string-array name="pref_templates_gestures_sensitivity_entries">
+        <item>1 (labai jautrus)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12 (mažiau jautrūs)</item>
+    </string-array>
 </resources>
