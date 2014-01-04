@@ -514,10 +514,10 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
             item.setVisible((mListAdapter.getCount() > 0) && mIsSmsEnabled);
         }
         item = menu.findItem(R.id.action_compose_new);
-        if (item != null ){
+        /*if (item != null ){
             // Dim compose if SMS is disabled because it will not work (will show a toast)
             item.getIcon().setAlpha(mIsSmsEnabled ? 255 : 127);
-        }
+        }*/
         if (!LogTag.DEBUG_DUMP) {
             item = menu.findItem(R.id.action_debug_dump);
             if (item != null) {
@@ -539,16 +539,16 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_compose_new:
-                if (mIsSmsEnabled) {
+                //if (mIsSmsEnabled) {
                     createNewMessage();
-                } else {
+                /*} else {
                     // Display a toast letting the user know they can not compose.
                     if (mComposeDisabledToast == null) {
                         mComposeDisabledToast = Toast.makeText(this,
                                 R.string.compose_disabled_toast, Toast.LENGTH_SHORT);
                     }
                     mComposeDisabledToast.show();
-                }
+                }*/
                 break;
             case R.id.action_delete_all:
                 // The invalid threadId of -1 means all threads here.

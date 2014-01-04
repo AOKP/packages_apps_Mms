@@ -2429,16 +2429,16 @@ public class ComposeMessageActivity extends Activity
     private void onKeyboardStateChanged() {
         // If the keyboard is hidden, don't show focus highlights for
         // things that cannot receive input.
-        mTextEditor.setEnabled(mIsSmsEnabled);
+        //mTextEditor.setEnabled(mIsSmsEnabled);
         if (!mIsSmsEnabled) {
-            if (mRecipientsEditor != null) {
+            /*if (mRecipientsEditor != null) {
                 mRecipientsEditor.setFocusableInTouchMode(false);
-            }
+            }*/
             if (mSubjectTextEditor != null) {
                 mSubjectTextEditor.setFocusableInTouchMode(false);
             }
-            mTextEditor.setFocusableInTouchMode(false);
-            mTextEditor.setHint(R.string.sending_disabled_not_default_app);
+            //mTextEditor.setFocusableInTouchMode(false);
+            //mTextEditor.setHint(R.string.sending_disabled_not_default_app);
         } else if (mIsKeyboardOpen) {
             if (mRecipientsEditor != null) {
                 mRecipientsEditor.setFocusableInTouchMode(true);
