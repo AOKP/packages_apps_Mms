@@ -109,7 +109,7 @@ public class SmsMessageSender implements MessageSender {
         mContext.sendBroadcast(new Intent(SmsReceiverService.ACTION_SEND_MESSAGE,
                 null,
                 mContext,
-                SmsReceiver.class));
+                PrivilegedSmsReceiver.class));
         return false;
     }
 
