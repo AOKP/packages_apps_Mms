@@ -2429,16 +2429,16 @@ public class ComposeMessageActivity extends Activity
     private void onKeyboardStateChanged() {
         // If the keyboard is hidden, don't show focus highlights for
         // things that cannot receive input.
-        mTextEditor.setEnabled(mIsSmsEnabled);
+        //mTextEditor.setEnabled(mIsSmsEnabled);
         if (!mIsSmsEnabled) {
-            if (mRecipientsEditor != null) {
+            /*if (mRecipientsEditor != null) {
                 mRecipientsEditor.setFocusableInTouchMode(false);
-            }
+            }*/
             if (mSubjectTextEditor != null) {
                 mSubjectTextEditor.setFocusableInTouchMode(false);
             }
-            mTextEditor.setFocusableInTouchMode(false);
-            mTextEditor.setHint(R.string.sending_disabled_not_default_app);
+            //mTextEditor.setFocusableInTouchMode(false);
+            //mTextEditor.setHint(R.string.sending_disabled_not_default_app);
         } else if (mIsKeyboardOpen) {
             if (mRecipientsEditor != null) {
                 mRecipientsEditor.setFocusableInTouchMode(true);
@@ -2711,7 +2711,7 @@ public class ComposeMessageActivity extends Activity
             }
         }
 
-        if (isPreparedForSending() && mIsSmsEnabled) {
+        if (isPreparedForSending() /*&& mIsSmsEnabled*/) {
             menu.add(0, MENU_SEND, 0, R.string.send).setIcon(android.R.drawable.ic_menu_send);
         }
 
@@ -3745,6 +3745,11 @@ public class ComposeMessageActivity extends Activity
             return;
         }
 
+        if (!mIsSmsEnabled) {
+        //we cannot save drafts if we are not default sms app
+        return;
+        }
+
         mWorkingMessage.saveDraft(isStopping);
 
         if (mToastForDraftSave) {
@@ -3758,7 +3763,7 @@ public class ComposeMessageActivity extends Activity
 
         return recipientCount > 0 &&
                 recipientCount <= MmsConfig.getRecipientLimit() &&
-                mIsSmsEnabled &&
+                //mIsSmsEnabled &&
                 (mWorkingMessage.hasAttachment() || mWorkingMessage.hasText() ||
                     mWorkingMessage.hasSubject());
     }
