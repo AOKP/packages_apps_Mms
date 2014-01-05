@@ -146,22 +146,13 @@ public class ClassZeroActivity extends Activity {
         if (!queueMsgFromIntent(getIntent())) {
             return;
         }
-
-        if (mMessageQueue.size() == 1) {
-            displayZeroMessage(mMessageQueue.get(0));
-        }
-
-        if (icicle != null) {
-            mTimerSet = icicle.getLong(TIMER_FIRE, mTimerSet);
-        }
-    }
-
-    private void displayZeroMessage(SmsMessage rawMessage) {
-        String message = rawMessage.getMessageBody();
-        /* This'll be used by the save action */
-        mMessage = rawMessage;
-
-        mDialog = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK).setMessage(message)
+        // TODO: The following line adds an emptry string before and after a message.
+        // This is not the correct way to layout a message. This is more of a hack
+        // to work-around a bug in AlertDialog. This needs to be fixed later when
+        // Android fixes the bug in AlertDialog.
+        if (message.length() < BUFFER_OFFSET) messageChars = BUFFER + message + BUFFER;
+        long now = SystemClock.uptimeMillis();
+        mDialog = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK).setMessage(messageChars)
                 .setPositiveButton(R.string.save, mSaveListener)
                 .setNegativeButton(android.R.string.cancel, mCancelListener)
                 .setCancelable(false).show();
