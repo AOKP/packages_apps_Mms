@@ -156,6 +156,7 @@ import com.android.mms.model.SlideshowModel;
 import com.android.mms.templates.TemplateGesturesLibrary;
 import com.android.mms.templates.TemplatesProvider.Template;
 import com.android.mms.transaction.MessagingNotification;
+import com.android.mms.transaction.SmsReceiverService;
 import com.android.mms.ui.MessageListView.OnSizeChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
 import com.android.mms.ui.RecipientsEditor.RecipientContextMenuInfo;
@@ -2272,6 +2273,8 @@ public class ComposeMessageActivity extends Activity
         // Register a BroadcastReceiver to listen on HTTP I/O process.
         registerReceiver(mHttpProgressReceiver, mHttpProgressFilter);
 
+        registerReceiver(mDelayedSendProgressReceiver, DELAYED_SEND_COUNTDOWN_FILTER);
+
         // figure out whether we need to show the keyboard or not.
         // if there is draft to be loaded for 'mConversation', we'll show the keyboard;
         // otherwise we hide the keyboard. In any event, delay loading
@@ -2503,6 +2506,7 @@ public class ComposeMessageActivity extends Activity
 
         // Cleanup the BroadcastReceiver.
         unregisterReceiver(mHttpProgressReceiver);
+        unregisterReceiver(mDelayedSendProgressReceiver);
     }
 
     @Override
@@ -4650,4 +4654,33 @@ public class ComposeMessageActivity extends Activity
         }
         return super.onCreateDialog(id, args);
     }
+
+    private static final IntentFilter DELAYED_SEND_COUNTDOWN_FILTER = new IntentFilter(
+            SmsReceiverService.ACTION_SEND_COUNTDOWN);
+
+    private final BroadcastReceiver mDelayedSendProgressReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (!SmsReceiverService.ACTION_SEND_COUNTDOWN.equals(intent.getAction())) {
+                return;
+            }
+
+            int countDown = intent.getIntExtra(SmsReceiverService.DATA_COUNTDOWN, 0);
+            Uri uri = (Uri) intent.getExtra(SmsReceiverService.DATA_MESSAGE_URI);
+            long msgId = ContentUris.parseId(uri);
+            MessageItem item = getMessageItem(uri.getAuthority(), msgId, false);
+            if (item != null) {
+                item.setCountDown(countDown);
+                int count = mMsgListView.getCount();
+                for (int i = 0; i < count; i++) {
+                    MessageListItem v = (MessageListItem) mMsgListView.getChildAt(i);
+                    MessageItem listItem = v.getMessageItem();
+                    if (item.equals(listItem)) {
+                        v.updateDelayCountDown();
+                        break;
+                    }
+                }
+            }
+        }
+    };
 }

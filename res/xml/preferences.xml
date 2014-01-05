@@ -75,6 +75,15 @@
     <PreferenceCategory android:title="@string/pref_sms_settings_title"
         android:key="pref_key_sms_settings" >
 
+        <ListPreference
+            android:key="pref_key_send_delay"
+            android:persistent="true"
+            android:dialogTitle="@string/pref_title_send_delay"
+            android:title="@string/pref_title_send_delay"
+            android:entries="@array/send_delay_duration_entries"
+            android:entryValues="@array/send_delay_duration_values"
+            android:defaultValue="0"/>
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_key_sms_delivery_reports"
