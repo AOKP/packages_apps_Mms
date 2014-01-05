@@ -20,6 +20,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.android.mms">
 
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
     <original-package android:name="com.android.mms" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -41,6 +45,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INSTALL_DRM" />
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
+
+    <!-- Needed for QuickMessage -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
     <!-- System apps can access the  receiver through intent-->
     <permission android:name="android.permission.MMS_SEND_OUTBOX_MSG"
                 android:protectionLevel="signatureOrSystem"
@@ -364,6 +372,28 @@
             android:name=".templates.TemplatesProvider"
             android:exported="true"
             android:authorities="com.android.cm.mms" />
+
+        <!-- QuickMessage support -->
+        <!-- This is the "QuickMessage" panel, which has special
+             launch behaviour.  We clear its task affinity, so it will not
+             be associated with the main messaging task and if launched
+             from a notification will not bring the rest of the messaging app
+             to the foreground.We exclude from recent apps since this is accessible
+             through a notification when appropriate. -->
+         <activity
+            android:name=".quickmessage.QuickMessagePopup"
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:exported="true" />
+
+         <receiver
+            android:name=".quickmessage.QmMarkRead"
+            android:exported="true" />
+
+         <receiver android:name=".quickmessage.ClearAllReceiver" />
 
     </application>
 </manifest>

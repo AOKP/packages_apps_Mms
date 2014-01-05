@@ -3,6 +3,7 @@
 /*
  * Copyright (C) 2007-2008 Esmertec AG.
  * Copyright (C) 2007-2008 The Android Open Source Project
+ * QuickMessage: Copyright (C) 2012 The CyanogenMod Project (DvTonder)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,8 +42,7 @@
         </intent>
     </Preference>
 
-    <PreferenceCategory
-        android:title="@string/pref_sms_storage_title"
+    <PreferenceCategory android:title="@string/pref_sms_storage_title"
         android:key="pref_key_storage_settings">
 <!--
         <Preference
@@ -69,11 +69,10 @@
             android:persistent="false"
             android:summary="@string/pref_summary_delete_limit"
             android:title="@string/pref_title_mms_delete" />
-     </PreferenceCategory>
+    </PreferenceCategory>
 
-    <!-- SMA Settings -->
-    <PreferenceCategory
-        android:title="@string/pref_sms_settings_title"
+    <!-- SMS Settings -->
+    <PreferenceCategory android:title="@string/pref_sms_settings_title"
         android:key="pref_key_sms_settings" >
 
         <CheckBoxPreference
@@ -89,8 +88,7 @@
     </PreferenceCategory>
 
     <!-- MMS Settings -->
-    <PreferenceCategory
-        android:title="@string/pref_mms_settings_title"
+    <PreferenceCategory android:title="@string/pref_mms_settings_title"
         android:key="pref_key_mms_settings">
 
         <CheckBoxPreference
@@ -127,14 +125,22 @@
     </PreferenceCategory>
 
     <!-- Notification Settings -->
-    <PreferenceCategory 
-            android:title="@string/pref_notification_settings_title"
-            android:key="pref_key_notification_settings">
+    <PreferenceCategory android:title="@string/pref_notification_settings_title"
+            android:key="pref_key_notification_settings" >
 
         <CheckBoxPreference
             android:key="pref_key_enable_notifications"
             android:title="@string/pref_title_notification_enabled"
             android:defaultValue="true" />
+
+       <CheckBoxPreference
+            android:key="pref_key_enable_privacy_mode"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_enable_notifications"
+            android:defaultValue="false"
+            android:title="@string/pref_title_notification_privacy_mode_enabled"
+            android:summary="@string/pref_summary_notification_privacy_mode_enabled" />
+
 
         <RingtonePreference
             android:key="pref_key_ringtone"
@@ -147,6 +153,38 @@
             android:key="pref_key_vibrate"
             android:title="@string/pref_title_notification_vibrateWhen"
             android:dependency="pref_key_enable_notifications"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <!-- QuickMessage settings -->
+    <PreferenceCategory android:title="@string/pref_quickmessage">
+        <CheckBoxPreference
+            android:key="pref_dark_theme"
+            android:title="@string/pref_dark_theme_title"
+            android:summary="@string/pref_dark_theme_summary"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_quickmessage"
+            android:title="@string/pref_quickmessage_title"
+            android:dependency="pref_key_enable_notifications"
+            android:summary="@string/pref_quickmessage_summary"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_qm_lockscreen"
+            android:title="@string/pref_wake_unlock_title"
+            android:summary="@string/pref_wake_unlock_summary"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_quickmessage"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_close_all"
+            android:title="@string/pref_close_all_title"
+            android:summary="@string/pref_close_all_summary"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_quickmessage"
             android:defaultValue="false" />
     </PreferenceCategory>
 
@@ -171,4 +209,31 @@
             android:title="@string/pref_title_template_gestures_sensitivity" />
     </PreferenceCategory>
 
+    <!-- Extra Settings -->
+    <PreferenceCategory android:title="@string/pref_extra_settings">
+
+        <ListPreference
+            android:key="pref_key_unicode_stripping"
+            android:title="@string/pref_title_unicode_stripping"
+            android:entries="@array/pref_unicode_stripping_entries"
+            android:entryValues="@array/pref_unicode_stripping_values" />
+
+        <CheckBoxPreference
+            android:key="pref_key_mms_full_timestamp"
+            android:title="@string/pref_title_mms_full_timestamp"
+            android:summary="@string/pref_summary_mms_full_timestamp"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_mms_use_sent_timestamp"
+            android:title="@string/pref_title_mms_use_sent_timestamp"
+            android:summary="@string/pref_summary_mms_use_sent_timestamp"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:key="pref_key_mms_input_type"
+            android:title="@string/pref_title_input_type"
+            android:entries="@array/pref_entries_input_type"
+            android:entryValues="@array/pref_values_input_type" />
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -108,14 +108,20 @@ public class MessageItem {
     private PduLoadedCallback mPduLoadedCallback;
     private ItemLoadedFuture mItemLoadedFuture;
 
+    boolean mFullTimestamp;
+    boolean mSentTimestamp;
+
     MessageItem(Context context, String type, final Cursor cursor,
-            final ColumnsMap columnsMap, Pattern highlight) throws MmsException {
+            final ColumnsMap columnsMap, Pattern highlight, boolean fullTimestamp, boolean sentTimestamp)
+                    throws MmsException {
         mContext = context;
         mMsgId = cursor.getLong(columnsMap.mColumnMsgId);
         mHighlight = highlight;
         mType = type;
         mCursor = cursor;
         mColumnsMap = columnsMap;
+        mFullTimestamp = fullTimestamp;
+        mSentTimestamp = sentTimestamp;
 
         if ("sms".equals(type)) {
             mReadReport = false; // No read reports in sms
@@ -154,7 +160,10 @@ public class MessageItem {
             if (!isOutgoingMessage()) {
                 // Set "received" or "sent" time stamp
                 long date = cursor.getLong(columnsMap.mColumnSmsDate);
-                mTimestamp = MessageUtils.formatTimeStampString(context, date);
+                if (mSentTimestamp && (mBoxId == Sms.MESSAGE_TYPE_INBOX)) {
+                    date = cursor.getLong(columnsMap.mColumnSmsDateSent);
+                }
+                mTimestamp = MessageUtils.formatTimeStampString(context, date, mFullTimestamp);
             }
 
             mLocked = cursor.getInt(columnsMap.mColumnSmsLocked) != 0;
@@ -388,9 +397,9 @@ public class MessageItem {
             if (!isOutgoingMessage()) {
                 if (PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND == mMessageType) {
                     mTimestamp = mContext.getString(R.string.expire_on,
-                            MessageUtils.formatTimeStampString(mContext, timestamp));
+                            MessageUtils.formatTimeStampString(mContext, timestamp, mFullTimestamp));
                 } else {
-                    mTimestamp =  MessageUtils.formatTimeStampString(mContext, timestamp);
+                    mTimestamp =  MessageUtils.formatTimeStampString(mContext, timestamp, mFullTimestamp);
                 }
             }
             if (mPduLoadedCallback != null) {

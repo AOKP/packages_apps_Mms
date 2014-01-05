@@ -19,5 +19,28 @@
 
     <!-- Color of the text for buttons in the action bar  -->
     <color name="action_bar_button_text_color">#FFFFFF</color>
+
+    <!-- New text colors from layouts to make theme chooser apk easier to theme -->
+    <color name="compose_message_edit_text">#000000</color>
+    <color name="compose_message_text_counter">#cc333333</color>
     <color name="actionbar_text">#ccffffff</color>
+    <color name="delete_thread_dialog">#000000</color>
+    <color name="delivery_report_header">#ffffff</color>
+    <color name="delivery_report_recipient">#000000</color>
+    <color name="delivery_report_status">#000000</color>
+    <color name="delivery_report_date">#000000</color>
+    <color name="button_text">#000000</color>
+    <color name="message_received">#000000</color>
+    <color name="message_sent">#000000</color>
+    <color name="widget_unread_text">#777777</color>
+    <color name="widget_loading">#000000</color>
+
+    <!-- New Background colors from layouts to make theme chooser apk easier to theme -->
+    <color name="background">#ffffff</color>
+    <color name="darkgray_backgrounds">#888888</color>
+    <color name="quickmessage_body_dark_bg">#ff1e1e1e</color>
+    <color name="quickmessage_body_light_bg">#fff3f3f3</color>
+    <color name="dividers">#eeeeee</color>
+    <color name="transparent">#00000000</color>
+
 </resources>
