@@ -890,7 +890,6 @@ public class MessagingNotification {
                 noti.setTicker(context.getString(R.string.notification_ticker_privacy_mode));
             }
         }
-        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(context);
 
         // If we have more than one unique thread, change the title (which would
         // normally be the contact who sent the message) to a generic one that
@@ -906,6 +905,7 @@ public class MessagingNotification {
         String title = null;
         String privateModeContentText = null;
         Bitmap avatar = null;
+        PendingIntent pendingIntent = null;
         if (uniqueThreadCount > 1) {    // messages from multiple threads
             Intent mainActivityIntent = new Intent(Intent.ACTION_MAIN);
 
@@ -914,7 +914,8 @@ public class MessagingNotification {
                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             mainActivityIntent.setType("vnd.android-dir/mms-sms");
-            taskStackBuilder.addNextIntent(mainActivityIntent);
+            pendingIntent = PendingIntent.getActivity(context, 0,
+                    mainActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             if (!privacyMode) {
                 title = context.getString(R.string.message_count_notification, messageCount);
             } else {
@@ -955,8 +956,9 @@ public class MessagingNotification {
                 }
             }
 
-            taskStackBuilder.addParentStack(ComposeMessageActivity.class);
-            taskStackBuilder.addNextIntent(mostRecentNotification.mClickIntent);
+            pendingIntent = PendingIntent.getActivity(context, 0,
+                    mostRecentNotification.mClickIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
         }
         // Always have to set the small icon or the notification is ignored
         noti.setSmallIcon(R.drawable.stat_notify_sms);
@@ -966,8 +968,7 @@ public class MessagingNotification {
 
         // Update the notification.
         noti.setContentTitle(title)
-            .setContentIntent(
-                    taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT))
+            .setContentIntent(pendingIntent)
             .addKind(Notification.KIND_MESSAGE)
             .setPriority(Notification.PRIORITY_DEFAULT);     // TODO: set based on contact coming
                                                              // from a favorite.
