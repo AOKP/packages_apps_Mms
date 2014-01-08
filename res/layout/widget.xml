@@ -62,7 +62,7 @@
             android:id="@+id/widget_compose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_msg_compose_holo_dark"
+            android:src="@drawable/ic_menu_msg_compose_holo_light"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/new_message"
             android:paddingLeft="4dip"
@@ -75,8 +75,4 @@
         android:layout_weight="1"
         android:background="@drawable/gradient_bg_widget_holo"
         android:cacheColorHint="@color/transparent" />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/list_div_top_btm_mms_widget_holo" />
 </LinearLayout>
