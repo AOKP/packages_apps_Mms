@@ -169,6 +169,16 @@
             android:title="@string/pref_title_notification_vibrateWhen"
             android:dependency="pref_key_enable_notifications"
             android:defaultValue="false" />
+
+        <ListPreference
+            android:key="pref_key_mms_notification_vibrate_pattern"
+            android:dependency="pref_key_vibrate"
+            android:defaultValue=""
+            android:title="@string/pref_title_mms_notification_vibrate_pattern"
+            android:summary="@string/pref_summary_mms_notification_vibrate_pattern"
+            android:entries="@array/pref_mms_notification_vibrate_pattern_entries"
+            android:entryValues="@array/pref_mms_notification_vibrate_pattern_values"
+            android:dialogTitle="@string/pref_title_mms_notification_vibrate_pattern" />
     </PreferenceCategory>
 
     <!-- QuickMessage settings -->

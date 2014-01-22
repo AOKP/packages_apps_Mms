@@ -992,7 +992,14 @@ public class MessagingNotification {
                 vibrate = "always".equals(vibrateWhen);
             }
             if (vibrate) {
-                defaults |= Notification.DEFAULT_VIBRATE;
+                String pattern = sp.getString(
+                        MessagingPreferenceActivity.NOTIFICATION_VIBRATE_PATTERN, "0,1200
+
+                if (!TextUtils.isEmpty(pattern)) {
+                    noti.setVibrate(parseVibratePattern(pattern));
+                 } else {
+                     defaults |= Notification.DEFAULT_VIBRATE;
+                 }
             }
 
             String ringtoneStr = sp.getString(MessagingPreferenceActivity.NOTIFICATION_RINGTONE,
