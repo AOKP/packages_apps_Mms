@@ -22,4 +22,21 @@
     <string-array name="empty_subject_strings">
         <item>no subject</item>
     </string-array>
+
+    <string-array name="pref_mms_notification_vibrate_pattern_entries">	
+        <item>@string/pref_mms_notification_vibrate_normal</item>	
+        <item>@string/pref_mms_notification_vibrate_med_vib</item>	
+        <item>@string/pref_mms_notification_vibrate_long_vib</item>	
+        <item>@string/pref_mms_notification_vibrate_mult_short</item>	
+        <item>@string/pref_mms_notification_vibrate_mult_long</item>	
+    </string-array>	
+				
+    <string-array name="pref_mms_notification_vibrate_pattern_values" translatable="false">	
+        <item></item>	
+        <item>0,1200</item>	
+        <item>0,2500</item>
+	<item>0,300,100,300,100,300,100,300,100,300</item>	
+	<item>0,800,200,800,200,800</item>	
+     </string-array>
+			
 </resources>
