@@ -28,6 +28,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -227,6 +228,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mMmsAutoRetrievialPref = (CheckBoxPreference) findPreference(AUTO_RETRIEVAL);
         mEnablePrivacyModePref = (CheckBoxPreference) findPreference(PRIVACY_MODE_ENABLED);
         mVibratePref = (CheckBoxPreference) findPreference(NOTIFICATION_VIBRATE);
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (mVibratePref != null && (vibrator == null || !vibrator.hasVibrator())) {
+            mNotificationPrefCategory.removePreference(mVibratePref);
+            mVibratePref = null;
+        }
         mRingtonePref = (RingtonePreference) findPreference(NOTIFICATION_RINGTONE);
 
         mManageTemplate = findPreference(MANAGE_TEMPLATES);
@@ -320,7 +326,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         // If needed, migrate vibration setting from the previous tri-state setting stored in
         // NOTIFICATION_VIBRATE_WHEN to the boolean setting stored in NOTIFICATION_VIBRATE.
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if (sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN)) {
+        if (mVibratePref != null && sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN)) {
             String vibrateWhen = sharedPreferences.
                     getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN, null);
             boolean vibrate = "always".equals(vibrateWhen);
