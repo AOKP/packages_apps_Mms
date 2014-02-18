@@ -20,10 +20,14 @@ package com.android.mms.transaction;
 import static android.content.Intent.ACTION_BOOT_COMPLETED;
 import static android.provider.Telephony.Sms.Intents.SMS_DELIVER_ACTION;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -73,6 +77,7 @@ import com.google.android.mms.MmsException;
  */
 public class SmsReceiverService extends Service {
     private static final String TAG = "SmsReceiverService";
+    private boolean DEBUG = false;
 
     private ServiceHandler mServiceHandler;
     private Looper mServiceLooper;

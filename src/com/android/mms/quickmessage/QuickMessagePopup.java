@@ -71,6 +71,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
+import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.mms.MmsConfig;
 import com.android.mms.R;
 import com.android.mms.data.Contact;
@@ -148,6 +149,7 @@ public class QuickMessagePopup extends Activity implements
 
     // Options menu items
     private static final int MENU_ADD_TEMPLATE = 1;
+    private static final int MENU_ADD_TO_BLACKLIST = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -355,6 +357,13 @@ public class QuickMessagePopup extends Activity implements
             .setIcon(android.R.drawable.ic_menu_add)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         }
+
+        // Add to Blacklist item (if enabled)
+        if (BlacklistUtils.isBlacklistEnabled(this)) {
+            menu.add(0, MENU_ADD_TO_BLACKLIST, 0, R.string.add_to_blacklist)
+                    .setIcon(R.drawable.ic_block_message_holo_dark)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        }
     }
 
     @Override
@@ -362,6 +371,9 @@ public class QuickMessagePopup extends Activity implements
         switch (item.getItemId()) {
             case MENU_ADD_TEMPLATE:
                 selectTemplate();
+                return true;
+            case MENU_ADD_TO_BLACKLIST:
+                confirmAddBlacklist();
                 return true;
 
             default:
@@ -380,6 +392,34 @@ public class QuickMessagePopup extends Activity implements
      */
     private void selectTemplate() {
         getLoaderManager().restartLoader(0, null, this);
+    }
+
+
+     /**
+     * Copied from ComposeMessageActivity.java, this method displays a pop-up a dialog confirming
+     * adding the current senders number to the blacklist
+     */
+    private void confirmAddBlacklist() {
+        // Get the sender number
+        final String number = mCurrentQm.getFromNumber()[0];
+        if (number == null) {
+            return;
+        }
+
+        // Show dialog
+        final String message = getString(R.string.add_to_blacklist_message, number);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.add_to_blacklist)
+                .setMessage(message)
+                .setPositiveButton(R.string.alert_dialog_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        BlacklistUtils.addOrUpdate(getApplicationContext(), number,
+                                BlacklistUtils.BLOCK_MESSAGES, BlacklistUtils.BLOCK_MESSAGES);
+                    }
+                })
+                .setNegativeButton(R.string.alert_dialog_no, null)
+                .show();
     }
 
     /**

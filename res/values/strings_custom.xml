@@ -136,6 +136,26 @@
     <!-- Settings item description for boolean SMS Split 160 characters setting -->
     <string name="pref_summary_sms_split_counter">Adds counter to message ex. (1/2)</string>
 
+    <!-- Blacklist preferences -->
+    <string name="blacklist_title">Blacklist</string>
+    <string name="blacklist_summary_disabled">Disabled</string>
+    <string name="blacklist_summary">Incoming messages from phone numbers in the blacklist will be blocked</string>
+
+    <!-- Blacklist notifications -->
+    <string name="blacklist_notification">Blocked a message from %s</string>
+    <string name="blacklist_notification_private_number">Blocked a message from a private number</string>
+    <string name="blacklist_notification_list_private">Private</string>
+    <string name="blacklist_notification_unknown_number">Blocked a message from unknown number %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> messages were blocked</string>
+    <string name="unblock_number">Unblock</string>
+
+    <!-- Blacklist management -->
+    <string name="add_to_blacklist">Add to blacklist</string>
+    <string name="add_to_blacklist_message">Future messages from %s will be blocked</string>
+
+    <!-- Generic blacklist handling -->
+    <string name="alert_dialog_yes">Yes</string>
+    <string name="alert_dialog_no">No</string>
 
     <!-- Multi recipients -->
     <string name="select_recipients">Select recipients</string>
