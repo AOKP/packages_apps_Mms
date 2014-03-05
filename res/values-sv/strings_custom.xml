@@ -97,4 +97,12 @@
     <string name="menu_done">Färdig</string>
     <string name="menu_mobile">Endast mobilnummer</string>
     <string name="menu_groups">Visa grupper</string>
+    <string name="pref_title_send_delay">Leverans fördröjning</string>
+    <string name="send_delay_immediate">Skicka omedelbart</string>
+    <string name="send_delay_3seconds">3 sekunder</string>
+    <string name="send_delay_5seconds">5 sekunder</string>
+    <string name="send_delay_10seconds">10 sekunder</string>
+    <string name="send_delay_20seconds">20 sekunder</string>
+    <string name="send_delay_30seconds">30 sekunder</string>
+    <string name="sent_countdown">Meddelande leverans nedräkning</string>
 </resources>
