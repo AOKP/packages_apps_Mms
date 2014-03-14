@@ -48,6 +48,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.LoaderManager;
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
@@ -104,6 +105,7 @@ import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsMessage;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
@@ -160,6 +162,7 @@ import com.android.mms.transaction.SmsReceiverService;
 import com.android.mms.ui.MessageListView.OnSizeChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
 import com.android.mms.ui.RecipientsEditor.RecipientContextMenuInfo;
+import com.android.mms.util.MultiSensorManager;
 import com.android.mms.util.DraftCache;
 import com.android.mms.util.PhoneNumberFormatter;
 import com.android.mms.util.SendingProgressTokenManager;
@@ -187,7 +190,7 @@ import com.google.android.mms.pdu.SendReq;
  * exit_on_sent boolean Exit this activity after the message is sent.
  */
 public class ComposeMessageActivity extends Activity
-        implements View.OnClickListener, TextView.OnEditorActionListener,
+        implements View.OnClickListener, TextView.OnEditorActionListener, MultiSensorManager.MultiSensorListener,
         MessageStatusListener, Contact.UpdateListener, OnGesturePerformedListener,
         LoaderManager.LoaderCallbacks<Cursor>  {
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 100;
@@ -284,6 +287,8 @@ public class ComposeMessageActivity extends Activity
     private static final int LOADING_MESSAGES_AND_DRAFT_MAX_DELAY_MS = 500;
 
     private ContentResolver mContentResolver;
+
+    private MultiSensorManager mMultiSensorManager;
 
     private BackgroundQueryHandler mBackgroundQueryHandler;
 
@@ -1992,6 +1997,8 @@ public class ComposeMessageActivity extends Activity
 
         initialize(savedInstanceState, 0);
 
+        mMultiSensorManager = new MultiSensorManager((Context) ComposeMessageActivity.this, this);
+
         if (TRACE) {
             android.os.Debug.startMethodTracing("compose");
         }
@@ -2394,6 +2401,12 @@ public class ComposeMessageActivity extends Activity
                 | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
                 | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
 
+        TelephonyManager tm = (TelephonyManager) getSystemService(Service.TELEPHONY_SERVICE);
+        if (MessagingPreferenceActivity.getSmartCallEnabled((Context) ComposeMessageActivity.this)
+             && tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) {
+            mMultiSensorManager.enable();
+        }
+
         mIsRunning = true;
         updateThreadIdIfRunning();
         mConversation.markAsRead(true);
@@ -2415,6 +2428,10 @@ public class ComposeMessageActivity extends Activity
         //Contact.stopPresenceObserver();
 
         removeRecipientsListeners();
+
+        if (MessagingPreferenceActivity.getSmartCallEnabled((Context) ComposeMessageActivity.this)) {
+            mMultiSensorManager.disable();
+        }
 
         // remove any callback to display a progress spinner
         if (mAsyncDialog != null) {
@@ -4540,6 +4557,21 @@ public class ComposeMessageActivity extends Activity
             text = mUnicodeFilter.filter(text);
         }
         return text;
+    }
+
+    @Override
+    public void onPickup() {
+        if (getRecipients().isEmpty() == false) {
+            mMultiSensorManager.disable();
+
+            // get number and attach it to an Intent.ACTION_CALL, then start
+            // the Intent
+            String number = getRecipients().get(0).getNumber();
+            Intent dialIntent = new Intent(Intent.ACTION_CALL);
+            dialIntent.setData(Uri.fromParts("tel", number, null));
+            dialIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(dialIntent);
+        }
     }
 
     @Override
