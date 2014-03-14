@@ -33,7 +33,7 @@
   <string name="notification_single_title_privacy_mode">Nytt meddelande</string>
   <string name="notification_single_text_privacy_mode">1 oläst meddelande</string>
   <string name="notification_multiple_title_privacy_mode">Nya meddelanden</string>
-  <string name="notification_multiple_text_privacy_mode"><xliff:g id="number"example="3">%1$s</xliff:g>olästa meddelanden</string>
+  <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> olästa meddelanden</string>
   <string name="notification_ticker_privacy_mode">Nytt meddelande mottaget</string>
   <string name="pref_quickmessage">Snabbsvar</string>
   <string name="pref_dark_theme_title">Använd mörkt tema</string>
