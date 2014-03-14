@@ -40,6 +40,7 @@ import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.provider.SearchRecentSuggestions;
+import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -687,6 +688,13 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         boolean qmDarkThemeEnabled =
             prefs.getBoolean(MessagingPreferenceActivity.QM_DARK_THEME_ENABLED, false);
         return qmDarkThemeEnabled;
+    }
+
+    public static boolean getSmartCallEnabled(Context context) {
+        int enabled = Settings.AOKP.getInt(context.getContentResolver(),
+                          Settings.AOKP.SMART_PHONE_CALLER, 0);
+        boolean smartCallEnabled = (enabled != 0);
+        return smartCallEnabled;
     }
 
     private void registerListeners() {
