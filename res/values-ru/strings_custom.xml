@@ -18,7 +18,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="menu_resend">Переотправить</string>
+  <string name="menu_resend">Отправить заново</string>
   <string name="menu_add_to_calendar">Добавить в календарь</string>
   <string name="button_close">Закрыть</string>
   <string name="button_view">Посмотреть</string>
@@ -64,7 +64,7 @@
   <string name="template_confirm_dialog_title">Удалить?</string>
   <string name="gestures_already_present">Подобный жест связан с другим шаблоном</string>
   <string name="select_template">Выберите шаблоны</string>
-  <string name="pref_title_templates_show_gesture">Жесты</string>
+  <string name="pref_title_templates_show_gesture">Жест</string>
   <string name="pref_summary_templates_show_gesture">Показывать след жеста</string>
   <string name="pref_title_template_gestures_sensitivity">Точность распознавания жестов</string>
   <string name="pref_extra_settings">Дополнительные настройки</string>
