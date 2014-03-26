@@ -40,8 +40,8 @@
   <string name="pref_dark_theme_summary">තේරුවේ නැතිනම් පෙරනිමි \'සැහැල්ලු\' තේමාව භාවිතයට ගැනේ</string>
   <string name="pref_quickmessage_title">උත්පතන මෙනුවක් පෙන්වන්න</string>
   <string name="pref_quickmessage_summary">පැමිණෙන පණිවිඩ සඳහා ක්ෂණික පණිවිඩ උත්පතන මෙනුව පෙන්වන්න</string>
-  <string name="pref_wake_unlock_title">නැගිට අඟුළු අරින්න</string>
-  <string name="pref_wake_unlock_summary">පණිවිඩ පැමිණීමේදී නැගිට අඟුළු අරින්න (තිර අඟුලක් නොමැතිවිට පමණි)</string>
+  <string name="pref_wake_unlock_title">නැගිට අගුළු අරින්න</string>
+  <string name="pref_wake_unlock_summary">පණිවිඩ පැමිණීමේදී උපාංගයේ අගුල ඇර ඇහැරවන්න (තිර අගුලක් නොමැතිවිට පමණි)</string>
   <string name="pref_close_all_title">සියල්ල වහන්න</string>
   <string name="pref_close_all_summary">වහන්න බොත්තම සියලුම පණිවිඩ වසා දමයි</string>
   <string name="prefs_templates_settings">කෙටි පණිවිඩ අච්චු</string>
@@ -89,7 +89,7 @@
   <string name="menu_done">හරි</string>
   <string name="menu_mobile">දුරකථන අංක පමණි</string>
   <string name="menu_groups">කණ්ඩායම් පෙන්වන්න</string>
-  <string name="fastscroll_index_groups">දළ අනුපාතික ලක්ෂ්‍යය</string>
+  <string name="fastscroll_index_groups">කැල</string>
   <string name="pref_title_send_delay">බාරදීමේ ප්‍රමාදය</string>
   <string name="send_delay_immediate">මේ මොහොතේම යවන්න</string>
   <string name="send_delay_3seconds">තත්පර 3</string>

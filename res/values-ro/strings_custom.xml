@@ -28,7 +28,12 @@
   <string name="qm_quick_reply">Răspuns rapid</string>
   <string name="qm_mark_read">Citeste</string>
   <string name="message_counter_separator">din</string>
+  <string name="pref_summary_notification_privacy_mode_enabled">Ascune expeditorul şi mesajul în bara de stare şi dezactivează \'Răspuns rapid\'</string>
   <string name="notification_single_title_privacy_mode">Mesaj nou</string>
+  <string name="notification_single_text_privacy_mode">1 mesaj necitit</string>
+  <string name="notification_multiple_title_privacy_mode">Mesaje noi</string>
+  <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> mesaje necitite</string>
+  <string name="notification_ticker_privacy_mode">Mesaj nou recepţionat</string>
   <string name="pref_quickmessage">Mesaj Rapid</string>
   <string name="pref_dark_theme_title">Utilizaţi tema întunecată</string>
   <string name="pref_dark_theme_summary">Dacă nu este selectat, va fi utilizată tema \"deschisă\"</string>
@@ -57,6 +62,7 @@
   <string name="template_select">Selectaţi un şablon</string>
   <string name="template_confirm_dialog_title">Sterge?</string>
   <string name="gestures_already_present">Avertisment: Un gest smilar este asociat cu un alt şablon!</string>
+  <string name="select_template">Selectează şablon</string>
   <string name="pref_title_templates_show_gesture">Gest</string>
   <string name="pref_summary_templates_show_gesture">Arată urmă gest</string>
   <string name="pref_title_template_gestures_sensitivity">Sensibilitate gest</string>
@@ -68,7 +74,9 @@
   <string name="pref_title_sms_split_counter">Contor împărţire</string>
   <string name="pref_summary_sms_split_counter">Adaugă contor la mesaj ex. (1/2)</string>
   <string name="groups_header">Grupuri</string>
+  <string name="menu_done">Terminat</string>
   <string name="fastscroll_index_groups">GR</string>
+  <string name="send_delay_3seconds">3 secunde</string>
   <string name="send_delay_5seconds">5 secunde</string>
   <string name="send_delay_10seconds">10 secunde</string>
   <string name="send_delay_20seconds">20 secunde</string>
