@@ -89,6 +89,7 @@
   <string name="menu_done">Fertig</string>
   <string name="menu_mobile">Nur Mobilnummern anzeigen</string>
   <string name="menu_groups">Gruppen anzeigen</string>
+  <string name="fastscroll_index_groups">Gr</string>
   <string name="pref_title_send_delay">Versandverzögerung</string>
   <string name="send_delay_immediate">Sofort versenden</string>
   <string name="send_delay_3seconds">3 Sekunden</string>
