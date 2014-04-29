@@ -77,8 +77,8 @@
   <string name="pref_title_mms_use_sent_timestamp">Timestamp originali</string>
   <string name="pref_summary_mms_use_sent_timestamp">Visualizza la data di invio, non quella di ricezione</string>
   <string name="pref_title_input_type">Tipo di tastiera virtuale</string>
-  <string name="pref_keyboard_emoji">Mostra il tasto delle Emoticons</string>
-  <string name="pref_keyboard_new_line">Mostra il pulsante Invio</string>
+  <string name="pref_keyboard_emoji">Mostra pulsante Emoticons</string>
+  <string name="pref_keyboard_new_line">Mostra pulsante Invio</string>
   <string name="pref_keyboard_unknown">Sconosciuto, si prega di riselezionare</string>
   <string name="pref_title_sms_split_counter">Contatore SMS</string>
   <string name="pref_summary_sms_split_counter">Aggiungi il contatore dei messaggi: es. (1/2)</string>

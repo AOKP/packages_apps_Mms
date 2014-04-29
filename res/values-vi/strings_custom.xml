@@ -17,4 +17,56 @@
  * limitations under the License.
  */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="menu_resend">Gửi lại</string>
+  <string name="menu_add_to_calendar">Thêm vào lịch</string>
+  <string name="button_close">Đóng</string>
+  <string name="button_view">Xem</string>
+  <string name="button_templates">Mẫu</string>
+  <string name="type_to_reply_text_enter_to_send">Nhập để trả lời</string>
+  <string name="toast_sending_message">Đang gửi tin nhắn</string>
+  <string name="qm_quick_reply">Trả lời</string>
+  <string name="qm_mark_read">Đã đọc</string>
+  <string name="message_counter_separator">trên</string>
+  <string name="pref_title_notification_privacy_mode_enabled">Chế độ bảo mật</string>
+  <string name="pref_summary_notification_privacy_mode_enabled">Ẩn người gửi và tin nhắn trong thanh trạng thái và vô hiệu \'Trả lời nhanh\'</string>
+  <string name="notification_single_title_privacy_mode">Tin nhắn mới</string>
+  <string name="notification_single_text_privacy_mode">1 tin nhắn chưa đọc</string>
+  <string name="notification_multiple_title_privacy_mode">Tin nhắn mới</string>
+  <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> tin nhắn chưa đọc</string>
+  <string name="notification_ticker_privacy_mode">Đã nhận tin nhắn mới</string>
+  <string name="pref_quickmessage">Trả lời nhanh</string>
+  <string name="pref_dark_theme_title">Dùng chủ đề tối</string>
+  <string name="pref_dark_theme_summary">Nếu không được chọn, sẽ sử dụng chủ đề \'sáng\' mặc định</string>
+  <string name="pref_quickmessage_title">Hiện pop-up</string>
+  <string name="pref_quickmessage_summary">Hiện cửa sổ nổi QuickMessage với tin nhắn SMS đến</string>
+  <string name="pref_wake_unlock_title">Đánh thức và mở khoá</string>
+  <string name="pref_wake_unlock_summary">Đánh thức và mở khoá thiết bị khi có tin nhắn đến (chỉ đối với màn hình khoá không an toàn)</string>
+  <string name="pref_close_all_title">Đóng tất cả</string>
+  <string name="pref_close_all_summary">Nút đóng sẽ đóng tất cả tin nhắn</string>
+  <string name="prefs_templates_settings">Mẫu SMS</string>
+  <string name="pref_title_templates_manage">Mẫu</string>
+  <string name="pref_summary_templates_manage">Quản lý mẫu SMS</string>
+  <string name="template_explanation">Chèn hoặc thay đổi tin nhắn mẫu và tuỳ chọn vẽ mẫu cử chỉ để liên kết nó</string>
+  <string name="template_insert_hint">Chèn mẫu tinh nhắn tại đây</string>
+  <string name="template_empty_text">Không thể để trống trường ký tự</string>
+  <string name="template_save">Lưu</string>
+  <string name="template_ctx_menu_title">Hành động</string>
+  <string name="template_edit">Chỉnh sửa</string>
+  <string name="template_delete">Xoá</string>
+  <string name="template_list_title">Mẫu</string>
+  <string name="template_new_title">Mẫu mới</string>
+  <string name="template_insert">Chèn mẫu</string>
+  <string name="template_gesture_draw">Vẽ mẫu cử chỉ trong không gian dưới đây</string>
+  <string name="template_not_present_error">Chưa có mẫu được xác định</string>
+  <string name="template_not_present_error_title">Lỗi</string>
+  <string name="template_select">Chọn một mẫu</string>
+  <string name="template_confirm_dialog_title">Xoá?</string>
+  <string name="gestures_already_present">Một cử chỉ tương tự đã liên kết với mẫu khác</string>
+  <string name="select_template">Chọn mẫu</string>
+  <string name="pref_title_templates_show_gesture">Cử chỉ</string>
+  <string name="pref_summary_templates_show_gesture">Hiện dấu vết cử chỉ</string>
+  <string name="pref_title_template_gestures_sensitivity">Độ nhạy cử chỉ</string>
+  <string name="pref_extra_settings">Thiết lập khác</string>
+  <string name="pref_unicode_stripping_leave_intact">Để nguyên ký tự</string>
+</resources>
