@@ -26,7 +26,7 @@
   <string name="type_to_reply_text_enter_to_send">Введите текст для ответа</string>
   <string name="toast_sending_message">Отправка сообщения\u2026</string>
   <string name="qm_quick_reply">Ответить</string>
-  <string name="qm_mark_read">Прочтено</string>
+  <string name="qm_mark_read">Прочитано</string>
   <string name="message_counter_separator">из</string>
   <string name="pref_title_notification_privacy_mode_enabled">Режим инкогнито</string>
   <string name="pref_summary_notification_privacy_mode_enabled">Скрывать отправителя и сообщение в строке состояния, а также отключить «Быстрый ответ»</string>
