@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Bilinmeyen, lütfen tekrar seçin</string>
   <string name="pref_title_sms_split_counter">Ayırma sayacı</string>
   <string name="pref_summary_sms_split_counter">Mesaja sayaç ekler. Örn: (1/2)</string>
+  <string name="blacklist_title">Kara liste</string>
+  <string name="blacklist_summary_disabled">Devre dışı</string>
+  <string name="blacklist_summary">Kara listedeki telefon numaralarından gelen mesajlar engellenecektir</string>
+  <string name="blacklist_notification">%s kişisinden gelen mesaj engellendi</string>
+  <string name="blacklist_notification_private_number">Özel numaradan gelen bir mesaj engellendi</string>
+  <string name="blacklist_notification_list_private">Özel</string>
+  <string name="blacklist_notification_unknown_number">Bilinmeyen numaradan %s gelen bir mesaj engellendi</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> mesaj engellendi</string>
+  <string name="unblock_number">Engeli kaldır</string>
+  <string name="add_to_blacklist">Kara listeye ekle</string>
+  <string name="add_to_blacklist_message">%s kişisinden gelen mesajlar engellenecek</string>
+  <string name="alert_dialog_yes">Evet</string>
+  <string name="alert_dialog_no">Hayır</string>
   <string name="select_recipients">Alıcıları seçin</string>
   <string name="groups_header">Gruplar</string>
   <string name="no_recipients">Hiçbir kişi bulunamadı</string>

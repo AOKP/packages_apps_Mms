@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">නොදනී, කරුණාකර නැවත තෝරන්න</string>
   <string name="pref_title_sms_split_counter">බෙදීම් ගණකය</string>
   <string name="pref_summary_sms_split_counter">පණිවිඩයට ගණකයක් එකතු කරන්න උදා. (1/2)</string>
+  <string name="blacklist_title">අපලේඛණය</string>
+  <string name="blacklist_summary_disabled">අක්‍රීයයි</string>
+  <string name="blacklist_summary">අපලේඛණයේ ඇති දුරකථන අංක මගින් පැමිණෙන පනිවිඩ අවහිර කෙරේ</string>
+  <string name="blacklist_notification">%sන් පණිවිඩයක් අවහිර කෙරුණි</string>
+  <string name="blacklist_notification_private_number">පුද්ගලික අංකයකින් පණිවිඩයක් අවහිර කෙරුණි</string>
+  <string name="blacklist_notification_list_private">පුද්ගලික</string>
+  <string name="blacklist_notification_unknown_number">නාඳුනන %s අංකයකයෙන් පණිවිඩයක් අවහිර කෙරුණි</string>
+  <string name="blacklist_notification_multiple">පණිවිඩ <xliff:g id="count">%d</xliff:g>ක් අවහිර කෙරුණි</string>
+  <string name="unblock_number">ඉඩ දෙන්න</string>
+  <string name="add_to_blacklist">අපලේඛණයට එක් කරන්න</string>
+  <string name="add_to_blacklist_message">%s වෙතින් ඉදිරියට පැමිණෙන පනිවිඩ අවහිර කෙරේ</string>
+  <string name="alert_dialog_yes">ඔව්</string>
+  <string name="alert_dialog_no">එපා</string>
   <string name="select_recipients">ලබන්නන් තෝරන්න</string>
   <string name="groups_header">කණ්ඩායම්</string>
   <string name="no_recipients">කිසිඳු සබඳතාවයක් සොයාගත්තේ නැත</string>

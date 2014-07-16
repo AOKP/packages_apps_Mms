@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Sconosciuto, si prega di riselezionare</string>
   <string name="pref_title_sms_split_counter">Contatore SMS</string>
   <string name="pref_summary_sms_split_counter">Aggiungi il contatore dei messaggi: es. (1/2)</string>
+  <string name="blacklist_title">Blacklist</string>
+  <string name="blacklist_summary_disabled">Disabilitata</string>
+  <string name="blacklist_summary">I messaggi provenienti dai numeri presenti nella blacklist saranno bloccati</string>
+  <string name="blacklist_notification">Bloccato un messaggio da %s</string>
+  <string name="blacklist_notification_private_number">Bloccato un messaggio da un numero privato</string>
+  <string name="blacklist_notification_list_private">Privato</string>
+  <string name="blacklist_notification_unknown_number">Bloccato un messaggio da un numero sconosciuto: %s</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> messaggi sono stati bloccati</string>
+  <string name="unblock_number">Sblocca</string>
+  <string name="add_to_blacklist">Aggiungi alla blacklist</string>
+  <string name="add_to_blacklist_message">I futuri messaggi da %s saranno bloccati</string>
+  <string name="alert_dialog_yes">SÌ</string>
+  <string name="alert_dialog_no">No</string>
   <string name="select_recipients">Seleziona destinatari</string>
   <string name="groups_header">Gruppi</string>
   <string name="no_recipients">Nessun contatto trovato</string>

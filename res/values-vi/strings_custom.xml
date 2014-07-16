@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Không rõ, vui lòng chọn lại</string>
   <string name="pref_title_sms_split_counter">Chia số tin</string>
   <string name="pref_summary_sms_split_counter">Thêm số phần vào tin nhắn, ví dụ (1/2)</string>
+  <string name="blacklist_title">Danh sách đen</string>
+  <string name="blacklist_summary_disabled">Đã vô hiệu</string>
+  <string name="blacklist_summary">Các tin nhắn đến từ số trong danh sách đen sẽ bị chặn</string>
+  <string name="blacklist_notification">Đã chặn tin nhắn từ %s</string>
+  <string name="blacklist_notification_private_number">Đã chặn tin nhắn từ số riêng</string>
+  <string name="blacklist_notification_list_private">Riêng tư</string>
+  <string name="blacklist_notification_unknown_number">Đã chặn tin nhắn từ số chưa xác định %s</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> tin nhắn đã bị chặn</string>
+  <string name="unblock_number">Bỏ chặn</string>
+  <string name="add_to_blacklist">Thêm vào danh sách đen</string>
+  <string name="add_to_blacklist_message">Các tin nhắn mới từ %s sẽ bị chặn</string>
+  <string name="alert_dialog_yes">Có</string>
+  <string name="alert_dialog_no">Không</string>
   <string name="select_recipients">Chọn người nhận</string>
   <string name="groups_header">Nhóm</string>
   <string name="no_recipients">Không tìm thấy liên hệ</string>

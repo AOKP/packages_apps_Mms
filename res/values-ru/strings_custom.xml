@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Неизвестный тип. Пожалуйста, повторите выбор</string>
   <string name="pref_title_sms_split_counter">Счётчик фрагментов</string>
   <string name="pref_summary_sms_split_counter">Добавляет к сообщению счётчик вида «1/2»</string>
+  <string name="blacklist_title">Чёрный список</string>
+  <string name="blacklist_summary_disabled">Отключен</string>
+  <string name="blacklist_summary">Входящие сообщения от абонентов из чёрного списка будут блокироваться</string>
+  <string name="blacklist_notification">Сообщение от %s заблокировано</string>
+  <string name="blacklist_notification_private_number">Сообщение со скрытого номера заблокировано</string>
+  <string name="blacklist_notification_list_private">Скрытый</string>
+  <string name="blacklist_notification_unknown_number">Сообщение от неизвестного номера %s заблокировано</string>
+  <string name="blacklist_notification_multiple">Заблокировано сообщений: <xliff:g id="count">%d</xliff:g></string>
+  <string name="unblock_number">Разблокировать</string>
+  <string name="add_to_blacklist">Добавить в чёрный список</string>
+  <string name="add_to_blacklist_message">Будущие сообщения от %s будут блокироваться</string>
+  <string name="alert_dialog_yes">Да</string>
+  <string name="alert_dialog_no">Нет</string>
   <string name="select_recipients">Выбор получателей</string>
   <string name="groups_header">Группы</string>
   <string name="no_recipients">Контакты не найдены</string>
