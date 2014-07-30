@@ -82,6 +82,16 @@
   <string name="pref_keyboard_unknown">Άγνωστο, παρακαλώ επιλέξτε ξανά</string>
   <string name="pref_title_sms_split_counter">Μετρητής χαρακτήρων</string>
   <string name="pref_summary_sms_split_counter">Xαρακτήρες που απομένουν έως το διαχωρισμό του SMS πχ. (1/160)</string>
+  <string name="blacklist_title">Μαύρη Λίστα</string>
+  <string name="blacklist_summary">Εισερχόμενα μηνύματα από αριθμούς που είναι στη μαύρη λίστα θα απορρίπτονται</string>
+  <string name="blacklist_notification">Απορρίφθηκε μήνυμα από %s</string>
+  <string name="blacklist_notification_private_number">Απορρίφθηκε μήνυμα από απόρρητο αριθμό</string>
+  <string name="blacklist_notification_list_private">Ιδιωτικό</string>
+  <string name="blacklist_notification_unknown_number">Απορρίφθηκε μήνυμα από άγνωστο αριθμό %s</string>
+  <string name="unblock_number">Ακύρωση φραγής</string>
+  <string name="add_to_blacklist">Προσθήση στη μαύρη λίστα</string>
+  <string name="alert_dialog_yes">Ναί</string>
+  <string name="alert_dialog_no">Όχι</string>
   <string name="select_recipients">Επιλέξτε παραλήπτες</string>
   <string name="groups_header">Ομάδες</string>
   <string name="no_recipients">Δεν βρέθηκαν επαφές</string>

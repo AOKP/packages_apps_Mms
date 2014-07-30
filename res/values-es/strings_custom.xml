@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Desconocido. Por favor, seleccionar nuevamente</string>
   <string name="pref_title_sms_split_counter">Contador de división</string>
   <string name="pref_summary_sms_split_counter">Añade un contador de división de mensajes. Ej. (1/2)</string>
+  <string name="blacklist_title">Lista negra</string>
+  <string name="blacklist_summary_disabled">Desactivada</string>
+  <string name="blacklist_summary">Los mensajes entrantes de los números en la lista negra serán bloqueados</string>
+  <string name="blacklist_notification">Mensaje de %s, bloqueado</string>
+  <string name="blacklist_notification_private_number">Mensaje de número oculto, bloqueado</string>
+  <string name="blacklist_notification_list_private">Privado</string>
+  <string name="blacklist_notification_unknown_number">Mensaje de número desconocido %s, bloqueado</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> mensajes fueron bloqueados</string>
+  <string name="unblock_number">Desbloquear</string>
+  <string name="add_to_blacklist">Añadir a la lista negra</string>
+  <string name="add_to_blacklist_message">Los próximos mensajes de %s serán bloqueados</string>
+  <string name="alert_dialog_yes">Si</string>
+  <string name="alert_dialog_no">No</string>
   <string name="select_recipients">Seleccionar destinatarios</string>
   <string name="groups_header">Grupos</string>
   <string name="no_recipients">No se han encontrado contactos</string>

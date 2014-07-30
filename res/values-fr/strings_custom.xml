@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Inconnu, veuillez resélectionner</string>
   <string name="pref_title_sms_split_counter">Compteur de séparation</string>
   <string name="pref_summary_sms_split_counter">Ajouter un compteur au message ex\u00A0: (1/2)</string>
+  <string name="blacklist_title">Liste noire</string>
+  <string name="blacklist_summary_disabled">Désactivé</string>
+  <string name="blacklist_summary">Les appels entrants des numéros de téléphone présent dans la liste noire seront bloqués</string>
+  <string name="blacklist_notification">Message de %s bloqué</string>
+  <string name="blacklist_notification_private_number">Message d\'un numéro privé bloqué</string>
+  <string name="blacklist_notification_list_private">Privé</string>
+  <string name="blacklist_notification_unknown_number">Message d\'un numéro inconnu %s bloqué</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> messages ont été bloqués</string>
+  <string name="unblock_number">Débloquer</string>
+  <string name="add_to_blacklist">Ajouter à la liste noire</string>
+  <string name="add_to_blacklist_message">Les futurs messages de %s seront bloqués</string>
+  <string name="alert_dialog_yes">Oui</string>
+  <string name="alert_dialog_no">Non</string>
   <string name="select_recipients">Sélectionnez les destinataires</string>
   <string name="groups_header">Groupes</string>
   <string name="no_recipients">Aucun contact trouvé</string>

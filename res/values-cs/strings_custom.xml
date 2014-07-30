@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Neplatná volba, je notné zkusit to znovu</string>
   <string name="pref_title_sms_split_counter">Počítadlo zpráv</string>
   <string name="pref_summary_sms_split_counter">Přidat počítadlo počtu odesílaných zpráv (např. 1/2)</string>
+  <string name="blacklist_title">Černá listina</string>
+  <string name="blacklist_summary_disabled">Zakázána</string>
+  <string name="blacklist_summary">Příchozí zprávy z čísel na černé listině budou blokovány</string>
+  <string name="blacklist_notification">Zablokována zpráva od %s</string>
+  <string name="blacklist_notification_private_number">Zablokována zpráva ze skrytého čísla</string>
+  <string name="blacklist_notification_list_private">Skryté</string>
+  <string name="blacklist_notification_unknown_number">Zablokována zpráva z neznámého čísla %s</string>
+  <string name="blacklist_notification_multiple">Bylo zablokováno <xliff:g id="count">%d</xliff:g> zpráv</string>
+  <string name="unblock_number">Neblokovat</string>
+  <string name="add_to_blacklist">Přidat na černou listinu</string>
+  <string name="add_to_blacklist_message">Příští zprávy z čísla %s budou blokovány</string>
+  <string name="alert_dialog_yes">Ano</string>
+  <string name="alert_dialog_no">Ne</string>
   <string name="select_recipients">Zvolit příjemce</string>
   <string name="groups_header">Skupiny</string>
   <string name="no_recipients">Nenalezen žádný kontakt</string>
