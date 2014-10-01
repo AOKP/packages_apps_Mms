@@ -82,6 +82,19 @@
   <string name="pref_keyboard_unknown">Okänt, var god välj om</string>
   <string name="pref_title_sms_split_counter">SMS-räknare</string>
   <string name="pref_summary_sms_split_counter">Visa antal SMS vid meddelande, ex. (1/2)</string>
+  <string name="blacklist_title">Svartlista</string>
+  <string name="blacklist_summary_disabled">Inaktiverad(e)</string>
+  <string name="blacklist_summary">Inkommande meddelanden från telefonnummer som svartlistats kommer att blockeras</string>
+  <string name="blacklist_notification">Blockerade ett meddelande från %s</string>
+  <string name="blacklist_notification_private_number">Blockerade ett meddelande från ett privat nummer</string>
+  <string name="blacklist_notification_list_private">Privat</string>
+  <string name="blacklist_notification_unknown_number">Blockerade ett meddelande från okänt nummer %s</string>
+  <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> meddelanden blockerades</string>
+  <string name="unblock_number">Häv blockering</string>
+  <string name="add_to_blacklist">Lägg till i svartlist</string>
+  <string name="add_to_blacklist_message">Framtida meddelanden från %s kommer att blockeras</string>
+  <string name="alert_dialog_yes">Ja</string>
+  <string name="alert_dialog_no">Nej</string>
   <string name="select_recipients">Välj mottagare</string>
   <string name="groups_header">Grupper</string>
   <string name="no_recipients">Hittade inga kontakter</string>
